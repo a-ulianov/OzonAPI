@@ -1,5 +1,5 @@
 [![Tests](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml/badge.svg)](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=a-ulianov_OzonAPI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=a-ulianov_OzonAPI)[![codecov](https://codecov.io/gh/a-ulianov/OzonAPI/branch/main/graph/badge.svg)](https://codecov.io/gh/a-ulianov/OzonAPI)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=a-ulianov_OzonAPI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=a-ulianov_OzonAPI)[![codecov](https://codecov.io/gh/a-ulianov/OzonAPI/branch/main/graph/badge.svg)](https://codecov.io/gh/a-ulianov/OzonAPI) 
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -9,6 +9,7 @@
 Асинхронный Python-клиент для работы с API маркетплейса Ozon. Проект предоставляет удобный интерфейс для взаимодействия с разделами API Ozon.
 
 **✅ Актуально на 4-й квартал 2025 года.**
+**🤝 Контрибуции приветствуются!**
 
 
 ## 🚀 Основные возможности
@@ -27,7 +28,6 @@
 - **🧪 Полное покрытие тестами** - вся основная функциональность
 - **✔️ Проверено в production** - тестируется на боевых кабинетах продавцов Ozon
 
-**🤲 Контрибуции приветствуются!**
 
 🤝 Данный проект является форком с глубокой доработкой и актуализацией проекта [python-ozon-api](https://github.com/mephistofox/python-ozon-api) от [mephistofox](https://github.com/mephistofox):
 - Изменена структура проекта
@@ -45,25 +45,23 @@
 ### Установка
 
 ```bash
-git clone https://github.com/a-ulianov/OzonAPI.git
-cd OzonAPI
-pip install -e
+pip install ozonapi-async
 ```
 
 ### Базовое использование
 
 ```python
 import asyncio
-from ozonapi import APIManager
+from ozonapi import SellerAPI
 
 async def main():
-    async with APIManager(
+    async with SellerAPI(
         client_id="your_client_id",
         api_key="your_api_key"
     ) as api:
         # Получение списка товаров
         products = await api.product_list()
-        print(f"Найдено товаров: {len(products.items)}")
+        print(f"Найдено товаров: {len(products.result.items)}")
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -73,11 +71,11 @@ if __name__ == "__main__":
 
 ```python
 import asyncio
-from ozonapi import APIManager, APIConfig
+from ozonapi import SellerAPI, SellerAPIConfig
 
 async def main():
     # Создание кастомной конфигурации
-    config = APIConfig(
+    config = SellerAPIConfig(
         client_id="your_client_id",
         api_key="your_api_key",
         max_requests_per_second=30,
@@ -85,7 +83,7 @@ async def main():
         max_retries=5
     )
     
-    async with APIManager(config=config) as api:
+    async with SellerAPI(config=config) as api:
         # Работа с товарами
         products = await api.product_list()
         # Работа с ценами
@@ -111,14 +109,14 @@ OZON_SELLER_BASE_URL=https://api-seller.ozon.ru
 
 ```python
 import asyncio
-from ozonapi import APIManager
+from ozonapi import SellerAPI
 
 async def main():
     # Конфигурация автоматически загружается из .env
-    async with APIManager() as api:
+    async with SellerAPI() as api:
         # Ваши API вызовы
         warehouses = await api.warehouse_list()
-        print(f"Доступно складов: {len(warehouses.warehouses)}")
+        print(f"Доступно складов: {len(warehouses.result)}")
 
 asyncio.run(main())
 ```
@@ -127,7 +125,7 @@ asyncio.run(main())
 
 ```python
 import asyncio
-from ozonapi import APIManager
+from ozonapi import SellerAPI
 
 async def main():
     # Создание клиентов для разных аккаунтов
@@ -144,11 +142,11 @@ async def main():
     results = await asyncio.gather(*tasks)
 
 async def fetch_account_data(config):
-    async with APIManager(**config) as api:
+    async with SellerAPI(**config) as api:
         products = await api.product_list()
         return {
             "client_id": config["client_id"],
-            "product_count": len(products.items)
+            "product_count": len(products.result.items)
         }
 
 asyncio.run(main())
@@ -162,7 +160,7 @@ asyncio.run(main())
 
 ```python
 # Кастомные лимиты
-config = APIConfig(
+config = SellerAPIConfig(
     max_requests_per_second=25,  # Безопасный запас
     retry_min_wait=2.0,
     retry_max_wait=10.0
@@ -175,7 +173,7 @@ config = APIConfig(
 
 ```python
 # Настройка стратегии повторов
-config = APIConfig(
+config = SellerAPIConfig(
     max_retries=3,           # Максимум 3 попытки
     retry_min_wait=1.0,      # Минимальная задержка
     retry_max_wait=10.0      # Максимальная задержка
@@ -202,6 +200,14 @@ logger.add("ozon_api.log", rotation="10 MB", level="INFO")
 - Мониторить статистику использования через встроенные методы
 
 ## 🔧 Разработка
+
+### Установка
+
+```bash
+git clone https://github.com/a-ulianov/OzonAPI.git
+cd OzonAPI
+pip install -e
+```
 
 ### Запуск тестов
 

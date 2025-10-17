@@ -1,4 +1,4 @@
-from .core import APIManager
+from .core import APIConfig as SellerAPIConfig
 from .methods import (
     SellerBarcodeAPI,
     SellerCategoryAPI,
@@ -24,6 +24,6 @@ class SellerAPI(
     pass
 
 
-__all__ = ["SellerAPI", "APIManager"]
+__all__ = ["SellerAPI", "SellerAPIConfig"]
 
 # Импортируйте здесь бизнес-методы и собирайте публичный API

@@ -2,8 +2,12 @@
 Асинхронный интерфейс для взаимодействия с API маркетплейса Ozon.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 __author__ = "Alexander Ulianov"
-__all__ = ["SellerAPI", ]
+__repository__ = "https://github.com/a-ulianov/OzonAPI"
+__docs__ = "https://github.com/a-ulianov/OzonAPI#readme"
+__issues__ = "https://github.com/a-ulianov/OzonAPI/issues"
 
-from .seller import SellerAPI
+__all__ = ["SellerAPI", "SellerAPIConfig"]
+
+from .seller import SellerAPI, SellerAPIConfig

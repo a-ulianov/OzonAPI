@@ -1,7 +1,10 @@
 .env
+.pypirc
 .idea/
 venv/
 .venv/
+build/
+dist/
 *.pid
 **/.coverage
 **/coverage.xml
