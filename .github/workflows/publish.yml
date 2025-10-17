@@ -20,10 +20,6 @@ jobs:
         ref: ${{ github.event.workflow_run.head_sha }}
         fetch-depth: 0
 
-    - name: Debug files
-      run: |
-        find . -name "*.md" -type f
-
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
