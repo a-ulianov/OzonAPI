@@ -6,7 +6,7 @@ from unittest.mock import patch
 import pytest
 from pydantic import ValidationError
 
-from src.ozonapi.seller.core.config import APIConfig
+from src.ozonapi.seller.core import APIConfig
 
 
 class TestAPIConfig:

@@ -5,7 +5,8 @@ from pydantic import BaseModel, Field
 
 from .base import BaseProductInfo
 from ...common.enumerations.localization import CurrencyCode
-from ...common.enumerations.products import PromotionOperation, PromotionType, ServiceType, VAT
+from ...common.enumerations.products import ServiceType
+from ...common.enumerations.prices import VAT, PromotionType, PromotionOperation
 
 
 class ProductImportRequestItemPDFListItem(BaseModel):

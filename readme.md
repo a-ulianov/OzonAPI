@@ -266,7 +266,7 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v2/products/stocks` | Обновить количество товаров на складах | `products_stocks()` |
 | ✓ | `/v4/product/info/stocks` | Информация о количестве товаров | `product_info_stocks()` |
 | ✓ | `/v1/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
-| ☐ | `/v1/product/import/prices` | Обновить цену | `product_import_prices()` |
+| ✓ | `/v1/product/import/prices` | Обновить цену | `product_import_prices()` |
 | ☐ | `/v1/product/action/timer/update` | Обновление таймера актуальности минимальной цены | `product_action_timer_update()` |
 | ☐ | `/v1/product/action/timer/status` | Получить статус установленного таймера | `product_action_timer_status()` |
 | ✓ | `/v5/product/info/prices` | Получить информацию о цене товара | `product_info_prices()` |

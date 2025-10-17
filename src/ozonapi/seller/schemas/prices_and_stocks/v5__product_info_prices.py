@@ -5,7 +5,7 @@ from typing import Optional
 from pydantic import BaseModel, Field, model_validator
 
 from ...common.enumerations.localization import CurrencyCode
-from ...common.enumerations.products import ColorIndex
+from ...common.enumerations.prices import ColorIndex
 from .base import BaseRequestFilterSpec, BaseRequestCursorSpec
 from ..base import BaseResponseCursor
 
@@ -19,9 +19,9 @@ class ProductInfoPricesFilter(BaseRequestFilterSpec):
         visibility: (Visibility): Фильтр по видимости товара (опционально)
     """
     @model_validator(mode='after')
-    def validate_total_items_count(cls, values):
+    def validate_total_items_count(self):
         """Проверяет, что сумма элементов по всем параметрам не превышает 1000."""
-        fields_to_check = [values.offer_id, values.product_id]
+        fields_to_check = [self.offer_id, self.product_id]
 
         total_count = sum(len(field) for field in fields_to_check if field is not None)
 
@@ -30,7 +30,7 @@ class ProductInfoPricesFilter(BaseRequestFilterSpec):
                 f"Общее количество идентификаторов ({total_count}) в запросе превышает максимально допустимое значение 1000."
             )
 
-        return values
+        return self
 
 
 class ProductInfoPricesRequest(BaseRequestCursorSpec):

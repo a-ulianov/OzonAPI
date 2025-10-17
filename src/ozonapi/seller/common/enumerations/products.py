@@ -14,25 +14,6 @@ class Availability(str, Enum):
     UNAVAILABLE = "UNAVAILABLE"
 
 
-class ColorIndex(str, Enum):
-    """Итоговый индекс цены товара.
-
-    Attributes:
-        UNSPECIFIED: не определен
-        WITHOUT_INDEX: нет индекса
-        GREEN: выгодный
-        YELLOW: умеренный
-        RED: невыгодный
-        SUPER: супер-индекс (не указано значение в документации)
-    """
-    UNSPECIFIED = "COLOR_INDEX_UNSPECIFIED"
-    WITHOUT_INDEX = "WITHOUT_INDEX"
-    GREEN = "GREEN"
-    YELLOW = "YELLOW"
-    RED = "RED"
-    SUPER = "SUPER"
-
-
 class DeliverySchema(str, Enum):
     """Схема доставки
 
@@ -90,28 +71,6 @@ class ProductHandlingStatus(str, Enum):
     SKIPPED = "skipped"
 
 
-class PromotionOperation(str, Enum):
-    """Действия с акцией.
-
-    Attributes:
-        ENABLE: включить
-        DISABLE: выключить
-        UNKNOWN: ничего не менять
-    """
-    ENABLE = "ENABLE"
-    DISABLE = "DISABLE"
-    UNKNOWN = "UNKNOWN"
-
-
-class PromotionType(str, Enum):
-    """Типы акций.
-
-    Attributes:
-        REVIEWS_PROMO: баллы за отзывы
-    """
-    REVIEWS_PROMO = "REVIEWS_PROMO"
-
-
 class ServiceType(str, Enum):
     """Типы сервиса (описание отсутствует в документации).
 
@@ -136,25 +95,6 @@ class ShipmentType(str, Enum):
     GENERAL = "SHIPMENT_TYPE_GENERAL"
     BOX = "SHIPMENT_TYPE_BOX"
     PALLET = "SHIPMENT_TYPE_PALLET"
-
-
-class VAT(str, Enum):
-    """Ставка НДС для товара.
-
-    Attributes:
-        PERCENT_0: НДС не облагается
-        PERCENT_5: НДС 5%
-        PERCENT_7: НДС 7%
-        PERCENT_10: НДС 10%
-        PERCENT_20: НДС 20%
-        PERCENT_22: НДС 22%
-    """
-    PERCENT_0 = "0"
-    PERCENT_5 = "0.05"
-    PERCENT_7 = "0.07"
-    PERCENT_10 = "0.10"
-    PERCENT_20 = "0.20"
-    PERCENT_22 = "0.22"
 
 
 class Visibility(str, Enum):

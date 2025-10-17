@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ozonapi-async"
-version = "0.1.2"  # Увеличиваем версию, так как 0.1.1 уже с ошибкой
+version = "0.2.0"
 description = "Асинхронный клиент для работы с API маркетплейса Ozon"
 readme = "README.md"
 keywords = ["ozon", "api", "async", "ecommerce", "seller", "client"]

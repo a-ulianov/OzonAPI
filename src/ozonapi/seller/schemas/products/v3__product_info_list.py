@@ -6,7 +6,8 @@ from pydantic import BaseModel, Field, model_validator
 
 from .base import BaseProductInfoListRequest
 from ...common.enumerations.localization import CurrencyCode
-from ...common.enumerations.products import ErrorLevel, ColorIndex, ShipmentType, VAT
+from ...common.enumerations.products import ErrorLevel, ShipmentType
+from ...common.enumerations.prices import VAT, ColorIndex
 
 
 class ProductInfoListRequest(BaseProductInfoListRequest):

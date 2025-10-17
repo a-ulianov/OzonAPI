@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from ...common.enumerations.localization import CurrencyCode
-from ...common.enumerations.products import VAT
+from ...common.enumerations.prices import VAT
 
 
 class ProductImportBySkuRequestItem(BaseModel):
