@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=45.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OzonAPI"
+version = "0.1.0"
+description = "Асинхронный клиент для работы с API маркетплейса Ozon"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Alexander Ulianov"},
+]
+keywords = ["ozon", "api", "async", "ecommerce", "seller", "python"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.8.0,<4.0.0",
+    "pydantic>=2.0.0,<3.0.0",
+    "aiolimiter>=1.0.0,<2.0.0",
+    "tenacity>=8.0.0,<10.0.0",
+    "loguru>=0.7.0,<1.0.0",
+    "yarl>=1.0.0,<2.0.0",
+    "multidict>=6.0.0,<7.0.0",
+    "frozenlist>=1.0.0,<2.0.0",
+    "attrs>=23.0.0,<26.0.0",
+    "typing-extensions>=4.0.0,<5.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0,<9.0.0",
+    "pytest-asyncio>=0.21.0,<2.0.0",
+    "pytest-cov>=4.0.0,<5.0.0",
+    "coverage>=7.0.0,<8.0.0",
+]
+dev = [
+    "pytest>=7.0.0,<9.0.0",
+    "pytest-asyncio>=0.21.0,<2.0.0",
+    "pytest-cov>=4.0.0,<5.0.0",
+    "coverage>=7.0.0,<8.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/a-ulianov/OzonAPI"
+Documentation = "https://github.com/a-ulianov/OzonAPI#readme"
+Repository = "https://github.com/a-ulianov/OzonAPI"
+Issues = "https://github.com/a-ulianov/OzonAPI/issues"
+"Changelog" = "https://github.com/a-ulianov/OzonAPI/releases"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ozonapi*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.json", "*.yaml", "*.yml", "*.env"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--import-mode=importlib --cov=ozonapi --cov-report=html"

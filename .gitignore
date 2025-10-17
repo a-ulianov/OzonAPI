@@ -1,0 +1,13 @@
+.env
+.idea/
+venv/
+.venv/
+*.pid
+**/.coverage
+**/coverage.xml
+**/htmlcov/
+**/.sonar/
+**/.pytest_cache/
+**/__pycache__/
+*.egg-info/
+**/logs/
