@@ -21,7 +21,10 @@ jobs:
         fetch-depth: 0
 
     - name: Debug - list files
-      run: ls -la
+      run: |
+        echo "Current directory: $(pwd)"
+        ls -la
+        echo "README.md exists: $(if [ -f readme.md ]; then echo 'YES'; else echo 'NO'; fi)"
 
     - name: Set up Python
       uses: actions/setup-python@v4
