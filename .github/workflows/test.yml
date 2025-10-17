@@ -37,7 +37,7 @@ jobs:
       with:
         args: >
           -Dsonar.organization=a-ulianov
-          -Dsonar.projectKey=a-ulianov_ozonapi
+          -Dsonar.projectKey=a-ulianov_OzonAPI
           -Dsonar.sources=src/
           -Dsonar.python.coverage.reportPaths=coverage.xml
           -Dsonar.python.version=3.11
