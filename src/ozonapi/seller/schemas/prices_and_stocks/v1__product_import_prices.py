@@ -146,8 +146,12 @@ class ProductImportPricesError(BaseModel):
         code: Код ошибки
         message: Сообщение об ошибке
     """
-    code: str = Field(..., description="Код ошибки.")
-    message: str = Field(..., description="Сообщение об ошибке.")
+    code: Optional[str] = Field(
+        None, description="Код ошибки."
+    )
+    message: Optional[str] = Field(
+        None, description="Сообщение об ошибке."
+    )
 
 
 class ProductImportPricesResultItem(BaseModel):
@@ -165,7 +169,9 @@ class ProductImportPricesResultItem(BaseModel):
     offer_id: Optional[str] = Field(
         None, description="Идентификатор товара в системе продавца — артикул."
     )
-    updated: bool = Field(..., description="Если информация о товаре успешно обновлена — true.")
+    updated: bool = Field(
+        ..., description="Если информация о товаре успешно обновлена — true."
+    )
     errors: list[ProductImportPricesError] = Field(
         default_factory=list, description="Массив ошибок, которые возникли при обработке запроса."
     )
