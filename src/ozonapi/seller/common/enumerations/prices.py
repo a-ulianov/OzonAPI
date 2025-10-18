@@ -72,3 +72,22 @@ class ColorIndex(str, Enum):
     YELLOW = "YELLOW"
     RED = "RED"
     SUPER = "SUPER"
+
+
+class ColorIndexWithPrefix(str, Enum):
+    """Итоговый индекс цены товара.
+
+    Attributes:
+        UNSPECIFIED: не определен
+        WITHOUT_INDEX: нет индекса
+        GREEN: выгодный
+        YELLOW: умеренный
+        RED: невыгодный
+        SUPER: супер-индекс (не указано значение в документации)
+    """
+    UNSPECIFIED = "COLOR_INDEX_UNSPECIFIED"
+    WITHOUT_INDEX = "COLOR_INDEX_WITHOUT_INDEX"
+    GREEN = "COLOR_INDEX_GREEN"
+    YELLOW = "COLOR_INDEX_YELLOW"
+    RED = "COLOR_INDEX_RED"
+    SUPER = "COLOR_INDEX_SUPER"

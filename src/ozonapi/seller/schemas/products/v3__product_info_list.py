@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field, model_validator
 from .base import BaseProductInfoListRequest
 from ...common.enumerations.localization import CurrencyCode
 from ...common.enumerations.products import ErrorLevel, ShipmentType
-from ...common.enumerations.prices import VAT, ColorIndex
+from ...common.enumerations.prices import VAT, ColorIndexWithPrefix
 
 
 class ProductInfoListRequest(BaseProductInfoListRequest):
@@ -169,7 +169,7 @@ class ProductInfoListPriceIndexes(BaseModel):
         ozon_index_data: Цена товара у конкурентов на Ozon
         self_marketplaces_index_data: Цена товара на других площадках
     """
-    color_index: ColorIndex = Field(
+    color_index: ColorIndexWithPrefix = Field(
         ..., description="Вид индекса цен."
     )
     external_index_data: ProductInfoListPriceIndexData | None = Field(

@@ -163,3 +163,57 @@ class WeightUnit(str, Enum):
     GRAMS = "g"
     KILOGRAMS = "kg"
     POUNDS = "lb"
+
+
+class TurnoverGrade(str, Enum):
+    """Фильтр по статусу ликвидности товаров.
+
+    Attributes:
+        TURNOVER_GRADE_NONE: нет статуса ликвидности
+        DEFICIT: дефицитный. Остатков товара хватит до 28 дней
+        POPULAR: очень популярный. Остатков товара хватит на 28–56 дней
+        ACTUAL: популярный. Остатков товара хватит на 56–120 дней
+        SURPLUS: избыточный. Товар продаётся медленно, остатков хватит более чем на 120 дней
+        NO_SALES: без продаж. У товара нет продаж последние 28 дней
+        WAS_NO_SALES: был без продаж. У товара не было продаж и остатков последние 28 дней
+        RESTRICTED_NO_SALES: без продаж, ограничен. У товара не было продаж более 120 дней. Такой товар нельзя добавить в поставку
+        COLLECTING_DATA: сбор данных. Для расчёта ликвидности нового товара собираем данные в течение 60 дней после поставки
+        WAITING_FOR_SUPPLY: ожидаем поставки. На складе нет остатков, доступных к продаже. Сделайте поставку для начала сбора данных
+        WAS_DEFICIT: был дефицитным. Товар был дефицитным последние 56 дней. Сейчас у него нет остатков
+        WAS_POPULAR: был очень популярным. Товар был очень популярным последние 56 дней. Сейчас у него нет остатков
+        WAS_ACTUAL: был популярным. Товар был популярным последние 56 дней. Сейчас у него нет остатков
+        WAS_SURPLUS: был избыточным. Товар был избыточным последние 56 дней. Сейчас у него нет остатков
+    """
+    TURNOVER_GRADE_NONE = "TURNOVER_GRADE_NONE"
+    DEFICIT = "DEFICIT"
+    POPULAR = "POPULAR"
+    ACTUAL = "ACTUAL"
+    SURPLUS = "SURPLUS"
+    NO_SALES = "NO_SALES"
+    WAS_NO_SALES = "WAS_NO_SALES"
+    RESTRICTED_NO_SALES = "RESTRICTED_NO_SALES"
+    COLLECTING_DATA = "COLLECTING_DATA"
+    WAITING_FOR_SUPPLY = "WAITING_FOR_SUPPLY"
+    WAS_DEFICIT = "WAS_DEFICIT"
+    WAS_POPULAR = "WAS_POPULAR"
+    WAS_ACTUAL = "WAS_ACTUAL"
+    WAS_SURPLUS = "WAS_SURPLUS"
+
+
+class ItemTag(str, Enum):
+    """Фильтр по тегам товара.
+
+    Attributes:
+        ITEM_ATTRIBUTE_NONE: без тега
+        ECONOM: эконом-товар
+        NOVEL: новинка
+        DISCOUNT: уценённый товар
+        FBS_RETURN: товар из возврата FBS
+        SUPER: Super-товар
+    """
+    ITEM_ATTRIBUTE_NONE = "ITEM_ATTRIBUTE_NONE"
+    ECONOM = "ECONOM"
+    NOVEL = "NOVEL"
+    DISCOUNT = "DISCOUNT"
+    FBS_RETURN = "FBS_RETURN"
+    SUPER = "SUPER"

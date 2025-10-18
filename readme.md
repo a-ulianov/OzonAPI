@@ -526,7 +526,9 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v2/analytics/stock_on_warehouses` | Отчёт по остаткам и товарам | `analytics_stock_on_warehouses()` |
 | ☐ | `/v1/analytics/turnover/stocks` | Оборачиваемость товара | `analytics_turnover_stocks()` |
 
-## Финансовые отчёты
+
+## Финансовые отчеты
+
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/finance/realization` | Отчёт о реализации товаров (версия 2) | `finance_realization()` |
@@ -536,64 +538,124 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/finance/document-b2b-sales` | Реестр продаж юридическим лицам | `finance_document_b2b_sales()` |
 | ☐ | `/v1/finance/document-b2b-sales/json` | Реестр продаж юридическим лицам в JSON-формате | `finance_document_b2b_sales_json()` |
 | ☐ | `/v1/finance/mutual-settlement` | Отчёт о взаиморасчётах | `finance_mutual_settlement()` |
-| ☐ | `/v1/finance/products/buyout` | Отчёт о выкупах | `finance_products_buyout()` |
-| ☐ | `/v1/finance/order/acceptance` | Отчёт о принятии заказа | `finance_order_acceptance()` |
-| ☐ | `/v1/finance/order/acceptance/act` | Акт об оказании услуг | `finance_order_acceptance_act()` |
-| ☐ | `/v1/finance/order/acceptance/act/upload` | Загрузить подписанный акт | `finance_order_acceptance_act_upload()` |
-| ☐ | `/v1/finance/order/acceptance/act/status` | Статус акта | `finance_order_acceptance_act_status()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm` | Подтвердить акт | `finance_order_acceptance_act_confirm()` |
-| ☐ | `/v1/finance/order/acceptance/act/reject` | Отклонить акт | `finance_order_acceptance_act_reject()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/reject` | Отменить отклонение акта | `finance_order_acceptance_act_confirm_reject()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/status` | Статус подтверждения акта | `finance_order_acceptance_act_confirm_status()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/reject/status` | Статус отмены отклонения акта | `finance_order_acceptance_act_confirm_reject_status()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/reject/cancel` | Отменить отмену отклонения акта | `finance_order_acceptance_act_confirm_reject_cancel()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/reject/cancel/status` | Статус отмены отмены отклонения акта | `finance_order_acceptance_act_confirm_reject_cancel_status()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/reject/cancel/revert` | Отменить отмену отмены отклонения акта | `finance_order_acceptance_act_confirm_reject_cancel_revert()` |
-| ☐ | `/v1/finance/order/acceptance/act/confirm/reject/cancel/revert/status` | Статус отмены отмены отмены отклонения акта | `finance_order_acceptance_act_confirm_reject_cancel_revert_status()` |
+| ☐ | `/v1/finance/products/buyout` | Отчёт о выкупленных товарах | `finance_products_buyout()` |
+| ☐ | `/v1/finance/compensation` | Отчёт о компенсациях | `finance_compensation()` |
+| ☐ | `/v1/finance/decompensation` | Отчёт о декомпенсациях | `finance_decompensation()` |
 
-## Управление компанией
+## Рейтинг продавца
+
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/company/list` | Список компаний | `company_list()` |
+| ☐ | `/v1/rating/summary` | Получить информацию о текущих рейтингах продавца | `rating_summary()` |
+| ☐ | `/v1/rating/history` | Получить информацию о рейтингах продавца за период | `rating_history()` |
 
-## Управление API-ключами
+## Прочие методы
+
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/api-key/list` | Список API-ключей | `api_key_list()` |
-| ☐ | `/v1/api-key/create` | Создать API-ключ | `api_key_create()` |
-| ☐ | `/v1/api-key/delete` | Удалить API-ключ | `api_key_delete()` |
+| ☐ | `/v1/analytics/manage/stocks` | Управление остатками | `analytics_manage_stocks()` |
+| ✓ | `/v1/analytics/stocks` | Получить аналитику по остаткам | `analytics_stocks()` |
+| ☐ | `/v1/analytics/average-delivery-time` | Получить аналитику по среднему времени доставки | `analytics_average_delivery_time()` |
+| ☐ | `/v1/analytics/average-delivery-time/details` | Получить детальную аналитику по среднему времени доставки | `analytics_average_delivery_time_details()` |
+| ☐ | `/v1/analytics/average-delivery-time/summary` | Получить общую аналитику по среднему времени доставки | `analytics_average_delivery_time_summary()` |
+| ☐ | `/v1/product/info/wrong-volume` | Список товаров с некорректными ОВХ | `product_info_wrong_volume()` |
+| ☐ | `/v1/removal/from-supply/list` | Отчёт по вывозу и утилизации с поставки FBO | `removal_from_supply_list()` |
+| ☐ | `/v1/removal/from-stock/list` | Отчёт по вывозу и утилизации со стока FBO | `removal_from_stock_list()` |
+| ☐ | `/v3/supply-order/list` | Список заявок на поставку на склад Ozon | `supply_order_list()` |
+| ☐ | `/v3/supply-order/get` | Информация о заявке на поставку | `supply_order_get()` |
+| ☐ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав | `supply_order_content_update_validation()` |
+| ☐ | `/v1/product/info/warehouse/stocks` | Получить информацию по остаткам на складе FBS и rFBS | `product_info_warehouse_stocks()` |
 
-## Управление уведомлениями
+## Работа с цифровыми товарами
+
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/notification/settings` | Настройки уведомлений | `notification_settings()` |
-| ☐ | `/v1/notification/settings/update` | Обновить настройки уведомлений | `notification_settings_update()` |
+| ☐ | `/v1/posting/digital/codes/upload` | Загрузить коды цифровых товаров для отправления | `posting_digital_codes_upload()` |
+| ☐ | `/v1/posting/digital/list` | Получить список отправлений | `posting_digital_list()` |
+| ☐ | `/v1/product/digital/stocks/import` | Обновить количество цифровых товаров | `product_digital_stocks_import()` |
 
-## Логистика
+## Работа с квантами
+
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
-|--|---|---|---|
-| ☐ | `/v1/logistic/order/status` | Получить статус заказа в логистике | `logistic_order_status()` |
-| ☐ | `/v1/logistic/order/status/history` | Получить историю статусов заказа в логистике | `logistic_order_status_history()` |
-| ☐ | `/v1/logistic/order/tracking` | Получить информацию об отслеживании заказа | `logistic_order_tracking()` |
-| ☐ | `/v1/logistic/order/cancel` | Отменить заказ в логистике | `logistic_order_cancel()` |
-| ☐ | `/v1/logistic/order/create` | Создать заказ в логистике | `logistic_order_create()` |
-| ☐ | `/v1/logistic/order/update` | Обновить заказ в логистике | `logistic_order_update()` |
-| ☐ | `/v1/logistic/order/info` | Получить информацию о заказе в логистике | `logistic_order_info()` |
-| ☐ | `/v1/logistic/order/list` | Получить список заказов в логистике | `logistic_order_list()` |
-| ☐ | `/v1/logistic/city/list` | Получить список городов | `logistic_city_list()` |
-| ☐ | `/v1/logistic/city/info` | Получить информацию о городе | `logistic_city_info()` |
-| ☐ | `/v1/logistic/point/list` | Получить список пунктов выдачи | `logistic_point_list()` |
-| ☐ | `/v1/logistic/point/info` | Получить информацию о пункте выдачи | `logistic_point_info()` |
-| ☐ | `/v1/logistic/tariff/list` | Получить список тарифов | `logistic_tariff_list()` |
-| ☐ | `/v1/logistic/tariff/info` | Получить информацию о тарифе | `logistic_tariff_info()` |
-| ☐ | `/v1/logistic/tariff/calculate` | Рассчитать стоимость доставки | `logistic_tariff_calculate()` |
-| ☐ | `/v1/logistic/address/list` | Получить список адресов | `logistic_address_list()` |
-| ☐ | `/v1/logistic/address/create` | Создать адрес | `logistic_address_create()` |
-| ☐ | `/v1/logistic/address/update` | Обновить адрес | `logistic_address_update()` |
-| ☐ | `/v1/logistic/address/delete` | Удалить адрес | `logistic_address_delete()` |
-| ☐ | `/v1/logistic/address/info` | Получить информацию об адресе | `logistic_address_info()` |
+|---|---|---|---|
+| ☐ | `/v1/product/quant/list` | Список эконом-товаров | `product_quant_list()` |
+| ☐ | `/v1/product/quant/info` | Информация об эконом-товаре | `product_quant_info()` |
 
-## Примечания
+## Работа с отзывами
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|---|
+| ☐ | `/v1/review/comment/create` | Оставить комментарий на отзыв | `review_comment_create()` |
+| ☐ | `/v1/review/comment/delete` | Удалить комментарий на отзыв | `review_comment_delete()` |
+| ☐ | `/v1/review/comment/list` | Список комментариев на отзыв | `review_comment_list()` |
+| ☐ | `/v1/review/change-status` | Изменить статус отзывов | `review_change_status()` |
+| ☐ | `/v1/review/count` | Количество отзывов по статусам | `review_count()` |
+| ☐ | `/v1/review/info` | Получить информацию об отзыве | `review_info()` |
+| ☐ | `/v1/review/list` | Получить список отзывов | `review_list()` |
+
+## Работа с вопросами и ответами
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|---|
+| ☐ | `/v1/question/answer/create` | Создать ответ на вопрос | `question_answer_create()` |
+| ☐ | `/v1/question/answer/delete` | Удалить ответ на вопрос | `question_answer_delete()` |
+| ☐ | `/v1/question/answer/list` | Список ответов на вопрос | `question_answer_list()` |
+| ☐ | `/v1/question/change-status` | Изменить статус вопросов | `question_change_status()` |
+| ☐ | `/v1/question/count` | Количество вопросов по статусам | `question_count()` |
+| ☐ | `/v1/question/info` | Информация о вопросе | `question_info()` |
+| ☐ | `/v1/question/list` | Список вопросов | `question_list()` |
+| ☐ | `/v1/question/top-sku` | Товары с наибольшим количеством вопросов | `question_top_sku()` |
+
+## Работа с FBS-складами
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|---|
+| ☐ | `/v1/warehouse/fbs/create/drop-off/list` | Получить список drop-off пунктов для создания склада | `warehouse_fbs_create_drop_off_list()` |
+| ☐ | `/v1/warehouse/fbs/update/drop-off/list` | Получить список drop-off пунктов для изменения информации склада | `warehouse_fbs_update_drop_off_list()` |
+| ☐ | `/v1/warehouse/fbs/create` | Создать склад | `warehouse_fbs_create()` |
+| ☐ | `/v1/warehouse/fbs/update` | Обновить склад | `warehouse_fbs_update()` |
+| ☐ | `/v1/warehouse/operation/status` | Получить статус операции | `warehouse_operation_status()` |
+| ☐ | `/v2/warehouse/list` | Список складов | `warehouse_list()` |
+| ☐ | `/v1/warehouse/fbs/first-mile/update` | Обновить первую милю | `warehouse_fbs_first_mile_update()` |
+| ☐ | `/v1/warehouse/archive` | Перенести склад в архив | `warehouse_archive()` |
+| ☐ | `/v1/warehouse/unarchive` | Перенести склад из архива | `warehouse_unarchive()` |
+
+## Premium-методы
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|---|
+| ☐ | `/v1/chat/send/message` | Отправить сообщение | `chat_send_message()` |
+| ☐ | `/v1/chat/start` | Создать новый чат | `chat_start()` |
+| ☐ | `/v3/chat/history` | История чата | `chat_history()` |
+| ☐ | `/v2/chat/read` | Отметить сообщения как прочитанные | `chat_read()` |
+| ☐ | `/v1/analytics/data` | Данные аналитики | `analytics_data()` |
+| ☐ | `/v1/analytics/product-queries` | Получить информацию о запросах моих товаров | `analytics_product_queries()` |
+| ☐ | `/v1/analytics/product-queries/details` | Получить детализацию запросов по товару | `analytics_product_queries_details()` |
+| ☐ | `/v1/finance/realization/by-day` | Отчёт о реализации товаров за день | `finance_realization_by_day()` |
+| ☐ | `/v1/search-queries/text` | Получить список поисковых запросов по тексту | `search_queries_text()` |
+| ☐ | `/v1/search-queries/top` | Получить список популярных поисковых запросов | `search_queries_top()` |
+
+## **Логистика (Ozon Logistics)**
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|---|
+| ☐ | `/v1/delivery/check` | Проверка доступности доставки Ozon для покупателя | `delivery_check()` |
+| ☐ | `/v1/delivery/map` | Получить список точек самовывоза на карте | `delivery_map()` |
+| ☐ | `/v1/delivery/point/list` | Получить список всех точек самовывоза | `delivery_point_list()` |
+| ☐ | `/v1/delivery/point/info` | Получить информацию о выбранной точке самовывоза | `delivery_point_info()` |
+| ☐ | `/v1/delivery/checkout` | Определение доступности товара и расчет сроков доставки | `delivery_checkout()` |
+| ☐ | `/v1/order/create` | Создание заказа | `order_create()` |
+| ☐ | `/v1/posting/marks` | Получить список кодов маркировок товаров | `posting_marks()` |
+| ☐ | `/v1/cancel-reason/list` | Список причин отмен для заказа | `cancel_reason_list()` |
+| ☐ | `/v1/cancel-reason/list-by-order` | Динамический список отмен для заказа | `cancel_reason_list_by_order()` |
+| ☐ | `/v1/cancel-reason/list-by-posting` | Динамический список отмен для постинга из заказа | `cancel_reason_list_by_posting()` |
+| ☐ | `/v1/order/cancel/check` | Проверка доступности отмены | `order_cancel_check()` |
+| ☐ | `/v1/order/cancel` | Метод отмены заказа | `order_cancel()` |
+| ☐ | `/v1/posting/cancel` | Метод отмены постинга из заказа | `posting_cancel()` |
+| ☐ | `/v1/order/cancel/status` | Статус отмены заказа | `order_cancel_status()` |
+| ☐ | `/v1/posting/cancel/status` | Статус отмены постинга из заказа | `posting_cancel_status()` |
+
+**Примечания**
 - ✓ - метод реализован
 - ☐ - метод не реализован
 
