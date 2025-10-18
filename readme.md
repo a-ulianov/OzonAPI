@@ -222,7 +222,7 @@ pytest --cov=ozonapi --cov-report=html
 - Changelog: [Releases](https://github.com/a-ulianov/OzonAPI/releases)
 
 
-# Чек-лист реализации Python-интерфейса для API Ozon
+# Чек-лист реализации методов Ozon Seller API
 
 ## Атрибуты и характеристики Ozon
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
