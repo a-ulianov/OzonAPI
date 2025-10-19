@@ -33,7 +33,7 @@ class SellerFBSAPI(APIManager):
         Returns:
             Список необработанных отправлений за указанный период времени по схеме `PostingFBSUnfulfilledListResponse`
 
-        Example:
+        Examples:
             Базовое применение:
                 async with SellerAPI(client_id, api_key) as api:
                     # noinspection PyArgumentList
@@ -104,7 +104,7 @@ class SellerFBSAPI(APIManager):
         Returns:
             Список отправлений FBS за указанный период времени по схеме `PostingFBSListResponse`
 
-        Example:
+        Examples:
             Базовое применение:
                 async with SellerAPI(client_id, api_key) as api:
                     # noinspection PyArgumentList

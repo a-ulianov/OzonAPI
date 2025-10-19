@@ -40,6 +40,7 @@ class AvailablePostingActions(str, Enum):
     CLICK_TRACK_NUMBER = "click_track_number"
     CUSTOMER_PHONE_AVAILABLE = "customer_phone_available"
     HAS_WEIGHT_PRODUCTS = "has_weight_products"
+    HAS_BARCODE_FOR_PRINTING = "has_barcode_for_printing"
     HIDE_REGION_AND_CITY = "hide_region_and_city"
     INVOICE_GET = "invoice_get"
     INVOICE_SEND = "invoice_send"

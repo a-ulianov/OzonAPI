@@ -19,9 +19,9 @@ class ProductInfoListRequest(BaseProductInfoListRequest):
         sku: Идентификаторы товаров в системе Ozon (опционально)
     """
     @model_validator(mode='after')
-    def validate_total_items_count(cls, values):
+    def validate_total_items_count(self):
         """Проверяет, что сумма элементов по всем параметрам не превышает 1000."""
-        fields_to_check = [values.offer_id, values.product_id, values.sku]
+        fields_to_check = [self.offer_id, self.product_id, self.sku]
 
         total_count = sum(len(field) for field in fields_to_check if field is not None)
 
@@ -30,7 +30,7 @@ class ProductInfoListRequest(BaseProductInfoListRequest):
                 f"Общее количество идентификаторов ({total_count}) в запросе превышает максимально допустимое значение 1000."
             )
 
-        return values
+        return self
 
 
 class ProductInfoListErrorTextsParams(BaseModel):
