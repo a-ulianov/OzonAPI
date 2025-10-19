@@ -2,7 +2,7 @@
 import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, Field, model_validator
 
 from .entities.posting__posting import PostingFBSPosting
 from ..mixins import DateTimeSerializationMixin
@@ -18,6 +18,8 @@ class PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate(BaseModel):
         from_: Дата начала периода
         to_: Дата окончания периода
     """
+    model_config = {'populate_by_name': True}
+
     from_: datetime.datetime = Field(
         ...,
         description="Дата начала периода.",

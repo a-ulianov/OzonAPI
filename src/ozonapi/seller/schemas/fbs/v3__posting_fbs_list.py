@@ -2,7 +2,7 @@
 import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, Field, model_validator
 
 from .entities.posting__posting import PostingFBSPosting
 from ..mixins import DateTimeSerializationMixin
@@ -18,6 +18,8 @@ class PostingFBSListRequestFilterLastChangedStatusDate(DateTimeSerializationMixi
         from_: Дата начала периода
         to_: Дата окончания периода
     """
+    model_config = {'populate_by_name': True}
+
     from_: datetime.datetime = Field(
         ...,
         description="Дата начала периода.",
@@ -78,6 +80,8 @@ class PostingFBSListFilter(DateTimeSerializationMixin, BaseModel):
         last_changed_status_date: Период изменения статуса
         is_quantum: Фильтр по квантовым отправлениям
     """
+    model_config = {'populate_by_name': True}
+
     since: datetime.datetime = Field(
         ..., description="Начало периода, за который нужно получить отправления. Период не более 1 года."
     )
@@ -119,15 +123,6 @@ class PostingFBSListFilter(DateTimeSerializationMixin, BaseModel):
     serialize_datetime = DateTimeSerializationMixin.create_datetime_validator([
         'since', 'to_'
     ])
-
-    @model_validator(mode='after')
-    def validate_period(self) -> 'PostingFBSListFilter':
-        """Проверяет, что период не превышает 1 год."""
-        if self.since and self._to:
-            period_days = (self.to - self.since).days
-            if period_days > 365:
-                raise ValueError("Период не должен превышать 1 год.")
-        return self
 
 
 class PostingFBSListRequest(BaseRequestOffset):

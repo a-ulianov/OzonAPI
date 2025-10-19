@@ -72,7 +72,7 @@ class PostingFBSPosting(BaseModel):
     customer: Optional[PostingFBSCustomer] = Field(
         None, description="Данные о покупателе."
     )
-    delivering_date: datetime.datetime = Field(
+    delivering_date: Optional[datetime.datetime] = Field(
         ..., description="Дата передачи отправления в доставку."
     )
     delivery_method: PostingFBSDeliveryMethod = Field(
