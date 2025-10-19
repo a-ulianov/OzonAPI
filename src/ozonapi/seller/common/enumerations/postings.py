@@ -73,12 +73,14 @@ class PostingStatus(str, Enum):
         AWAITING_DELIVER: ожидает отгрузки
         ARBITRATION: арбитраж
         CLIENT_ARBITRATION: клиентский арбитраж доставки
+        DELIVERED: доставлено
         DELIVERING: доставляется
         DRIVER_PICKUP: у водителя
         NOT_ACCEPTED: не принят на сортировочном центре
         AWAITING_VERIFICATION: создано
         CANCELLED: отменено
         CANCELLED_FROM_SPLIT_PENDING: отменён из-за разделения отправления
+        SENT_BY_SELLER: отправлено продавцом
     """
     ACCEPTANCE_IN_PROGRESS = "acceptance_in_progress"
     AWAITING_APPROVE = "awaiting_approve"
@@ -87,12 +89,14 @@ class PostingStatus(str, Enum):
     AWAITING_DELIVER = "awaiting_deliver"
     ARBITRATION = "arbitration"
     CLIENT_ARBITRATION = "client_arbitration"
+    DELIVERED = "delivered"
     DELIVERING = "delivering"
     DRIVER_PICKUP = "driver_pickup"
     NOT_ACCEPTED = "not_accepted"
     AWAITING_VERIFICATION = "awaiting_verification"
     CANCELLED = "cancelled"
     CANCELLED_FROM_SPLIT_PENDING = "cancelled_from_split_pending"
+    SENT_BY_SELLER = "sent_by_seller"
 
 
 class PostingSubstatus(str, Enum):
@@ -168,6 +172,28 @@ class CancellationType(str, Enum):
     OZON = "ozon"
     SYSTEM = "system"
     DELIVERY = "delivery"
+    UNSPECIFIED = ""
+
+
+class PaymentTypeGroupName(str, Enum):
+    """Тип оплаты.
+    OZON_CARD: Ozon Карта
+    OZON_CARD_AUTO_DEBIT_AT_ISSUANCE: автосписание с Ozon Карты при выдаче
+    SAVED_CARD_AT_ISSUANCE: сохранённой картой при получении
+    SBP: Система Быстрых Платежей
+    OZON_INSTALLMENT: Ozon Рассрочка
+    BANK_ACCOUNT: оплата на расчётный счёт
+    SBERPAY: SberPay
+    UNSPECIFIED: не указано
+    """
+    CARD_ONLINE = "картой онлайн"
+    OZON_CARD = "Ozon Карта"
+    OZON_CARD_AUTO_DEBIT_AT_ISSUANCE = "автосписание с Ozon Карты при выдаче"
+    SAVED_CARD_AT_ISSUANCE = "сохранённой картой при получении"
+    SBP = "Система Быстрых Платежей"
+    OZON_INSTALLMENT = "Ozon Рассрочка"
+    BANK_ACCOUNT = "оплата на расчётный счёт"
+    SBERPAY = "SberPay"
     UNSPECIFIED = ""
 
 
