@@ -28,6 +28,8 @@ __all__ = [
     "PostingFBSListRequest",
     "PostingFBSListResult",
     "PostingFBSListResponse",
+    "PostingFBSMultiBoxQtySetRequest",
+    "PostingFBSMultiBoxQtySetResponse",
     "PostingFBSUnfulfilledListRequest",
     "PostingFBSUnfulfilledListResponse",
     "PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate",
@@ -44,6 +46,7 @@ from .v2__posting_fbs_get_by_barcode import PostingFBSGetByBarcodeRequest, Posti
 from .v3__posting_fbs_get import PostingFBSGetRequest, PostingFBSGetResponse
 from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, \
     PostingFBSListFilter, PostingFBSListRequest, PostingFBSListResult, PostingFBSListResponse
+from .v3__posting_multiboxqty_set import PostingFBSMultiBoxQtySetResponse, PostingFBSMultiBoxQtySetRequest
 from .v3__posting_fbs_unfulfilled_list import (
     PostingFBSUnfulfilledListRequest,
     PostingFBSUnfulfilledListResponse,

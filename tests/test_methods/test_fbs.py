@@ -6,6 +6,7 @@ from src.ozonapi.seller.methods import SellerFBSAPI
 from src.ozonapi.seller.schemas.fbs import (
     PostingFBSUnfulfilledListRequest,
     PostingFBSUnfulfilledListResponse, PostingFBSListResponse, PostingFBSGetResponse, PostingFBSGetByBarcodeResponse,
+    PostingFBSMultiBoxQtySetResponse,
 )
 from src.ozonapi.seller.common.enumerations.requests import SortingDirection
 from src.ozonapi.seller.common.enumerations.postings import (
@@ -634,3 +635,35 @@ class TestSellerFBSAPI:
         assert response.created_at.replace(tzinfo=None) == datetime.datetime(2025, 1, 29, 8, 58, 7)
         assert response.in_process_at.replace(tzinfo=None) == datetime.datetime(2025, 1, 29, 8, 59, 40)
         assert response.shipment_date.replace(tzinfo=None) == datetime.datetime(2025, 1, 29, 18, 0, 0)
+
+    @pytest.mark.asyncio
+    async def test_posting_multiboxqty_set(self, seller_fbs_api, mock_api_manager_request):
+        """Тестирует метод posting_multiboxqty_set."""
+
+        mock_response_data = {
+            "result": {
+                "result": True
+            }
+        }
+        mock_api_manager_request.return_value = mock_response_data
+
+        from src.ozonapi.seller.schemas.fbs.v3__posting_multiboxqty_set import (
+            PostingFBSMultiBoxQtySetRequest
+        )
+
+        request = PostingFBSMultiBoxQtySetRequest(
+            posting_number="57195475-0050-3",
+            multi_box_qty=3
+        )
+
+        response = await seller_fbs_api.posting_multiboxqty_set(request)
+
+        mock_api_manager_request.assert_called_once_with(
+            method="post",
+            api_version="v3",
+            endpoint="posting/fbs/multi-box-qty/set",
+            json=request.model_dump()
+        )
+
+        assert isinstance(response, PostingFBSMultiBoxQtySetResponse)
+        assert response.result.result is True
