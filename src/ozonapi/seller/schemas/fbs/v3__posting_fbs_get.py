@@ -1,10 +1,12 @@
+"""https://docs.ozon.ru/api/seller/#operation/PostingAPI_GetFbsPostingV3"""
 from typing import Optional
 
 from pydantic import BaseModel, Field
 
 from . import PostingFBSPosting
 from .entities import PostingFBSFilterWith
-from ...common.enumerations.postings import PostingSubstatus
+from ...common.enumerations.localization import CurrencyCode
+from ...common.enumerations.postings import PostingSubstatus, PrrOption
 
 
 class PostingFBSGetRequestWith(PostingFBSFilterWith):
@@ -34,15 +36,18 @@ class PostingFBSGetRequest(BaseModel):
         posting_number: Идентификатор отправления
         with_: Дополнительные поля, которые нужно добавить в ответ
     """
+    model_config = {'populate_by_name': True}
+
     posting_number: str = Field(
         ..., description="Идентификатор отправления."
     )
     with_: Optional[PostingFBSGetRequestWith] = Field(
-        None, description="Дополнительные поля, которые нужно добавить в ответ."
+        None, description="Дополнительные поля, которые нужно добавить в ответ.",
+        alias="with",
     )
 
 
-class PostingFBSGetResultAdditionalData:
+class PostingFBSGetResultAdditionalData(BaseModel):
     """Дополнительная информация об отправлении
 
     Attributes:
@@ -152,6 +157,30 @@ class PostingFBSGetResultRelatedPostings(BaseModel):
     )
 
 
+class PostingFBSGetResultPrrOption(BaseModel):
+    """Информация об услуге погрузочно-разгрузочных работ.
+    Актуально для КГТ-отправлений с доставкой силами продавца или интегрированной службой.
+
+    Attributes:
+        code: Код услуги погрузочно-разгрузочных работ
+        price: Стоимость услуги, которую Ozon компенсирует продавцу
+        currency_code: Валюта
+        floor: Этаж, на который нужно поднять товар
+    """
+    code: Optional[PrrOption] = Field(
+        None, description="Код услуги погрузочно-разгрузочных работ."
+    )
+    price: Optional[str] = Field(
+        None, description="Стоимость услуги, которую Ozon компенсирует продавцу."
+    )
+    currency_code: Optional[CurrencyCode] = Field(
+        None, description="Валюта."
+    )
+    floor: Optional[str] = Field(
+        None, description="Этаж, на который нужно поднять товар."
+    )
+
+
 class PostingFBSGetResult(PostingFBSPosting):
     """Детализированная информация об отправлении.
 
@@ -182,7 +211,7 @@ class PostingFBSGetResult(PostingFBSPosting):
         product_exemplars: Информация по продуктам и их экземплярам (ответ содержит поле product_exemplars, если в запросе передан признак with_.product_exemplars = true)
         products: Список товаров в отправлении
         provider_status: Статус службы доставки
-        prr_option: Код услуги погрузочно-разгрузочных работ
+        prr_option: Информация об услуге погрузочно-разгрузочных работ
         related_postings: Связанные отправления
         related_weight_postings: Список номеров связанных весовых отправлений
         quantum_id: Идентификатор эконом-товара
@@ -201,7 +230,7 @@ class PostingFBSGetResult(PostingFBSPosting):
     courier: Optional[PostingFBSGetResultCourier] = Field(
         None, description="Данные о курьере."
     )
-    delivery_price: Optional[float] = Field(
+    delivery_price: Optional[str] = Field(
         None, description="Стоимость доставки."
     )
     product_exemplars: Optional[PostingFBSGetResultProductExemplars] = Field(
@@ -209,6 +238,9 @@ class PostingFBSGetResult(PostingFBSPosting):
     )
     provider_status: Optional[str] = Field(
         None, description="Статус службы доставки."
+    )
+    prr_option: Optional[PostingFBSGetResultPrrOption] = Field(
+        None, description="Информация об услуге погрузочно-разгрузочных работ. Актуально для КГТ-отправлений с доставкой силами продавца или интегрированной службой."
     )
     related_postings: Optional[PostingFBSGetResultRelatedPostings] = Field(
         None, description="Связанные отправления."

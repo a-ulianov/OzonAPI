@@ -1,6 +1,6 @@
 from ..core import APIManager
 from ..schemas.fbs import PostingFBSUnfulfilledListRequest, PostingFBSUnfulfilledListResponse, PostingFBSListResponse, \
-    PostingFBSListRequest
+    PostingFBSListRequest, PostingFBSGetRequest, PostingFBSGetResponse
 
 
 class SellerFBSAPI(APIManager):
@@ -161,3 +161,56 @@ class SellerFBSAPI(APIManager):
             json=request.model_dump(by_alias=True)
         )
         return PostingFBSListResponse(**response)
+
+    async def posting_fbs_get(
+            self: "SellerFBSAPI",
+            request: PostingFBSGetRequest
+    ) -> PostingFBSGetResponse:
+        """Метод для получения информации об отправлении FBS по его номеру.
+
+        Notes:
+            • Чтобы получать актуальную дату отгрузки, регулярно обновляйте информацию об отправлениях или подключите пуш-уведомления.
+            • Для получения дополнительных данных используйте параметр `with_` в запросе.
+
+        References:
+            https://docs.ozon.ru/api/seller/#operation/PostingAPI_GetFbsPostingV3
+
+        Args:
+            request: Запрос на получение информации об отправлении FBS по схеме `PostingFBSGetRequest`
+
+        Returns:
+            Детализированная информация об отправлении по схеме `PostingFBSGetResponse`
+
+        Examples:
+            Базовое применение:
+                async with SellerAPI(client_id, api_key) as api:
+                    result = await api.posting_fbs_get(
+                        PostingFBSGetRequest(
+                            posting_number="57195475-0050-3"
+                        )
+                    )
+
+            Пример с дополнительными полями:
+                async with SellerAPI(client_id, api_key) as api:
+                    result = await api.posting_fbs_get(
+                        PostingFBSGetRequest(
+                            posting_number="57195475-0050-3",
+                            with_=PostingFBSGetRequestWith(
+                                analytics_data=True,
+                                barcodes=True,
+                                financial_data=True,
+                                legal_info=False,
+                                product_exemplars=True,
+                                related_postings=True,
+                                translit=False
+                            )
+                        )
+                    )
+        """
+        response = await self._request(
+            method="post",
+            api_version="v3",
+            endpoint="posting/fbs/get",
+            json=request.model_dump(by_alias=True)
+        )
+        return PostingFBSGetResponse(**response)

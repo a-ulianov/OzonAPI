@@ -9,8 +9,11 @@ __all__ = [
     "PostingFBSCustomer",
     "PostingFBSCustomerAddress",
     "PostingFBSDeliveryMethod",
+    "PostingFBSFilterWith",
     "PostingFBSFinancialData",
     "PostingFBSFinancialDataProducts",
+    "PostingFBSGetRequest",
+    "PostingFBSGetResponse",
     "PostingFBSLegalInfo",
     "PostingFBSOptional",
     "PostingFBSPosting",
@@ -18,7 +21,6 @@ __all__ = [
     "PostingFBSRequirements",
     "PostingFBSTariffication",
     "PostingFBSListRequestFilterLastChangedStatusDate",
-    "PostingFBSListFilterWith",
     "PostingFBSListFilter",
     "PostingFBSListRequest",
     "PostingFBSListResult",
@@ -26,7 +28,6 @@ __all__ = [
     "PostingFBSUnfulfilledListRequest",
     "PostingFBSUnfulfilledListResponse",
     "PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate",
-    "PostingFBSUnfulfilledListFilterWith",
     "PostingFBSUnfulfilledListFilter",
     "PostingFBSUnfulfilledListResult",
 ]
@@ -34,7 +35,8 @@ __all__ = [
 from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBarcodes, PostingFBSCancellation, \
     PostingFBSCustomer, PostingFBSCustomerAddress, PostingFBSDeliveryMethod, PostingFBSFinancialData, \
     PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, PostingFBSProducts, \
-    PostingFBSRequirements, PostingFBSTariffication
+    PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith
+from .v3__posting_fbs_get import PostingFBSGetRequest, PostingFBSGetResponse
 from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, \
     PostingFBSListFilter, PostingFBSListRequest, PostingFBSListResult, PostingFBSListResponse
 from .v3__posting_fbs_unfulfilled_list import (

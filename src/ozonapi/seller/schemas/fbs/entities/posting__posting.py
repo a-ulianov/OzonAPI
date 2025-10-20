@@ -121,7 +121,7 @@ class PostingFBSPosting(BaseModel):
         None, description="Код услуги погрузочно-разгрузочных работ."
     )
     quantum_id: Optional[int] = Field(
-        ..., description="Идентификатор эконом-товара."
+        None, description="Идентификатор эконом-товара."
     )
     requirements: PostingFBSRequirements = Field(
         ..., description="""

@@ -109,6 +109,8 @@ class PostingFBSListRequest(BaseRequestOffset):
         offset: Количество элементов, которое будет пропущено в ответе
         with_: Дополнительные поля, которые нужно добавить в ответ
     """
+    model_config = {'populate_by_name': True}
+
     dir: Optional[SortingDirection] = Field(
         SortingDirection.ASC, description="Направление сортировки."
     )
