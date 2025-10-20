@@ -637,8 +637,8 @@ class TestSellerFBSAPI:
         assert response.shipment_date.replace(tzinfo=None) == datetime.datetime(2025, 1, 29, 18, 0, 0)
 
     @pytest.mark.asyncio
-    async def test_posting_multiboxqty_set(self, seller_fbs_api, mock_api_manager_request):
-        """Тестирует метод posting_multiboxqty_set."""
+    async def test_posting_fbs_multiboxqty_set(self, seller_fbs_api, mock_api_manager_request):
+        """Тестирует метод posting_fbs_multiboxqty_set."""
 
         mock_response_data = {
             "result": {
@@ -656,7 +656,7 @@ class TestSellerFBSAPI:
             multi_box_qty=3
         )
 
-        response = await seller_fbs_api.posting_multiboxqty_set(request)
+        response = await seller_fbs_api.posting_fbs_multiboxqty_set(request)
 
         mock_api_manager_request.assert_called_once_with(
             method="post",

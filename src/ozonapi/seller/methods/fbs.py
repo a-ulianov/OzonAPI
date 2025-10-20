@@ -252,7 +252,7 @@ class SellerFBSAPI(APIManager):
         )
         return PostingFBSGetByBarcodeResponse(**response["result"])
 
-    async def posting_multiboxqty_set(
+    async def posting_fbs_multiboxqty_set(
             self: "SellerFBSAPI",
             request: PostingFBSMultiBoxQtySetRequest
     ) -> PostingFBSMultiBoxQtySetResponse:
