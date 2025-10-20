@@ -338,7 +338,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v3/posting/fbs/get` | Получить информацию об отправлении по идентификатору | `posting_fbs_get()` |
 | ✓ | `/v2/posting/fbs/get-by-barcode` | Получить информацию об отправлении по штрихкоду | `posting_fbs_get_by_barcode()` |
 | ✓ | `/v3/posting/multiboxqty/set` | Указать количество коробок для многокоробочных отправлений | `posting_multiboxqty_set()` |
-| ☐ | `/v2/posting/fbs/product/change` | Добавить вес для весовых товаров в отправлении | `posting_fbs_product_change()` |
+| ✓ | `/v2/posting/fbs/product/change` | Добавить вес для весовых товаров в отправлении | `posting_fbs_product_change()` |
 | ☐ | `/v2/posting/fbs/product/country/list` | Список доступных стран-изготовителей | `posting_fbs_product_country_list()` |
 | ☐ | `/v2/posting/fbs/product/country/set` | Добавить информацию о стране-изготовителе товара | `posting_fbs_product_country_set()` |
 | ☐ | `/v1/posting/fbs/restrictions` | Получить ограничения пункта приёма | `posting_fbs_restrictions()` |
