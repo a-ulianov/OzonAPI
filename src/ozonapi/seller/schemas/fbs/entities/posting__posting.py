@@ -14,7 +14,7 @@ from .posting__delivery_method import PostingFBSDeliveryMethod
 from .posting__financial_data import PostingFBSFinancialData
 from .posting__legal_info import PostingFBSLegalInfo
 from .posting__optional import PostingFBSOptional
-from .posting__products import PostingFBSProducts
+from .posting__product import PostingFBSProductDetailed
 from .posting__requirements import PostingFBSRequirements
 from .posting__tariffication import PostingFBSTariffication
 
@@ -114,7 +114,7 @@ class PostingFBSPosting(BaseModel):
     posting_number: str = Field(
         ..., description="Номер отправления."
     )
-    products: list[PostingFBSProducts] = Field(
+    products: list[PostingFBSProductDetailed] = Field(
         ..., description="Список товаров в отправлении."
     )
     prr_option: Optional[PrrOption] = Field(

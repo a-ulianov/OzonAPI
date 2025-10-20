@@ -5,8 +5,8 @@ from pydantic import Field, BaseModel
 from ....common.enumerations.localization import CurrencyCode
 
 
-class PostingFBSProducts(BaseModel):
-    """Список товаров в отправлении.
+class PostingFBSProduct(BaseModel):
+    """Информация о товаре в отправлении.
 
     Attributes:
         name: Название товара
@@ -14,10 +14,6 @@ class PostingFBSProducts(BaseModel):
         price: Цена товара
         quantity: Количество товара в отправлении
         sku: Идентификатор товара в системе Ozon
-        currency_code: Валюта цен
-        is_blr_traceable: Признак прослеживаемости товара
-        is_marketplace_buyout: Признак выкупа товара в ЕАЭС и другие страны
-        imei: Список IMEI мобильных устройств
     """
     name: str = Field(
         ..., description="Название товара."
@@ -34,6 +30,21 @@ class PostingFBSProducts(BaseModel):
     sku: int = Field(
         ..., description="Идентификатор товара в системе Ozon — SKU."
     )
+
+class PostingFBSProductDetailed(PostingFBSProduct):
+    """Детализированная информация о товаре в отправлении.
+
+    Attributes:
+        name: Название товара
+        offer_id: Идентификатор товара в системе продавца
+        price: Цена товара
+        quantity: Количество товара в отправлении
+        sku: Идентификатор товара в системе Ozon
+        currency_code: Валюта цен
+        is_blr_traceable: Признак прослеживаемости товара
+        is_marketplace_buyout: Признак выкупа товара в ЕАЭС и другие страны
+        imei: Список IMEI мобильных устройств
+    """
     currency_code: CurrencyCode = Field(
         ..., description="Валюта ваших цен. Совпадает с валютой, которая установлена в настройках личного кабинета."
     )

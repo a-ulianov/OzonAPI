@@ -12,12 +12,15 @@ __all__ = [
     "PostingFBSFilterWith",
     "PostingFBSFinancialData",
     "PostingFBSFinancialDataProducts",
+    "PostingFBSGetByBarcodeRequest",
+    "PostingFBSGetByBarcodeResponse",
     "PostingFBSGetRequest",
     "PostingFBSGetResponse",
     "PostingFBSLegalInfo",
     "PostingFBSOptional",
     "PostingFBSPosting",
-    "PostingFBSProducts",
+    "PostingFBSProduct",
+    "PostingFBSProductDetailed",
     "PostingFBSRequirements",
     "PostingFBSTariffication",
     "PostingFBSListRequestFilterLastChangedStatusDate",
@@ -34,8 +37,10 @@ __all__ = [
 
 from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBarcodes, PostingFBSCancellation, \
     PostingFBSCustomer, PostingFBSCustomerAddress, PostingFBSDeliveryMethod, PostingFBSFinancialData, \
-    PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, PostingFBSProducts, \
-    PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith
+    PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, \
+    PostingFBSProductDetailed, \
+    PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith, PostingFBSProduct
+from .v2__posting_fbs_get_by_barcode import PostingFBSGetByBarcodeRequest, PostingFBSGetByBarcodeResponse
 from .v3__posting_fbs_get import PostingFBSGetRequest, PostingFBSGetResponse
 from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, \
     PostingFBSListFilter, PostingFBSListRequest, PostingFBSListResult, PostingFBSListResponse
