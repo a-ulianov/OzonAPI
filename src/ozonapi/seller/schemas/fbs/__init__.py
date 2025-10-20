@@ -35,13 +35,12 @@ from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBa
     PostingFBSCustomer, PostingFBSCustomerAddress, PostingFBSDeliveryMethod, PostingFBSFinancialData, \
     PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, PostingFBSProducts, \
     PostingFBSRequirements, PostingFBSTariffication
-from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, PostingFBSListFilterWith, \
+from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, \
     PostingFBSListFilter, PostingFBSListRequest, PostingFBSListResult, PostingFBSListResponse
 from .v3__posting_fbs_unfulfilled_list import (
     PostingFBSUnfulfilledListRequest,
     PostingFBSUnfulfilledListResponse,
     PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate,
-    PostingFBSUnfulfilledListFilterWith,
     PostingFBSUnfulfilledListFilter,
     PostingFBSUnfulfilledListResult,
 )

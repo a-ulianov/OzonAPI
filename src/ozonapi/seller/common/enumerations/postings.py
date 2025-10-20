@@ -12,6 +12,7 @@ class AvailablePostingActions(str, Enum):
         CLICK_TRACK_NUMBER: просмотреть по трек-номеру историю изменения статусов в личном кабинете
         CUSTOMER_PHONE_AVAILABLE: телефон покупателя
         HAS_WEIGHT_PRODUCTS: весовые товары в отправлении
+        HAS_BARCODE_FOR_PRINTING: штрихкод для печати
         HIDE_REGION_AND_CITY: скрыть регион и город покупателя в отчёте
         INVOICE_GET: получить информацию из счёта-фактуры
         INVOICE_SEND: создать счёт-фактуру

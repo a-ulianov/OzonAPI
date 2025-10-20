@@ -4,6 +4,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field, model_validator
 
+from .entities import PostingFBSFilterWith
 from .entities.posting__posting import PostingFBSPosting
 from ..mixins import DateTimeSerializationMixin
 from ...common.enumerations.postings import PostingStatus
@@ -29,33 +30,6 @@ class PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate(BaseModel):
         ...,
         description="Дата окончания периода.",
         alias="to"
-    )
-
-
-class PostingFBSUnfulfilledListFilterWith(BaseModel):
-    """Дополнительные поля, которые нужно добавить в ответ.
-
-    Attributes:
-        analytics_data: Добавить в ответ данные аналитики (опционально)
-        barcodes: Добавить в ответ штрихкоды отправления (опционально)
-        financial_data: Добавить в ответ финансовые данные (опционально)
-        legal_info: Добавить в ответ юридическую информацию (опционально)
-        translit: Выполнить транслитерацию возвращаемых значений (опционально)
-    """
-    analytics_data: Optional[bool] = Field(
-        False, description="Добавить в ответ данные аналитики."
-    )
-    barcodes: Optional[bool] = Field(
-        False, description="Добавить в ответ штрихкоды отправления."
-    )
-    financial_data: Optional[bool] = Field(
-        False, description="Добавить в ответ финансовые данные."
-    )
-    legal_info: Optional[bool] = Field(
-        False, description="Добавить в ответ юридическую информацию."
-    )
-    translit: Optional[bool] = Field(
-        False, description="Выполнить транслитерацию возвращаемых значений."
     )
 
 
@@ -158,7 +132,7 @@ class PostingFBSUnfulfilledListRequest(BaseRequestOffset):
         1000, description="Количество значений в ответе.",
         ge=1, le=1000,
     )
-    with_: Optional[PostingFBSUnfulfilledListFilterWith] = Field(
+    with_: Optional[PostingFBSFilterWith] = Field(
         None, description="Дополнительные поля, которые нужно добавить в ответ.",
         alias="with",
     )

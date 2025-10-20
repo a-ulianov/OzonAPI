@@ -4,6 +4,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field, model_validator
 
+from .entities import PostingFBSFilterWith
 from .entities.posting__posting import PostingFBSPosting
 from ..mixins import DateTimeSerializationMixin
 from ...common.enumerations.postings import PostingStatus
@@ -34,33 +35,6 @@ class PostingFBSListRequestFilterLastChangedStatusDate(DateTimeSerializationMixi
     serialize_datetime = DateTimeSerializationMixin.create_datetime_validator([
         'from_', 'to_'
     ])
-
-
-class PostingFBSListFilterWith(BaseModel):
-    """Дополнительные поля, которые нужно добавить в ответ.
-
-    Attributes:
-        analytics_data: Добавить в ответ данные аналитики
-        barcodes: Добавить в ответ штрихкоды отправления
-        legal_info: Добавить в ответ юридическую информацию
-        financial_data: Добавить в ответ финансовые данные
-        translit: Выполнить транслитерацию возвращаемых значений
-    """
-    analytics_data: Optional[bool] = Field(
-        False, description="Добавить в ответ данные аналитики."
-    )
-    barcodes: Optional[bool] = Field(
-        False, description="Добавить в ответ штрихкоды отправления."
-    )
-    legal_info: Optional[bool] = Field(
-        False, description="Добавить в ответ юридическую информацию."
-    )
-    financial_data: Optional[bool] = Field(
-        False, description="Добавить в ответ финансовые данные."
-    )
-    translit: Optional[bool] = Field(
-        False, description="Выполнить транслитерацию возвращаемых значений."
-    )
 
 
 class PostingFBSListFilter(DateTimeSerializationMixin, BaseModel):
@@ -145,7 +119,7 @@ class PostingFBSListRequest(BaseRequestOffset):
         1000, description="Количество значений в ответе.",
         ge=1, le=1000,
     )
-    with_: Optional[PostingFBSListFilterWith] = Field(
+    with_: Optional[PostingFBSFilterWith] = Field(
         None, description="Дополнительные поля, которые нужно добавить в ответ.",
         alias="with",
     )

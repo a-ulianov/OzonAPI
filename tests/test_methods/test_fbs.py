@@ -15,8 +15,8 @@ from src.ozonapi.seller.common.enumerations.postings import (
     TplIntegrationType
 )
 from src.ozonapi.seller.common.enumerations.localization import CurrencyCode
-from src.ozonapi.seller.schemas.fbs.v3__posting_fbs_unfulfilled_list import PostingFBSUnfulfilledListFilter, \
-    PostingFBSUnfulfilledListFilterWith
+from src.ozonapi.seller.schemas.fbs.entities import PostingFBSFilterWith
+from src.ozonapi.seller.schemas.fbs.v3__posting_fbs_unfulfilled_list import PostingFBSUnfulfilledListFilter
 
 
 class TestSellerFBSAPI:
@@ -200,7 +200,7 @@ class TestSellerFBSAPI:
             dir=SortingDirection.ASC,
             limit=50,
             offset=0,
-            with_=PostingFBSUnfulfilledListFilterWith(
+            with_=PostingFBSFilterWith(
                 analytics_data=True,
                 barcodes=True,
                 financial_data=True
@@ -373,7 +373,7 @@ class TestSellerFBSAPI:
         from src.ozonapi.seller.schemas.fbs.v3__posting_fbs_list import (
             PostingFBSListRequest,
             PostingFBSListFilter,
-            PostingFBSListFilterWith,
+            PostingFBSFilterWith,
             PostingFBSListRequestFilterLastChangedStatusDate
         )
 
@@ -395,7 +395,7 @@ class TestSellerFBSAPI:
             dir=SortingDirection.ASC,
             limit=100,
             offset=0,
-            with_=PostingFBSListFilterWith(
+            with_=PostingFBSFilterWith(
                 analytics_data=True,
                 barcodes=True,
                 financial_data=True,
