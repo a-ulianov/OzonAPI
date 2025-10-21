@@ -1,12 +1,14 @@
+[![PyPI - Version](https://img.shields.io/pypi/v/ozonapi-async?logo=PyPI&color=0f81c2&cacheSeconds=300)](https://pypi.org/project/ozonapi-async/)
+![GitHub last commit](https://img.shields.io/github/last-commit/a-ulianov/OzonAPI)
 [![Tests](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml/badge.svg)](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=a-ulianov_OzonAPI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=a-ulianov_OzonAPI)[![codecov](https://codecov.io/gh/a-ulianov/OzonAPI/branch/main/graph/badge.svg)](https://codecov.io/gh/a-ulianov/OzonAPI) 
-[![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 
 # OzonAPI
 
-Асинхронный Python-клиент для работы с API маркетплейса Ozon. Проект предоставляет удобный интерфейс для взаимодействия с разделами API Ozon.
+Асинхронный Python-клиент для работы с API маркетплейса Ozon. Проект предоставляет удобный интерфейс для взаимодействия с методами API Ozon.
 
 **✅ Актуально на 4-й квартал 2025 года.**
 **🤝 Контрибуции приветствуются!**
@@ -30,15 +32,6 @@
 
 
 🤝 Данный проект является форком с глубокой доработкой и актуализацией проекта [python-ozon-api](https://github.com/mephistofox/python-ozon-api) от [mephistofox](https://github.com/mephistofox):
-- Изменена структура проекта
-- Реализован кастомный ограничитель запросов для методов
-- Реализована возможность одновременной работы с несколькими экземплярами менеджера API, в т.ч. для одного client_id
-- Удалены устаревшие методы
-- Актуализированы схемы Pydantic реализованных методов
-- Добавлены новые методы
-- Добавлено описание и примеры для методов и схем
-- Реализована гибкая настройка конфигурации
-
 
 ## ⚙️ Быстрый старт
 
@@ -61,7 +54,7 @@ async def main():
     ) as api:
         # Получение списка товаров
         products = await api.product_list()
-        print(f"Найдено товаров: {len(products.result.items)}")
+        print(f"Получено товаров: {len(products.result.items)}")
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -78,9 +71,6 @@ async def main():
     config = SellerAPIConfig(
         client_id="your_client_id",
         api_key="your_api_key",
-        max_requests_per_second=30,
-        request_timeout=60.0,
-        max_retries=5
     )
     
     async with SellerAPI(config=config) as api:
@@ -102,7 +92,6 @@ OZON_SELLER_API_KEY=your_api_key
 OZON_SELLER_MAX_REQUESTS_PER_SECOND=30
 OZON_SELLER_REQUEST_TIMEOUT=60.0
 OZON_SELLER_MAX_RETRIES=5
-OZON_SELLER_BASE_URL=https://api-seller.ozon.ru
 ```
 
 Использование с автоматической загрузкой из .env:
@@ -180,13 +169,6 @@ config = SellerAPIConfig(
 )
 ```
 
-### Расширенное логирование
-
-```python
-# Настройка файлового логирования (core.py)
-logger.add("ozon_api.log", rotation="10 MB", level="INFO")
-```
-
 ## ⚠️ Важные примечания
 
 ### Производительность
@@ -222,17 +204,21 @@ pytest --cov=ozonapi --cov-report=html
 - Changelog: [Releases](https://github.com/a-ulianov/OzonAPI/releases)
 
 
-# Чек-лист реализации методов Ozon Seller API
+## Реализованные методы Ozon Seller API
 
-## Атрибуты и характеристики Ozon
+<details>
+<summary>Атрибуты и характеристики Ozon (4)</summary>
+
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v1/description-category/tree` | Дерево категорий и типов товаров | `description_category_tree()` |
 | ✓ | `/v1/description-category/attribute` | Список характеристик категории | `description_category_attribute()` |
 | ✓ | `/v1/description-category/attribute/values` | Справочник значений характеристики | `description_category_attribute_values()` |
 | ✓ | `/v1/description-category/attribute/values/search` | Поиск по справочным значениям характеристики | `description_category_attribute_values_search()` |
+</details>
+<details>
+<summary>Загрузка и обновление товаров (16)</summary>
 
-## Загрузка и обновление товаров
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v3/product/import` | Создать или обновить товар | `product_import()` |
@@ -253,14 +239,18 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/info/subscription` | Количество подписавшихся на товар пользователей | `product_info_subscription()` |
 | ✓ | `/v1/product/related-sku/get` | Получить связанные SKU | `product_related_sku_get()` |
 | ✓ | `/v2/product/pictures/info` | Получить изображения товаров | `product_pictures_info()` |
+</details>
+<details>
+<summary>Штрихкоды товаров (2)</summary>
 
-## Штрихкоды товаров
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v1/barcode/add` | Привязать штрихкод к товару | `barcode_add()` |
 | ✓ | `/v1/barcode/generate` | Создать штрихкод для товара | `barcode_generate()` |
+</details>
+<details>
+<summary>Цены и остатки товаров (5)</summary>
 
-## Цены и остатки товаров
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v2/products/stocks` | Обновить количество товаров на складах | `products_stocks()` |
@@ -272,8 +262,10 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v5/product/info/prices` | Получить информацию о цене товара | `product_info_prices()` |
 | ☐ | `/v1/product/info/discounted` | Узнать информацию об уценке и основном товаре по SKU уценённого товара | `product_info_discounted()` |
 | ☐ | `/v1/product/update/discount` | Установить скидку на уценённый товар | `product_update_discount()` |
+</details>
+<details>
+<summary>Акции</summary>
 
-## Акции
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/actions` | Список акций | `actions()` |
@@ -284,8 +276,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/actions/discounts-task/list` | Список заявок на скидку | `actions_discounts_task_list()` |
 | ☐ | `/v1/actions/discounts-task/approve` | Согласовать заявку на скидку | `actions_discounts_task_approve()` |
 | ☐ | `/v1/actions/discounts-task/decline` | Отклонить заявку на скидку | `actions_discounts_task_decline()` |
+</details>
+<details>
+<summary>Стратегии ценообразования</summary>
 
-## Стратегии ценообразования
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/pricing-strategy/competitors/list` | Список конкурентов | `pricing_strategy_competitors_list()` |
@@ -300,13 +294,17 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/pricing-strategy/products/delete` | Удалить товары из стратегии | `pricing_strategy_products_delete()` |
 | ☐ | `/v1/pricing-strategy/status` | Изменить статус стратегии | `pricing_strategy_status()` |
 | ☐ | `/v1/pricing-strategy/delete` | Удалить стратегию | `pricing_strategy_delete()` |
+</details>
+<details>
+<summary>Сертификаты брендов</summary>
 
-## Сертификаты брендов
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/brand/company-certification/list` | Список сертифицируемых брендов | `brand_company_certification_list()` |
+</details>
+<details>
+<summary>Сертификаты качества</summary>
 
-## Сертификаты качества
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/product/certificate/accordance-types` | Список типов соответствия требований (версия 1) | `product_certificate_accordance_types()` |
@@ -323,14 +321,18 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/product/certificate/unbind` | Отвязать товар от сертификата | `product_certificate_unbind()` |
 | ☐ | `/v1/product/certificate/rejection_reasons/list` | Возможные причины отклонения сертификата | `product_certificate_rejection_reasons_list()` |
 | ☐ | `/v1/product/certificate/status/list` | Возможные статусы сертификатов | `product_certificate_status_list()` |
+</details>
+<details>
+<summary>Склады (2)</summary>
 
-## Склады
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v1/warehouse/list` | Список складов | `warehouse_list()` |
 | ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
+</details>
+<details>
+<summary>Обработка заказов FBS и rFBS (6)</summary>
 
-## Обработка заказов FBS и rFBS
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v3/posting/fbs/unfulfilled/list` | Список необработанных отправлений | `posting_fbs_unfulfilled_list()` |
@@ -354,14 +356,18 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/posting/fbs/pick-up-code/verify` | Проверить код курьера | `posting_fbs_pick_up_code_verify()` |
 | ☐ | `/v1/posting/global/etgb` | Таможенные декларации ETGB | `posting_global_etgb()` |
 | ☐ | `/v1/posting/unpaid-legal/product/list` | Список неоплаченных товаров, заказанных юридическими лицами | `posting_unpaid_legal_product_list()` |
+</details>
+<details>
+<summary>Полигоны</summary>
 
-## Полигоны
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/polygon/create` | Создайте полигон доставки | `polygon_create()` |
 | ☐ | `/v1/polygon/bind` | Свяжите метод доставки с полигоном доставки | `polygon_bind()` |
+</details>
+<details>
+<summary>Доставка FBO</summary>
 
-## Доставка FBO
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/posting/fbo/list` | Список отправлений | `posting_fbo_list()` |
@@ -377,8 +383,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/supply-order/pass/create` | Указать данные о водителе и автомобиле | `supply_order_pass_create()` |
 | ☐ | `/v1/supply-order/pass/status` | Статус ввода данных о водителе и автомобиле | `supply_order_pass_status()` |
 | ☐ | `/v1/supplier/available_warehouses` | Загруженность складов Ozon | `supplier_available_warehouses()` |
+</details>
+<details>
+<summary>Создание и управление заявками на поставку FBO</summary>
 
-## Создание и управление заявками на поставку FBO
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list()` |
@@ -400,8 +408,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/supply-order/cancel/status` | Получить статус отмены заявки на поставку | `supply_order_cancel_status()` |
 | ☐ | `/v1/supply-order/content/update` | Редактирование товарного состава | `supply_order_content_update()` |
 | ☐ | `/v1/supply-order/content/update/status` | Информация о статусе редактирования товарного состава | `supply_order_content_update_status()` |
+</details>
+<details>
+<summary>Управление кодами маркировки и сборкой заказов для FBS/rFBS</summary>
 
-## Управление кодами маркировки и сборкой заказов для FBS/rFBS
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v6/fbs/posting/product/exemplar/create-or-get` | Получить данные созданных экземпляров | `fbs_posting_product_exemplar_create_or_get()` |
@@ -411,8 +421,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v4/posting/fbs/ship` | Собрать заказ (версия 4) | `posting_fbs_ship()` |
 | ☐ | `/v4/posting/fbs/ship/package` | Частичная сборка отправления (версия 4) | `posting_fbs_ship_package()` |
 | ☐ | `/v1/fbs/posting/product/exemplar/update` | Обновить данные экземпляров | `fbs_posting_product_exemplar_update()` |
+</details>
+<details>
+<summary>Доставка FBS</summary>
 
-## Доставка FBS
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/carriage/create` | Создание отгрузки | `carriage_create()` |
@@ -433,8 +445,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v2/posting/fbs/act/list` | Список актов по отгрузкам | `posting_fbs_act_list()` |
 | ☐ | `/v2/posting/fbs/digital/act/get-pdf` | Получить лист отгрузки по перевозке | `posting_fbs_digital_act_get_pdf()` |
 | ☐ | `/v2/posting/fbs/act/check-status` | Статус отгрузки и документов | `posting_fbs_act_check_status()` |
+</details>
+<details>
+<summary>Доставка rFBS</summary>
 
-## Доставка rFBS
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/fbs/posting/tracking-number/set` | Добавить трек-номера | `fbs_posting_tracking_number_set()` |
@@ -445,8 +459,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/posting/fbs/timeslot/change-restrictions` | Доступные даты для переноса доставки | `posting_fbs_timeslot_change_restrictions()` |
 | ☐ | `/v1/posting/fbs/timeslot/set` | Перенести дату доставки | `posting_fbs_timeslot_set()` |
 | ☐ | `/v1/posting/cutoff/set` | Уточнить дату отгрузки отправления | `posting_cutoff_set()` |
+</details>
+<details>
+<summary>Пропуски</summary>
 
-## Пропуски
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/pass/list` | Список пропусков | `pass_list()` |
@@ -456,13 +472,17 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/return/pass/create` | Создать пропуск для возврата | `return_pass_create()` |
 | ☐ | `/v1/return/pass/update` | Обновить пропуск для возврата | `return_pass_update()` |
 | ☐ | `/v1/return/pass/delete` | Удалить пропуск для возврата | `return_pass_delete()` |
+</details>
+<details>
+<summary>Возвраты товаров FBO и FBS</summary>
 
-## Возвраты товаров FBO и FBS
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/returns/list` | Информация о возвратах FBO и FBS | `returns_list()` |
+</details>
+<details>
+<summary>Возвраты товаров rFBS</summary>
 
-## Возвраты товаров rFBS
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/returns/rfbs/list` | Список заявок на возврат | `returns_rfbs_list()` |
@@ -473,8 +493,10 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v2/returns/rfbs/receive-return` | Подтвердить получение товара на проверку | `returns_rfbs_receive_return()` |
 | ☐ | `/v2/returns/rfbs/return-money` | Вернуть деньги покупателю | `returns_rfbs_return_money()` |
 | ☐ | `/v1/returns/rfbs/action/set` | Передать доступные действия для rFBS возвратов | `returns_rfbs_action_set()` |
+</details>
+<details>
+<summary>Возвратные отгрузки</summary>
 
-## Возвратные отгрузки
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/returns/company/fbs/info` | Количество возвратов FBS | `returns_company_fbs_info()` |
@@ -485,30 +507,38 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/return/giveout/get-pdf` | Штрихкод для получения возвратной отгрузки в формате PDF | `return_giveout_get_pdf()` |
 | ☐ | `/v1/return/giveout/get-png` | Штрихкод для получения возвратной отгрузки в формате PNG | `return_giveout_get_png()` |
 | ☐ | `/v1/return/giveout/barcode-reset` | Сгенерировать новый штрихкод | `return_giveout_barcode_reset()` |
+</details>
+<details>
+<summary>Отмены заказов</summary>
 
-## Отмены заказов
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/conditional-cancellation/list` | Получить список заявок на отмену rFBS | `conditional_cancellation_list()` |
 | ☐ | `/v2/conditional-cancellation/approve` | Подтвердить заявку на отмену rFBS | `conditional_cancellation_approve()` |
 | ☐ | `/v2/conditional-cancellation/reject` | Отклонить заявку на отмену rFBS | `conditional_cancellation_reject()` |
+</details>
+<details>
+<summary>Чаты с покупателями</summary>
 
-## Чаты с покупателями
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/chat/send/file` | Отправить файл | `chat_send_file()` |
 | ☐ | `/v3/chat/list` | Список чатов | `chat_list()` |
 | ☐ | `/v2/chat/history` | История чата | `chat_history()` |
+</details>
+<details>
+<summary>Накладные</summary>
 
-## Накладные
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/invoice/create-or-update` | Создать или изменить счёт-фактуру | `invoice_create_or_update()` |
 | ☐ | `/v1/invoice/file/upload` | Загрузка счёта-фактуры | `invoice_file_upload()` |
 | ☐ | `/v2/invoice/get` | Получить информацию о счёте-фактуре | `invoice_get()` |
 | ☐ | `/v1/invoice/delete` | Удалить ссылку на счёт-фактуру | `invoice_delete()` |
+</details>
+<details>
+<summary>Отчёты</summary>
 
-## Отчёты
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/report/info` | Информация об отчёте | `report_info()` |
@@ -519,15 +549,17 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/finance/cash-flow-statement/list` | Финансовый отчёт | `finance_cash_flow_statement_list()` |
 | ☐ | `/v1/report/discounted/create` | Отчёт об уценённых товарах | `report_discounted_create()` |
 | ☐ | `/v1/report/warehouse/stock` | Отчёт об остатках на FBS-складе | `report_warehouse_stock()` |
+</details>
+<details>
+<summary>Аналитические отчёты</summary>
 
-## Аналитические отчёты
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v2/analytics/stock_on_warehouses` | Отчёт по остаткам и товарам | `analytics_stock_on_warehouses()` |
 | ☐ | `/v1/analytics/turnover/stocks` | Оборачиваемость товара | `analytics_turnover_stocks()` |
-
-
-## Финансовые отчеты
+</details>
+<details>
+<summary>Финансовые отчеты</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -541,15 +573,17 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/finance/products/buyout` | Отчёт о выкупленных товарах | `finance_products_buyout()` |
 | ☐ | `/v1/finance/compensation` | Отчёт о компенсациях | `finance_compensation()` |
 | ☐ | `/v1/finance/decompensation` | Отчёт о декомпенсациях | `finance_decompensation()` |
-
-## Рейтинг продавца
+</details>
+<details>
+<summary>Рейтинг продавца</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/rating/summary` | Получить информацию о текущих рейтингах продавца | `rating_summary()` |
 | ☐ | `/v1/rating/history` | Получить информацию о рейтингах продавца за период | `rating_history()` |
-
-## Прочие методы
+</details>
+<details>
+<summary>Прочие методы (1)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -565,23 +599,26 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v3/supply-order/get` | Информация о заявке на поставку | `supply_order_get()` |
 | ☐ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав | `supply_order_content_update_validation()` |
 | ☐ | `/v1/product/info/warehouse/stocks` | Получить информацию по остаткам на складе FBS и rFBS | `product_info_warehouse_stocks()` |
-
-## Работа с цифровыми товарами
+</details>
+<details>
+<summary>Работа с цифровыми товарами</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/posting/digital/codes/upload` | Загрузить коды цифровых товаров для отправления | `posting_digital_codes_upload()` |
 | ☐ | `/v1/posting/digital/list` | Получить список отправлений | `posting_digital_list()` |
 | ☐ | `/v1/product/digital/stocks/import` | Обновить количество цифровых товаров | `product_digital_stocks_import()` |
-
-## Работа с квантами
+</details>
+<details>
+<summary>Работа с квантами</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ☐ | `/v1/product/quant/list` | Список эконом-товаров | `product_quant_list()` |
 | ☐ | `/v1/product/quant/info` | Информация об эконом-товаре | `product_quant_info()` |
-
-## Работа с отзывами
+</details>
+<details>
+<summary>Работа с отзывами</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -592,8 +629,9 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/review/count` | Количество отзывов по статусам | `review_count()` |
 | ☐ | `/v1/review/info` | Получить информацию об отзыве | `review_info()` |
 | ☐ | `/v1/review/list` | Получить список отзывов | `review_list()` |
-
-## Работа с вопросами и ответами
+</details>
+<details>
+<summary>Работа с вопросами и ответами</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -605,8 +643,9 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/question/info` | Информация о вопросе | `question_info()` |
 | ☐ | `/v1/question/list` | Список вопросов | `question_list()` |
 | ☐ | `/v1/question/top-sku` | Товары с наибольшим количеством вопросов | `question_top_sku()` |
-
-## Работа с FBS-складами
+</details>
+<details>
+<summary>Работа с FBS-складами</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -619,8 +658,9 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/warehouse/fbs/first-mile/update` | Обновить первую милю | `warehouse_fbs_first_mile_update()` |
 | ☐ | `/v1/warehouse/archive` | Перенести склад в архив | `warehouse_archive()` |
 | ☐ | `/v1/warehouse/unarchive` | Перенести склад из архива | `warehouse_unarchive()` |
-
-## Premium-методы
+</details>
+<details>
+<summary>Premium-методы</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -634,8 +674,9 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/finance/realization/by-day` | Отчёт о реализации товаров за день | `finance_realization_by_day()` |
 | ☐ | `/v1/search-queries/text` | Получить список поисковых запросов по тексту | `search_queries_text()` |
 | ☐ | `/v1/search-queries/top` | Получить список популярных поисковых запросов | `search_queries_top()` |
-
-## **Логистика (Ozon Logistics)**
+</details>
+<details>
+<summary>Логистика (Ozon Logistics)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -654,11 +695,7 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/posting/cancel` | Метод отмены постинга из заказа | `posting_cancel()` |
 | ☐ | `/v1/order/cancel/status` | Статус отмены заказа | `order_cancel_status()` |
 | ☐ | `/v1/posting/cancel/status` | Статус отмены постинга из заказа | `posting_cancel_status()` |
-
-**Примечания**
-- ✓ - метод реализован
-- ☐ - метод не реализован
-
+</details>
 
 [MIT License](LICENSE)
 
