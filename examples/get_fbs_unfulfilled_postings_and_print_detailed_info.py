@@ -12,7 +12,10 @@ async def get_fbs_unfulfilled_postings_and_print_detailed_info():
     Получает и выводит детализированную информацию по каждому из необработанных FBS/rFBS отправлений за указанный
     период времени (последние 5 дней).
     """
-    async with SellerAPI() as api:
+    async with SellerAPI(
+        # Понижаем уровень логирования для наглядности
+        config=SellerAPIConfig(log_level="DEBUG")
+    ) as api:
         # Параметры для выборки необработанных отправлений
         limit = 1000    # Определен в схеме запроса, здесь указан для наглядности
         offset = 0
