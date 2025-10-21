@@ -1,4 +1,4 @@
-[![PyPI - Version](https://img.shields.io/pypi/v/ozonapi-async?logo=PyPI&color=0f81c2&cacheSeconds=300)](https://pypi.org/project/ozonapi-async/)
+[![PyPI - Version](https://img.shields.io/pypi/v/ozonapi-async?logo=PyPI&color=0f81c2)](https://pypi.org/project/ozonapi-async/)
 ![GitHub last commit](https://img.shields.io/github/last-commit/a-ulianov/OzonAPI)
 [![Tests](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml/badge.svg)](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=a-ulianov_OzonAPI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=a-ulianov_OzonAPI)[![codecov](https://codecov.io/gh/a-ulianov/OzonAPI/branch/main/graph/badge.svg)](https://codecov.io/gh/a-ulianov/OzonAPI) 
