@@ -22,7 +22,12 @@ class MethodRateLimiterManager:
     Обеспечивает раздельные лимиты для каждого метода и client_id.
     """
 
-    def __init__(self, cleanup_interval: float = 300.0, min_instance_ttl: float = 300.0) -> None:
+    def __init__(
+            self,
+            cleanup_interval: float = 300.0,
+            min_instance_ttl: float = 300.0,
+            instance_logger = logger
+    ) -> None:
         self._rate_limiters: dict[str, AsyncLimiter] = {}
         self._limiter_configs: dict[str, MethodRateLimitConfig] = {}
         self._last_used: dict[str, float] = {}
@@ -32,12 +37,13 @@ class MethodRateLimiterManager:
         self._shutdown = False
         self._cleanup_interval = cleanup_interval
         self._min_instance_ttl = min_instance_ttl
+        self._logger = instance_logger
 
     async def start(self) -> None:
         """Запуск фоновых задач менеджера."""
         if self._cleanup_task is None:
             self._cleanup_task = asyncio.create_task(self._cleanup_loop())
-            logger.debug("Менеджер ограничителей методов запущен")
+            self._logger.debug("Менеджер ограничителей методов запущен")
 
     async def shutdown(self) -> None:
         """Корректное завершение работы менеджера."""
@@ -47,9 +53,9 @@ class MethodRateLimiterManager:
             try:
                 await self._cleanup_task
             except asyncio.CancelledError:
-                logger.debug("Задача очистки ограничителей методов отменена")
+                self._logger.debug("Задача очистки ограничителей методов отменена")
             self._cleanup_task = None
-        logger.debug("Менеджер ограничителей методов остановлен")
+        self._logger.debug("Менеджер ограничителей методов остановлен")
 
     @staticmethod
     def _generate_limiter_key(client_id: str, method_identifier: str) -> str:
@@ -77,7 +83,7 @@ class MethodRateLimiterManager:
                 self._rate_limiters[limiter_key] = limiter
                 self._limiter_configs[limiter_key] = config
                 self._last_instance_creation[limiter_key] = current_time
-                logger.debug(
+                self._logger.debug(
                     f"Инициализирован ограничитель запросов для метода {config.method_identifier} "
                     f"ClientID {client_id}: {config.limit_requests} запросов в {config.interval_seconds} сек"
                 )
@@ -107,7 +113,7 @@ class MethodRateLimiterManager:
                 self._last_used.pop(limiter_key, None)
                 self._last_instance_creation.pop(limiter_key, None)
                 if config:
-                    logger.debug(f"Очищен ограничитель для метода {config.method_identifier}")
+                    self._logger.debug(f"Очищен ограничитель для метода {config.method_identifier}")
 
     async def _cleanup_loop(self) -> None:
         """Фоновая задача для очистки неиспользуемых ограничителей."""
@@ -118,7 +124,7 @@ class MethodRateLimiterManager:
             except asyncio.CancelledError:
                 break
             except Exception as e:
-                logger.error(f"Ошибка в cleanup loop методов: {e}")
+                self._logger.error(f"Ошибка в cleanup loop методов: {e}")
                 await asyncio.sleep(60)
 
     async def get_limiter_stats(self) -> dict[str, dict[str, Any]]:
@@ -164,9 +170,10 @@ def method_rate_limit(limit_requests: int, interval_seconds: float):
 
         @wraps(method)
         async def wrapper(self, *args, **kwargs):
+            _logger = self._logger if hasattr(self, '_logger') else logger
             # Проверяем, что экземпляр имеет необходимые атрибуты
             if not hasattr(self, '_client_id') or not hasattr(self, '_method_rate_limiter_manager'):
-                logger.warning(
+                _logger.warning(
                     f"Метод {method_identifier} вызван без инициализации ограничителей. "
                     "Ограничения не применяются."
                 )
@@ -174,7 +181,7 @@ def method_rate_limit(limit_requests: int, interval_seconds: float):
 
             # Дополнительная проверка, что менеджер не None
             if self._method_rate_limiter_manager is None:
-                logger.warning(
+                _logger.warning(
                     f"Менеджер ограничителей методов не инициализирован для {method_identifier}. "
                     "Ограничения не применяются."
                 )
@@ -187,7 +194,7 @@ def method_rate_limit(limit_requests: int, interval_seconds: float):
 
             # Применяем ограничитель запросов
             async with method_limiter:
-                logger.debug(
+                _logger.debug(
                     f"Применен ограничитель метода {method_identifier} для ClientID {self._client_id}: "
                     f"{limit_requests} запросов в {interval_seconds} сек"
                 )

@@ -27,7 +27,12 @@ class RateLimiterManager:
     Обеспечивает общий лимит запросов для всех экземпляров с одинаковым client_id.
     """
 
-    def __init__(self, cleanup_interval: float = 300.0, min_instance_ttl: float = 300.0) -> None:
+    def __init__(
+            self,
+            cleanup_interval: float = 300.0,
+            min_instance_ttl: float = 300.0,
+            instance_logger = logger,
+    ) -> None:
         self._rate_limiters: dict[str, AsyncLimiter] = {}
         self._instance_refs: dict[str, set[int]] = {}
         self._configs: dict[str, RateLimiterConfig] = {}
@@ -37,12 +42,13 @@ class RateLimiterManager:
         self._shutdown = False
         self._cleanup_interval = cleanup_interval
         self._min_instance_ttl = min_instance_ttl
+        self._logger = instance_logger
 
     async def start(self) -> None:
         """Запуск фоновых задач менеджера."""
         if self._cleanup_task is None:
             self._cleanup_task = asyncio.create_task(self._cleanup_loop())
-            logger.debug(f"Менеджер ограничителей общих клиентских запросов запущен")
+            self._logger.debug(f"Менеджер ограничителей общих клиентских запросов запущен")
 
     async def shutdown(self) -> None:
         """Корректное завершение работы менеджера."""
@@ -52,10 +58,10 @@ class RateLimiterManager:
             try:
                 await self._cleanup_task
             except asyncio.CancelledError:
-                logger.debug("Задача очистки общих ограничителей клиентских запросов отменена")
+                self._logger.debug("Задача очистки общих ограничителей клиентских запросов отменена")
             self._cleanup_task = None
 
-        logger.debug("Менеджер общих ограничителей клиентских запросов остановлен")
+        self._logger.debug("Менеджер общих ограничителей клиентских запросов остановлен")
 
     async def get_limiter(self, client_id: str, config: RateLimiterConfig) -> AsyncLimiter:
         """
@@ -77,7 +83,7 @@ class RateLimiterManager:
                     self._instance_refs[client_id] = set()
                 if client_id not in self._last_instance_creation:
                     self._last_instance_creation[client_id] = time.monotonic()
-                logger.debug(f"Инициализирован новый общий ограничитель запросов для ClientID {client_id}: {config}")
+                self._logger.debug(f"Инициализирован новый общий ограничитель запросов для ClientID {client_id}: {config}")
 
             return self._rate_limiters[client_id]
 
@@ -95,7 +101,7 @@ class RateLimiterManager:
                 self._instance_refs[client_id] = set()
                 self._last_instance_creation[client_id] = current_time
             self._instance_refs[client_id].add(instance_id)
-            logger.debug(f"Зарегистрировано подключение к API {instance_id} для ClientID {client_id}")
+            self._logger.debug(f"Зарегистрировано подключение к API {instance_id} для ClientID {client_id}")
 
     async def unregister_instance(self, client_id: str, instance_id: int) -> None:
         """
@@ -108,7 +114,7 @@ class RateLimiterManager:
         async with self._lock:
             if client_id in self._instance_refs:
                 self._instance_refs[client_id].discard(instance_id)
-                logger.debug(f"Отменена регистрация подключения к API {instance_id} для ClientID {client_id}")
+                self._logger.debug(f"Отменена регистрация подключения к API {instance_id} для ClientID {client_id}")
 
     async def _cleanup_unused_limiters(self) -> None:
         """Очистка неиспользуемых ограничителей кол-ва запросов с учетом минимального времени жизни."""
@@ -130,7 +136,7 @@ class RateLimiterManager:
                 self._configs.pop(client_id, None)
                 self._instance_refs.pop(client_id, None)
                 self._last_instance_creation.pop(client_id, None)
-                logger.debug(f"Очищены ресурсы общего ограничителя запросов для ClientID {client_id}")
+                self._logger.debug(f"Очищены ресурсы общего ограничителя запросов для ClientID {client_id}")
 
     async def _cleanup_loop(self) -> None:
         """Фоновая задача для очистки неиспользуемых ограничителей кол-ва запросов."""
@@ -141,7 +147,7 @@ class RateLimiterManager:
             except asyncio.CancelledError:
                 break
             except Exception as e:
-                logger.error(f"Ошибка в cleanup loop: {e}")
+                self._logger.error(f"Ошибка в cleanup loop: {e}")
                 await asyncio.sleep(60)  # Пауза при ошибках
 
     async def get_active_client_ids(self) -> list[str]:

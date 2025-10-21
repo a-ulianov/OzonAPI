@@ -9,12 +9,18 @@ from loguru import logger
 class SessionManager:
     """Менеджер для управления HTTP-сессиями."""
 
-    def __init__(self, timeout: float = 30.0, connector_limit: int = 100) -> None:
+    def __init__(
+            self,
+            timeout: float = 30.0,
+            connector_limit: int = 100,
+            instance_logger = logger
+    ) -> None:
         self._sessions: dict[str, ClientSession] = {}
         self._session_refs: dict[str, set[int]] = {}
         self._lock = asyncio.Lock()
         self._timeout = ClientTimeout(total=timeout)
         self._connector_limit = connector_limit
+        self._logger = instance_logger
 
     @asynccontextmanager
     async def get_session(self, client_id: str, api_key: str, instance_id: int) -> AsyncIterator[ClientSession]:
@@ -40,7 +46,7 @@ class SessionManager:
                     connector=TCPConnector(limit=self._connector_limit)
                 )
                 self._session_refs[client_id] = set()
-                logger.debug(f"Создана новая сессия для ClientID {client_id}")
+                self._logger.debug(f"Создана новая сессия для ClientID {client_id}")
 
             self._session_refs[client_id].add(instance_id)
 
@@ -61,7 +67,7 @@ class SessionManager:
                 self._session_refs.pop(client_id, None)
                 if not session.closed:
                     await session.close()
-                    logger.debug(f"Сессия для ClientID {client_id} закрыта")
+                    self._logger.debug(f"Сессия для ClientID {client_id} закрыта")
 
     async def close_all(self) -> None:
         """Закрывает все сессии."""
@@ -69,7 +75,7 @@ class SessionManager:
             for client_id, session in list(self._sessions.items()):
                 if not session.closed:
                     await session.close()
-                    logger.debug(f"Сессия для ClientID {client_id} закрыта")
+                    self._logger.debug(f"Сессия для ClientID {client_id} закрыта")
             self._sessions.clear()
             self._session_refs.clear()
-        logger.debug("Все сессии закрыты")
+        self._logger.debug("Все сессии закрыты")

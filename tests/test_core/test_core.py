@@ -7,7 +7,7 @@ from src.ozonapi.seller.core.core import APIManager
 from src.ozonapi.seller.core.config import APIConfig
 from src.ozonapi.seller.core.exceptions import (
     APIClientError, APIForbiddenError, APINotFoundError,
-    APIConflictError, APIServerError, APIError
+    APIConflictError, APIServerError, APIError, APITooManyRequestsError
 )
 
 
@@ -254,6 +254,7 @@ class TestAPIManager:
             (403, APIForbiddenError),
             (404, APINotFoundError),
             (409, APIConflictError),
+            (429, APITooManyRequestsError),
             (500, APIServerError),
         ]
 
@@ -408,7 +409,8 @@ class TestAPIManager:
     async def test_request_logging(self, api_manager, mock_response, caplog):
         """Тест логирования запросов."""
         with patch('src.ozonapi.seller.core.core.APIManager._session_manager') as mock_session_manager, \
-                patch('src.ozonapi.seller.core.core.logger') as mock_logger:
+                patch.object(api_manager.logger, 'debug') as mock_debug, \
+                patch.object(APIManager._class_logger, 'debug') as mock_class_debug:
             mock_session = AsyncMock(spec=ClientSession)
             mock_session_manager.get_session.return_value.__aenter__.return_value = mock_session
             mock_session.request.return_value.__aenter__.return_value = mock_response
@@ -421,8 +423,7 @@ class TestAPIManager:
             )
 
             # Проверяем что методы логирования вызывались
-            mock_logger.debug.assert_called()
-            debug_calls = [call for call in mock_logger.debug.call_args_list
+            debug_calls = [call for call in mock_debug.call_args_list
                            if "Отправка запроса к API" in str(call) or "Успешный ответ от API" in str(call)]
             assert len(debug_calls) >= 2
 
@@ -430,7 +431,7 @@ class TestAPIManager:
     async def test_error_logging(self, api_manager, caplog):
         """Тест логирования ошибок."""
         with patch('src.ozonapi.seller.core.core.APIManager._session_manager') as mock_session_manager, \
-                patch('src.ozonapi.seller.core.core.logger') as mock_logger:
+                patch.object(APIManager._class_logger, 'error') as mock_class_error:
             mock_session = AsyncMock(spec=ClientSession)
             mock_session_manager.get_session.return_value.__aenter__.return_value = mock_session
 
@@ -446,12 +447,11 @@ class TestAPIManager:
             with pytest.raises(APIClientError):
                 await api_manager._request(method="post", endpoint="test-endpoint")
 
-            # Проверяем что метод error вызывался
-            mock_logger.error.assert_called()
-            error_calls = [call for call in mock_logger.error.call_args_list
+            # Проверяем что метод error вызывался у классового логгера
+            mock_class_error.assert_called()
+            error_calls = [call for call in mock_class_error.call_args_list
                            if "Ошибка API" in str(call)]
             assert len(error_calls) >= 1
-
 
     @pytest.mark.asyncio
     async def test_retry_decorator_directly(self, api_manager):

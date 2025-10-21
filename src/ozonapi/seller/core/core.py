@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import sys
 from types import TracebackType
 from typing import Any, Literal, Optional, ClassVar
@@ -27,13 +28,6 @@ from .exceptions import (
     APIServerError, APITooManyRequestsError,
 )
 
-logger.remove()
-logger.add(
-    sys.stderr,
-    level=APIConfig().log_level,
-    enqueue=True,
-)
-
 
 class APIManager:
     """
@@ -49,6 +43,15 @@ class APIManager:
     _method_rate_limiter_manager: ClassVar[Optional[MethodRateLimiterManager]] = None
     _initialized: ClassVar[bool] = False
     _instance_count: ClassVar[int] = 0
+
+    _class_logger: ClassVar = logger
+    _class_logger.remove()
+    _class_logger.add(
+        sys.stderr,
+        level=APIConfig().log_level,
+        enqueue=True,
+    )
+
 
     def __init__(
             self,
@@ -70,6 +73,7 @@ class APIManager:
         self._instance_id = id(self)
         self._registered = False
         self._closed = False
+        self._instance_logger = self._get_instance_logger()
 
         if self._client_id is None or self._api_key is None:
             raise ValueError(
@@ -78,21 +82,24 @@ class APIManager:
 
         if APIManager._rate_limiter_manager is None:
             APIManager._rate_limiter_manager = RateLimiterManager(
-                cleanup_interval=self._config.cleanup_interval
+                cleanup_interval=self._config.cleanup_interval,
+                instance_logger=self.logger
             )
         if APIManager._session_manager is None:
             APIManager._session_manager = SessionManager(
                 timeout=self._config.request_timeout,
-                connector_limit=self._config.connector_limit
+                connector_limit=self._config.connector_limit,
+                instance_logger=self.logger
             )
         if APIManager._method_rate_limiter_manager is None:
             APIManager._method_rate_limiter_manager = MethodRateLimiterManager(
-                cleanup_interval=self._config.cleanup_interval
+                cleanup_interval=self._config.cleanup_interval,
+                instance_logger=self.logger
             )
 
         APIManager._instance_count += 1
         self._validate_credentials()
-        logger.debug(f"API-клиент инициализирован для ClientID {self._client_id}")
+        self.logger.debug(f"API-клиент инициализирован для ClientID {self._client_id}")
 
     @classmethod
     def load_config(cls, user_config: APIConfig | None = None) -> APIConfig:
@@ -110,6 +117,19 @@ class APIManager:
                 )
             )
 
+    def _get_instance_logger(self) -> logging.Logger:
+        """Инициализирует и возвращает настроенный логер для экземпляра."""
+        instance_logger = logger.bind(client_id=self._client_id)
+
+        instance_logger.remove()
+        instance_logger.add(
+            sys.stderr,
+            level=self._config.log_level,
+            enqueue=True,
+        )
+
+        return instance_logger
+
     @classmethod
     async def initialize(cls) -> None:
         """Инициализация ресурсов."""
@@ -119,7 +139,7 @@ class APIManager:
             if cls._method_rate_limiter_manager:
                 await cls._method_rate_limiter_manager.start()
             cls._initialized = True
-            logger.debug("Выполнена инициализация ресурсов API-менеджера")
+            cls._class_logger.debug("Выполнена инициализация ресурсов API-менеджера")
 
     @classmethod
     async def shutdown(cls) -> None:
@@ -132,7 +152,7 @@ class APIManager:
             if cls._session_manager:
                 await cls._session_manager.close_all()
             cls._initialized = False
-            logger.debug("Выполнена деинициализация ресурсов API-менеджера")
+            cls._class_logger.debug("Выполнена деинициализация ресурсов API-менеджера")
 
     def _validate_credentials(self) -> None:
         """Валидация учетных данных."""
@@ -142,7 +162,7 @@ class APIManager:
             raise ValueError("api_key не должен быть пустой строкой")
 
         if self._config.max_requests_per_second > 50:
-            logger.warning(
+            self.logger.warning(
                 f"Максимальное кол-во запросов в секунду согласно документации Ozon - 50. "
                 f"Установлено: {self._config.max_requests_per_second}"
             )
@@ -194,7 +214,7 @@ class APIManager:
             if APIManager._session_manager:
                 await APIManager._session_manager.close_all()
 
-        logger.debug(f"Работа API-клиента для ClientID {self._client_id} завершена")
+        self.logger.debug(f"Работа API-клиента для ClientID {self._client_id} завершена")
 
     @property
     def client_id(self) -> str:
@@ -211,6 +231,11 @@ class APIManager:
         """Проверяет закрыт ли клиент."""
         return self._closed
 
+    @property
+    def logger(self):
+        """Возвращает логер экземпляра."""
+        return self._instance_logger
+
     @classmethod
     def get_instance_count(cls) -> int:
         """Получает количество активных экземпляров."""
@@ -220,7 +245,7 @@ class APIManager:
         """Создает декоратор повторов на основе конфигурации."""
 
         def log_retry(retry_state):
-            logger.debug(
+            self.logger.debug(
                 f"Попытка {retry_state.attempt_number} совершения запроса для ClientID {self._client_id}"
                 f" завершилась исключением: {retry_state.outcome.exception()}"
             )
@@ -240,7 +265,7 @@ class APIManager:
                 min=self._config.retry_min_wait,
                 max=self._config.retry_max_wait
             ),
-            before_sleep=before_sleep_log(logger, 30),
+            before_sleep=before_sleep_log(self.logger, 30),
             after=log_retry,
             reraise=True,
         )
@@ -268,7 +293,7 @@ class APIManager:
             "error_details": details,
         })
 
-        logger.error(f"Ошибка API: {message}", extra=log_context)
+        APIManager._class_logger.error(f"Ошибка API: {message}", extra=log_context)
 
         error_map = {
             400: APIClientError,
@@ -332,7 +357,7 @@ class APIManager:
             "has_payload": json is not None,
         }
 
-        logger.debug("Отправка запроса к API", extra=log_context)
+        self.logger.debug("Отправка запроса к API", extra=log_context)
 
         await self._ensure_registered()
 
@@ -367,21 +392,21 @@ class APIManager:
                                 if error:
                                     raise error
 
-                            logger.debug("Успешный ответ от API", extra=log_context)
+                            self.logger.debug("Успешный ответ от API", extra=log_context)
                             return data
 
                     except asyncio.TimeoutError:
-                        logger.error("Таймаут запроса к API", extra=log_context)
+                        self.logger.error("Таймаут запроса к API", extra=log_context)
                         raise APIError(408, "Request timeout")
                     except asyncio.CancelledError:
-                        logger.warning("Запрос к API отменен", extra=log_context)
+                        self.logger.warning("Запрос к API отменен", extra=log_context)
                         raise
                     except (aiohttp.ClientError, ConnectionError, OSError) as e:
                         log_context.update({
                             "error_type": type(e).__name__,
                             "error_message": str(e)
                         })
-                        logger.error(
+                        self.logger.error(
                             f"Сетевая ошибка при выполнении запроса к API: {str(e)}",
                             extra=log_context
                         )
