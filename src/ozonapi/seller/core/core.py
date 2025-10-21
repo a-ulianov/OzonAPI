@@ -24,7 +24,7 @@ from .exceptions import (
     APIError,
     APIForbiddenError,
     APINotFoundError,
-    APIServerError,
+    APIServerError, APITooManyRequestsError,
 )
 
 logger.remove()
@@ -64,7 +64,7 @@ class APIManager:
             api_key: Ключ API для аутентификации
             config: Конфигурация клиента
         """
-        self._config = config or self.load_config()
+        self._config = self.load_config(config)
         self._client_id = client_id or self._config.client_id
         self._api_key = api_key or self._config.api_key
         self._instance_id = id(self)
@@ -95,10 +95,20 @@ class APIManager:
         logger.debug(f"API-клиент инициализирован для ClientID {self._client_id}")
 
     @classmethod
-    def load_config(cls) -> APIConfig:
+    def load_config(cls, user_config: APIConfig | None = None) -> APIConfig:
         """Создает конфигурацию с загрузкой из .env файла."""
         load_dotenv()
-        return APIConfig()
+        base_config = APIConfig()
+
+        if user_config is None:
+            return base_config
+        else:
+            return base_config.model_copy(
+                update=user_config.model_dump(
+                    exclude_unset=True,
+                    exclude_defaults=True
+                )
+            )
 
     @classmethod
     async def initialize(cls) -> None:
@@ -220,6 +230,7 @@ class APIManager:
                 (
                     # Обрабатываемые механизмом retry ошибки
                     APIServerError,
+                    APITooManyRequestsError,
                     asyncio.TimeoutError
                 )
             ),
@@ -264,6 +275,7 @@ class APIManager:
             403: APIForbiddenError,
             404: APINotFoundError,
             409: APIConflictError,
+            429: APITooManyRequestsError,
             500: APIServerError,
         }
 
@@ -298,6 +310,7 @@ class APIManager:
             APIForbiddenError: При ошибках доступа (403)
             APINotFoundError: При отсутствии ресурса (404)
             APIConflictError: При конфликте данных (409)
+            APITooManyRequestsError: При превышении кол-ва запросов (429)
             APIServerError: При ошибках сервера (500)
             APIError: При прочих ошибках
         """

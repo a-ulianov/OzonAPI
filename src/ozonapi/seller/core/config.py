@@ -36,7 +36,7 @@ class APIConfig(BaseSettings):
         description="Авторизационный ключ Ozon Seller API",
     )
     log_level: Optional[str] = Field(
-        default="INFO",
+        default="DEBUG",
         description="Уровень логирования."
     )
     base_url: str = Field(

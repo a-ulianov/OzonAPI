@@ -26,6 +26,10 @@ class APIConflictError(APIError):
     """Ошибка 409: Конфликт запроса."""
     pass
 
+class APITooManyRequestsError(APIError):
+    """Ошибка 429: Слишком много запросов."""
+    pass
+
 
 class APIServerError(APIError):
     """Ошибка 500: Внутренняя ошибка сервера."""
