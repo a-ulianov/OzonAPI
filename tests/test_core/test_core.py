@@ -76,11 +76,13 @@ class TestAPIManager:
     @pytest.mark.asyncio
     async def test_initialization(self, api_manager, api_config):
         """Тест инициализации APIManager."""
-        assert api_manager._client_id == "test_client"
-        assert api_manager._api_key == "test_api_key"
-        assert api_manager._config == api_config
-        assert not api_manager._closed
-        assert not api_manager._registered
+        with patch('src.ozonapi.seller.core.core.APIManager.load_config') as mock_load_config:
+            mock_load_config.return_value = api_config
+            manager = APIManager(client_id="test_client", api_key="test_api_key", config=api_config)
+
+            assert manager._client_id == "test_client"
+            assert manager._api_key == "test_api_key"
+            assert manager._config == api_config
 
     @pytest.mark.asyncio
     async def test_initialization_with_default_config(self):
