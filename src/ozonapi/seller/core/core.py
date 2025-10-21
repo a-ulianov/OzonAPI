@@ -4,6 +4,7 @@ from types import TracebackType
 from typing import Any, Literal, Optional, ClassVar
 
 import aiohttp
+from dotenv import load_dotenv
 from loguru import logger
 from tenacity import (
     retry,
@@ -96,6 +97,7 @@ class APIManager:
     @classmethod
     def load_config(cls) -> APIConfig:
         """Создает конфигурацию с загрузкой из .env файла."""
+        load_dotenv()
         return APIConfig()
 
     @classmethod

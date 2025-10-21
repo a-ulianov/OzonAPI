@@ -47,7 +47,8 @@ class PostingFBSPosting(BaseModel):
         prr_option: Код услуги погрузочно-разгрузочных работ
         quantum_id: Идентификатор эконом-товара
         requirements: Требования к товарам
-        shipment_date: Дата сборки отправления
+        shipment_date: Дата и время, до которой необходимо собрать отправление. Показываем рекомендованное время отгрузки. По истечении этого времени начнёт применяться новый тариф, информацию о нём уточняйте в поле tariffication.
+        shipment_date_without_delay: Дата и время отгрузки без просрочки
         status: Статус отправления
         substatus: Подстатус отправления
         tpl_integration_type: Тип интеграции со службой доставки
@@ -131,7 +132,13 @@ class PostingFBSPosting(BaseModel):
         """
     )
     shipment_date: datetime.datetime = Field(
-        ..., description="Дата и время, до которой необходимо собрать отправление."
+        ..., description="""
+        Дата и время, до которой необходимо собрать отправление. Показываем рекомендованное время отгрузки. 
+        По истечении этого времени начнёт применяться новый тариф, информацию о нём уточняйте в поле tariffication.
+        """
+    )
+    shipment_date_without_delay: datetime.datetime = Field(
+        ..., description="Дата и время отгрузки без просрочки."
     )
     status: PostingStatus = Field(
         ..., description="Статус отправления."

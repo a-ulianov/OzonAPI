@@ -1,4 +1,4 @@
-from ..core import APIManager
+from ..core import APIManager, method_rate_limit
 from ..schemas.fbs import PostingFBSUnfulfilledListRequest, PostingFBSUnfulfilledListResponse, PostingFBSListResponse, \
     PostingFBSListRequest, PostingFBSGetRequest, PostingFBSGetResponse, PostingFBSGetByBarcodeResponse, \
     PostingFBSGetByBarcodeRequest, PostingFBSMultiBoxQtySetResponse, PostingFBSMultiBoxQtySetRequest, \
@@ -164,6 +164,7 @@ class SellerFBSAPI(APIManager):
         )
         return PostingFBSListResponse(**response)
 
+    @method_rate_limit(limit_requests=1, interval_seconds=1)
     async def posting_fbs_get(
             self: "SellerFBSAPI",
             request: PostingFBSGetRequest
@@ -171,6 +172,7 @@ class SellerFBSAPI(APIManager):
         """Метод для получения информации об отправлении FBS по его номеру.
 
         Notes:
+            • Установлено ограничение 1 запрос в секунду (вычислено экспериментально)
             • Чтобы получать актуальную дату отгрузки, регулярно обновляйте информацию об отправлениях или подключите пуш-уведомления.
             • Для получения дополнительных данных используйте параметр `with_` в запросе.
 

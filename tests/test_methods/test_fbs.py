@@ -96,6 +96,7 @@ class TestSellerFBSAPI:
                             "products_requiring_imei": []
                         },
                         "shipment_date": "2023-10-02T18:00:00Z",
+                        "shipment_date_without_delay": "2023-10-02T18:00:00Z",
                         "status": PostingStatus.AWAITING_PACKAGING,
                         "substatus": PostingSubstatus.POSTING_CREATED,
                         "tpl_integration_type": TplIntegrationType.NON_INTEGRATED,
@@ -166,6 +167,7 @@ class TestSellerFBSAPI:
                             "products_requiring_imei": []
                         },
                         "shipment_date": "2023-10-02T19:00:00Z",
+                        "shipment_date_without_delay": "2023-10-02T19:00:00Z",
                         "status": PostingStatus.AWAITING_PACKAGING,
                         "substatus": PostingSubstatus.POSTING_CREATED,
                         "tpl_integration_type": TplIntegrationType.NON_INTEGRATED,
@@ -285,6 +287,7 @@ class TestSellerFBSAPI:
                             "products_requiring_mandatory_mark": []
                         },
                         "shipment_date": "2023-11-04T18:00:00Z",
+                        "shipment_date_without_delay": "2023-11-04T18:00:00Z",
                         "status": PostingStatus.AWAITING_PACKAGING,
                         "substatus": PostingSubstatus.POSTING_CREATED,
                         "tpl_integration_type": TplIntegrationType.NON_INTEGRATED,
@@ -349,7 +352,8 @@ class TestSellerFBSAPI:
                             "products_requiring_country": [],
                             "products_requiring_mandatory_mark": []
                         },
-                        "shipment_date": "2023-11-04T19:00:00Z",
+                        "shipment_date": "2023-11-04T18:00:00Z",
+                        "shipment_date_without_delay": "2023-11-04T18:00:00Z",
                         "status": PostingStatus.AWAITING_PACKAGING,
                         "substatus": PostingSubstatus.POSTING_CREATED,
                         "tpl_integration_type": TplIntegrationType.NON_INTEGRATED,
@@ -508,6 +512,7 @@ class TestSellerFBSAPI:
                     "products_requiring_imei": []
                 },
                 "shipment_date": "2021-11-23T10:00:00Z",
+                "shipment_date_without_delay": "2021-11-23T10:00:00Z",
                 "status": PostingStatus.AWAITING_PACKAGING,
                 "substatus": PostingSubstatus.POSTING_AWAITING_PASSPORT_DATA,
                 "previous_substatus": PostingSubstatus.POSTING_TRANSFERRING_TO_DELIVERY,

@@ -3,7 +3,6 @@ from typing import Optional
 from pydantic import Field, field_validator, ConfigDict
 from pydantic_settings import BaseSettings
 
-
 class APIConfig(BaseSettings):
     """Конфигурация API клиента для работы с Ozon Seller API.
 
@@ -37,7 +36,7 @@ class APIConfig(BaseSettings):
         description="Авторизационный ключ Ozon Seller API",
     )
     log_level: Optional[str] = Field(
-        default="DEBUG",
+        default="INFO",
         description="Уровень логирования."
     )
     base_url: str = Field(
@@ -104,6 +103,5 @@ class APIConfig(BaseSettings):
     model_config = ConfigDict(
         env_prefix='OZON_SELLER_',      #type: ignore
         case_sensitive=False,           #type: ignore
-        env_file='.env',                #type: ignore
         extra='ignore',
     )

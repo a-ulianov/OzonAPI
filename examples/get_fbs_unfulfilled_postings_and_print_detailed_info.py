@@ -1,14 +1,19 @@
+"""
+Получает список необработанных FBS/rFBS отправлений за указанный период времени (последние 30 дней)
+и выводит детализированную информацию по каждому из них.
+"""
+
 import asyncio
 import datetime
+from pprint import pprint
 
 from src.ozonapi import SellerAPI
 from src.ozonapi.seller.schemas.fbs import PostingFBSGetRequest, PostingFBSUnfulfilledListRequest, \
     PostingFBSUnfulfilledListFilter
 
 
-async def main():
+async def get_fbs_unfulfilled_postings_and_print_detailed_info():
     async with SellerAPI() as api:
-
         result = await api.posting_fbs_unfulfilled_list(
             PostingFBSUnfulfilledListRequest(
                 filter=PostingFBSUnfulfilledListFilter(
@@ -24,7 +29,7 @@ async def main():
                     posting_number=posting.posting_number
                 )
             )
-            print(result)
+            pprint(result.model_dump())
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    asyncio.run(get_fbs_unfulfilled_postings_and_print_detailed_info())
