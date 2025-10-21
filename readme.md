@@ -71,6 +71,7 @@ async def main():
     config = SellerAPIConfig(
         client_id="your_client_id",
         api_key="your_api_key",
+        log_level="DEBUG"
     )
     
     async with SellerAPI(config=config) as api:
