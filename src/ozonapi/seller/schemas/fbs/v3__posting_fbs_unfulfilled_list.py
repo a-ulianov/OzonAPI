@@ -122,6 +122,8 @@ class PostingFBSUnfulfilledListRequest(BaseRequestOffset):
         offset (int): Количество элементов, которое будет пропущено в ответе (опционально)
         with_: Дополнительные поля, которые нужно добавить в ответ (опционально)
     """
+    model_config = {'populate_by_name': True}
+
     dir: Optional[SortingDirection] = Field(
         SortingDirection.ASC, description="Направление сортировки."
     )

@@ -7,6 +7,7 @@ from src.ozonapi.seller.schemas.fbs import (
     PostingFBSUnfulfilledListRequest,
     PostingFBSUnfulfilledListResponse, PostingFBSListResponse, PostingFBSGetResponse, PostingFBSGetByBarcodeResponse,
     PostingFBSMultiBoxQtySetResponse, PostingFBSProductChangeResponse, PostingFBSProductCountryListResponse,
+    PostingFBSProductCountrySetResponse,
 )
 from src.ozonapi.seller.common.enumerations.requests import SortingDirection
 from src.ozonapi.seller.common.enumerations.postings import (
@@ -774,3 +775,36 @@ class TestSellerFBSAPI:
         assert len(response2.result) == 3
         assert response2.result[0].name == "Турция"
         assert response2.result[0].country_iso_code == "TR"
+
+    @pytest.mark.asyncio
+    async def test_posting_fbs_product_country_set(self, seller_fbs_api, mock_api_manager_request):
+        """Тестирует метод posting_fbs_product_country_set."""
+
+        mock_response_data = {
+            "product_id": 180550365,
+            "is_gtd_needed": True
+        }
+        mock_api_manager_request.return_value = mock_response_data
+
+        from src.ozonapi.seller.schemas.fbs.v2__posting_fbs_product_country_set import (
+            PostingFBSProductCountrySetRequest
+        )
+
+        request = PostingFBSProductCountrySetRequest(
+            posting_number="57195475-0050-3",
+            product_id=180550365,
+            country_iso_code="NO"
+        )
+
+        response = await seller_fbs_api.posting_fbs_product_country_set(request)
+
+        mock_api_manager_request.assert_called_once_with(
+            method="post",
+            api_version="v2",
+            endpoint="posting/fbs/product/country/set",
+            json=request.model_dump(by_alias=True)
+        )
+
+        assert isinstance(response, PostingFBSProductCountrySetResponse)
+        assert response.product_id == 180550365
+        assert response.is_gtd_needed is True

@@ -23,6 +23,8 @@ __all__ = [
     "PostingFBSProductChangeRequest",
     "PostingFBSProductChangeRequestItem",
     "PostingFBSProductChangeResponse",
+    "PostingFBSProductCountrySetRequest",
+    "PostingFBSProductCountrySetResponse",
     "PostingFBSProductDetailed",
     "PostingFBSProductCountryListRequest",
     "PostingFBSProductCountryListResponse",
@@ -52,6 +54,7 @@ from .v2__posting_fbs_product_change import PostingFBSProductChangeRequestItem, 
     PostingFBSProductChangeResponse
 from .v2__posting_fbs_product_country_list import PostingFBSProductCountryListResponse, \
     PostingFBSProductCountryListRequest
+from .v2__posting_fbs_product_country_set import PostingFBSProductCountrySetResponse, PostingFBSProductCountrySetRequest
 from .v3__posting_fbs_get import PostingFBSGetRequest, PostingFBSGetResponse
 from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, \
     PostingFBSListFilter, PostingFBSListRequest, PostingFBSListResult, PostingFBSListResponse
