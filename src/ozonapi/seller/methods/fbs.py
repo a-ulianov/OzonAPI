@@ -6,7 +6,8 @@ from ..schemas.fbs import PostingFBSUnfulfilledListRequest, PostingFBSUnfulfille
     PostingFBSListRequest, PostingFBSGetRequest, PostingFBSGetResponse, PostingFBSGetByBarcodeResponse, \
     PostingFBSGetByBarcodeRequest, PostingFBSMultiBoxQtySetResponse, PostingFBSMultiBoxQtySetRequest, \
     PostingFBSProductChangeRequest, PostingFBSProductChangeResponse, PostingFBSProductCountryListResponse, \
-    PostingFBSProductCountryListRequest, PostingFBSProductCountrySetRequest, PostingFBSProductCountrySetResponse
+    PostingFBSProductCountryListRequest, PostingFBSProductCountrySetRequest, PostingFBSProductCountrySetResponse, \
+    PostingFBSRestrictionsResponse, PostingFBSRestrictionsRequest
 
 
 class SellerFBSAPI(APIManager):
@@ -389,7 +390,7 @@ class SellerFBSAPI(APIManager):
                 method="post",
                 api_version="v2",
                 endpoint="posting/fbs/product/country/list",
-                json=request.model_dump(by_alias=True)
+                json=request.model_dump()
             )
         except APINotFoundError:
             return PostingFBSProductCountryListResponse.model_construct()
@@ -432,6 +433,45 @@ class SellerFBSAPI(APIManager):
             method="post",
             api_version="v2",
             endpoint="posting/fbs/product/country/set",
-            json=request.model_dump(by_alias=True)
+            json=request.model_dump()
         )
         return PostingFBSProductCountrySetResponse(**response)
+
+    async def posting_fbs_restrictions(
+            self: "SellerFBSAPI",
+            request: PostingFBSRestrictionsRequest
+    ) -> PostingFBSRestrictionsResponse:
+        """Метод для получения габаритных, весовых и прочих ограничений пункта приёма по номеру отправления.
+
+        Notes:
+            • Метод применим только для работы по схеме FBS.
+            • Возвращает ограничения пункта приёма, связанные с указанным отправлением.
+            • Ограничения включают габаритные (ширина, высота, длина), весовые (мин./макс. вес) и стоимостные (мин./макс. цена) параметры.
+            • Вес указывается в граммах, габариты — в сантиметрах, стоимость — в рублях.
+            • Если для какого-то параметра ограничение не установлено, значение будет None.
+            • Метод помогает определить, соответствует ли отправление требованиям пункта приёма перед передачей.
+
+        References:
+            https://docs.ozon.ru/api/seller/?#operation/PostingAPI_GetRestrictions
+
+        Args:
+            request: Запрос на получение ограничений пункта приёма по номеру отправления по схеме `PostingFBSRestrictionsRequest`
+
+        Returns:
+            Ограничения пункта приёма для указанного отправления по схеме `PostingFBSRestrictionsResponse`
+
+        Examples:
+            async with SellerAPI(client_id, api_key) as api:
+                result = await api.posting_fbs_restrictions(
+                    PostingFBSRestrictionsRequest(
+                        posting_number="76673629-0020-1"
+                    )
+                )
+        """
+        response = await self._request(
+            method="post",
+            api_version="v1",
+            endpoint="posting/fbs/restrictions",
+            json=request.model_dump()
+        )
+        return PostingFBSRestrictionsResponse(**response["result"])

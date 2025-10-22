@@ -7,7 +7,7 @@ from src.ozonapi.seller.schemas.fbs import (
     PostingFBSUnfulfilledListRequest,
     PostingFBSUnfulfilledListResponse, PostingFBSListResponse, PostingFBSGetResponse, PostingFBSGetByBarcodeResponse,
     PostingFBSMultiBoxQtySetResponse, PostingFBSProductChangeResponse, PostingFBSProductCountryListResponse,
-    PostingFBSProductCountrySetResponse,
+    PostingFBSProductCountrySetResponse, PostingFBSRestrictionsResponse,
 )
 from src.ozonapi.seller.common.enumerations.requests import SortingDirection
 from src.ozonapi.seller.common.enumerations.postings import (
@@ -808,3 +808,48 @@ class TestSellerFBSAPI:
         assert isinstance(response, PostingFBSProductCountrySetResponse)
         assert response.product_id == 180550365
         assert response.is_gtd_needed is True
+
+    @pytest.mark.asyncio
+    async def test_posting_fbs_restrictions(self, seller_fbs_api, mock_api_manager_request):
+        """Тестирует метод posting_fbs_restrictions."""
+
+        mock_response_data = {
+            "result": {
+                "posting_number": "76673629-0020-1",
+                "max_posting_weight": 40000,
+                "min_posting_weight": 0,
+                "width": 500,
+                "height": 500,
+                "length": 500,
+                "max_posting_price": 500000.0,
+                "min_posting_price": 0.0
+            }
+        }
+        mock_api_manager_request.return_value = mock_response_data
+
+        from src.ozonapi.seller.schemas.fbs.v1__posting_fbs_restrictions import (
+            PostingFBSRestrictionsRequest
+        )
+
+        request = PostingFBSRestrictionsRequest(
+            posting_number="76673629-0020-1"
+        )
+
+        response = await seller_fbs_api.posting_fbs_restrictions(request)
+
+        mock_api_manager_request.assert_called_once_with(
+            method="post",
+            api_version="v1",
+            endpoint="posting/fbs/restrictions",
+            json=request.model_dump()
+        )
+
+        assert isinstance(response, PostingFBSRestrictionsResponse)
+        assert response.posting_number == "76673629-0020-1"
+        assert response.max_posting_weight == 40000
+        assert response.min_posting_weight == 0
+        assert response.width == 500
+        assert response.height == 500
+        assert response.length == 500
+        assert response.max_posting_price == 500000.0
+        assert response.min_posting_price == 0.0

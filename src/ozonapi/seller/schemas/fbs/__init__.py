@@ -29,6 +29,8 @@ __all__ = [
     "PostingFBSProductCountryListRequest",
     "PostingFBSProductCountryListResponse",
     "PostingFBSRequirements",
+    "PostingFBSRestrictionsRequest",
+    "PostingFBSRestrictionsResponse",
     "PostingFBSTariffication",
     "PostingFBSListRequestFilterLastChangedStatusDate",
     "PostingFBSListFilter",
@@ -49,6 +51,7 @@ from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBa
     PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, \
     PostingFBSProductDetailed, \
     PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith, PostingFBSProduct
+from .v1__posting_fbs_restrictions import PostingFBSRestrictionsResponse, PostingFBSRestrictionsRequest
 from .v2__posting_fbs_get_by_barcode import PostingFBSGetByBarcodeRequest, PostingFBSGetByBarcodeResponse
 from .v2__posting_fbs_product_change import PostingFBSProductChangeRequestItem, PostingFBSProductChangeRequest, \
     PostingFBSProductChangeResponse

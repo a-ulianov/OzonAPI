@@ -333,7 +333,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
 </details>
 <details>
-<summary>Обработка заказов FBS и rFBS (8)</summary>
+<summary>Обработка заказов FBS и rFBS (9)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -345,7 +345,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/product/change` | Добавить вес для весовых товаров в отправлении | `posting_fbs_product_change()` |
 | ✓ | `/v2/posting/fbs/product/country/list` | Список доступных стран-изготовителей | `posting_fbs_product_country_list()` |
 | ✓ | `/v2/posting/fbs/product/country/set` | Добавить информацию о стране-изготовителе товара | `posting_fbs_product_country_set()` |
-| ☐ | `/v1/posting/fbs/restrictions` | Получить ограничения пункта приёма | `posting_fbs_restrictions()` |
+| ✓ | `/v1/posting/fbs/restrictions` | Получить ограничения пункта приёма | `posting_fbs_restrictions()` |
 | ☐ | `/v2/posting/fbs/package-label` | Напечатать этикетку | `posting_fbs_package_label()` |
 | ☐ | `/v2/posting/fbs/package-label/create` | Создать задание на формирование этикеток | `posting_fbs_package_label_create()` |
 | ☐ | `/v1/posting/fbs/package-label/get` | Получить файл с этикетками | `posting_fbs_package_label_get()` |
