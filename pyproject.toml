@@ -28,7 +28,8 @@ dependencies = [
     "tenacity>=9.1.2,<10.0.0",
     "aiolimiter>=1.2.1,<2.0.0",
     "pydantic>=2.12.3,<3.0.0",
-    "pydantic-settings>=2.11.0,<3.0.0"
+    "pydantic-settings>=2.11.0,<3.0.0",
+    "async-lru (>=2.0.5,<3.0.0)"
 ]
 
 [[project.authors]]
