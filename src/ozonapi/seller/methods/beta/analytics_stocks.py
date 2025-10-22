@@ -1,17 +1,13 @@
-from ..core import APIManager
-from ..schemas.beta import AnalyticsStocksRequest, AnalyticsStocksResponse
+from ...core import APIManager
+from ...schemas.beta import AnalyticsStocksRequest, AnalyticsStocksResponse
 
 
-class SellerBetaAPI(APIManager):
-    """Реализует методы раздела Прочие методы.
-
-    References:
-        https://docs.ozon.com/api/seller/?#tag/BetaMethod
-    """
-
+class AnalyticsStocksMixin(APIManager):
+    """Реализует метод /v1/analytics/stocks"""
 
     async def analytics_stocks(
-            self: "SellerBetaAPI", request: AnalyticsStocksRequest
+            self: "AnalyticsStocksMixin",
+            request: AnalyticsStocksRequest
     ) -> AnalyticsStocksResponse:
         """Получает аналитику по остаткам товаров на складах.
 

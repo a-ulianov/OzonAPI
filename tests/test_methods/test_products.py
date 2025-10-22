@@ -255,8 +255,8 @@ class TestSellerProductAPI:
         assert response.items == []
 
     @pytest.mark.asyncio
-    async def test_product_subscription(self, seller_product_api, mock_api_manager_request):
-        """Тестирует метод product_subscription."""
+    async def test_product_info_ription(self, seller_product_api, mock_api_manager_request):
+        """Тестирует метод product_info_subscription."""
         mock_response_data = {
             "result": []
         }
@@ -265,7 +265,7 @@ class TestSellerProductAPI:
         request = ProductInfoSubscriptionRequest(
             skus=[123456789, 987654321]
         )
-        response = await seller_product_api.product_subscription(request)
+        response = await seller_product_api.product_info_subscription(request)
 
         mock_api_manager_request.assert_called_once_with(
             method="post",

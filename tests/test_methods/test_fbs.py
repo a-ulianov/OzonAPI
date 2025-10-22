@@ -667,7 +667,7 @@ class TestSellerFBSAPI:
         mock_api_manager_request.assert_called_once_with(
             method="post",
             api_version="v3",
-            endpoint="posting/fbs/multi-box-qty/set",
+            endpoint="posting/multi-box-qty/set",
             json=request.model_dump()
         )
 
