@@ -181,6 +181,7 @@ class SellerPricesAndStocksAPI(APIManager):
                                 auto_action_enabled=PricingStrategy.UNKNOWN,
                                 auto_add_to_ozon_actions_list_enabled=PricingStrategy.UNKNOWN,
                                 currency_code=CurrencyCode.RUB,
+                                manage_elastic_boosting_through_price=True,
                                 min_price="800",
                                 min_price_for_auto_actions_enabled=True,
                                 net_price="650",

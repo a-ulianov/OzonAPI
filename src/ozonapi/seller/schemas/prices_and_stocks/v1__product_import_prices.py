@@ -13,6 +13,7 @@ class ProductImportPricesItem(BaseModel):
         auto_action_enabled: Признак автоприменения акций (опционально)
         auto_add_to_ozon_actions_list_enabled: Признак автодобавления товара в акции (опционально)
         currency_code: Валюта цен (опционально)
+        manage_elastic_boosting_through_price: true, если товар участвует в эластичном бустинге, false, если не участвует (опционально, если ничего не передать, изменений в статусе участия не будет)
         min_price: Минимальная цена товара (опционально)
         min_price_for_auto_actions_enabled: Признак включения минимальной цены для автодействий (опционально)
         net_price: Себестоимость товара (опционально)
@@ -32,6 +33,9 @@ class ProductImportPricesItem(BaseModel):
     )
     currency_code: Optional[CurrencyCode] = Field(
         CurrencyCode.RUB, description="Валюта цен. Совпадает с валютой, которая установлена в настройках личного кабинета."
+    )
+    manage_elastic_boosting_through_price: Optional[bool] = Field(
+        None, description="true, если товар участвует в эластичном бустинге, false, если не участвует (если ничего не передать, изменений в статусе участия не будет)."
     )
     min_price: Optional[str] = Field(
         None, description="Минимальная цена товара."
