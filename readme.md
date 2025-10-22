@@ -218,7 +218,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/description-category/attribute/values/search` | Поиск по справочным значениям характеристики | `description_category_attribute_values_search()` |
 </details>
 <details>
-<summary>Загрузка и обновление товаров (16)</summary>
+<summary>Загрузка и обновление товаров (17)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -226,7 +226,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/import/info` | Узнать статус добавления или обновления товара | `product_import_info()` |
 | ✓ | `/v1/product/import-by-sku` | Создать товар по SKU | `product_import_by_sku()` |
 | ✓ | `/v1/product/attributes/update` | Обновить характеристики товара | `product_attributes_update()` |
-| ☐ | `/v1/product/pictures/import` | Загрузить или обновить изображения товара | `product_pictures_import()` |
+| ✓ | `/v1/product/pictures/import` | Загрузить или обновить изображения товара | `product_pictures_import()` |
 | ✓ | `/v3/product/list` | Список товаров | `product_list()` |
 | ✓ | `/v1/product/rating-by-sku` | Получить контент-рейтинг товаров по SKU | `product_rating_by_sku()` |
 | ✓ | `/v3/product/info/list` | Получить информацию о товарах по идентификаторам | `product_info_list()` |
