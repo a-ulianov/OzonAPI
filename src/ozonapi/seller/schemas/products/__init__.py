@@ -57,6 +57,8 @@ __all__ = [
     "ProductListResponseItem",
     "ProductListResponseResult",
     "ProductListQuants",
+    "ProductPicturesImportRequest",
+    "ProductPicturesImportResponse",
     "ProductPicturesInfoRequest",
     "ProductPicturesInfoResponse",
     "ProductPicturesInfoItem",
@@ -104,6 +106,7 @@ from .v1__product_info_subscription import (
     ProductInfoSubscriptionRequest,
     ProductInfoSubscriptionItem,
 )
+from .v1__product_pictures_import import ProductPicturesImportResponse, ProductPicturesImportRequest
 from .v1__product_rating_by_sku import (
     ProductRatingBySkuResponse, 
     ProductRatingBySkuRequest,

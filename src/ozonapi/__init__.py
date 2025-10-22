@@ -2,7 +2,7 @@
 Асинхронный интерфейс для взаимодействия с API маркетплейса Ozon.
 """
 
-__version__ = "0.7.4"
+__version__ = "0.8.0"
 __author__ = "Alexander Ulianov"
 __repository__ = "https://github.com/a-ulianov/OzonAPI"
 __docs__ = "https://github.com/a-ulianov/OzonAPI#readme"
