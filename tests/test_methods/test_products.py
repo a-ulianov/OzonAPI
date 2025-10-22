@@ -32,7 +32,7 @@ from src.ozonapi.seller.schemas.products import (
     ProductRelatedSkuGetRequest,
     ProductRelatedSkuGetResponse,
     ProductUpdateOfferIdRequest,
-    ProductUpdateOfferIdResponse, ProductPicturesImportResponse, ProductPicturesImportRequest,
+    ProductUpdateOfferIdResponse, ProductPicturesImportResponse, ProductPicturesImportRequest, ProductInfoLimitResponse,
 )
 
 
@@ -441,3 +441,40 @@ class TestSellerProductAPI:
         assert response.result.pictures[0].state == "imported"
         assert response.result.pictures[0].is_primary is True
         assert response.result.pictures[1].is_color is True
+
+    @pytest.mark.asyncio
+    async def test_product_info_limit(self, seller_product_api, mock_api_manager_request):
+        """Тестирует метод product_info_limit."""
+        mock_response_data = {
+            "daily_create": {
+                "limit": 1000,
+                "reset_at": "2024-01-01T00:00:00Z",
+                "usage": 150
+            },
+            "daily_update": {
+                "limit": 2000,
+                "reset_at": "2024-01-01T00:00:00Z",
+                "usage": 300
+            },
+            "total": {
+                "limit": 10000,
+                "usage": 2500
+            }
+        }
+        mock_api_manager_request.return_value = mock_response_data
+
+        response = await seller_product_api.product_info_limit()
+
+        mock_api_manager_request.assert_called_once_with(
+            method="post",
+            api_version="v4",
+            endpoint="product/info/limit",
+            json={}
+        )
+        assert isinstance(response, ProductInfoLimitResponse)
+        assert response.daily_create.limit == 1000
+        assert response.daily_create.usage == 150
+        assert response.daily_update.limit == 2000
+        assert response.daily_update.usage == 300
+        assert response.total.limit == 10000
+        assert response.total.usage == 2500

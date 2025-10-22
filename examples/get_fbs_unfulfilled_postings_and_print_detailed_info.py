@@ -11,7 +11,12 @@ async def get_fbs_unfulfilled_postings_and_print_detailed_info():
     """
     Получает и выводит детализированную информацию по каждому из необработанных FBS/rFBS отправлений за указанный
     период времени (последние 5 дней).
+
+    client_id и api_key определены в .env с префиксом OZON_SELLER_:
+    OZON_SELLER_CLIENT_ID=...
+    OZON_SELLER_API_KEY=...
     """
+
     async with SellerAPI(
         # Понижаем уровень логирования для наглядности
         config=SellerAPIConfig(log_level="DEBUG")

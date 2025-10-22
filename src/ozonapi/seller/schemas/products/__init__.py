@@ -33,6 +33,7 @@ __all__ = [
     "ProductInfoAttributesFilter",
     "ProductInfoAttributesPdfFile",
     "ProductInfoAttributesModelInfo",
+    "ProductInfoLimitResponse",
     "ProductInfoListRequest",
     "ProductInfoListResponse",
     "ProductInfoListItem",
@@ -173,6 +174,7 @@ from .v3__product_list import (
     ProductListResponseResult,
     ProductListQuants,
 )
+from .v4__product_info_limit import ProductInfoLimitResponse
 from .v4__product_info_attributes import (
     ProductInfoAttributesResponse, 
     ProductInfoAttributesRequest,
