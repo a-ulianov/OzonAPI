@@ -265,7 +265,7 @@ class APIManager:
                 min=self._config.retry_min_wait,
                 max=self._config.retry_max_wait
             ),
-            before_sleep=before_sleep_log(self.logger, 30),
+            # before_sleep=before_sleep_log(self.logger, 30),
             after=log_retry,
             reraise=True,
         )
