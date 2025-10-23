@@ -33,6 +33,7 @@ from src.ozonapi.seller.schemas.products import (
     ProductRelatedSkuGetResponse,
     ProductUpdateOfferIdRequest,
     ProductUpdateOfferIdResponse, ProductPicturesImportResponse, ProductPicturesImportRequest, ProductInfoLimitResponse,
+    ProductInfoDescriptionRequest, ProductInfoDescriptionResponse,
 )
 
 
@@ -478,3 +479,33 @@ class TestSellerProductAPI:
         assert response.daily_update.usage == 300
         assert response.total.limit == 10000
         assert response.total.usage == 2500
+
+    @pytest.mark.asyncio
+    async def test_product_info_description(self, seller_product_api, mock_api_manager_request):
+        """Тестирует метод product_info_description."""
+        mock_response_data = {
+            "result": {
+                "id": 12345678,
+                "name": "Test Product Name",
+                "offer_id": "test_offer_123",
+                "description": "This is a test product description"
+            }
+        }
+        mock_api_manager_request.return_value = mock_response_data
+
+        request = ProductInfoDescriptionRequest(
+            product_id=12345678
+        )
+        response = await seller_product_api.product_info_description(request)
+
+        mock_api_manager_request.assert_called_once_with(
+            method="post",
+            api_version="v1",
+            endpoint="product/info/description",
+            json=request.model_dump()
+        )
+        assert isinstance(response, ProductInfoDescriptionResponse)
+        assert response.result.id == 12345678
+        assert response.result.name == "Test Product Name"
+        assert response.result.offer_id == "test_offer_123"
+        assert response.result.description == "This is a test product description"

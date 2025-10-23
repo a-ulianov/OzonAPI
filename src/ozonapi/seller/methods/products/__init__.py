@@ -7,6 +7,7 @@ from .product_import import ProductImportMixin
 from .product_import_by_sku import ProductImportBySkuMixin
 from .product_import_info import ProductImportInfoMixin
 from .product_info_attributes import ProductInfoAttributesMixin
+from .product_info_description import ProductInfoDescriptionMixin
 from .product_info_limit import ProductInfoLimitMixin
 from .product_info_list import ProductInfoListMixin
 from .product_info_subscription import ProductInfoSubscriptionMixin
@@ -27,6 +28,7 @@ class SellerProductAPI(
     ProductImportInfoMixin,
     ProductImportMixin,
     ProductInfoAttributesMixin,
+    ProductInfoDescriptionMixin,
     ProductInfoLimitMixin,
     ProductInfoListMixin,
     ProductInfoSubscriptionMixin,

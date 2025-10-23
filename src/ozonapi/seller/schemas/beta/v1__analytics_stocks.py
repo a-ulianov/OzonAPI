@@ -1,6 +1,6 @@
 """https://docs.ozon.com/api/seller/#operation/AnalyticsAPI_AnalyticsStocks"""
 from typing import Optional
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field
 
 from ...common.enumerations.products import TurnoverGrade, ItemTag
 

@@ -2,7 +2,7 @@
 import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field
 
 from .entities import PostingFBSFilterWith
 from .entities.posting__posting import PostingFBSPosting

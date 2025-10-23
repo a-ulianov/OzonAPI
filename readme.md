@@ -219,7 +219,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/description-category/attribute/values/search` | Поиск по справочным значениям характеристики | `description_category_attribute_values_search()` |
 </details>
 <details>
-<summary>Загрузка и обновление товаров (17)</summary>
+<summary>Загрузка и обновление товаров (18)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -232,7 +232,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/rating-by-sku` | Получить контент-рейтинг товаров по SKU | `product_rating_by_sku()` |
 | ✓ | `/v3/product/info/list` | Получить информацию о товарах по идентификаторам | `product_info_list()` |
 | ✓ | `/v4/product/info/attributes` | Получить описание характеристик товара | `product_info_attributes()` |
-| ☐ | `/v1/product/info/description` | Получить описание товара | `product_info_description()` |
+| ✓ | `/v1/product/info/description` | Получить описание товара | `product_info_description()` |
 | ✓ | `/v4/product/info/limit` | Лимиты на ассортимент, создание и обновление товаров | `product_info_limit()` |
 | ✓ | `/v1/product/update/offer-id` | Изменить артикулы товаров из системы продавца | `product_update_offer_id()` |
 | ✓ | `/v1/product/archive` | Перенести товар в архив | `product_archive()` |
