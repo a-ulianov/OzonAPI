@@ -177,6 +177,17 @@ class CancellationType(str, Enum):
     UNSPECIFIED = ""
 
 
+class LabelType(str, Enum):
+    """Типы этикеток.
+
+    Attributes:
+        BIG_LABEL: Обычная этикетка
+        SMALL_LABEL: Маленькая этикетка
+    """
+    BIG_LABEL = "big_label"
+    SMALL_LABEL = "small_label"
+
+
 class PaymentTypeGroupName(str, Enum):
     """Тип оплаты.
     OZON_CARD: Ozon Карта

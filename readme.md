@@ -497,7 +497,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/product/country/set` | Добавить информацию о стране-изготовителе товара | `posting_fbs_product_country_set()` |
 | ✓ | `/v1/posting/fbs/restrictions` | Получить ограничения пункта приёма | `posting_fbs_restrictions()` |
 | ✓ | `/v2/posting/fbs/package-label` | Напечатать этикетку | `posting_fbs_package_label()` |
-| ☐ | `/v2/posting/fbs/package-label/create` | Создать задание на формирование этикеток | `posting_fbs_package_label_create()` |
+| ✓ | `/v2/posting/fbs/package-label/create` | Создать задание на формирование этикеток | `posting_fbs_package_label_create()` |
 | ☐ | `/v1/posting/fbs/package-label/get` | Получить файл с этикетками | `posting_fbs_package_label_get()` |
 | ☐ | `/v1/posting/fbs/cancel-reason` | Причины отмены отправления | `posting_fbs_cancel_reason()` |
 | ☐ | `/v2/posting/fbs/cancel-reason/list` | Причины отмены отправлений | `posting_fbs_cancel_reason_list()` |

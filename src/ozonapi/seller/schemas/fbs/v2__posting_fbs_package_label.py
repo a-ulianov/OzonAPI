@@ -15,7 +15,7 @@ class PostingFBSPackageLabelRequest(BaseModel):
 
 
 class PostingFBSPackageLabelResponse(BaseModel):
-    """Описывает схему ответа за запрос о печати этикеток.
+    """Описывает схему ответа на запрос о печати этикеток.
 
     Attributes:
         file_content: Содержание файла в бинарном виде
