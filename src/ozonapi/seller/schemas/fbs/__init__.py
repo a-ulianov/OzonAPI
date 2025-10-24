@@ -20,6 +20,8 @@ __all__ = [
     "PostingFBSOptional",
     "PostingFBSPackageLabelCreateRequest",
     "PostingFBSPackageLabelCreateResponse",
+    "PostingFBSPackageLabelGetRequest",
+    "PostingFBSPackageLabelGetResponse",
     "PostingFBSPackageLabelRequest",
     "PostingFBSPackageLabelResponse",
     "PostingFBSPosting",
@@ -55,6 +57,7 @@ from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBa
     PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, \
     PostingFBSProductDetailed, \
     PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith, PostingFBSProduct
+from .v1__posting_fbs_package_label_get import PostingFBSPackageLabelGetResponse, PostingFBSPackageLabelGetRequest
 from .v1__posting_fbs_restrictions import PostingFBSRestrictionsResponse, PostingFBSRestrictionsRequest
 from .v2__posting_fbs_get_by_barcode import PostingFBSGetByBarcodeRequest, PostingFBSGetByBarcodeResponse
 from .v2__posting_fbs_package_label import PostingFBSPackageLabelResponse, PostingFBSPackageLabelRequest

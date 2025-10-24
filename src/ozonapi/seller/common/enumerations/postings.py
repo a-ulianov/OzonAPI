@@ -177,6 +177,23 @@ class CancellationType(str, Enum):
     UNSPECIFIED = ""
 
 
+class LabelFormingStatus(str, Enum):
+    """Статус формирования этикеток.
+
+    Attributes:
+        PENDING: задание в очереди
+        IN_PROGRESS: формируются
+        COMPLETED: файл с этикетками готов
+        ERROR: ошибка при создании файла
+        UNSPECIFIED: не определено
+    """
+    PENDING = "pending"
+    IN_PROGRESS = "in_progress"
+    COMPLETED = "completed"
+    ERROR = "error"
+    UNSPECIFIED = ""
+
+
 class LabelType(str, Enum):
     """Типы этикеток.
 
