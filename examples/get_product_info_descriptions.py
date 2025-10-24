@@ -12,7 +12,7 @@
 Сделаем одного производителя для наполнения очереди необходимыми для выборки описаний
 айдишниками товаров и несколько потребителей, каждый из которых будет доставать
 айдишник из очереди и выгружать по нему описание, с ограничением кол-ва запросов в
-секунду как для каждого потребителя, так и для всей программы в целом.
+секунду для каждого потребителя.
 """
 
 import asyncio
@@ -22,6 +22,15 @@ from src.ozonapi import SellerAPI, SellerAPIConfig
 from src.ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse, \
     ProductInfoDescriptionRequest
 
+
+# Настройки обработки, позволяющие наблюдать асинхронность выполнения логики
+# Для production значение параметра product_list_limit может быть увеличено
+# Общее кол-во генерируемых потребителями запросов составит consumers_amount * consumer_rate_limit в сек.
+product_list_limit = 10                                     # Кол-во товаров, выгружаемых за одну итерацию
+consumers_amount = 5                                        # Кол-во потребителей, выгружающих описания
+consumer_rate_limit = 2                                     # Лимит запросов в секунду для каждого потребителя
+queue_max_size = product_list_limit * consumers_amount      # Максимальный размер очереди
+
 product_descriptions = list()
 
 async def producer(queue):
@@ -29,7 +38,7 @@ async def producer(queue):
 
     async with SellerAPI(
         config=SellerAPIConfig(
-            # Понижаем уровень логирования (для наглядности)
+            # Понижаем уровень логирования (для наглядности),
             log_level="INFO"
         )
     ) as api:
@@ -42,7 +51,7 @@ async def producer(queue):
             # Отправляем запрос и получаем очередную пачку данных о товарах
             products_batch: ProductListResponse = await api.product_list(
                 ProductListRequest(
-                    limit=10,
+                    limit=product_list_limit,
                     last_id=last_id
                 ),
             )
@@ -66,14 +75,14 @@ async def producer(queue):
                 break
 
 async def consumer(queue):
-    """Получает айдишники товаров из очереди, обрабатывает их и возвращает результат."""
+    """Получает айдишники товаров из очереди и обрабатывает их."""
 
     async with SellerAPI(
         config=SellerAPIConfig(
-            # Понижаем уровень логирования для наглядности
+            # Понижаем уровень логирования (для наглядности)
             log_level="INFO",
-            # Ограничиваем кол-во запросов в секунду
-            max_requests_per_second=2
+            # Ограничиваем кол-во запросов в секунду для каждого потребителя
+            max_requests_per_second=consumer_rate_limit
         )
     ) as api:
 
@@ -99,11 +108,11 @@ async def consumer(queue):
 
 async def main() -> None:
     # Создаем очередь заданий на выгрузку описаний
-    queue = asyncio.Queue(maxsize=100)
+    queue = asyncio.Queue(maxsize=queue_max_size)
 
     # Добавляем заданное кол-во потребителей (потребляют из очереди задачи на выгрузку описаний)
     # в событийный цикл
-    [asyncio.create_task(consumer(queue)) for _ in range(5)]
+    [asyncio.create_task(consumer(queue)) for _ in range(consumers_amount)]
 
     # Запускаем производителя (производит задачи на выгрузку описаний и добавляет их в очередь)
     await producer(queue)
