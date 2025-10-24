@@ -2,7 +2,7 @@
 from pydantic import BaseModel, Field
 
 
-class PostingFbsAwaitingDeliveryRequest(BaseModel):
+class PostingFBSAwaitingDeliveryRequest(BaseModel):
     """Описывает схему запроса на передачу отправлений к отгрузке.
 
     Attributes:
@@ -13,7 +13,7 @@ class PostingFbsAwaitingDeliveryRequest(BaseModel):
         max_length=100,
     )
 
-class PostingFbsAwaitingDeliveryResponse(BaseModel):
+class PostingFBSAwaitingDeliveryResponse(BaseModel):
     """Описывает схему ответа на запрос о передаче отправлений к отгрузке.
 
     Attributes:

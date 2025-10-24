@@ -177,6 +177,17 @@ class CancellationType(str, Enum):
     UNSPECIFIED = ""
 
 
+class CancellationReasonTypeId(str, Enum):
+    """Инициатор отмены отправления.
+
+    Attributes:
+        BUYER: покупатель
+        SELLER: продавец
+    """
+    BUYER = "buyer"
+    SELLER = "seller"
+
+
 class LabelFormingStatus(str, Enum):
     """Статус формирования этикеток.
 

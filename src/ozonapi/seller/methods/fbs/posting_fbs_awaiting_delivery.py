@@ -1,14 +1,14 @@
 from ...core import APIManager
-from ...schemas.fbs import PostingFbsAwaitingDeliveryRequest, PostingFbsAwaitingDeliveryResponse
+from ...schemas.fbs import PostingFBSAwaitingDeliveryRequest, PostingFBSAwaitingDeliveryResponse
 
 
-class PostingFbsAwaitingDeliveryMixin(APIManager):
+class PostingFBSAwaitingDeliveryMixin(APIManager):
     """Реализует метод /v2/posting/fbs/awaiting-delivery"""
 
     async def posting_fbs_awaiting_delivery(
-            self: "PostingFbsAwaitingDeliveryMixin",
-            request: PostingFbsAwaitingDeliveryRequest
-    ) -> PostingFbsAwaitingDeliveryResponse:
+            self: "PostingFBSAwaitingDeliveryMixin",
+            request: PostingFBSAwaitingDeliveryRequest
+    ) -> PostingFBSAwaitingDeliveryResponse:
         """Метод для передачи отправлений к отгрузке.
 
         Notes:
@@ -39,4 +39,4 @@ class PostingFbsAwaitingDeliveryMixin(APIManager):
             endpoint="posting/fbs/awaiting-delivery",
             json=request.model_dump()
         )
-        return PostingFbsAwaitingDeliveryResponse(**response)
+        return PostingFBSAwaitingDeliveryResponse(**response)

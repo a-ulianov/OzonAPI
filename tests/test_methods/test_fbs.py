@@ -8,7 +8,8 @@ from src.ozonapi.seller.schemas.fbs import (
     PostingFBSUnfulfilledListResponse, PostingFBSListResponse, PostingFBSGetResponse, PostingFBSGetByBarcodeResponse,
     PostingFBSMultiBoxQtySetResponse, PostingFBSProductChangeResponse, PostingFBSProductCountryListResponse,
     PostingFBSProductCountrySetResponse, PostingFBSRestrictionsResponse, PostingFBSPackageLabelResponse,
-    PostingFBSPackageLabelCreateResponse, PostingFBSPackageLabelGetResponse, PostingFbsAwaitingDeliveryResponse,
+    PostingFBSPackageLabelCreateResponse, PostingFBSPackageLabelGetResponse, PostingFBSAwaitingDeliveryResponse,
+    PostingFBSCancelReasonListResponse,
 )
 from src.ozonapi.seller.common.enumerations.requests import SortingDirection
 from src.ozonapi.seller.common.enumerations.postings import (
@@ -989,10 +990,10 @@ class TestSellerFBSAPI:
         mock_api_manager_request.return_value = mock_response_data
 
         from src.ozonapi.seller.schemas.fbs.v2__posting_fbs_awaiting_delivery import (
-            PostingFbsAwaitingDeliveryRequest
+            PostingFBSAwaitingDeliveryRequest
         )
 
-        request = PostingFbsAwaitingDeliveryRequest(
+        request = PostingFBSAwaitingDeliveryRequest(
             posting_number=["33920143-1195-1", "33920143-1195-2"]
         )
 
@@ -1005,5 +1006,75 @@ class TestSellerFBSAPI:
             json=request.model_dump()
         )
 
-        assert isinstance(response, PostingFbsAwaitingDeliveryResponse)
+        assert isinstance(response, PostingFBSAwaitingDeliveryResponse)
         assert response.result is True
+
+    @pytest.mark.asyncio
+    async def test_posting_fbs_cancel_reason_list(self, seller_fbs_api, mock_api_manager_request):
+        """Тестирует метод posting_fbs_cancel_reason_list."""
+
+        mock_response_data = {
+            "result": [
+                {
+                    "id": 352,
+                    "title": "Товар закончился на складе продавца",
+                    "type_id": "seller",
+                    "is_available_for_cancellation": True
+                },
+                {
+                    "id": 401,
+                    "title": "Продавец отклонил арбитраж",
+                    "type_id": "seller",
+                    "is_available_for_cancellation": False
+                },
+                {
+                    "id": 402,
+                    "title": "Другое (вина продавца)",
+                    "type_id": "seller",
+                    "is_available_for_cancellation": True
+                },
+                {
+                    "id": 666,
+                    "title": "Возврат из службы доставки: нет доставки в указанный регион",
+                    "type_id": "seller",
+                    "is_available_for_cancellation": False
+                }
+            ]
+        }
+        mock_api_manager_request.return_value = mock_response_data
+
+        response = await seller_fbs_api.posting_fbs_cancel_reason_list()
+
+        mock_api_manager_request.assert_called_once_with(
+            method="post",
+            api_version="v2",
+            endpoint="posting/fbs/cancel-reason/list",
+        )
+
+        assert isinstance(response, PostingFBSCancelReasonListResponse)
+        assert len(response.result) == 4
+
+        first_reason = response.result[0]
+        second_reason = response.result[1]
+        third_reason = response.result[2]
+        fourth_reason = response.result[3]
+
+        assert first_reason.id_ == 352
+        assert first_reason.title == "Товар закончился на складе продавца"
+        assert first_reason.type_id == "seller"
+        assert first_reason.is_available_for_cancellation is True
+
+        assert second_reason.id_ == 401
+        assert second_reason.title == "Продавец отклонил арбитраж"
+        assert second_reason.type_id == "seller"
+        assert second_reason.is_available_for_cancellation is False
+
+        assert third_reason.id_ == 402
+        assert third_reason.title == "Другое (вина продавца)"
+        assert third_reason.type_id == "seller"
+        assert third_reason.is_available_for_cancellation is True
+
+        assert fourth_reason.id_ == 666
+        assert fourth_reason.title == "Возврат из службы доставки: нет доставки в указанный регион"
+        assert fourth_reason.type_id == "seller"
+        assert fourth_reason.is_available_for_cancellation is False
