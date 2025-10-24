@@ -10,6 +10,7 @@ from .posting_fbs_multiboxqty_set import PostingFBSMultiBoxQtySetMixin
 from .posting_fbs_package_label import PostingFBSPackageLabelMixin
 from .posting_fbs_package_label_create import PostingFBSPackageLabelCreateMixin
 from .posting_fbs_package_label_get import PostingFBSPackageLabelGetMixin
+from .posting_fbs_product_cancel import PostingFBSProductCancelMixin
 from .posting_fbs_product_change import PostingFBSProductChangeMixin
 from .posting_fbs_product_country_list import PostingFBSProductCountryListMixin
 from .posting_fbs_product_country_set import PostingFBSProductCountrySetMixin
@@ -28,6 +29,7 @@ class SellerFBSAPI(
     PostingFBSPackageLabelCreateMixin,
     PostingFBSPackageLabelGetMixin,
     PostingFBSPackageLabelMixin,
+    PostingFBSProductCancelMixin,
     PostingFBSProductChangeMixin,
     PostingFBSProductCountryListMixin,
     PostingFBSProductCountrySetMixin,

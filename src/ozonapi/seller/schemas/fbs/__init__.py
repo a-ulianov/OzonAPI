@@ -31,6 +31,9 @@ __all__ = [
     "PostingFBSPackageLabelResponse",
     "PostingFBSPosting",
     "PostingFBSProduct",
+    "PostingFBSProductCancelItem",
+    "PostingFBSProductCancelRequest",
+    "PostingFBSProductCancelResponse",
     "PostingFBSProductChangeRequest",
     "PostingFBSProductChangeRequestItem",
     "PostingFBSProductChangeResponse",
@@ -71,6 +74,8 @@ from .v2__posting_fbs_get_by_barcode import PostingFBSGetByBarcodeRequest, Posti
 from .v2__posting_fbs_package_label import PostingFBSPackageLabelResponse, PostingFBSPackageLabelRequest
 from .v2__posting_fbs_package_label_create import PostingFBSPackageLabelCreateResponse, \
     PostingFBSPackageLabelCreateRequest
+from .v2__posting_fbs_product_cancel import PostingFBSProductCancelRequest, PostingFBSProductCancelResponse, \
+    PostingFBSProductCancelItem
 from .v2__posting_fbs_product_change import PostingFBSProductChangeRequestItem, PostingFBSProductChangeRequest, \
     PostingFBSProductChangeResponse
 from .v2__posting_fbs_product_country_list import PostingFBSProductCountryListResponse, \
