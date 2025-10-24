@@ -483,7 +483,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
 </details>
 <details>
-<summary>Обработка заказов FBS и rFBS (12)</summary>
+<summary>Обработка заказов FBS и rFBS (13)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -504,7 +504,7 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v2/posting/fbs/product/cancel` | Отменить отправку некоторых товаров в отправлении | `posting_fbs_product_cancel()` |
 | ☐ | `/v2/posting/fbs/cancel` | Отменить отправление | `posting_fbs_cancel()` |
 | ☐ | `/v2/posting/fbs/arbitration` | Открыть спор по отправлению | `posting_fbs_arbitration()` |
-| ☐ | `/v2/posting/fbs/awaiting-delivery` | Передать отправление к отгрузке | `posting_fbs_awaiting_delivery()` |
+| ✓ | `/v2/posting/fbs/awaiting-delivery` | Передать отправление к отгрузке | `posting_fbs_awaiting_delivery()` |
 | ☐ | `/v1/posting/fbs/pick-up-code/verify` | Проверить код курьера | `posting_fbs_pick_up_code_verify()` |
 | ☐ | `/v1/posting/global/etgb` | Таможенные декларации ETGB | `posting_global_etgb()` |
 | ☐ | `/v1/posting/unpaid-legal/product/list` | Список неоплаченных товаров, заказанных юридическими лицами | `posting_unpaid_legal_product_list()` |
