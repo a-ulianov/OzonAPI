@@ -483,7 +483,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
 </details>
 <details>
-<summary>Обработка заказов FBS и rFBS (14)</summary>
+<summary>Обработка заказов FBS и rFBS (15)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -499,7 +499,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/package-label` | Напечатать этикетку | `posting_fbs_package_label()` |
 | ✓ | `/v2/posting/fbs/package-label/create` | Создать задание на формирование этикеток | `posting_fbs_package_label_create()` |
 | ✓ | `/v1/posting/fbs/package-label/get` | Получить файл с этикетками | `posting_fbs_package_label_get()` |
-| ☐ | `/v1/posting/fbs/cancel-reason` | Причины отмены отправления | `posting_fbs_cancel_reason()` |
+| ✓ | `/v1/posting/fbs/cancel-reason` | Причины отмены отправления | `posting_fbs_cancel_reason()` |
 | ✓ | `/v2/posting/fbs/cancel-reason/list` | Причины отмены отправлений | `posting_fbs_cancel_reason_list()` |
 | ☐ | `/v2/posting/fbs/product/cancel` | Отменить отправку некоторых товаров в отправлении | `posting_fbs_product_cancel()` |
 | ☐ | `/v2/posting/fbs/cancel` | Отменить отправление | `posting_fbs_cancel()` |

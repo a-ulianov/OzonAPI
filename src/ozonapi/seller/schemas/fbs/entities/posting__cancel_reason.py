@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from ....common.enumerations.postings import CancellationReasonTypeId
 
 
-class PostingFBSCancelReasonBase(BaseModel):
+class PostingFBSCancelReason(BaseModel):
     """Базовая схема описания причины отмены отправления.
 
     Attributes:

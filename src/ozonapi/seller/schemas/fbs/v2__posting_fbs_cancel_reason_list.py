@@ -1,10 +1,10 @@
 """https://docs.ozon.ru/api/seller/?#operation/PostingAPI_GetPostingFbsCancelReasonList"""
 from pydantic import BaseModel, Field
 
-from .entities import PostingFBSCancelReasonBase
+from .entities import PostingFBSCancelReason
 
 
-class PostingFBSCancelReasonListItem(PostingFBSCancelReasonBase):
+class PostingFBSCancelReasonListItem(PostingFBSCancelReason):
     """Описание причины отмены отправления.
 
     Attributes:

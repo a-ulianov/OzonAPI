@@ -9,6 +9,8 @@ __all__ = [
     "PostingFBSBarcodes",
     "PostingFBSCancellation",
     "PostingFBSCancelReasonListResponse",
+    "PostingFBSCancelReasonRequest",
+    "PostingFBSCancelReasonResponse",
     "PostingFBSCustomer",
     "PostingFBSCustomerAddress",
     "PostingFBSDeliveryMethod",
@@ -60,6 +62,7 @@ from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBa
     PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, \
     PostingFBSProductDetailed, \
     PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith, PostingFBSProduct
+from .v1__posting_fbs_cancel_reason import PostingFBSCancelReasonResponse, PostingFBSCancelReasonRequest
 from .v1__posting_fbs_package_label_get import PostingFBSPackageLabelGetResponse, PostingFBSPackageLabelGetRequest
 from .v1__posting_fbs_restrictions import PostingFBSRestrictionsResponse, PostingFBSRestrictionsRequest
 from .v2__posting_fbs_awaiting_delivery import PostingFBSAwaitingDeliveryResponse, PostingFBSAwaitingDeliveryRequest
