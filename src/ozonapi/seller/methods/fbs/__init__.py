@@ -4,6 +4,7 @@ from .posting_fbs_get import PostingFBSGetMixin
 from .posting_fbs_get_by_barcode import PostingFBSGetByBarcodeMixin
 from .posting_fbs_list import PostingFBSListMixin
 from .posting_fbs_multiboxqty_set import PostingFBSMultiBoxQtySetMixin
+from .posting_fbs_package_label import PostingFBSPackageLabelMixin
 from .posting_fbs_product_change import PostingFBSProductChangeMixin
 from .posting_fbs_product_country_list import PostingFBSProductCountryListMixin
 from .posting_fbs_product_country_set import PostingFBSProductCountrySetMixin
@@ -16,6 +17,7 @@ class SellerFBSAPI(
     PostingFBSGetMixin,
     PostingFBSListMixin,
     PostingFBSMultiBoxQtySetMixin,
+    PostingFBSPackageLabelMixin,
     PostingFBSProductChangeMixin,
     PostingFBSProductCountryListMixin,
     PostingFBSProductCountrySetMixin,
