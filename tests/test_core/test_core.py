@@ -431,7 +431,7 @@ class TestAPIManager:
     async def test_error_logging(self, api_manager, caplog):
         """Тест логирования ошибок."""
         with patch('src.ozonapi.seller.core.core.APIManager._session_manager') as mock_session_manager, \
-                patch.object(APIManager._class_logger, 'error') as mock_class_error:
+                patch.object(APIManager._class_logger, 'warning') as mock_class_error:
             mock_session = AsyncMock(spec=ClientSession)
             mock_session_manager.get_session.return_value.__aenter__.return_value = mock_session
 
