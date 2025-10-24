@@ -1,6 +1,7 @@
 __all__ = ["SellerFBSAPI", ]
 
 from .posting_fbs_awaiting_delivery import PostingFBSAwaitingDeliveryMixin
+from .posting_fbs_cancel import PostingFBSCancelMixin
 from .posting_fbs_cancel_reason import PostingFBSCancelReasonMixin
 from .posting_fbs_cancel_reason_list import PostingFBSCancelReasonListMixin
 from .posting_fbs_get import PostingFBSGetMixin
@@ -20,6 +21,7 @@ from .posting_fbs_unfulfilled_list import PostingFBSUnfulfilledListMixin
 
 class SellerFBSAPI(
     PostingFBSAwaitingDeliveryMixin,
+    PostingFBSCancelMixin,
     PostingFBSCancelReasonListMixin,
     PostingFBSCancelReasonMixin,
     PostingFBSGetByBarcodeMixin,
