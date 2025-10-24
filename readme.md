@@ -483,7 +483,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
 </details>
 <details>
-<summary>Обработка заказов FBS и rFBS (9)</summary>
+<summary>Обработка заказов FBS и rFBS (11)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
