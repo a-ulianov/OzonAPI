@@ -293,7 +293,7 @@ class APIManager:
             "error_details": details,
         })
 
-        APIManager._class_logger.error(f"Ошибка API: {message}", extra=log_context)
+        APIManager._class_logger.warning(f"Ошибка API: {message}", extra=log_context)
 
         error_map = {
             400: APIClientError,
