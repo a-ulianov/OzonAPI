@@ -12,10 +12,10 @@ class PostingFBSCancelMixin(APIManager):
         """Метод для отмены отправления FBS/rFBS.
 
         Notes:
-            • Меняет статус отправления на cancelled.
+            • Меняет статус отправления на `cancelled`.
             • Перед началом работы проверьте причины отмены для конкретного отправления методом `/v1/posting/fbs/cancel-reason`.
             • Условно-доставленные отправления отменить нельзя.
-            • Если значение параметра cancel_reason_id — 402, заполните поле cancel_reason_message.
+            • Если значение параметра `cancel_reason_id` — 402, заполните поле `cancel_reason_message`.
 
         References:
             https://docs.ozon.ru/api/seller/#operation/PostingAPI_CancelFbsPosting

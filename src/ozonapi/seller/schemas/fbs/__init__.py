@@ -4,6 +4,8 @@ https://docs.ozon.ru/api/seller/?__rr=1#tag/FBS
 __all__ = [
     "PostingFBSAddressee",
     "PostingFBSAnalyticsData",
+    "PostingFBSArbitrationRequest",
+    "PostingFBSArbitrationResponse",
     "PostingFBSAwaitingDeliveryRequest",
     "PostingFBSAwaitingDeliveryResponse",
     "PostingFBSBarcodes",
@@ -70,6 +72,7 @@ from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBa
 from .v1__posting_fbs_cancel_reason import PostingFBSCancelReasonResponse, PostingFBSCancelReasonRequest
 from .v1__posting_fbs_package_label_get import PostingFBSPackageLabelGetResponse, PostingFBSPackageLabelGetRequest
 from .v1__posting_fbs_restrictions import PostingFBSRestrictionsResponse, PostingFBSRestrictionsRequest
+from .v2__posting_fbs_arbitration import PostingFBSArbitrationRequest, PostingFBSArbitrationResponse
 from .v2__posting_fbs_awaiting_delivery import PostingFBSAwaitingDeliveryResponse, PostingFBSAwaitingDeliveryRequest
 from .v2__posting_fbs_cancel import PostingFBSCancelRequest, PostingFBSCancelResponse
 from .v2__posting_fbs_cancel_reason_list import PostingFBSCancelReasonListResponse
