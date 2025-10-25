@@ -61,7 +61,7 @@ async def get_fbs_unfulfilled_postings_and_print_detailed_info():
                 )
             )
 
-        # Выполняем все запросы параллельно (лимиты запросов сконфигурированы по умолчанию)
+        # Асинхронно получаем данные (лимиты запросов сконфигурированы по умолчанию)
         detailed_postings: list[PostingFBSGetResponse] = await asyncio.gather(*tasks)
 
         # Выводим в консоль, предварительно преобразовав модели отправлений в словари (для наглядности)
