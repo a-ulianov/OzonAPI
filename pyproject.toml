@@ -34,6 +34,7 @@ dependencies = [
 
 [[project.authors]]
 name = "Alexander Ulianov"
+email = "a.v.ulianov@mail.ru"
 
 [project.license]
 text = "MIT"
