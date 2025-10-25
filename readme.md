@@ -141,8 +141,7 @@ product_info_description().
 
 Сделаем одного производителя, чтобы складывал идентификаторы в очередь,
 и несколько потребителей, каждый из которых будет забирать по одному 
-из очереди и асинхронно выгружать его описание, 
-с ограничением запросов.
+из очереди и асинхронно выгружать его описание, с ограничением запросов.
 """
 
 import asyncio
@@ -152,11 +151,12 @@ from ozonapi import SellerAPI, SellerAPIConfig
 from ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse, \
     ProductInfoDescriptionRequest
 
-
-# Подобраны настройки обработки, позволяющие наблюдать асинхронность выполнения логики.
-# Для prod значение параметра product_list_limit может быть увеличено.
-# Общее кол-во запросов составит consumers_amount * consumer_rate_limit в сек + запросы по
-# дефолтным лимитам из SellerAPIConfig для функции producer, но не больше допустимого максимума.
+"""
+Подобраны настройки, позволяющие наблюдать в консоли асинхронность выполнения логики.
+Для prod значение параметра product_list_limit может быть увеличено.
+Общее кол-во запросов составит consumers_amount * consumer_rate_limit в сек + запросы по
+дефолтным лимитам из SellerAPIConfig для функции producer, с учетом допустимого максимума.
+"""
 
 product_list_limit = 10                                 # Кол-во товаров, выгружаемых за одну итерацию
 consumers_amount = 5                                    # Кол-во потребителей, выгружающих описания
@@ -365,7 +365,7 @@ pytest --cov=ozonapi --cov-report=html
 - Changelog: [Releases](https://github.com/a-ulianov/OzonAPI/releases)
 
 
-## Реализованные методы Ozon Seller API
+## ✔️ Реализованные методы Ozon Seller API
 
 <details>
 <summary>Атрибуты и характеристики Ozon (4)</summary>
