@@ -1,5 +1,5 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/ozonapi-async?logo=PyPI&color=0f81c2)](https://pypi.org/project/ozonapi-async/)
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/ozonapi-async?period=total&units=INTERNATIONAL_SYSTEM&left_color=GREY&right_color=BRIGHTGREEN&left_text=downloads)](https://pypi.org/project/ozonapi-async/)
+[![Pepy Total Downloads](https://img.shields.io/pepy/dt/ozonapi-async)](https://pypi.org/project/ozonapi-async/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/a-ulianov/OzonAPI)](https://github.com/a-ulianov/OzonAPI)
 [![Tests](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml/badge.svg)](https://github.com/a-ulianov/OzonAPI/actions/workflows/test.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=a-ulianov_OzonAPI&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=a-ulianov_OzonAPI)[![codecov](https://codecov.io/gh/a-ulianov/OzonAPI/branch/main/graph/badge.svg)](https://codecov.io/gh/a-ulianov/OzonAPI) 
@@ -9,12 +9,13 @@
 
 # 🌀 OzonAPI 
 
-Предоставляет удобный асинхронный python-интерфейс для взаимодействия с Ozon API Seller.
-Легко интегрируется как в скрипты, так и в сервисы.
+Предоставляет легковесный асинхронный pydantic-интерфейс для взаимодействия с **Ozon API Seller**.
+
+**Поддерживает ограничения запросов, работу с несколькими client_id, гибкую настройку через `.env`.**
 
 
 **✅ Актуально на 4-й квартал 2025 года.**
-**🤝 Контрибуции приветствуются!**
+**🤝 Коммиты приветствуются!**
 
 [![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ozonapi_async)
 
