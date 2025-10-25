@@ -349,11 +349,6 @@ config = SellerAPIConfig(
 git clone https://github.com/a-ulianov/OzonAPI.git
 cd OzonAPI
 pip install -e
-```
-
-### Запуск тестов
-
-```bash
 pytest --cov=ozonapi --cov-report=html
 ```
 
@@ -363,7 +358,7 @@ pytest --cov=ozonapi --cov-report=html
 - Документация: [GitHub Repository](https://github.com/a-ulianov/OzonAPI#readme)
 - Issues: [GitHub Issues](https://github.com/a-ulianov/OzonAPI/issues)
 - Changelog: [Releases](https://github.com/a-ulianov/OzonAPI/releases)
-
+- Telegram: [OzonAPI Async](https://t.me/ozonapi_async)
 
 ## ✔️ Реализованные методы Ozon Seller API
 
