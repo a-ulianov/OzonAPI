@@ -70,7 +70,7 @@ class APIConfig(BaseSettings):
         description="Таймаут запросов в секундах"
     )
     max_retries: int = Field(
-        default=3,
+        default=5,
         ge=0,
         le=10,
         description="Максимальное количество повторных попыток для неудачных запросов"
