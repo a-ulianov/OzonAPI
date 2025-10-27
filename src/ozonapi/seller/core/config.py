@@ -9,7 +9,6 @@ class APIConfig(BaseSettings):
     Attributes:
         client_id: Идентификатор клиента Ozon (опционально)
         api_key: Авторизационный ключ Ozon Seller API (опционально)
-        log_level: Уровень логирования (опционально)
         base_url: Базовый URL API Ozon (опционально)
         max_requests_per_second: Максимальное количество запросов в секунду (опционально, 50 по документации Ozon)
         cleanup_interval: Интервал очистки неиспользуемых ресурсов в секундах (опционально)
@@ -19,6 +18,16 @@ class APIConfig(BaseSettings):
         max_retries: Максимальное количество повторных попыток для неудачных запросов (опционально)
         retry_min_wait: Минимальная задержка между повторами неудачных запросов в секундах (опционально)
         retry_max_wait: Максимальная задержка между повторами неудачных запросов в секундах (опционально)
+
+        log_level: Уровень логирования (опционально)
+        log_json: Выводить в JSON (опционально)
+        log_format: Формат лога (опционально)
+        log_use_async: True, чтобы включить асинхронный режим (опционально)
+        log_max_queue_size: Максимальный размер очереди (опционально, только для асинхронного режима)
+        log_dir: Адрес к дирректирии с логами (опционально)
+        log_file: Имя файла логов (опционально)
+        log_max_bytes: Максимальный размер файла логов в байтах (опционально)
+        log_backup_files_count: Кол-во файлов архивных логов, которые нужно хранить (опционально)
 
     Notes:
         Любой из атрибутов конфигурации можно задать в файле `.env`, расположенном в корне вашего проекта.
@@ -87,19 +96,30 @@ class APIConfig(BaseSettings):
         description="Уровень логирования."
     )
 
-    log_name: Optional[str] = ''
-    log_json: Optional[bool] = False
-    log_format: Optional[str] = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    log_json: Optional[bool] = Field(
+        False, description="Выводить в JSON."
+    )
+    log_format: Optional[str] = Field(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s', description="Формат лога."
+    )
     log_use_async: Optional[bool] = Field(
-        True, description='Enable async logging'
+        True, description='True, чтобы включить асинхронное логирование.'
     )
     log_max_queue_size: Optional[int] = Field(
-        10000, description='Limit queue size (for async mode only)'
+        10000, description='Размер очереди (только для async mode).'
     )
-    log_dir: Optional[str] = None
-    log_file: Optional[str] = None
-    log_max_bytes: Optional[int] = 10 * 1024 * 1024  # 10MB
-    log_backup_files_count: Optional[int] = 5
+    log_dir: Optional[str] = Field(
+        None, description="Путь к директории с логами."
+    )
+    log_file: Optional[str] = Field(
+        None, description="Название файла логов."
+    )
+    log_max_bytes: Optional[int] = Field(
+        10 * 1024 * 1024, description="Максимальный размер лога."
+    )
+    log_backup_files_count: Optional[int] = Field(
+        5, description="Кол-во архивных файлов."
+    )
 
     @field_validator("base_url")
     def validate_base_url(cls, v: str) -> str:
