@@ -5,8 +5,9 @@ from functools import wraps
 from typing import Optional, Any
 
 from aiolimiter import AsyncLimiter
-from loguru import logger
 from pydantic import BaseModel, Field
+
+from ...infra.logging import ozonapi_logger as logger
 
 
 class MethodRateLimitConfig(BaseModel):
@@ -26,7 +27,7 @@ class MethodRateLimiterManager:
             self,
             cleanup_interval: float = 300.0,
             min_instance_ttl: float = 300.0,
-            instance_logger = logger
+            instance_logger=logger
     ) -> None:
         self._rate_limiters: dict[str, AsyncLimiter] = {}
         self._limiter_configs: dict[str, MethodRateLimitConfig] = {}
@@ -147,6 +148,7 @@ class MethodRateLimiterManager:
                     }
             return stats
 
+
 def method_rate_limit(limit_requests: int, interval_seconds: float):
     """
     Декоратор для применения дополнительных ограничений частоты запросов к методам API.
@@ -199,6 +201,7 @@ def method_rate_limit(limit_requests: int, interval_seconds: float):
                     f"{limit_requests} запросов в {interval_seconds} сек"
                 )
                 return await method(self, *args, **kwargs)
+
         # Добавляем метаданные
         wrapper._rate_limit_config = config
         return wrapper

@@ -1,9 +1,9 @@
 import asyncio
 from contextlib import asynccontextmanager
 from typing import AsyncIterator
-
 from aiohttp import ClientSession, ClientTimeout, TCPConnector
-from loguru import logger
+
+from ...infra.logging import ozonapi_logger as logger
 
 
 class SessionManager:

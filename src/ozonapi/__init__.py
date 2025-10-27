@@ -29,6 +29,10 @@ Examples:
     if __name__ == '__main__':
         limits = asyncio.run(get_product_info_limit())
 """
+from .infra import logging
+from .infra.logging import ozonapi_logger as logger
+from .seller import SellerAPI, SellerAPIConfig
+
 
 __version__ = "0.11.3"
 __author__ = "Alexander Ulianov"
@@ -37,6 +41,4 @@ __repository__ = "https://github.com/a-ulianov/OzonAPI"
 __docs__ = "https://github.com/a-ulianov/OzonAPI#readme"
 __issues__ = "https://github.com/a-ulianov/OzonAPI/issues"
 
-__all__ = ["SellerAPI", "SellerAPIConfig", ]
-
-from .seller import SellerAPI, SellerAPIConfig
+__all__ = ["SellerAPI", "SellerAPIConfig", "logging", "logger"]

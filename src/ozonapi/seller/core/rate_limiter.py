@@ -1,9 +1,9 @@
 import asyncio
 import time
 from typing import Optional, Any
-
 from aiolimiter import AsyncLimiter
-from loguru import logger
+
+from ...infra.logging import ozonapi_logger as logger
 
 
 class RateLimiterConfig:

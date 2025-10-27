@@ -25,7 +25,5 @@ class SellerAPI(
     """
     pass
 
-
 __all__ = ["SellerAPI", "SellerAPIConfig"]
 
-# Импортируйте здесь бизнес-методы и собирайте публичный API

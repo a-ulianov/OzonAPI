@@ -1,12 +1,10 @@
 import asyncio
-import logging
-import sys
+from logging import Logger
 from types import TracebackType
 from typing import Any, Literal, Optional, ClassVar
 
 import aiohttp
 from dotenv import load_dotenv
-from loguru import logger
 from tenacity import (
     retry,
     retry_if_exception_type,
@@ -28,6 +26,8 @@ from .exceptions import (
     APIServerError, APITooManyRequestsError,
 )
 
+from ...infra import logging
+
 
 class APIManager:
     """
@@ -44,13 +44,7 @@ class APIManager:
     _initialized: ClassVar[bool] = False
     _instance_count: ClassVar[int] = 0
 
-    _class_logger: ClassVar = logger
-    _class_logger.remove()
-    _class_logger.add(
-        sys.stderr,
-        level=APIConfig().log_level,
-        enqueue=True,
-    )
+    _class_logger: ClassVar = logging.manager.get_logger('seller')
 
 
     def __init__(
@@ -83,18 +77,18 @@ class APIManager:
         if APIManager._rate_limiter_manager is None:
             APIManager._rate_limiter_manager = RateLimiterManager(
                 cleanup_interval=self._config.cleanup_interval,
-                instance_logger=self.logger
+                instance_logger=logging.manager.get_logger(f"{self.logger.name}.rate_limiter")
             )
         if APIManager._session_manager is None:
             APIManager._session_manager = SessionManager(
                 timeout=self._config.request_timeout,
                 connector_limit=self._config.connector_limit,
-                instance_logger=self.logger
+                instance_logger=logging.manager.get_logger(f"{self.logger.name}.session")
             )
         if APIManager._method_rate_limiter_manager is None:
             APIManager._method_rate_limiter_manager = MethodRateLimiterManager(
                 cleanup_interval=self._config.cleanup_interval,
-                instance_logger=self.logger
+                instance_logger=logging.manager.get_logger(f"{self.logger.name}.method_rate_limiter")
             )
 
         APIManager._instance_count += 1
@@ -117,16 +111,15 @@ class APIManager:
                 )
             )
 
-    def _get_instance_logger(self) -> logging.Logger:
+    def _get_instance_logger(self) -> Logger:
         """Инициализирует и возвращает настроенный логер для экземпляра."""
-        instance_logger = logger.bind(client_id=self._client_id)
-
-        instance_logger.remove()
-        instance_logger.add(
-            sys.stderr,
-            level=self._config.log_level,
-            enqueue=True,
-        )
+        instance_logger = logging.manager.get_logger(f"seller.client[{self._client_id}]")
+        # instance_logger.add(
+        #     sys.stderr,
+        #     level=self._config.log_level,
+        #     enqueue=True,
+        # )
+        instance_logger
 
         return instance_logger
 
@@ -287,13 +280,7 @@ class APIManager:
         message = data.get("message", "Unknown error")
         details = data.get("details", [])
 
-        log_context.update({
-            "error_code": code,
-            "error_message": message,
-            "error_details": details,
-        })
-
-        APIManager._class_logger.warning(f"Ошибка API: {message}", extra=log_context)
+        APIManager._class_logger.warning(f"Ошибка API: {message}")
 
         error_map = {
             400: APIClientError,
@@ -310,7 +297,6 @@ class APIManager:
     async def _request(
             self,
             method: Literal["post", "get", "put", "delete"] = "post",
-            api_name: str = "Ozon Seller API",
             api_version: str = "v1",
             endpoint: str = "",
             json: Optional[dict[str, Any]] = None,
@@ -348,16 +334,12 @@ class APIManager:
         url = f"{self._config.base_url}/{api_version}/{endpoint}"
 
         log_context = {
-            "api_name": api_name,
-            "client_id": self._client_id,
             "method": method,
-            "endpoint": endpoint,
-            "api_version": api_version,
-            "url": url,
+            "endpoint": f"{api_version}/{endpoint}",
             "has_payload": json is not None,
         }
 
-        self.logger.debug("Отправка запроса к API", extra=log_context)
+        self.logger.debug(f"Отправка запроса к API: {log_context}")
 
         await self._ensure_registered()
 
@@ -386,20 +368,24 @@ class APIManager:
                                 "status_code": response.status,
                                 "response_size": len(str(data))
                             })
+                            if "method" in log_context:
+                                del(log_context["method"])
+                            if "has_payload" in log_context:
+                                del(log_context["has_payload"])
 
                             if response.status >= 400:
                                 error = self._handle_error_response(response, data, log_context)
                                 if error:
                                     raise error
 
-                            self.logger.debug("Успешный ответ от API", extra=log_context)
+                            self.logger.debug(f"Успешный ответ от API: {log_context}")
                             return data
 
                     except asyncio.TimeoutError:
-                        self.logger.error("Таймаут запроса к API", extra=log_context)
+                        self.logger.error("Таймаут запроса к API")
                         raise APIError(408, "Request timeout")
                     except asyncio.CancelledError:
-                        self.logger.warning("Запрос к API отменен", extra=log_context)
+                        self.logger.warning("Запрос к API отменен")
                         raise
                     except (aiohttp.ClientError, ConnectionError, OSError) as e:
                         log_context.update({

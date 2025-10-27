@@ -81,10 +81,25 @@ class APIConfig(BaseSettings):
         gt=0,
         description="Максимальная задержка между повторами неудачных запросов в секундах"
     )
+
     log_level: Optional[str] = Field(
-        default="ERROR",
+        'ERROR', pattern='^(DEBUG|INFO|WARNING|ERROR|CRITICAL)$',
         description="Уровень логирования."
     )
+
+    log_name: Optional[str] = ''
+    log_json: Optional[bool] = False
+    log_format: Optional[str] = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    log_use_async: Optional[bool] = Field(
+        True, description='Enable async logging'
+    )
+    log_max_queue_size: Optional[int] = Field(
+        10000, description='Limit queue size (for async mode only)'
+    )
+    log_dir: Optional[str] = None
+    log_file: Optional[str] = None
+    log_max_bytes: Optional[int] = 10 * 1024 * 1024  # 10MB
+    log_backup_files_count: Optional[int] = 5
 
     @field_validator("base_url")
     def validate_base_url(cls, v: str) -> str:
