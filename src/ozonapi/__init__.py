@@ -30,7 +30,7 @@ Examples:
         limits = asyncio.run(get_product_info_limit())
 """
 
-__version__ = "0.11.2"
+__version__ = "0.11.3"
 __author__ = "Alexander Ulianov"
 __email__ = "a.v.ulianov@mail.ru"
 __repository__ = "https://github.com/a-ulianov/OzonAPI"

@@ -35,10 +35,6 @@ class APIConfig(BaseSettings):
         default=None,
         description="Авторизационный ключ Ozon Seller API",
     )
-    log_level: Optional[str] = Field(
-        default="ERROR",
-        description="Уровень логирования."
-    )
     base_url: str = Field(
         default="https://api-seller.ozon.ru",
         description="Базовый URL API Ozon"
@@ -84,6 +80,10 @@ class APIConfig(BaseSettings):
         default=10.0,
         gt=0,
         description="Максимальная задержка между повторами неудачных запросов в секундах"
+    )
+    log_level: Optional[str] = Field(
+        default="ERROR",
+        description="Уровень логирования."
     )
 
     @field_validator("base_url")
