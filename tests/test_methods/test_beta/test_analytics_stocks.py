@@ -10,21 +10,10 @@ from src.ozonapi.seller.schemas.beta import (
 
 
 class TestSellerBetaAPI:
-    """Тесты для класса SellerBetaAPI."""
-
-    @pytest.fixture
-    def seller_beta_api(self):
-        """Фикстура для создания экземпляра SellerBetaAPI."""
-        return SellerBetaAPI(client_id="test_client", api_key="test_api_key")
-
-    @pytest.fixture
-    def mock_api_manager_request(self):
-        """Фикстура для мока метода _request APIManager."""
-        with patch.object(SellerBetaAPI, '_request', new_callable=AsyncMock) as mock_request:
-            yield mock_request
+    """Тесты для метода analytics_stocks."""
 
     @pytest.mark.asyncio
-    async def test_analytics_stocks(self, seller_beta_api, mock_api_manager_request):
+    async def test_analytics_stocks(self, api, mock_api_request):
         """Тестирует метод analytics_stocks."""
         mock_response_data = {
             "items": [
@@ -60,7 +49,7 @@ class TestSellerBetaAPI:
                 }
             ]
         }
-        mock_api_manager_request.return_value = mock_response_data
+        mock_api_request.return_value = mock_response_data
 
         request = AnalyticsStocksRequest(
             skus=[123456789, 987654321],
@@ -69,9 +58,9 @@ class TestSellerBetaAPI:
             item_tags=[ItemTag.ITEM_ATTRIBUTE_NONE],
             turnover_grades=[TurnoverGrade.DEFICIT, TurnoverGrade.POPULAR],
         )
-        response = await seller_beta_api.analytics_stocks(request)
+        response = await api.analytics_stocks(request)
 
-        mock_api_manager_request.assert_called_once_with(
+        mock_api_request.assert_called_once_with(
             method="post",
             api_version="v1",
             endpoint="analytics/stocks",
