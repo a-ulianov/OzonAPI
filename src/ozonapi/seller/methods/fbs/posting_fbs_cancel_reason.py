@@ -37,6 +37,6 @@ class PostingFBSCancelReasonMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="posting/fbs/cancel-reason",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSCancelReasonResponse(**response)

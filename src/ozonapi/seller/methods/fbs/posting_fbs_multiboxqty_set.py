@@ -45,6 +45,6 @@ class PostingFBSMultiBoxQtySetMixin(APIManager):
             method="post",
             api_version="v3",
             endpoint="posting/multi-box-qty/set",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSMultiBoxQtySetResponse(**response)

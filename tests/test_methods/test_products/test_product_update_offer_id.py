@@ -23,7 +23,7 @@ class TestProductUpdateOfferId:
             method="post",
             api_version="v1",
             endpoint="product/update/offer-id",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductUpdateOfferIdResponse)
         assert response.errors == []

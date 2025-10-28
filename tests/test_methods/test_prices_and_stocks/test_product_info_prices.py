@@ -23,7 +23,7 @@ class TestProductInfoPrices:
             method="post",
             api_version="v5",
             endpoint="product/info/prices",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductInfoPricesResponse)
         assert response.cursor == "test_cursor"

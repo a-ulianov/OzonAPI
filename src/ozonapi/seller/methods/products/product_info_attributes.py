@@ -50,6 +50,6 @@ class ProductInfoAttributesMixin(APIManager):
             method="post",
             api_version="v4",
             endpoint="product/info/attributes",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductInfoAttributesResponse(**response)

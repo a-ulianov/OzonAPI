@@ -23,7 +23,7 @@ class TestProductArchive:
             method="post",
             api_version="v1",
             endpoint="product/archive",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductArchiveResponse)
         assert response.result is True

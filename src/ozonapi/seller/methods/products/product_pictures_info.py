@@ -36,6 +36,6 @@ class ProductPicturesInfoMixin(APIManager):
             method="post",
             api_version="v2",
             endpoint="product/pictures/info",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductPicturesInfoResponse(**response)

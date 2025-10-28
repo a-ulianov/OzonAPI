@@ -43,7 +43,7 @@ class TestPostingFBSProductCountryList:
             method="post",
             api_version="v2",
             endpoint="posting/fbs/product/country/list",
-            json=request.model_dump(by_alias=True)
+            payload=request.model_dump(by_alias=True)
         )
 
         assert isinstance(response1, PostingFBSProductCountryListResponse)

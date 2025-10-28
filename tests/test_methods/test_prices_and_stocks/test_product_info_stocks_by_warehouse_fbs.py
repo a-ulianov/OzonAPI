@@ -24,7 +24,7 @@ class TestProductInfoStocksByWarehouseFBS:
             method="post",
             api_version="v1",
             endpoint="product/info/stocks-by-warehouse/fbs",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductInfoStocksByWarehouseFBSResponse)
         assert response.result == []

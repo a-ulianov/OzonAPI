@@ -37,6 +37,6 @@ class PostingFBSPackageLabelCreateMixin(APIManager):
             method="post",
             api_version="v2",
             endpoint="posting/fbs/package-label/create",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSPackageLabelCreateResponse(**response)

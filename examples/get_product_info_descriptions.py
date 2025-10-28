@@ -42,7 +42,7 @@ async def producer(queue):
     async with SellerAPI(
         config=SellerAPIConfig(
             # Понижаем уровень логирования (для наглядности)
-            log_level="INFO"
+            log_level="DEBUG"
         )
     ) as api:
 
@@ -83,7 +83,7 @@ async def consumer(queue):
     async with SellerAPI(
         config=SellerAPIConfig(
             # Понижаем уровень логирования
-            log_level="INFO",
+            log_level="DEBUG",
             # Ограничиваем кол-во запросов в секунду для каждого потребителя
             max_requests_per_second=consumer_rate_limit
         )

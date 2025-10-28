@@ -1,6 +1,8 @@
 from typing import Optional
 
-from pydantic import Field, field_validator, ConfigDict
+from ...infra import logging
+
+from pydantic import Field, field_validator, ConfigDict, model_validator
 from pydantic_settings import BaseSettings
 
 class APIConfig(BaseSettings):
@@ -112,7 +114,7 @@ class APIConfig(BaseSettings):
         None, description="Путь к директории с логами."
     )
     log_file: Optional[str] = Field(
-        None, description="Название файла логов."
+        None, description="Название файла логов. Файловое логирование активируется предоставлением имени файла."
     )
     log_max_bytes: Optional[int] = Field(
         10 * 1024 * 1024, description="Максимальный размер лога."
@@ -120,6 +122,15 @@ class APIConfig(BaseSettings):
     log_backup_files_count: Optional[int] = Field(
         5, description="Кол-во архивных файлов."
     )
+    logger: Optional[logging.Logger] = Field(
+        None, description="Корневой логер раздела seller. Поле заполняется системой."
+    )
+    @model_validator(mode="after")
+    def get_logger(self):
+        """Назначает корневой логер раздела для сессии, используется для логирования."""
+        if self.logger is None:
+            self.logger = logging.manager.get_logger("seller")
+        return self
 
     @field_validator("base_url")
     def validate_base_url(cls, v: str) -> str:

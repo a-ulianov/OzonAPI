@@ -29,7 +29,7 @@ class TestPostingFBSArbitration:
             method="post",
             api_version="v2",
             endpoint="posting/fbs/arbitration",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
 
         assert isinstance(response, PostingFBSArbitrationResponse)

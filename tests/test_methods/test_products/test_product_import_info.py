@@ -26,7 +26,7 @@ class TestProductImportInfo:
             method="post",
             api_version="v1",
             endpoint="product/import/info",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductImportInfoResponse)
         assert response.result.total == 0

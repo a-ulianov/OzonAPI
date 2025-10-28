@@ -45,6 +45,6 @@ class DescriptionCategoryAttributeValuesMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="description-category/attribute/values",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return DescriptionCategoryAttributeValuesResponse(**response)

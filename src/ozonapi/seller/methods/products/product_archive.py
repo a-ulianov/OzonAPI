@@ -35,6 +35,6 @@ class ProductArchiveMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="product/archive",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductArchiveResponse(**response)

@@ -142,7 +142,7 @@ class TestAPIManager:
             result = await api_manager._request(
                 method="post",
                 endpoint="test-endpoint",
-                json={"data": "test"}
+                payload={"data": "test"}
             )
 
             assert result == {"result": "success"}
@@ -409,22 +409,22 @@ class TestAPIManager:
     async def test_request_logging(self, api_manager, mock_response, caplog):
         """Тест логирования запросов."""
         with patch('src.ozonapi.seller.core.core.APIManager._session_manager') as mock_session_manager, \
-                patch.object(api_manager.logger, 'debug') as mock_debug, \
-                patch.object(APIManager._class_logger, 'debug') as mock_class_debug:
+                patch.object(api_manager.logger, 'info') as mock_debug, \
+                patch.object(APIManager._class_logger, 'info') as mock_class_debug:
             mock_session = AsyncMock(spec=ClientSession)
             mock_session_manager.get_session.return_value.__aenter__.return_value = mock_session
             mock_session.request.return_value.__aenter__.return_value = mock_response
 
             await api_manager._request(
                 method="post",
-                api_name="Test API",
+                api_version="v0",
                 endpoint="test-endpoint",
-                json={"data": "test"}
+                payload={"data": "test"}
             )
 
             # Проверяем что методы логирования вызывались
             debug_calls = [call for call in mock_debug.call_args_list
-                           if "Отправка запроса к API" in str(call) or "Успешный ответ от API" in str(call)]
+                           if "Отправка запроса к API" in str(call) or "Получен ответ от API" in str(call)]
             assert len(debug_calls) >= 2
 
     @pytest.mark.asyncio

@@ -44,6 +44,6 @@ class DescriptionCategoryAttributeValuesSearchMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="description-category/attribute/values/search",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return DescriptionCategoryAttributeValuesSearchResponse(**response)

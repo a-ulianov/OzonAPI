@@ -23,7 +23,7 @@ class TestProductInfoAttributes:
             method="post",
             api_version="v4",
             endpoint="product/info/attributes",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductInfoAttributesResponse)
         assert response.total == 0

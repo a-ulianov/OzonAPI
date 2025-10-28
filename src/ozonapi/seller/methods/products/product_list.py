@@ -49,6 +49,6 @@ class ProductListMixin(APIManager):
             method="post",
             api_version="v3",
             endpoint="product/list",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductListResponse(**response)

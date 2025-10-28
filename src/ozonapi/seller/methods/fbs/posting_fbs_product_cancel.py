@@ -46,6 +46,6 @@ class PostingFBSProductCancelMixin(APIManager):
             method="post",
             api_version="v2",
             endpoint="posting/fbs/product/cancel",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSProductCancelResponse(**response)

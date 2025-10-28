@@ -126,6 +126,6 @@ class ProductImportMixin(APIManager):
             method="post",
             api_version="v3",
             endpoint="product/import",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductImportResponse(**response)

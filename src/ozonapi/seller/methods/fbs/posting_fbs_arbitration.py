@@ -37,6 +37,6 @@ class PostingFBSArbitrationMixin(APIManager):
             method="post",
             api_version="v2",
             endpoint="posting/fbs/arbitration",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSArbitrationResponse(**response)

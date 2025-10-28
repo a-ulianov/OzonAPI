@@ -33,6 +33,6 @@ class ProductInfoDescriptionMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="product/info/description",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductInfoDescriptionResponse(**response)

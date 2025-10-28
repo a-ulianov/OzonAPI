@@ -27,7 +27,7 @@ class TestBarcodeGenerate:
             method="post",
             api_version="v1",
             endpoint="barcode/generate",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, BarcodeGenerateResponse)
         assert response.errors == []

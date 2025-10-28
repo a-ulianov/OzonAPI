@@ -65,7 +65,7 @@ class TestPostingFBSCancelReason:
             method="post",
             api_version="v1",
             endpoint="posting/fbs/cancel-reason",
-            json=request.model_dump(by_alias=True)
+            payload=request.model_dump(by_alias=True)
         )
 
         assert isinstance(response, PostingFBSCancelReasonResponse)

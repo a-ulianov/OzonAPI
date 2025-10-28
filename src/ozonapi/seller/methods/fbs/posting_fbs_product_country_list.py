@@ -52,7 +52,7 @@ class PostingFBSProductCountryListMixin(APIManager):
                 method="post",
                 api_version="v2",
                 endpoint="posting/fbs/product/country/list",
-                json=request.model_dump()
+                payload=request.model_dump()
             )
         except APINotFoundError:
             return PostingFBSProductCountryListResponse.model_construct()

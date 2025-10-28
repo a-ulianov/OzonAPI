@@ -50,7 +50,7 @@ class TestProductPicturesImport:
             method="post",
             api_version="v1",
             endpoint="product/pictures/import",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductPicturesImportResponse)
         assert len(response.result.pictures) == 2

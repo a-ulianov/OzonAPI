@@ -40,7 +40,7 @@ class LoggingSettings(BaseSettings):
     """
 
     NAME: str = ''
-    LEVEL: str = Field('DEBUG', pattern='^(DEBUG|INFO|WARNING|ERROR|CRITICAL)$')
+    LEVEL: str = Field('INFO', pattern='^(DEBUG|INFO|WARNING|ERROR|CRITICAL)$')
     JSON: bool = False
     FORMAT: str = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     USE_ASYNC: bool = Field(True, description='Enable async logging')

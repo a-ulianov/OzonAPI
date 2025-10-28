@@ -23,7 +23,7 @@ class TestProductUnarchive:
             method="post",
             api_version="v1",
             endpoint="product/unarchive",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductUnarchiveResponse)
         assert response.result is True

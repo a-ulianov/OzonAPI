@@ -23,7 +23,7 @@ class TestProductDelete:
             method="post",
             api_version="v2",
             endpoint="products/delete",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductsDeleteResponse)
         assert response.status == []

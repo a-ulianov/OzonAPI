@@ -29,7 +29,7 @@ class TestPostingFBSAwaitingDelivery:
             method="post",
             api_version="v2",
             endpoint="posting/fbs/awaiting-delivery",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
 
         assert isinstance(response, PostingFBSAwaitingDeliveryResponse)

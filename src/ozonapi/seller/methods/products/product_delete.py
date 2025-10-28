@@ -38,6 +38,6 @@ class ProductDeleteMixin(APIManager):
             method="post",
             api_version="v2",
             endpoint="products/delete",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductsDeleteResponse(**response)

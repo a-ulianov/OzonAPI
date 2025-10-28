@@ -63,6 +63,6 @@ class ProductPicturesImportMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="product/pictures/import",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductPicturesImportResponse(**response)

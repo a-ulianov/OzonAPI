@@ -42,7 +42,7 @@ class TestDescriptionCategoryTree:
             method="post",
             api_version="v1",
             endpoint="description-category/tree",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, DescriptionCategoryTreeResponse)
         assert len(response.result) == 1

@@ -42,6 +42,6 @@ class PostingFBSProductCountrySetMixin(APIManager):
             method="post",
             api_version="v2",
             endpoint="posting/fbs/product/country/set",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSProductCountrySetResponse(**response)

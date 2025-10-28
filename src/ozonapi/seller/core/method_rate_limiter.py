@@ -172,7 +172,7 @@ def method_rate_limit(limit_requests: int, interval_seconds: float):
 
         @wraps(method)
         async def wrapper(self, *args, **kwargs):
-            _logger = self._logger if hasattr(self, '_logger') else logger
+            _logger = self.logger if hasattr(self, '_logger') else logger
             # Проверяем, что экземпляр имеет необходимые атрибуты
             if not hasattr(self, '_client_id') or not hasattr(self, '_method_rate_limiter_manager'):
                 _logger.warning(

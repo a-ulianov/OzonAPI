@@ -50,7 +50,7 @@ class TestDeliveryMethodList:
             method="post",
             api_version="v1",
             endpoint="delivery-method/list",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         assert isinstance(response, DeliveryMethodListResponse)
         assert len(response.result) == 1
@@ -100,7 +100,7 @@ class TestDeliveryMethodList:
             method="post",
             api_version="v1",
             endpoint="delivery-method/list",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         assert isinstance(response, DeliveryMethodListResponse)
         assert len(response.result) == 1

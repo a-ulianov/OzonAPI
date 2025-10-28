@@ -25,7 +25,7 @@ class TestProductImport:
             method="post",
             api_version="v3",
             endpoint="product/import",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductImportResponse)
         assert response.result.task_id == 123456789

@@ -43,6 +43,6 @@ class ProductAttributesUpdateMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="product/attributes/update",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductAttributesUpdateResponse(**response)

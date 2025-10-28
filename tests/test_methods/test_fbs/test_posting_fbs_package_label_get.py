@@ -36,7 +36,7 @@ class TestPostingFBSPackageLabelGet:
             method="post",
             api_version="v1",
             endpoint="posting/fbs/package-label/get",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
 
         assert isinstance(response, PostingFBSPackageLabelGetResponse)

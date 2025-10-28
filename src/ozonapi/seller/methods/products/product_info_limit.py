@@ -35,6 +35,6 @@ class ProductInfoLimitMixin(APIManager):
             method="post",
             api_version="v4",
             endpoint="product/info/limit",
-            json={},
+            payload={},
         )
         return ProductInfoLimitResponse(**response)

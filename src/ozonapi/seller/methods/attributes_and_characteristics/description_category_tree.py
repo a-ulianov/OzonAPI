@@ -33,6 +33,6 @@ class DescriptionCategoryTreeMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="description-category/tree",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return DescriptionCategoryTreeResponse(**response)

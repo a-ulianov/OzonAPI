@@ -23,7 +23,7 @@ class TestProductAttributesUpdate:
             method="post",
             api_version="v1",
             endpoint="product/attributes/update",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductAttributesUpdateResponse)
         assert response.task_id == 123456789

@@ -24,7 +24,7 @@ class TestProductRelatedSkuGet:
             method="post",
             api_version="v1",
             endpoint="product/related-sku/get",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductRelatedSkuGetResponse)
         assert response.items == []

@@ -51,6 +51,6 @@ class ProductInfoStocksMixin(APIManager):
             method="post",
             api_version="v4",
             endpoint="product/info/stocks",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return ProductInfoStocksResponse(**response)

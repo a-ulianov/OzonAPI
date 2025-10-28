@@ -56,6 +56,6 @@ class PostingFBSGetMixin(APIManager):
             method="post",
             api_version="v3",
             endpoint="posting/fbs/get",
-            json=request.model_dump(by_alias=True)
+            payload=request.model_dump(by_alias=True)
         )
         return PostingFBSGetResponse(**response)

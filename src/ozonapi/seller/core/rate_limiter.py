@@ -114,7 +114,7 @@ class RateLimiterManager:
         async with self._lock:
             if client_id in self._instance_refs:
                 self._instance_refs[client_id].discard(instance_id)
-                self._logger.debug(f"Отменена регистрация подключения к API {instance_id} для ClientID {client_id}")
+                self._logger.debug(f"Завершено подключения к API {instance_id} для СlientID {client_id}")
 
     async def _cleanup_unused_limiters(self) -> None:
         """Очистка неиспользуемых ограничителей кол-ва запросов с учетом минимального времени жизни."""

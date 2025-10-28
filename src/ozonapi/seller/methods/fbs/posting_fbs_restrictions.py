@@ -40,6 +40,6 @@ class PostingFBSRestrictionsMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="posting/fbs/restrictions",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         return PostingFBSRestrictionsResponse(**response["result"])

@@ -44,6 +44,6 @@ class AnalyticsStocksMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="analytics/stocks",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return AnalyticsStocksResponse(**response)

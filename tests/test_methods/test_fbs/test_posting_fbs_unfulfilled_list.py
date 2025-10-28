@@ -194,7 +194,7 @@ class TestPostingFBSUnfulfilledList:
             method="post",
             api_version="v3",
             endpoint="posting/fbs/unfulfilled/list",
-            json=request.model_dump(by_alias=True)
+            payload=request.model_dump(by_alias=True)
         )
         assert isinstance(response, PostingFBSUnfulfilledListResponse)
         assert response.result.count == 2

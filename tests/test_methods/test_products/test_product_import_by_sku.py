@@ -24,7 +24,7 @@ class TestProductImportBySku:
             method="post",
             api_version="v1",
             endpoint="product/import-by-sku",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductImportBySkuResponse)
         assert response.task_id == 123456789

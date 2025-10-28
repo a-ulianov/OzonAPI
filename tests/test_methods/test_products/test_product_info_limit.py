@@ -33,7 +33,7 @@ class TestProductInfoLimit:
             method="post",
             api_version="v4",
             endpoint="product/info/limit",
-            json={}
+            payload={}
         )
         assert isinstance(response, ProductInfoLimitResponse)
         assert response.daily_create.limit == 1000

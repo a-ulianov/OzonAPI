@@ -31,7 +31,7 @@ class TestBarcodeAdd:
             method="post",
             api_version="v1",
             endpoint="barcode/add",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, BarcodeAddResponse)
         assert response.errors == []

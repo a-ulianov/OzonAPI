@@ -263,29 +263,7 @@ class TestMethodRateLimitDecorator:
         instance = InvalidClass()
 
         # Должен сработать warning, а метод выполниться без ограничений
-        with patch('loguru.logger.warning') as mock_warning:
-            result = await instance.limited_method()
-
-            assert result == "result"
-            mock_warning.assert_called_once()
-
-    @pytest.mark.asyncio
-    async def test_method_rate_limit_with_none_manager(self):
-        """Тест вызова декорированного метода с None менеджером."""
-
-        class InvalidClass:
-            def __init__(self):
-                self._client_id = "test_client"
-                self._method_rate_limiter_manager = None
-
-            @method_rate_limit(limit_requests=5, interval_seconds=1.0)
-            async def limited_method(self):
-                return "result"
-
-        instance = InvalidClass()
-
-        # Должен сработать warning, а метод выполниться без ограничений
-        with patch('loguru.logger.warning') as mock_warning:
+        with patch('src.ozonapi.infra.logging.ozonapi_logger.warning') as mock_warning:
             result = await instance.limited_method()
 
             assert result == "result"

@@ -148,8 +148,9 @@ import asyncio
 from pprint import pprint
 
 from ozonapi import SellerAPI, SellerAPIConfig
-from ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse, \
-    ProductInfoDescriptionRequest
+from ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse,
+
+ProductInfoDescriptionRequest
 
 """
 Подобраны настройки, позволяющие наблюдать в консоли асинхронность выполнения логики.
@@ -158,26 +159,27 @@ from ozonapi.seller.schemas.products import ProductListRequest, ProductListRespo
 дефолтным лимитам из SellerAPIConfig для функции producer, с учетом допустимого максимума.
 """
 
-product_list_limit = 10                                 # Кол-во товаров, выгружаемых за одну итерацию
-consumers_amount = 5                                    # Кол-во потребителей, выгружающих описания
-consumer_rate_limit = 2                                 # Лимит запросов в секунду для каждого потребителя
+product_list_limit = 10  # Кол-во товаров, выгружаемых за одну итерацию
+consumers_amount = 5  # Кол-во потребителей, выгружающих описания
+consumer_rate_limit = 2  # Лимит запросов в секунду для каждого потребителя
 queue_max_size = product_list_limit * consumers_amount  # Максимальный размер очереди
 
 product_descriptions = list()
+
 
 async def producer(queue):
     """Получает батчи из списка товаров и добавляет product_id в очередь на получение описания."""
 
     async with SellerAPI(
-        config=SellerAPIConfig(
-            # Понижаем уровень логирования (для наглядности)
-            log_level="INFO"
-        )
+            config=SellerAPIConfig(
+                # Понижаем уровень логирования (для наглядности)
+                log_level="INFO"
+            )
     ) as api:
 
         # Параметры, необходимые для выборки данных
-        products_count = 0      # Счетчик выбранных товаров
-        last_id = str()         # Идентификатор для пагинации
+        products_count = 0  # Счетчик выбранных товаров
+        last_id = str()  # Идентификатор для пагинации
 
         while True:
             # Отправляем запрос и получаем очередную партию данных о товарах
@@ -206,18 +208,18 @@ async def producer(queue):
             if products_count == products_batch.result.total:
                 break
 
+
 async def consumer(queue):
     """Получает айдишники товаров из очереди и получает описания."""
 
     async with SellerAPI(
-        config=SellerAPIConfig(
-            # Понижаем уровень логирования
-            log_level="INFO",
-            # Ограничиваем кол-во запросов в секунду для каждого потребителя
-            max_requests_per_second=consumer_rate_limit
-        )
+            config=SellerAPIConfig(
+                # Понижаем уровень логирования
+                log_level="INFO",
+                # Ограничиваем кол-во запросов в секунду для каждого потребителя
+                max_requests_per_second=consumer_rate_limit
+            )
     ) as api:
-
         while True:
             # Достаем идентификатор очередного товара из очереди
             product_id = await queue.get()

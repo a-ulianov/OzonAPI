@@ -64,7 +64,7 @@ class TestSellerBetaAPI:
             method="post",
             api_version="v1",
             endpoint="analytics/stocks",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, AnalyticsStocksResponse)
         assert len(response.items) == 1

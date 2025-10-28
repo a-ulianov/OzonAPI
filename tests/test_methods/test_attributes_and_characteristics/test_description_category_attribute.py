@@ -45,7 +45,7 @@ class TestDescriptionCategoryAttribute:
             method="post",
             api_version="v1",
             endpoint="description-category/attribute",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, DescriptionCategoryAttributeResponse)
         assert len(response.result) == 1

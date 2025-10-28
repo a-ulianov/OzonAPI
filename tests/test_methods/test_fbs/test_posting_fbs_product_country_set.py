@@ -32,7 +32,7 @@ class TestPostingFBSProductCountrySet:
             method="post",
             api_version="v2",
             endpoint="posting/fbs/product/country/set",
-            json=request.model_dump(by_alias=True)
+            payload=request.model_dump(by_alias=True)
         )
 
         assert isinstance(response, PostingFBSProductCountrySetResponse)

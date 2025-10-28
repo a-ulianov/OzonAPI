@@ -36,7 +36,7 @@ class TestPostingFBSProductChange:
             method="post",
             api_version="v2",
             endpoint="posting/fbs/product/change",
-            json=request.model_dump(by_alias=True)
+            payload=request.model_dump(by_alias=True)
         )
 
         assert isinstance(response, PostingFBSProductChangeResponse)

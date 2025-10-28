@@ -1,4 +1,5 @@
 import asyncio
+import json
 from logging import Logger
 from types import TracebackType
 from typing import Any, Literal, Optional, ClassVar
@@ -27,6 +28,7 @@ from .exceptions import (
 )
 
 from ...infra import logging
+from ...infra.logging import LoggingSettings
 
 
 class APIManager:
@@ -44,8 +46,7 @@ class APIManager:
     _initialized: ClassVar[bool] = False
     _instance_count: ClassVar[int] = 0
 
-    _class_logger: ClassVar = logging.manager.get_logger('seller')
-
+    _class_logger: ClassVar[Logger] = APIConfig().logger
 
     def __init__(
             self,
@@ -64,36 +65,39 @@ class APIManager:
         self._config = self.load_config(config)
         self._client_id = client_id or self._config.client_id
         self._api_key = api_key or self._config.api_key
-        self._instance_id = id(self)
-        self._registered = False
-        self._closed = False
-        self._instance_logger = self._get_instance_logger()
 
         if self._client_id is None or self._api_key is None:
             raise ValueError(
                 "Не предоставлены авторизационные данные. Проверьте указание client_id и api_key."
             )
 
+        self._instance_id = id(self)
+        self._registered = False
+        self._closed = False
+        self._logging_manager = None
+        self._instance_logger: Logger = self._get_instance_logger()
+
+
         if APIManager._rate_limiter_manager is None:
             APIManager._rate_limiter_manager = RateLimiterManager(
                 cleanup_interval=self._config.cleanup_interval,
-                instance_logger=logging.manager.get_logger(f"{self.logger.name}.rate_limiter")
+                instance_logger=logging.manager.get_logger(f"seller.rate_limiter")
             )
         if APIManager._session_manager is None:
             APIManager._session_manager = SessionManager(
                 timeout=self._config.request_timeout,
                 connector_limit=self._config.connector_limit,
-                instance_logger=logging.manager.get_logger(f"{self.logger.name}.session")
+                instance_logger=logging.manager.get_logger(f"seller.session")
             )
         if APIManager._method_rate_limiter_manager is None:
             APIManager._method_rate_limiter_manager = MethodRateLimiterManager(
                 cleanup_interval=self._config.cleanup_interval,
-                instance_logger=logging.manager.get_logger(f"{self.logger.name}.method_rate_limiter")
+                instance_logger=logging.manager.get_logger(f"seller.method_rate_limiter")
             )
 
         APIManager._instance_count += 1
         self._validate_credentials()
-        self.logger.debug(f"API-клиент инициализирован для ClientID {self._client_id}")
+        self.logger.debug(f"API-клиент инициализирован")
 
     @classmethod
     def load_config(cls, user_config: APIConfig | None = None) -> APIConfig:
@@ -112,16 +116,37 @@ class APIManager:
             )
 
     def _get_instance_logger(self) -> Logger:
-        """Инициализирует и возвращает настроенный логер для экземпляра."""
-        instance_logger = logging.manager.get_logger(f"seller.client[{self._client_id}]")
-        # instance_logger.add(
-        #     sys.stderr,
-        #     level=self._config.log_level,
-        #     enqueue=True,
-        # )
-        instance_logger
+        """Инициализирует и возвращает настроенный логер для экземпляра.
 
-        return instance_logger
+        Последнее значение `[x]` в домене обозначает порядковый номер активного
+        экземпляра менеджера для данного ClientID.
+        """
+
+        log_instance_count = 1
+
+        while True:
+            self._logging_manager = logging.LoggerManager(
+                f"ozonapi.seller.client[{self._client_id}]-[{log_instance_count}]"
+            )
+
+            try:
+                self._logging_manager.configure(
+                    LoggingSettings(
+                        LEVEL=self._config.log_level,
+                        JSON=self._config.log_json,
+                        FORMAT=self._config.log_format,
+                        DIR=self._config.log_dir,
+                        FILE=self._config.log_file,
+                        MAX_BYTES=self._config.log_max_bytes,
+                        BACKUP_FILES_COUNT=self._config.log_backup_files_count,
+                    )
+                )
+            except RuntimeError:
+                log_instance_count += 1
+            else:
+                break
+
+        return self._logging_manager.get_logger()
 
     @classmethod
     async def initialize(cls) -> None:
@@ -207,7 +232,8 @@ class APIManager:
             if APIManager._session_manager:
                 await APIManager._session_manager.close_all()
 
-        self.logger.debug(f"Работа API-клиента для ClientID {self._client_id} завершена")
+        self.logger.debug(f"Работа API-клиента завершена")
+        self._logging_manager.shutdown()
 
     @property
     def client_id(self) -> str:
@@ -239,8 +265,7 @@ class APIManager:
 
         def log_retry(retry_state):
             self.logger.debug(
-                f"Попытка {retry_state.attempt_number} совершения запроса для ClientID {self._client_id}"
-                f" завершилась исключением: {retry_state.outcome.exception()}"
+                f"Попытка [{retry_state.attempt_number}/{self._config.max_retries}]. Запрос вернул ошибку: {retry_state.outcome.exception()}"
             )
 
         return retry(
@@ -299,7 +324,7 @@ class APIManager:
             method: Literal["post", "get", "put", "delete"] = "post",
             api_version: str = "v1",
             endpoint: str = "",
-            json: Optional[dict[str, Any]] = None,
+            payload: Optional[dict[str, Any]] = None,
             params: Optional[dict[str, Any]] = None,
     ) -> dict[str, Any]:
         """
@@ -310,7 +335,7 @@ class APIManager:
             api_name: Название API
             api_version: Версия API
             endpoint: Конечная точка API
-            json: Данные для отправки в формате JSON
+            payload: Данные для отправки в формате JSON
             params: Query parameters
 
         Returns:
@@ -333,13 +358,22 @@ class APIManager:
 
         url = f"{self._config.base_url}/{api_version}/{endpoint}"
 
+        def get_payload_snippet(p: dict | None) -> str | None:
+            """Возвращает сниппет запроса для отладки."""
+            if p is None:
+                return None
+
+            string = json.dumps(payload)
+
+            return string if len(string) < 200 else string[:200] + "..."
+
         log_context = {
             "method": method,
             "endpoint": f"{api_version}/{endpoint}",
-            "has_payload": json is not None,
+            "payload": get_payload_snippet(payload),
         }
 
-        self.logger.debug(f"Отправка запроса к API: {log_context}")
+        self.logger.info(f"Отправка запроса к API: {log_context}")
 
         await self._ensure_registered()
 
@@ -360,7 +394,7 @@ class APIManager:
                 async with rate_limiter:
                     try:
                         async with session.request(
-                                method, url, json=json, params=params
+                                method, url, json=payload, params=params
                         ) as response:
                             data = await response.json()
 
@@ -368,17 +402,21 @@ class APIManager:
                                 "status_code": response.status,
                                 "response_size": len(str(data))
                             })
-                            if "method" in log_context:
-                                del(log_context["method"])
-                            if "has_payload" in log_context:
-                                del(log_context["has_payload"])
+
+                            log_context_remove_keys = [
+                                'method', 'has_payload', 'payload'
+                            ]
+
+                            for key in log_context_remove_keys:
+                                if key in log_context:
+                                    del (log_context[key])
 
                             if response.status >= 400:
                                 error = self._handle_error_response(response, data, log_context)
                                 if error:
                                     raise error
 
-                            self.logger.debug(f"Успешный ответ от API: {log_context}")
+                            self.logger.info(f"Получен ответ от API: {log_context}")
                             return data
 
                     except asyncio.TimeoutError:

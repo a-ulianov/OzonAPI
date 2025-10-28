@@ -23,7 +23,7 @@ class TestProductInfoSubscription:
             method="post",
             api_version="v1",
             endpoint="product/info/subscription",
-            json=request.model_dump()
+            payload=request.model_dump()
         )
         assert isinstance(response, ProductInfoSubscriptionResponse)
         assert response.result == []

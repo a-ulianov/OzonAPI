@@ -43,6 +43,6 @@ class DeliveryMethodListMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="delivery-method/list",
-            json=request.model_dump(),
+            payload=request.model_dump(),
         )
         return DeliveryMethodListResponse(**response)
