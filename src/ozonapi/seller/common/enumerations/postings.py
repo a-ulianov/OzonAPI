@@ -216,6 +216,19 @@ class LabelType(str, Enum):
     SMALL_LABEL = "small_label"
 
 
+class MarkType(str, Enum):
+    """Тип кода маркировки.
+
+    Attributes:
+        MANDATORY_MARK: обязательная маркировка «Честный ЗНАК»
+        JW_UIN: уникальный идентификационный номер (УИН) ювелирного изделия
+        IMEI: IMEI мобильного устройства
+    """
+    MANDATORY_MARK = "mandatory_mark"
+    JW_UIN = "jw_uin"
+    IMEI = "imei"
+
+
 class PaymentTypeGroupName(str, Enum):
     """Тип оплаты.
     OZON_CARD: Ozon Карта
