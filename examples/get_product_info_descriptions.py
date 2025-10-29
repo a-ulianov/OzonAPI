@@ -25,7 +25,7 @@ from src.ozonapi.seller.schemas.products import ProductListRequest, ProductListR
 
 
 # Подобраны настройки обработки, позволяющие наблюдать асинхронность выполнения логики.
-# Для prod значение параметра product_list_limit может быть увеличено.
+# Для prod значения параметров могут быть увеличены.
 # Общее кол-во запросов составит consumers_amount * consumer_rate_limit в сек + запросы по
 # дефолтным настройки из SellerAPIConfig для функции producer, но не больше допустимого максимума.
 

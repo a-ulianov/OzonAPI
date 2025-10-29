@@ -10,7 +10,7 @@ class FBSPostingProductExemplarSetMixin(APIManager):
             self,
             request: FBSPostingProductExemplarSetRequest,
     ) -> FBSPostingProductExemplarSetResponse:
-        """Реализует проверку и сохранение данные экземпляров.
+        """Реализует проверку и сохранение информации об экземплярах.
 
         Notes:
             Описание метода:

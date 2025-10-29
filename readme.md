@@ -154,13 +154,13 @@ ProductInfoDescriptionRequest
 
 """
 Подобраны настройки, позволяющие наблюдать в консоли асинхронность выполнения логики.
-Для prod значение параметра product_list_limit может быть увеличено.
+Для prod значения параметров могут быть увеличены.
 Общее кол-во запросов составит consumers_amount * consumer_rate_limit в сек + запросы по
 дефолтным лимитам из SellerAPIConfig для функции producer, с учетом допустимого максимума.
 """
 
 product_list_limit = 10  # Кол-во товаров, выгружаемых за одну итерацию
-consumers_amount = 5  # Кол-во потребителей, выгружающих описания
+consumers_amount = 5     # Кол-во потребителей, выгружающих описания
 consumer_rate_limit = 2  # Лимит запросов в секунду для каждого потребителя
 queue_max_size = product_list_limit * consumers_amount  # Максимальный размер очереди
 

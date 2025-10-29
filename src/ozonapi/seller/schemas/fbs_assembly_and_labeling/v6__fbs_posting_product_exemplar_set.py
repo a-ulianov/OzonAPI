@@ -3,25 +3,10 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from src.ozonapi.seller.common.enumerations.postings import PaymentTypeGroupName, MarkType
+from .entities.posting__exemplar import ProductExemplar
 
 
-class FBSPostingProductExemplarSetExemplarMark(BaseModel):
-    """Контрольный идентификационный знак (КИЗ) или другая маркировка.
-
-    Attributes:
-        mark: Значение кода маркировки
-        mark_type: Тип кода маркировки
-    """
-    mark: Optional[str] = Field(
-        None, description="Значение кода маркировки."
-    )
-    mark_type: Optional[MarkType] = Field(
-        None, description="Тип кода маркировки."
-    )
-
-
-class FBSPostingProductExemplarSetExemplar(BaseModel):
+class FBSPostingProductExemplarSetExemplar(ProductExemplar):
     """Описание экземпляра.
 
     Attributes:
@@ -33,27 +18,7 @@ class FBSPostingProductExemplarSetExemplar(BaseModel):
         rnpt: Регистрационный номер партии товара (РНПТ)
         weight: Фактический вес экземпляра
     """
-    exemplar_id: Optional[int] = Field(
-        None, title="Идентификатор экземпляра."
-    )
-    gtd: Optional[str] = Field(
-        None, description="Номер грузовой таможенной декларации (ГТД)."
-    )
-    is_gtd_absent: Optional[bool] = Field(
-        True, description="Признак того, что не указан номер грузовой таможенной декларации (ГТД)."
-    )
-    is_rnpt_absent: Optional[bool] = Field(
-        True, description="Признак того, что не указан регистрационный номер партии товара (РНПТ)."
-    )
-    marks: Optional[list[FBSPostingProductExemplarSetExemplarMark]] = Field(
-        default_factory=list, description="Список контрольных идентификационных знаков (КИЗ) и других маркировок в одном экземпляре."
-    )
-    rnpt: Optional[str] = Field(
-        None, description="Регистрационный номер партии товара (РНПТ)."
-    )
-    weight: Optional[float] = Field(
-        None, description="Фактический вес экземпляра."
-    )
+    pass
 
 
 class FBSPostingProductExemplarSetProduct(BaseModel):

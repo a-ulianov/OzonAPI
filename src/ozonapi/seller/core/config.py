@@ -83,7 +83,7 @@ class APIConfig(BaseSettings):
         description="Максимальное количество повторных попыток для неудачных запросов"
     )
     retry_min_wait: float = Field(
-        default=4.0,
+        default=2,
         gt=0,
         description="Минимальная задержка между повторами неудачных запросов в секундах"
     )

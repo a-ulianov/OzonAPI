@@ -269,6 +269,19 @@ class PrrOption(str, Enum):
     UNSPECIFIED = ""
 
 
+class PostingShipmentStatus(str, Enum):
+    """Статус проверки всех экземпляров отправления и доступности сборки.
+
+    Attributes:
+        SHIP_AVAILABLE: сборка доступна
+        SHIP_NOT_AVAILABLE: сборка недоступна
+        VALIDATION_IN_PROCESS: экземпляры на проверке
+    """
+    SHIP_AVAILABLE = "ship_available"
+    SHIP_NOT_AVAILABLE = "ship_not_available"
+    VALIDATION_IN_PROCESS = "validation_in_process"
+
+
 class TplIntegrationType(str, Enum):
     """Тип интеграции со службой доставки
 
