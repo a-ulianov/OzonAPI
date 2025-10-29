@@ -3,7 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from .entities.posting__exemplar import ProductExemplar
+from .entities import ProductExemplar
 
 
 class FBSPostingProductExemplarSetExemplar(ProductExemplar):

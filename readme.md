@@ -568,11 +568,11 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/supply-order/content/update/status` | Информация о статусе редактирования товарного состава | `supply_order_content_update_status()` |
 </details>
 <details>
-<summary>Управление кодами маркировки и сборкой заказов для FBS/rFBS (2)</summary>
+<summary>Управление кодами маркировки и сборкой заказов для FBS/rFBS (3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v6/fbs/posting/product/exemplar/create-or-get` | Получить данные созданных экземпляров | `fbs_posting_product_exemplar_create_or_get()` |
+| ✓ | `/v6/fbs/posting/product/exemplar/create-or-get` | Получить данные созданных экземпляров | `fbs_posting_product_exemplar_create_or_get()` |
 | ☐ | `/v5/fbs/posting/product/exemplar/validate` | Валидация кодов маркировки | `fbs_posting_product_exemplar_validate()` |
 | ✓ | `/v6/fbs/posting/product/exemplar/set` | Проверить и сохранить данные экземпляров | `fbs_posting_product_exemplar_set()` |
 | ✓ | `/v5/fbs/posting/product/exemplar/status` | Получить статус добавления экземпляров | `fbs_posting_product_exemplar_status()` |

@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import Field, BaseModel
 
-from src.ozonapi.seller.common.enumerations.postings import MarkType, PostingShipmentStatus
+from ....common.enumerations.postings import MarkType
 
 
 class ProductExemplarMark(BaseModel):

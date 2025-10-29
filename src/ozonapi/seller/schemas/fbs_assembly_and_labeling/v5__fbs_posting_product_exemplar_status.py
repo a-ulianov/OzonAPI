@@ -3,8 +3,8 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from src.ozonapi.seller.common.enumerations.postings import PostingShipmentStatus
-from src.ozonapi.seller.schemas.fbs_assembly_and_labeling.entities import ProductExemplarChecked
+from ...common.enumerations.postings import PostingShipmentStatus
+from .entities import ProductExemplarChecked
 
 
 class FBSPostingProductExemplarStatusRequest(BaseModel):
