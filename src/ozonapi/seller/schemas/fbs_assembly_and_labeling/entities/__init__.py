@@ -1,5 +1,6 @@
 __all__ = [
     "ProductExemplar",
+    "ProductExemplarBase",
     "ProductExemplarChecked",
     "ProductExemplarMark",
     "ProductExemplarMarkChecked",
@@ -9,4 +10,4 @@ __all__ = [
 from .posting__mark import ProductExemplarMark, ProductExemplarMarkChecked
 
 from .posting__product import PostingProduct
-from .posting__exemplar import ProductExemplar, ProductExemplarChecked
+from .posting__exemplar import ProductExemplar, ProductExemplarChecked, ProductExemplarBase

@@ -5,7 +5,29 @@ from pydantic import Field, BaseModel
 from .posting__mark import ProductExemplarMark, ProductExemplarMarkChecked
 
 
-class ProductExemplar(BaseModel):
+class ProductExemplarBase(BaseModel):
+    """Описание экземпляра.
+
+    Attributes:
+        gtd: Номер грузовой таможенной декларации (ГТД)
+        marks: Список контрольных идентификационных знаков (КИЗ) и других маркировок в одном экземпляре
+        rnpt: Регистрационный номер партии товара (РНПТ)
+        weight: Фактический вес экземпляра
+    """
+    gtd: Optional[str] = Field(
+        None, description="Номер грузовой таможенной декларации (ГТД)."
+    )
+    marks: Optional[list[ProductExemplarMark]] = Field(
+        default_factory=list, description="Список контрольных идентификационных знаков (КИЗ) и других маркировок в одном экземпляре."
+    )
+    rnpt: Optional[str] = Field(
+        None, description="Регистрационный номер партии товара (РНПТ)."
+    )
+    weight: Optional[float] = Field(
+        None, description="Фактический вес экземпляра."
+    )
+
+class ProductExemplar(ProductExemplarBase):
     """Описание экземпляра.
 
     Attributes:
@@ -20,23 +42,11 @@ class ProductExemplar(BaseModel):
     exemplar_id: Optional[int] = Field(
         None, title="Идентификатор экземпляра."
     )
-    gtd: Optional[str] = Field(
-        None, description="Номер грузовой таможенной декларации (ГТД)."
-    )
     is_gtd_absent: Optional[bool] = Field(
         True, description="Признак того, что не указан номер грузовой таможенной декларации (ГТД)."
     )
     is_rnpt_absent: Optional[bool] = Field(
         True, description="Признак того, что не указан регистрационный номер партии товара (РНПТ)."
-    )
-    marks: Optional[list[ProductExemplarMark]] = Field(
-        default_factory=list, description="Список контрольных идентификационных знаков (КИЗ) и других маркировок в одном экземпляре."
-    )
-    rnpt: Optional[str] = Field(
-        None, description="Регистрационный номер партии товара (РНПТ)."
-    )
-    weight: Optional[float] = Field(
-        None, description="Фактический вес экземпляра."
     )
 
 
