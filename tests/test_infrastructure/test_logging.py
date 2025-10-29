@@ -9,7 +9,7 @@ from typing import Generator
 
 import pytest
 
-from src.ozonapi.infra.logging import LoggerManager, LoggingSettings
+from src.ozonapi.infrastructure.logging import LoggerManager, LoggingSettings
 
 
 class TestLogging:

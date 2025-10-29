@@ -276,10 +276,14 @@ class PostingShipmentStatus(str, Enum):
         SHIP_AVAILABLE: сборка доступна
         SHIP_NOT_AVAILABLE: сборка недоступна
         VALIDATION_IN_PROCESS: экземпляры на проверке
+        UPDATE_AVAILABLE: разрешено редактировать данные по экземплярам
+        UPDATE_NOT_AVAILABLE: запрещено редактировать данные по экземплярам
     """
     SHIP_AVAILABLE = "ship_available"
     SHIP_NOT_AVAILABLE = "ship_not_available"
     VALIDATION_IN_PROCESS = "validation_in_process"
+    UPDATE_AVAILABLE = "update_available"
+    UPDATE_NOT_AVAILABLE = "update_not_available"
 
 
 class TplIntegrationType(str, Enum):

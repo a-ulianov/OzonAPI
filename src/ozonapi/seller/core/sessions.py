@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from typing import AsyncIterator
 from aiohttp import ClientSession, ClientTimeout, TCPConnector
 
-from ...infra.logging import ozonapi_logger as logger
+from ...infrastructure.logging import ozonapi_logger as logger
 
 
 class SessionManager:

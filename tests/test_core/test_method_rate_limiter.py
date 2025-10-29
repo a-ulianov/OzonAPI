@@ -263,7 +263,7 @@ class TestMethodRateLimitDecorator:
         instance = InvalidClass()
 
         # Должен сработать warning, а метод выполниться без ограничений
-        with patch('src.ozonapi.infra.logging.ozonapi_logger.warning') as mock_warning:
+        with patch('src.ozonapi.infrastructure.logging.ozonapi_logger.warning') as mock_warning:
             result = await instance.limited_method()
 
             assert result == "result"

@@ -1,6 +1,6 @@
 from typing import Optional
 
-from ...infra import logging
+from ...infrastructure import logging
 
 from pydantic import Field, field_validator, ConfigDict, model_validator
 from pydantic_settings import BaseSettings

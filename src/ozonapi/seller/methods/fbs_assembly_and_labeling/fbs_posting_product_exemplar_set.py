@@ -1,5 +1,5 @@
-from src.ozonapi.seller.core import APIManager
-from src.ozonapi.seller.schemas.fbs_assembly_and_labeling import FBSPostingProductExemplarSetRequest, \
+from ...core import APIManager
+from ...schemas.fbs_assembly_and_labeling import FBSPostingProductExemplarSetRequest, \
     FBSPostingProductExemplarSetResponse
 
 

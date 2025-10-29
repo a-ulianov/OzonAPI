@@ -29,8 +29,8 @@ Examples:
     if __name__ == '__main__':
         limits = asyncio.run(get_product_info_limit())
 """
-from .infra import logging
-from .infra.logging import ozonapi_logger as logger
+from .infrastructure import logging
+from .infrastructure.logging import ozonapi_logger as logger
 from .seller import SellerAPI, SellerAPIConfig
 
 

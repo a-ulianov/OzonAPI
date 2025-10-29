@@ -7,7 +7,7 @@ from typing import Optional, Any
 from aiolimiter import AsyncLimiter
 from pydantic import BaseModel, Field
 
-from ...infra.logging import ozonapi_logger as logger
+from ...infrastructure.logging import ozonapi_logger as logger
 
 
 class MethodRateLimitConfig(BaseModel):

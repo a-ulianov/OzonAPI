@@ -27,8 +27,8 @@ from .exceptions import (
     APIServerError, APITooManyRequestsError,
 )
 
-from ...infra import logging
-from ...infra.logging import LoggingSettings
+from ...infrastructure import logging
+from ...infrastructure.logging import LoggingSettings
 
 
 class APIManager:
