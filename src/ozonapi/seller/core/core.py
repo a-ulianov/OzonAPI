@@ -70,7 +70,7 @@ class APIManager:
         self._api_key = api_key or self._config.api_key
         self._token = token or self._config.token
 
-        if (self._token is None and (self._api_key is None or self._api_key is None)):
+        if (self._token is None and (self._api_key is None or self._client_id is None)):
             raise ValueError(
                 "Не предоставлены авторизационные данные. Проверьте указание token или client_id и api_key."
             )
