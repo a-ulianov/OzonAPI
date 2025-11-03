@@ -4,6 +4,7 @@ from .fbs_posting_product_exemplar_create_or_get import FBSPostingProductExempla
 from .fbs_posting_product_exemplar_set import FBSPostingProductExemplarSetMixin
 from .fbs_posting_product_exemplar_status import FBSPostingProductExemplarStatusMixin
 from .fbs_posting_product_exemplar_validate import FBSPostingProductExemplarValidateMixin
+from .posting_fbs_ship import PostingFBSShipMixin
 
 
 class SellerFBSAssemblyLabelingAPI(
@@ -11,6 +12,7 @@ class SellerFBSAssemblyLabelingAPI(
     FBSPostingProductExemplarSetMixin,
     FBSPostingProductExemplarStatusMixin,
     FBSPostingProductExemplarValidateMixin,
+    PostingFBSShipMixin,
 ):
     """Реализует методы раздела Управление кодами маркировки и сборкой заказов для FBS/rFBS
 

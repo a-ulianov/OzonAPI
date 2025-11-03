@@ -129,6 +129,7 @@ class PostingSubstatus(str, Enum):
         POSTING_TRANSFERRED_TO_COURIER_SERVICE: передаётся в службу доставки
         POSTING_DRIVER_PICK_UP: у водителя
         POSTING_NOT_IN_SORT_CENTER: не принято на сортировочном центре
+        SHIP_FAILED: неудачная отправка
     """
     POSTING_ACCEPTANCE_IN_PROGRESS = "posting_acceptance_in_progress"
     POSTING_IN_ARBITRATION = "posting_in_arbitration"
@@ -154,6 +155,7 @@ class PostingSubstatus(str, Enum):
     POSTING_TRANSFERRED_TO_COURIER_SERVICE = "posting_transferred_to_courier_service"
     POSTING_DRIVER_PICK_UP = "posting_driver_pick_up"
     POSTING_NOT_IN_SORT_CENTER = "posting_not_in_sort_center"
+    SHIP_FAILED = "ship_failed"
 
 
 class CancellationType(str, Enum):

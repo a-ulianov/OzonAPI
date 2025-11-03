@@ -31,7 +31,24 @@ class PostingFBSProduct(BaseModel):
         ..., description="Идентификатор товара в системе Ozon — SKU."
     )
 
-class PostingFBSProductDetailed(PostingFBSProduct):
+
+class PostingFBSProductWithCurrencyCode(PostingFBSProduct):
+    """Информация о товаре в отправлении.
+
+    Attributes:
+        name: Название товара
+        offer_id: Идентификатор товара в системе продавца
+        price: Цена товара
+        quantity: Количество товара в отправлении
+        sku: Идентификатор товара в системе Ozon
+        currency_code: Валюта цен
+    """
+    currency_code: CurrencyCode = Field(
+        ..., description="Валюта ваших цен. Совпадает с валютой, которая установлена в настройках личного кабинета."
+    )
+
+
+class PostingFBSProductDetailed(PostingFBSProductWithCurrencyCode):
     """Детализированная информация о товаре в отправлении.
 
     Attributes:
@@ -45,9 +62,6 @@ class PostingFBSProductDetailed(PostingFBSProduct):
         is_marketplace_buyout: Признак выкупа товара в ЕАЭС и другие страны
         imei: Список IMEI мобильных устройств
     """
-    currency_code: CurrencyCode = Field(
-        ..., description="Валюта ваших цен. Совпадает с валютой, которая установлена в настройках личного кабинета."
-    )
     is_blr_traceable: bool = Field(
         ..., description="Признак прослеживаемости товара."
     )
