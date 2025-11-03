@@ -568,7 +568,7 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/supply-order/content/update/status` | Информация о статусе редактирования товарного состава | `supply_order_content_update_status()` |
 </details>
 <details>
-<summary>Управление кодами маркировки и сборкой заказов для FBS/rFBS (4)</summary>
+<summary>Управление кодами маркировки и сборкой заказов для FBS/rFBS (7)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -578,7 +578,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v5/fbs/posting/product/exemplar/status` | Получить статус добавления экземпляров | `fbs_posting_product_exemplar_status()` |
 | ✓ | `/v4/posting/fbs/ship` | Собрать заказ (версия 4) | `posting_fbs_ship()` |
 | ✓ | `/v4/posting/fbs/ship/package` | Частичная сборка отправления (версия 4) | `posting_fbs_ship_package()` |
-| ☐ | `/v1/fbs/posting/product/exemplar/update` | Обновить данные экземпляров | `fbs_posting_product_exemplar_update()` |
+| ✓ | `/v1/fbs/posting/product/exemplar/update` | Обновить данные экземпляров | `fbs_posting_product_exemplar_update()` |
 </details>
 <details>
 <summary>Доставка FBS</summary>

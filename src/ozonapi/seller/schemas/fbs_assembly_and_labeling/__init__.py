@@ -13,6 +13,8 @@ __all__ = [
     "FBSPostingProductExemplarValidateResponse",
     "FBSPostingProductExemplarCreateOrGetRequest",
     "FBSPostingProductExemplarCreateOrGetResponse",
+    "FBSPostingProductExemplarUpdateRequest",
+    "FBSPostingProductExemplarUpdateResponse",
     "PostingFBSShipRequest",
     "PostingFBSShipRequestWith",
     "PostingFBSShipProducts",
@@ -28,6 +30,8 @@ __all__ = [
 ]
 
 from .entities import ProductExemplar, ProductExemplarMark, PostingProduct, ProductExemplarBase
+from .v1__fbs_posting_product_exemplar_update import FBSPostingProductExemplarUpdateResponse, \
+    FBSPostingProductExemplarUpdateRequest
 from .v4__posting_fbs_ship import PostingFBSShipResponse, PostingFBSShipRequest, PostingFBSShipRequestWith, \
     PostingFBSShipProducts, PostingFBSShipProduct
 from .v4__posting_fbs_ship_package import PostingFBSShipPackageProduct, PostingFBSShipPackageRequest, \
