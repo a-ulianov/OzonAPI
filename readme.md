@@ -577,7 +577,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v6/fbs/posting/product/exemplar/set` | Проверить и сохранить данные экземпляров | `fbs_posting_product_exemplar_set()` |
 | ✓ | `/v5/fbs/posting/product/exemplar/status` | Получить статус добавления экземпляров | `fbs_posting_product_exemplar_status()` |
 | ✓ | `/v4/posting/fbs/ship` | Собрать заказ (версия 4) | `posting_fbs_ship()` |
-| ☐ | `/v4/posting/fbs/ship/package` | Частичная сборка отправления (версия 4) | `posting_fbs_ship_package()` |
+| ✓ | `/v4/posting/fbs/ship/package` | Частичная сборка отправления (версия 4) | `posting_fbs_ship_package()` |
 | ☐ | `/v1/fbs/posting/product/exemplar/update` | Обновить данные экземпляров | `fbs_posting_product_exemplar_update()` |
 </details>
 <details>
