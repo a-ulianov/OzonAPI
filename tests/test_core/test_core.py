@@ -509,3 +509,4 @@ class TestAPIManager:
             await test_client_error()
 
         assert client_error_count == 1, f"APIClientError: ожидалась 1 попытка, получили {client_error_count}"
+
