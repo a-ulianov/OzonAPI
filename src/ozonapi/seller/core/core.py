@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import json
 from logging import Logger
 from types import TracebackType
@@ -52,6 +53,7 @@ class APIManager:
             self,
             client_id: Optional[str] = None,
             api_key: Optional[str] = None,
+            token: Optional[str] = None,
             config: Optional[APIConfig] = None
     ) -> None:
         """
@@ -60,15 +62,17 @@ class APIManager:
         Args:
             client_id: ID клиента для доступа к API
             api_key: Ключ API для аутентификации
+            token: OAuth-токен Ozon Seller API
             config: Конфигурация клиента
         """
         self._config = self.load_config(config)
         self._client_id = client_id or self._config.client_id
         self._api_key = api_key or self._config.api_key
+        self._token = token or self._config.token
 
-        if self._client_id is None or self._api_key is None:
+        if (self._token is None and (self._api_key is None or self._api_key is None)):
             raise ValueError(
-                "Не предоставлены авторизационные данные. Проверьте указание client_id и api_key."
+                "Не предоставлены авторизационные данные. Проверьте указание token или client_id и api_key."
             )
 
         self._instance_id = id(self)
@@ -76,6 +80,11 @@ class APIManager:
         self._closed = False
         self._logging_manager = None
         self._instance_logger: Logger = self._get_instance_logger()
+
+        self._validate_credentials()
+
+        if self._token is not None and self._client_id is None:
+            self._client_id = "OAuth {}".format(int(hashlib.sha256(self._token.encode()).hexdigest()[:10], 16) % 10000000)
 
 
         if APIManager._rate_limiter_manager is None:
@@ -96,7 +105,6 @@ class APIManager:
             )
 
         APIManager._instance_count += 1
-        self._validate_credentials()
         self.logger.debug(f"API-клиент инициализирован")
 
     @classmethod
@@ -174,16 +182,21 @@ class APIManager:
 
     def _validate_credentials(self) -> None:
         """Валидация учетных данных."""
-        if not self._client_id or not isinstance(self._client_id, str):
-            raise ValueError("client_id не должен быть пустой строкой")
-        if not self._api_key or not isinstance(self._api_key, str):
-            raise ValueError("api_key не должен быть пустой строкой")
+        if self._token is not None:
+            # Валидация для OAuth-токена
+            if self._token.startswith("Bearer "):
+                self._token = self._token[7:]
+            if not self._token or not isinstance(self._token, str):
+                raise ValueError("token должен быть непустой строкой")
 
-        if self._config.max_requests_per_second > 50:
-            self.logger.warning(
-                f"Максимальное кол-во запросов в секунду согласно документации Ozon - 50. "
-                f"Установлено: {self._config.max_requests_per_second}"
-            )
+        elif self._api_key is not None:
+            # Валидация для классической авторизации
+            if not self._client_id or not isinstance(self._client_id, str):
+                raise ValueError("client_id должен быть непустой строкой")
+            if not self._api_key or not isinstance(self._api_key, str):
+                raise ValueError("api_key должен быть непустой строкой")
+        else:
+            raise ValueError("Не предоставлены авторизационные данные")
 
     async def _ensure_registered(self) -> None:
         """Гарантирует регистрацию экземпляра в менеджерах."""
@@ -249,6 +262,11 @@ class APIManager:
     def is_closed(self) -> bool:
         """Проверяет закрыт ли клиент."""
         return self._closed
+
+    @property
+    def auth_type(self) -> str:
+        """Возвращает тип авторизации."""
+        return "oauth" if self._token else "api_key"
 
     @property
     def logger(self):
@@ -389,7 +407,7 @@ class APIManager:
         async def _execute_request():
             """Выполнение запроса."""
             async with self._session_manager.get_session(
-                    self._client_id, self._api_key, self._instance_id
+                    self._client_id, self._api_key, self._token, self._instance_id
             ) as session:
                 async with rate_limiter:
                     try:

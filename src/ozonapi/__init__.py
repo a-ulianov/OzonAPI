@@ -8,12 +8,14 @@ References:
 
 Notes:
     - Асинхронный дизайн для высокопроизводительных операций
-    - Все методы содержат подробные docstrings с примерами
     - Автоматическое соблюдение лимитов Ozon Seller API
     - Кеширование ответов для методов, возвращающих статичные данные
     - Экспоненциальные повторные попытки запросов при сбоях
     - Гибкая конфигурация через классы, переменные окружения или .env
     - Одновременная работа с несколькими кабинетами
+    - Поддержка OAuth-авторизации
+    - Все методы содержат подробные docstrings с примерами
+
 
 Examples:
     import asyncio
@@ -22,6 +24,7 @@ Examples:
 
     async def get_product_info_limit():
         config = SellerAPIConfig(client_id="id", api_key="key")
+        # config = SellerAPIConfig(token="token")
 
         async with SellerAPI(config=config) as api:
             return await api.product_info_limit()
@@ -34,7 +37,7 @@ from .infrastructure.logging import ozonapi_logger as logger
 from .seller import SellerAPI, SellerAPIConfig
 
 
-__version__ = "0.14.0"
+__version__ = "0.15.0"
 __author__ = "Alexander Ulianov"
 __email__ = "a.v.ulianov@mail.ru"
 __repository__ = "https://github.com/a-ulianov/OzonAPI"

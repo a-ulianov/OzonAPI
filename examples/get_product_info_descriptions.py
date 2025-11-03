@@ -1,54 +1,51 @@
 """
-Задача: Выгрузить текстовые описания их всех карточек продавца.
+Задача: Выгрузить описания для всех товаров продавца.
 
 Описание решения:
 Частями выгрузим список товаров методом product_list(),
-чтобы узнать их product_id, и, по мере получения таких частей,
+чтобы узнать их product_id, и по мере выгрузки
 асинхронно получим описания для товаров с помощью метода
 product_info_description().
 
-Для этих целей поднимем очередь из модуля asyncio и обработаем
+Для этих целей используем очереди из модуля asyncio и обработаем
 данные по схеме producer -> queue -> consumers.
 
 Сделаем одного производителя, чтобы складывал идентификаторы в очередь,
 и несколько потребителей, каждый из которых будет забирать по одному
-из очереди и асинхронно выгружать его описание,
-с ограничением запросов.
+из очереди и асинхронно выгружать его описание.
 """
 
 import asyncio
 from pprint import pprint
 
 from src.ozonapi import SellerAPI, SellerAPIConfig
-from src.ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse, \
-    ProductInfoDescriptionRequest
+from src.ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse, ProductInfoDescriptionRequest
 
+"""
+Подобраны настройки, позволяющие отслеживать выполнение логики.
+Для prod значения параметров могут быть увеличены.
+"""
 
-# Подобраны настройки обработки, позволяющие наблюдать асинхронность выполнения логики.
-# Для prod значения параметров могут быть увеличены.
-# Общее кол-во запросов составит consumers_amount * consumer_rate_limit в сек + запросы по
-# дефолтным настройки из SellerAPIConfig для функции producer, но не больше допустимого максимума.
-
-product_list_limit = 10                                 # Кол-во товаров, выгружаемых за одну итерацию
-consumers_amount = 5                                    # Кол-во потребителей, выгружающих описания
-consumer_rate_limit = 2                                 # Лимит запросов в секунду для каждого потребителя
+product_list_limit = 10  # Кол-во товаров, выгружаемых за одну итерацию
+consumers_amount = 5     # Кол-во потребителей, выгружающих описания
 queue_max_size = product_list_limit * consumers_amount  # Максимальный размер очереди
 
 product_descriptions = list()
+
 
 async def producer(queue):
     """Получает батчи из списка товаров и добавляет product_id в очередь на получение описания."""
 
     async with SellerAPI(
-        config=SellerAPIConfig(
-            # Понижаем уровень логирования (для наглядности)
-            log_level="DEBUG"
-        )
+            config=SellerAPIConfig(
+                # Понижаем уровень логирования (для наглядности)
+                log_level="INFO"
+            )
     ) as api:
 
         # Параметры, необходимые для выборки данных
-        products_count = 0      # Счетчик выбранных товаров
-        last_id = str()         # Идентификатор для пагинации
+        products_count = 0  # Счетчик выбранных товаров
+        last_id = str()  # Идентификатор для пагинации
 
         while True:
             # Отправляем запрос и получаем очередную партию данных о товарах
@@ -77,18 +74,16 @@ async def producer(queue):
             if products_count == products_batch.result.total:
                 break
 
+
 async def consumer(queue):
     """Получает айдишники товаров из очереди и получает описания."""
 
     async with SellerAPI(
-        config=SellerAPIConfig(
-            # Понижаем уровень логирования
-            log_level="DEBUG",
-            # Ограничиваем кол-во запросов в секунду для каждого потребителя
-            max_requests_per_second=consumer_rate_limit
-        )
+            config=SellerAPIConfig(
+                # Понижаем уровень логирования
+                log_level="INFO",
+            )
     ) as api:
-
         while True:
             # Достаем идентификатор очередного товара из очереди
             product_id = await queue.get()

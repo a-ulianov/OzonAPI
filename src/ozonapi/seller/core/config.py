@@ -11,6 +11,7 @@ class APIConfig(BaseSettings):
     Attributes:
         client_id: Идентификатор клиента Ozon (опционально)
         api_key: Авторизационный ключ Ozon Seller API (опционально)
+        token: OAuth-токен Ozon Seller API (https://docs.ozon.com/api/seller/?#tag/OAuth-token)
         base_url: Базовый URL API Ozon (опционально)
         max_requests_per_second: Максимальное количество запросов в секунду (опционально, 50 по документации Ozon)
         cleanup_interval: Интервал очистки неиспользуемых ресурсов в секундах (опционально)
@@ -45,6 +46,10 @@ class APIConfig(BaseSettings):
     api_key: Optional[str] = Field(
         default=None,
         description="Авторизационный ключ Ozon Seller API",
+    )
+    token: Optional[str] = Field(
+        default=None,
+        description="OAuth-токен Ozon Seller API",
     )
     base_url: str = Field(
         default="https://api-seller.ozon.ru",

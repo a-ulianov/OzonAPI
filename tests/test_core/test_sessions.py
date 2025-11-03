@@ -36,7 +36,11 @@ class TestSessionManager:
         api_key = "test_api_key"
         instance_id = 123
 
-        async with session_manager.get_session(client_id, api_key, instance_id) as session:
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+        ) as session:
             assert session is mock_client_session_instance
 
         # Проверяем, что сессия создана с правильными параметрами
@@ -59,11 +63,19 @@ class TestSessionManager:
         instance_id_2 = 456
 
         # Первое использование
-        async with session_manager.get_session(client_id, api_key, instance_id_1) as session1:
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id_1
+        ) as session1:
             assert session1 is mock_client_session_instance
 
         # Второе использование - должна быть переиспользована та же сессия
-        async with session_manager.get_session(client_id, api_key, instance_id_2) as session2:
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id_2
+        ) as session2:
             assert session2 is mock_client_session_instance
 
         # ClientSession должен быть создан только один раз
@@ -85,10 +97,18 @@ class TestSessionManager:
             api_key = "test_api_key"
             instance_id = 123
 
-            async with session_manager.get_session(client_id_1, api_key, instance_id) as session1:
+            async with session_manager.get_session(
+                    client_id=client_id_1,
+                    api_key=api_key,
+                    instance_id=instance_id
+            ) as session1:
                 pass
 
-            async with session_manager.get_session(client_id_2, api_key, instance_id) as session2:
+            async with session_manager.get_session(
+                    client_id=client_id_2,
+                    api_key=api_key,
+                    instance_id=instance_id
+            ) as session2:
                 pass
 
             # Должны быть созданы две разные сессии
@@ -105,7 +125,11 @@ class TestSessionManager:
         instance_id_2 = 456
 
         # Первый экземпляр - внутри контекста ссылка должна быть
-        async with session_manager.get_session(client_id, api_key, instance_id_1) as session:
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id_1
+        ) as session:
             assert session is mock_client_session_instance
             assert instance_id_1 in session_manager._session_refs[client_id]
 
@@ -113,7 +137,11 @@ class TestSessionManager:
         assert instance_id_1 not in session_manager._session_refs[client_id]
 
         # Второй экземпляр
-        async with session_manager.get_session(client_id, api_key, instance_id_2) as session:
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id_2
+        ) as session:
             assert session is mock_client_session_instance
             assert instance_id_2 in session_manager._session_refs[client_id]
 
@@ -128,7 +156,11 @@ class TestSessionManager:
         instance_id = 123
 
         # Создаем сессию
-        async with session_manager.get_session(client_id, api_key, instance_id):
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+        ):
             pass
 
         # Проверяем, что сессия создана
@@ -165,9 +197,17 @@ class TestSessionManager:
             instance_id = 123
 
             # Создаем несколько сессий
-            async with session_manager.get_session(client_id_1, api_key, instance_id):
+            async with session_manager.get_session(
+                    client_id=client_id_1,
+                    api_key=api_key,
+                    instance_id=instance_id
+            ):
                 pass
-            async with session_manager.get_session(client_id_2, api_key, instance_id):
+            async with session_manager.get_session(
+                    client_id=client_id_2,
+                    api_key=api_key,
+                    instance_id=instance_id
+            ):
                 pass
 
             # Закрываем все сессии
@@ -187,7 +227,11 @@ class TestSessionManager:
         api_key = "test_api_key"
         instance_id = 123
 
-        async with session_manager.get_session(client_id, api_key, instance_id) as session:
+        async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+        ) as session:
             assert session is mock_client_session_instance
             assert instance_id in session_manager._session_refs[client_id]
 
@@ -203,7 +247,11 @@ class TestSessionManager:
 
         # Создаем несколько экземпляров
         for instance_id in instance_ids:
-            async with session_manager.get_session(client_id, api_key, instance_id) as session:
+            async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+            ) as session:
                 assert session is mock_client_session_instance
                 assert instance_id in session_manager._session_refs[client_id]
 
@@ -232,7 +280,11 @@ class TestSessionManager:
             api_key = "test_api_key"
             instance_id = 123
 
-            async with session_manager.get_session(client_id, api_key, instance_id):
+            async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+            ):
                 pass
 
             # Проверяем заголовки
@@ -248,7 +300,11 @@ class TestSessionManager:
         api_key = "test_api_key"
 
         async def use_session(instance_id):
-            async with session_manager.get_session(client_id, api_key, instance_id) as session:
+            async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+            ) as session:
                 await asyncio.sleep(0.01)
                 return session
 
@@ -269,7 +325,11 @@ class TestSessionManager:
         instance_id = 123
 
         # Создаем сессию и проверяем внутри контекста
-        async with session_manager.get_session(client_id, api_key, instance_id):
+        async with session_manager.get_session(
+            client_id=client_id,
+            api_key=api_key,
+            instance_id=instance_id
+        ):
             # Сессия существует
             assert client_id in session_manager._sessions
             # Есть активные ссылки
@@ -294,7 +354,11 @@ class TestSessionManager:
         instance_id = 123
 
         # Создаем сессию
-        async with session_manager.get_session(client_id, api_key, instance_id):
+        async with session_manager.get_session(
+            client_id=client_id,
+            api_key=api_key,
+            instance_id=instance_id
+        ):
             # Внутри контекста - сессия существует
             assert client_id in session_manager._sessions
 
@@ -317,10 +381,18 @@ class TestSessionManager:
         api_key = "test_api_key"
 
         # Создаем несколько экземпляров с одним client_id
-        async with session_manager.get_session(client_id, api_key, 1):
+        async with session_manager.get_session(
+            client_id=client_id,
+            api_key=api_key,
+            instance_id=1
+        ):
             assert 1 in session_manager._session_refs[client_id]
 
-            async with session_manager.get_session(client_id, api_key, 2):
+            async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=2
+            ):
                 assert 2 in session_manager._session_refs[client_id]
                 # Обе ссылки активны
                 assert len(session_manager._session_refs[client_id]) == 2
@@ -349,7 +421,11 @@ class TestSessionManager:
         created_sessions = []
 
         async def create_session(instance_id):
-            async with session_manager.get_session(client_id, api_key, instance_id):
+            async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+            ):
                 created_sessions.append(instance_id)
                 await asyncio.sleep(0.01)
 
@@ -369,8 +445,16 @@ class TestSessionManager:
         api_key = "test_api_key"
 
         # Создаем несколько ссылок
-        async with session_manager.get_session(client_id, api_key, 1):
-            async with session_manager.get_session(client_id, api_key, 2):
+        async with session_manager.get_session(
+            client_id=client_id,
+            api_key=api_key,
+            instance_id=1
+        ):
+            async with session_manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=2
+            ):
                 # Обе ссылки активны
                 assert len(session_manager._session_refs[client_id]) == 2
 
@@ -393,7 +477,11 @@ class TestSessionManager:
         instance_id = 123
 
         # Создаем сессию
-        async with session_manager.get_session(client_id, api_key, instance_id):
+        async with session_manager.get_session(
+            client_id=client_id,
+            api_key=api_key,
+            instance_id=instance_id
+        ):
             pass
 
         # Помечаем сессию как закрытую
@@ -423,7 +511,11 @@ class TestSessionManager:
             api_key = "test_api_key"
             instance_id = 123
 
-            async with manager.get_session(client_id, api_key, instance_id):
+            async with manager.get_session(
+                client_id=client_id,
+                api_key=api_key,
+                instance_id=instance_id
+            ):
                 pass
 
             # Проверяем, что параметры переданы правильно

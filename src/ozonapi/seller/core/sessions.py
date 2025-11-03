@@ -22,14 +22,28 @@ class SessionManager:
         self._connector_limit = connector_limit
         self._logger = instance_logger
 
+    @staticmethod
+    def _get_headers(client_id: str, api_key: str, token: str) -> dict:
+        """Возвращает заголовки авторизации в зависимости от типа авторизации."""
+        if token:
+            return {"Authorization": f"Bearer {token}"}
+        elif api_key and client_id:
+            return {
+                "Client-Id": client_id,
+                "Api-Key": api_key,
+            }
+        else:
+            raise ValueError("Недостаточно данных для авторизации")
+
     @asynccontextmanager
-    async def get_session(self, client_id: str, api_key: str, instance_id: int) -> AsyncIterator[ClientSession]:
+    async def get_session(self, client_id: str, api_key: str, instance_id: int, token: str = None) -> AsyncIterator[ClientSession]:
         """
         Получает сессию для client_id.
 
         Args:
             client_id: Идентификатор клиента
             api_key: Ключ API
+            token: OAuth-токен
             instance_id: ID экземпляра
 
         Yields:
@@ -38,10 +52,7 @@ class SessionManager:
         async with self._lock:
             if client_id not in self._sessions:
                 self._sessions[client_id] = ClientSession(
-                    headers={
-                        "Client-Id": client_id,
-                        "Api-Key": api_key,
-                    },
+                    headers=self._get_headers(client_id, api_key, token),
                     timeout=self._timeout,
                     connector=TCPConnector(limit=self._connector_limit)
                 )
