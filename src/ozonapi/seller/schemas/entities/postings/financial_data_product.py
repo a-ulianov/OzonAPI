@@ -1,9 +1,9 @@
-from pydantic import Field, BaseModel
+from pydantic import BaseModel, Field
 
 from ....common.enumerations.localization import CurrencyCode
 
 
-class PostingFBSFinancialDataProducts(BaseModel):
+class PostingFinancialDataProduct(BaseModel):
     """Список товаров в заказе.
 
     Attributes:

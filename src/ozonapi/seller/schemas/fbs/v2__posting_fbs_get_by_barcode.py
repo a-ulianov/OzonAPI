@@ -4,7 +4,8 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from .entities import PostingFBSBarcodes, PostingFBSProduct
+from .entities import PostingFBSBarcodes
+from ..entities.postings.product import PostingProduct
 
 
 class PostingFBSGetByBarcodeRequest(BaseModel):
@@ -54,7 +55,7 @@ class PostingFBSGetByBarcodeResponse(BaseModel):
     posting_number: str = Field(
         ..., description="Номер отправления"
     )
-    products: list[PostingFBSProduct] = Field(
+    products: list[PostingProduct] = Field(
         ..., description="Список товаров в отправлении"
     )
     shipment_date: datetime.datetime = Field(

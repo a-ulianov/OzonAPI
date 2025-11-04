@@ -54,7 +54,7 @@ async def get_fbs_unfulfilled_postings_and_print_detailed_info():
         tasks = list()
         for posting in postings:
             tasks.append(
-                await api.posting_fbs_get(
+                api.posting_fbs_get(
                     PostingFBSGetRequest(
                         posting_number=posting.posting_number
                     )

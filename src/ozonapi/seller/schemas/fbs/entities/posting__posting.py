@@ -1,25 +1,24 @@
 import datetime
 from typing import Optional
 
-from pydantic import Field, BaseModel
+from pydantic import Field
 
 from ....common.enumerations.postings import AvailablePostingActions, PrrOption, PostingStatus, \
     PostingSubstatus, TplIntegrationType
+from ...entities.postings import PostingFinancialData, PostingLegalInfo, Posting
 from .posting__addressee import PostingFBSAddressee
 from .posting__analytics_data import PostingFBSAnalyticsData
 from .posting__barcodes import PostingFBSBarcodes
 from .posting__cancellation import PostingFBSCancellation
 from .posting__customer import PostingFBSCustomer
 from .posting__delivery_method import PostingFBSDeliveryMethod
-from .posting__financial_data import PostingFBSFinancialData
-from .posting__legal_info import PostingFBSLegalInfo
 from .posting__optional import PostingFBSOptional
 from .posting__product import PostingFBSProductDetailed
 from .posting__requirements import PostingFBSRequirements
 from .posting__tariffication import PostingFBSTariffication
 
 
-class PostingFBSPosting(BaseModel):
+class PostingFBSPosting(Posting):
     """Информация об отправлении.
 
     Attributes:
@@ -79,20 +78,11 @@ class PostingFBSPosting(BaseModel):
     delivery_method: PostingFBSDeliveryMethod = Field(
         ..., description="Метод доставки."
     )
-    financial_data: Optional[PostingFBSFinancialData] = Field(
-        None, description="Данные о стоимости товара, размере скидки, выплате и комиссии."
-    )
-    in_process_at: datetime.datetime = Field(
-        ..., description="Дата и время начала обработки отправления."
-    )
     is_express: bool = Field(
         ..., description="Если использовалась быстрая доставка Ozon Express — true."
     )
     is_multibox: bool = Field(
         ..., description="Признак, что в отправлении есть многокоробочный товар и нужно передать количество коробок."
-    )
-    legal_info: Optional[PostingFBSLegalInfo] = Field(
-        None, description="Юридическая информация о покупателе."
     )
     multi_box_qty: Optional[int] = Field(
         None, description="Количество коробок, в которые упакован товар."
@@ -100,20 +90,11 @@ class PostingFBSPosting(BaseModel):
     optional: Optional[PostingFBSOptional] = Field(
         None, description="Список товаров с дополнительными характеристиками."
     )
-    order_id: int = Field(
-        ..., description="Идентификатор заказа, к которому относится отправление."
-    )
-    order_number: str = Field(
-        ..., description="Номер заказа, к которому относится отправление."
-    )
     parent_posting_number: Optional[str] = Field(
         None, description="Номер родительского отправления, в результате разделения которого появилось текущее."
     )
     pickup_code_verified_at: Optional[datetime.datetime] = Field(
         None, description="Дата успешной валидации кода курьера. Проверить код posting_fbs_pick_up_code_verify()"
-    )
-    posting_number: str = Field(
-        ..., description="Номер отправления."
     )
     products: list[PostingFBSProductDetailed] = Field(
         ..., description="Список товаров в отправлении."
@@ -139,9 +120,6 @@ class PostingFBSPosting(BaseModel):
     )
     shipment_date_without_delay: datetime.datetime = Field(
         ..., description="Дата и время отгрузки без просрочки."
-    )
-    status: PostingStatus = Field(
-        ..., description="Статус отправления."
     )
     substatus: PostingSubstatus = Field(
         ..., description="Подстатус отправления."

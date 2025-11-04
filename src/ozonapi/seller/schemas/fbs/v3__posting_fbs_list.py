@@ -6,10 +6,8 @@ from pydantic import BaseModel, Field
 
 from .entities import PostingFBSFilterWith
 from .entities.posting__posting import PostingFBSPosting
+from ..entities.postings import PostingFilter, PostingRequest
 from ..mixins import DateTimeSerializationMixin
-from ...common.enumerations.postings import PostingStatus
-from ...common.enumerations.requests import SortingDirection
-from ..base import BaseRequestOffset
 
 
 class PostingFBSListRequestFilterLastChangedStatusDate(DateTimeSerializationMixin, BaseModel):
@@ -37,7 +35,7 @@ class PostingFBSListRequestFilterLastChangedStatusDate(DateTimeSerializationMixi
     ])
 
 
-class PostingFBSListFilter(DateTimeSerializationMixin, BaseModel):
+class PostingFBSListFilter(PostingFilter):
     """Фильтр запроса на получение информации об отправлениях FBS.
 
     Attributes:
@@ -54,18 +52,6 @@ class PostingFBSListFilter(DateTimeSerializationMixin, BaseModel):
         last_changed_status_date: Период изменения статуса
         is_quantum: Фильтр по квантовым отправлениям
     """
-    model_config = {'populate_by_name': True}
-
-    since: datetime.datetime = Field(
-        ..., description="Начало периода, за который нужно получить отправления. Период не более 1 года."
-    )
-    to_: datetime.datetime = Field(
-        ..., description="Конец периода, за который нужно получить отправления. Период не более 1 года.",
-        alias="to"
-    )
-    status: Optional[PostingStatus] = Field(
-        None, description="Статус отправления."
-    )
     warehouse_id: Optional[list[int]] = Field(
         default_factory=list, description="Идентификаторы складов. Можно получить с помощью метода warehouse_list()."
     )
@@ -94,12 +80,8 @@ class PostingFBSListFilter(DateTimeSerializationMixin, BaseModel):
         None, description="true — получить только квантовые отправления, false — все отправления."
     )
 
-    serialize_datetime = DateTimeSerializationMixin.create_datetime_validator([
-        'since', 'to_'
-    ])
 
-
-class PostingFBSListRequest(BaseRequestOffset):
+class PostingFBSListRequest(PostingRequest):
     """Описывает схему запроса на получение информации об отправлениях FBS.
 
     Attributes:
@@ -109,17 +91,8 @@ class PostingFBSListRequest(BaseRequestOffset):
         offset: Количество элементов, которое будет пропущено в ответе
         with_: Дополнительные поля, которые нужно добавить в ответ
     """
-    model_config = {'populate_by_name': True}
-
-    dir: Optional[SortingDirection] = Field(
-        SortingDirection.ASC, description="Направление сортировки."
-    )
     filter: PostingFBSListFilter = Field(
         ..., description="Фильтр запроса."
-    )
-    limit: Optional[int] = Field(
-        1000, description="Количество значений в ответе.",
-        ge=1, le=1000,
     )
     with_: Optional[PostingFBSFilterWith] = Field(
         None, description="Дополнительные поля, которые нужно добавить в ответ.",

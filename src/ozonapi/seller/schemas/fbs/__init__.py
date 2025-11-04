@@ -19,13 +19,10 @@ __all__ = [
     "PostingFBSCustomerAddress",
     "PostingFBSDeliveryMethod",
     "PostingFBSFilterWith",
-    "PostingFBSFinancialData",
-    "PostingFBSFinancialDataProducts",
     "PostingFBSGetByBarcodeRequest",
     "PostingFBSGetByBarcodeResponse",
     "PostingFBSGetRequest",
     "PostingFBSGetResponse",
-    "PostingFBSLegalInfo",
     "PostingFBSOptional",
     "PostingFBSPackageLabelCreateRequest",
     "PostingFBSPackageLabelCreateResponse",
@@ -34,7 +31,6 @@ __all__ = [
     "PostingFBSPackageLabelRequest",
     "PostingFBSPackageLabelResponse",
     "PostingFBSPosting",
-    "PostingFBSProduct",
     "PostingFBSProductCancelItem",
     "PostingFBSProductCancelRequest",
     "PostingFBSProductCancelResponse",
@@ -65,10 +61,13 @@ __all__ = [
 ]
 
 from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBarcodes, PostingFBSCancellation, \
-    PostingFBSCustomer, PostingFBSCustomerAddress, PostingFBSDeliveryMethod, PostingFBSFinancialData, \
-    PostingFBSFinancialDataProducts, PostingFBSLegalInfo, PostingFBSOptional, PostingFBSPosting, \
+    PostingFBSCustomer, PostingFBSCustomerAddress, PostingFBSDeliveryMethod, PostingFBSOptional, PostingFBSPosting, \
     PostingFBSProductDetailed, \
-    PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith, PostingFBSProduct
+    PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith
+from ..entities.postings.legal_info import PostingLegalInfo
+from ..entities.postings.product import PostingProduct
+from ..entities.postings.financial_data import PostingFinancialData
+from ..entities.postings.financial_data_product import PostingFinancialDataProduct
 from .v1__posting_fbs_cancel_reason import PostingFBSCancelReasonResponse, PostingFBSCancelReasonRequest
 from .v1__posting_fbs_package_label_get import PostingFBSPackageLabelGetResponse, PostingFBSPackageLabelGetRequest
 from .v1__posting_fbs_restrictions import PostingFBSRestrictionsResponse, PostingFBSRestrictionsRequest

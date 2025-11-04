@@ -407,7 +407,10 @@ class APIManager:
         async def _execute_request():
             """Выполнение запроса."""
             async with self._session_manager.get_session(
-                    self._client_id, self._api_key, self._token, self._instance_id
+                    client_id=self._client_id,
+                    api_key=self._api_key,
+                    instance_id=self._instance_id,
+                    token=self._token
             ) as session:
                 async with rate_limiter:
                     try:

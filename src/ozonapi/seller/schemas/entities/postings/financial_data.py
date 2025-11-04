@@ -1,9 +1,9 @@
-from pydantic import Field, BaseModel
+from pydantic import BaseModel, Field
 
-from .posting__financial_data_products import PostingFBSFinancialDataProducts
+from .financial_data_product import PostingFinancialDataProduct
 
 
-class PostingFBSFinancialData(BaseModel):
+class PostingFinancialData(BaseModel):
     """Данные о стоимости товара, размере скидки, выплате и комиссии.
 
     Attributes:
@@ -17,6 +17,6 @@ class PostingFBSFinancialData(BaseModel):
     cluster_to: str = Field(
         ..., description="Код региона, куда доставляется заказ."
     )
-    products: list[PostingFBSFinancialDataProducts] = Field(
+    products: list[PostingFinancialDataProduct] = Field(
         ..., description="Список товаров в заказе."
     )

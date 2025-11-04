@@ -3,7 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from ..fbs.entities import PostingFBSProductWithCurrencyCode
+from ..entities.postings.product import PostingProductWithCurrencyCode
 
 
 class PostingFBSShipProduct(BaseModel):
@@ -65,7 +65,7 @@ class PostingFBSShipRequest(BaseModel):
     )
 
 
-class PostingFBSShipResponseProduct(PostingFBSProductWithCurrencyCode):
+class PostingFBSShipResponseProduct(PostingProductWithCurrencyCode):
     """Информация о товаре в отправлении.
 
     Attributes:

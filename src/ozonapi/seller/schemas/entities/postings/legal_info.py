@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 
 
-class PostingFBSLegalInfo(BaseModel):
+class PostingLegalInfo(BaseModel):
     """Юридическая информация о покупателе.
 
     Attributes:

@@ -1,12 +1,12 @@
 import datetime
 from typing import Optional
 
-from pydantic import Field, BaseModel
+from pydantic import Field
 
-from ....common.enumerations.postings import PaymentTypeGroupName
+from ...entities.postings import PostingAnalyticsData
 
 
-class PostingFBSAnalyticsData(BaseModel):
+class PostingFBSAnalyticsData(PostingAnalyticsData):
     """Данные аналитики.
 
     Attributes:
@@ -23,26 +23,11 @@ class PostingFBSAnalyticsData(BaseModel):
         warehouse: Название склада отправки заказа
         warehouse_id: Идентификатор склада
     """
-    city: Optional[str] = Field(
-        ..., description="Город доставки. Только для отправлений rFBS и продавцов из СНГ."
-    )
     delivery_date_begin: Optional[datetime.datetime] = Field(
         None, description="Дата и время начала доставки."
     )
     delivery_date_end: Optional[datetime.datetime] = Field(
         None, description="Дата и время конца доставки."
-    )
-    delivery_type: str = Field(
-        None, description="Способ доставки."
-    )
-    is_legal: bool = Field(
-        ..., description="Признак, что получатель юридическое лицо."
-    )
-    is_premium: bool = Field(
-        ..., description="Наличие подписки Premium."
-    )
-    payment_type_group_name: PaymentTypeGroupName | str = Field(
-        ..., description="Способ оплаты."
     )
     region: Optional[str] = Field(
         ..., description="Регион доставки. Только для отправлений rFBS."
@@ -55,7 +40,4 @@ class PostingFBSAnalyticsData(BaseModel):
     )
     warehouse: str = Field(
         ..., description="Название склада отправки заказа."
-    )
-    warehouse_id: int = Field(
-        ..., description="Идентификатор склада."
     )
