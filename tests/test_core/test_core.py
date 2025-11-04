@@ -375,18 +375,29 @@ class TestAPIManager:
         """Тест заголовков запроса."""
         with patch('src.ozonapi.seller.core.core.APIManager._session_manager') as mock_session_manager:
             mock_session = AsyncMock(spec=ClientSession)
-            mock_session_manager.get_session.return_value.__aenter__.return_value = mock_session
+
+            mock_context_manager = AsyncMock()
+            mock_context_manager.__aenter__.return_value = mock_session
+            mock_session_manager.get_session.return_value = mock_context_manager
+
             mock_session.request.return_value.__aenter__.return_value = mock_response
 
-            # Сессия уже создается с заголовками в SessionManager
-            # Проверяем, что заголовки установлены при создании сессии
+            # Выполняем запрос
             await api_manager._request(method="post", endpoint="test-endpoint")
 
-            # Проверяем, что сессия создана с правильными заголовками
+            # Проверяем, что get_session был вызван с правильными аргументами
             mock_session_manager.get_session.assert_called_once()
+
+            # Получаем аргументы вызова
             call_args = mock_session_manager.get_session.call_args
-            assert call_args[0][0] == "test_client"
-            assert call_args[0][1] == "test_api_key"
+            print(f"Call args: {call_args}")
+
+            # Проверяем именованные аргументы
+            call_kwargs = call_args.kwargs
+            assert call_kwargs['client_id'] == "test_client"
+            assert call_kwargs['api_key'] == "test_api_key"
+            assert 'instance_id' in call_kwargs
+            assert call_kwargs['token'] is None
 
     @pytest.mark.asyncio
     async def test_ensure_registered(self, api_manager):
