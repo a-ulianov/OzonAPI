@@ -33,7 +33,7 @@ class PostingFBOListMixin(APIManager):
                 async with SellerAPI(client_id, api_key) as api:
                     result = await api.posting_fbo_list(
                         PostingFBOListRequest(
-                            filter=PostingFBOListFilter(
+                            filter=PostingFilter(
                                 since=datetime.datetime(2025, 9, 1),
                                 to=datetime.datetime(2025, 11, 17, 10, 44, 12, 828000),
                             ),
@@ -41,11 +41,13 @@ class PostingFBOListMixin(APIManager):
                     )
 
             Пример с фильтрацией по статусу:
-                async with SellerAPI(client_id, api_key) as api:
+                # OZON_SELLER_TOKEN или OZON_SELLER_CLIENT_ID + OZON_SELLER_API_KEY определены в .env
+                async with SellerAPI() as api:
+                    # noinspection PyArgumentList
                     result = await api.posting_fbo_list(
                         PostingFBOListRequest(
                             dir=SortingDirection.ASC,
-                            filter=PostingFBOListFilter(
+                            filter=PostingFilter(
                                 since=datetime.datetime.now() - datetime.timedelta(days=30),
                                 to=datetime.datetime.now(),
                                 status=PostingStatus.DELIVERED
@@ -53,7 +55,7 @@ class PostingFBOListMixin(APIManager):
                             limit=100,
                             offset=0,
                             translit=False,
-                            with_=PostingFBOListRequestWith(
+                            with_=PostingFilterWith(
                                 analytics_data=True,
                                 financial_data=False,
                                 legal_info=True
