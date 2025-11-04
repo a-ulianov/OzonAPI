@@ -1,7 +1,7 @@
 """https://docs.ozon.ru/api/seller/?#operation/PostingAPI_CreateLabelBatchV2"""
 from pydantic import BaseModel, Field
 
-from src.ozonapi.seller.common.enumerations.postings import LabelType
+from ...common.enumerations.postings import LabelType
 
 
 class PostingFBSPackageLabelCreateRequest(BaseModel):
