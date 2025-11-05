@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 from ....common.enumerations.localization import CurrencyCode
@@ -45,8 +47,8 @@ class PostingFinancialDataProduct(BaseModel):
     price: float = Field(
         ..., description="Цена товара с учётом акций, кроме акций за счёт Ozon."
     )
-    customer_price: float = Field(
-        ..., description="Цена товара для покупателя с учётом скидок продавца и Ozon."
+    customer_price: Optional[float] = Field(
+        None, description="Цена товара для покупателя с учётом скидок продавца и Ozon."
     )
     product_id: int = Field(
         ..., description="Идентификатор товара в системе продавца."
