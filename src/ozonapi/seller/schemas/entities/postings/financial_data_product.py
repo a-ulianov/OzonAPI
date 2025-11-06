@@ -35,8 +35,8 @@ class PostingFinancialDataProduct(BaseModel):
     commission_percent: float = Field(
         ..., description="Процент комиссии."
     )
-    commissions_currency_code: CurrencyCode = Field(
-        ..., description="Код валюты, в которой рассчитывались комиссии."
+    commissions_currency_code: Optional[CurrencyCode] = Field(
+        None, description="Код валюты, в которой рассчитывались комиссии."
     )
     old_price: float = Field(
         ..., description="Цена до учёта скидок. На карточке товара отображается зачёркнутой."

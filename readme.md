@@ -520,12 +520,12 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/polygon/bind` | Свяжите метод доставки с полигоном доставки | `polygon_bind()` |
 </details>
 <details>
-<summary>Доставка FBO (1)</summary>
+<summary>Доставка FBO (2)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v2/posting/fbo/list` | Список отправлений | `posting_fbo_list()` |
-| ☐ | `/v2/posting/fbo/get` | Информация об отправлении | `posting_fbo_get()` |
+| ✓ | `/v2/posting/fbo/get` | Информация об отправлении | `posting_fbo_get()` |
 | ☐ | `/v1/posting/fbo/cancel-reason/list` | Причины отмены отправлений по схеме FBO | `posting_fbo_cancel_reason_list()` |
 | ☐ | `/v1/supply-order/status/counter` | Количество заявок по статусам | `supply_order_status_counter()` |
 | ☐ | `/v1/supply-order/bundle` | Состав поставки или заявки на поставку | `supply_order_bundle()` |

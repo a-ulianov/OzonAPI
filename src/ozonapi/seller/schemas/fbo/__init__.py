@@ -4,9 +4,12 @@ https://docs.ozon.com/api/seller/?#tag/FBO
 __all__ = [
     "PostingFilter",
     "PostingFilterWith",
+    "PostingFBOGetRequest",
+    "PostingFBOGetResponse",
     "PostingFBOListRequest",
     "PostingFBOListResponse",
 ]
 
+from .v2__posting_fbo_get import PostingFBOGetRequest, PostingFBOGetResponse
 from .v2__posting_fbo_list import PostingFBOListRequest, PostingFBOListResponse
 from ..entities.postings import PostingFilter, PostingFilterWith
