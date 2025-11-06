@@ -1,10 +1,10 @@
 from pydantic import Field
 
-from ...base import BaseAddressee
+from ...entities.postings import PostingAddressee
 from .posting__customer_address import PostingFBSCustomerAddress
 
 
-class PostingFBSCustomer(BaseAddressee):
+class PostingFBSCustomer(PostingAddressee):
     """Данные о покупателе.
 
     Attributes:

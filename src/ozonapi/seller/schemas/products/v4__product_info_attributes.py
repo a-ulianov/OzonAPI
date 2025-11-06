@@ -4,7 +4,8 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from ...common.enumerations.requests import SortingDirection, ProductsSortingBy
-from ..base import BaseResponseLastId, BaseRequestLastId
+from ..entities.common import ResponseLastId
+from ..entities.common import RequestLastId
 from .base import BaseProductListFilter, BaseProductInfo, BaseProductInfoListRequest
 
 
@@ -21,7 +22,7 @@ class ProductInfoAttributesFilter(BaseProductInfoListRequest, BaseProductListFil
     pass
 
 
-class ProductInfoAttributesRequest(BaseRequestLastId):
+class ProductInfoAttributesRequest(RequestLastId):
     """Запрос на получение описаний характеристик товаров по идентификатору и видимости.
 
     Attributes:
@@ -124,7 +125,7 @@ class ProductInfoAttributesItem(BaseProductInfo):
     )
 
 
-class ProductInfoAttributesResponse(BaseResponseLastId):
+class ProductInfoAttributesResponse(ResponseLastId):
     """Описывает схему ответа на запрос описаний характеристик товаров.
 
     Attributes:

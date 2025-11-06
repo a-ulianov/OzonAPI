@@ -1,9 +1,9 @@
 from pydantic import Field
 
-from ...base import BaseDeliveryMethod
+from ...entities.postings import PostingDeliveryMethod
 
 
-class PostingFBSDeliveryMethod(BaseDeliveryMethod):
+class PostingFBSDeliveryMethod(PostingDeliveryMethod):
     """Метод доставки.
 
     Attributes:

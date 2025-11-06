@@ -5,7 +5,9 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from ...common.enumerations.delivery import DeliveryMethodStatus
-from ..base import BaseResponseHasNext, BaseRequestOffset, BaseDeliveryMethod
+from ..entities.postings import PostingDeliveryMethod
+from ..entities.common import ResponseHasNext
+from ..entities.common import RequestOffset
 
 
 class DeliveryMethodListFilter(BaseModel):
@@ -27,7 +29,7 @@ class DeliveryMethodListFilter(BaseModel):
     )
 
 
-class DeliveryMethodListRequest(BaseRequestOffset):
+class DeliveryMethodListRequest(RequestOffset):
     """Схема запроса о списке методов доставки склада.
 
     Attributes:
@@ -44,7 +46,7 @@ class DeliveryMethodListRequest(BaseRequestOffset):
     )
 
 
-class DeliveryMethodListItem(BaseDeliveryMethod):
+class DeliveryMethodListItem(PostingDeliveryMethod):
     """Модель элемента списка методов доставки.
 
     Attributes:
@@ -83,7 +85,7 @@ class DeliveryMethodListItem(BaseDeliveryMethod):
     )
 
 
-class DeliveryMethodListResponse(BaseResponseHasNext):
+class DeliveryMethodListResponse(ResponseHasNext):
     """Модель, описывающая результат ответа на запрос о списке методов доставки склада.
 
     Attributes:

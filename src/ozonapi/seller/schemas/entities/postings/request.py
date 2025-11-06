@@ -4,11 +4,11 @@ from pydantic import Field
 
 from .filter import PostingFilter
 from .filter_with import PostingFilterWith
-from ...base import BaseRequestOffset
+from ..common import RequestOffset
 from ....common.enumerations.requests import SortingDirection
 
 
-class PostingRequest(BaseRequestOffset):
+class PostingRequest(RequestOffset):
     """Описывает схему запроса на получение информации об отправлениях.
 
     Attributes:

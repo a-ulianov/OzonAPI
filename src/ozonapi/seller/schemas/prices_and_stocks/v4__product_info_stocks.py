@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 from ...common.enumerations.products import Visibility, ShipmentType
 from .base import BaseRequestFilterSpec, BaseRequestCursorSpec
-from ..base import BaseResponseCursor
+from ..entities.common import ResponseCursor
 
 
 class ProductInfoPricesRequestFilterWithQuant(BaseModel):
@@ -100,7 +100,7 @@ class ProductInfoStocksItem(BaseModel):
     )
 
 
-class ProductInfoStocksResponse(BaseResponseCursor):
+class ProductInfoStocksResponse(ResponseCursor):
     """Описывает схему ответа с информацией о количестве товаров по схемам FBS и rFBS.
 
     Attributes:

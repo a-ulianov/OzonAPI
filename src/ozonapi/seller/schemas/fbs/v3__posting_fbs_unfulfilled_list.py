@@ -9,7 +9,7 @@ from .entities.posting__posting import PostingFBSPosting
 from ..mixins import DateTimeSerializationMixin
 from ...common.enumerations.postings import PostingStatus
 from ...common.enumerations.requests import SortingDirection
-from ..base import BaseRequestOffset
+from ..entities.common import RequestOffset
 
 
 class PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate(BaseModel):
@@ -111,7 +111,7 @@ class PostingFBSUnfulfilledListFilter(DateTimeSerializationMixin, BaseModel):
         return self
 
 
-class PostingFBSUnfulfilledListRequest(BaseRequestOffset):
+class PostingFBSUnfulfilledListRequest(RequestOffset):
     """Описывает схему запроса на получение информации о необработанных отправлениях FBS и rFBS
     за указанный период времени (максимум 1 год).
 

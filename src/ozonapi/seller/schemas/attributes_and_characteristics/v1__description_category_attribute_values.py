@@ -5,7 +5,7 @@ from pydantic import Field
 
 from ...common.enumerations.localization import Language
 from .base import BaseExtAttributeRequest, BaseLanguageRequest, BaseDescriptionCategoryAttributeValuesResponse
-from ..base import BaseResponseHasNext
+from ..entities.common import ResponseHasNext
 
 
 class DescriptionCategoryAttributeValuesRequest(BaseExtAttributeRequest, BaseLanguageRequest):
@@ -28,7 +28,7 @@ class DescriptionCategoryAttributeValuesRequest(BaseExtAttributeRequest, BaseLan
     )
 
 
-class DescriptionCategoryAttributeValuesResponse(BaseDescriptionCategoryAttributeValuesResponse, BaseResponseHasNext):
+class DescriptionCategoryAttributeValuesResponse(BaseDescriptionCategoryAttributeValuesResponse, ResponseHasNext):
     """Описывает схему ответа на запрос о получении справочных значений характеристик.
 
     Attributes:

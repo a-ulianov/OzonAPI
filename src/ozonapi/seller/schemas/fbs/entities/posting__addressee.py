@@ -1,7 +1,7 @@
-from ...base import BaseAddressee
+from ...entities.postings import PostingAddressee
 
 
-class PostingFBSAddressee(BaseAddressee):
+class PostingFBSAddressee(PostingAddressee):
     """Контактные данные получателя.
 
     Attributes:

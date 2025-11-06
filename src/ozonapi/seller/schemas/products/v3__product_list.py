@@ -4,7 +4,8 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from .base import BaseProductListFilter
-from ..base import BaseRequestLastId, BaseRequestLimit1000, BaseResponseLastId
+from ..entities.common import ResponseLastId
+from ..entities.common import RequestLastId, RequestLimit1000
 
 
 class ProductListFilter(BaseProductListFilter):
@@ -19,7 +20,7 @@ class ProductListFilter(BaseProductListFilter):
     pass
 
 
-class ProductListRequest(BaseRequestLimit1000, BaseRequestLastId):
+class ProductListRequest(RequestLimit1000, RequestLastId):
     """Модель запроса для получения списка товаров.
 
     Attributes:
@@ -82,7 +83,7 @@ class ProductListResponseItem(BaseModel):
     )
 
 
-class ProductListResponseResult(BaseResponseLastId):
+class ProductListResponseResult(ResponseLastId):
     """Информация об отобранных товарах и их количестве.
 
     Attributes:

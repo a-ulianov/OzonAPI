@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field, model_validator
 from ...common.enumerations.localization import CurrencyCode
 from ...common.enumerations.prices import ColorIndex
 from .base import BaseRequestFilterSpec, BaseRequestCursorSpec
-from ..base import BaseResponseCursor
+from ..entities.common import ResponseCursor
 
 
 class ProductInfoPricesFilter(BaseRequestFilterSpec):
@@ -279,7 +279,7 @@ class ProductInfoPricesItem(BaseModel):
     )
 
 
-class ProductInfoPricesResponse(BaseResponseCursor):
+class ProductInfoPricesResponse(ResponseCursor):
     """Описывает схему ответа на запрос о цене товаров.
 
     Attributes:

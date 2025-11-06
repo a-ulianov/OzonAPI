@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from ...common.enumerations.products import Visibility
-from ..base import BaseRequestCursor, BaseRequestLimit1000
+from ..entities.common import RequestLimit1000, RequestCursor
 
 
 class BaseRequestFilterSpec(BaseModel):
@@ -21,6 +21,6 @@ class BaseRequestFilterSpec(BaseModel):
     )
 
 
-class BaseRequestCursorSpec(BaseRequestLimit1000, BaseRequestCursor):
+class BaseRequestCursorSpec(RequestLimit1000, RequestCursor):
     """Базовый класс запроса с курсором."""
     pass
