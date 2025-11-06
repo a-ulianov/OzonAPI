@@ -815,6 +815,32 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/warehouse/unarchive` | Перенести склад из архива | `warehouse_unarchive()` |
 </details>
 <details>
+<summary>Работа с листами подбора FBS</summary>
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|-------------------------------------|
+| ☐ | `/v1/assembly/carriage/posting/list` | Получить список отправлений в отгрузке | `assembly_carriage_posting_list()` |
+| ☐ | `/v1/assembly/carriage/product/list` | Получить список товаров в отгрузке | `assembly_carriage_product_list()`  |
+| ☐ | `/v1/assembly/fbs/posting/list` | Получить список отравлений | `assembly_fbs_posting_list()` |
+| ☐ | `/v1/assembly/fbs/product/list` | Получить список товаров в отправлениях | `assembly_fbs_product_list()` |
+</details>
+<details>
+<summary>Работа со складами rFBS Express</summary>
+
+| ✓ | Адрес метода Ozon | Описание метода | Python-метод |
+|---|---|---|-------------------------------------------------------|
+| ☐ | `/v1/warehouse/erfbs/aggregator/create` | Создать склад с методом доставки «Партнёры Ozon» | `warehouse_erfbs_aggregator_create()` |
+| ☐ | `/v1/warehouse/erfbs/aggregator/delivery-method/update` | Обновить метод доставки «Партнёры Ozon» | `warehouse_erfbs_aggregator_delivery_method_update()` |
+| ☐ | `/v1/warehouse/erfbs/non-integrated/create` | Создать склад с методом доставки «Вы или сторонняя служба» | `warehouse_erfbs_non_integrated_create()` |
+| ☐ | `/v1/warehouse/erfbs/non-integrated/delivery-method/update` | Обновить метод доставки «Вы или сторонняя служба» | `warehouse_erfbs_non_integrated_delivery_method_update()` |
+| ☐ | `/v1/warehouse/erfbs/update` | Обновить склад | `warehouse_erfbs_update()` |
+| ☐ | `/v2/polygon/bind` | Связать метод доставки с полигоном | `polygon_bind()` |
+| ☐ | `/v1/polygon/delete` | Удалить полигон из области доставки | `polygon_delete()` |
+| ☐ | `/v1/polygon/list` | Получить список установленных полигонов на метод доставки | `polygon_list()` |
+| ☐ | `/v1/polygon/time/coordinates/update` | Обновить координаты полигона доставки | `polygon_time_coordinates_update()` |
+| ☐ | `/v1/polygon/time/set` | Установить новое время доставки в полигоне | `polygon_time_set()` |
+</details>
+<details>
 <summary>Premium-методы</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
