@@ -1,6 +1,8 @@
 __all__ = [
     "Posting",
     "PostingAnalyticsData",
+    "PostingCancelReason",
+    "PostingCancelReasonListItem",
     "PostingFilter",
     "PostingFilterWith",
     "PostingFinancialData",
@@ -12,6 +14,7 @@ __all__ = [
 ]
 
 from .analytics_data import PostingAnalyticsData
+from .cancel_reason import PostingCancelReason, PostingCancelReasonListItem
 from .filter_with import PostingFilterWith
 from .financial_data import PostingFinancialData
 from .financial_data_product import PostingFinancialDataProduct

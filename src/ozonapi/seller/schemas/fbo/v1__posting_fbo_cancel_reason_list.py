@@ -1,10 +1,10 @@
-"""https://docs.ozon.ru/api/seller/?#operation/PostingAPI_GetPostingFbsCancelReasonList"""
+"""https://docs.ozon.com/api/seller/?#operation/PostingAPI_GetPostingFboCancelReasonList"""
 from pydantic import BaseModel, Field
 
-from ..entities.postings.cancel_reason import PostingCancelReasonListItem
+from ..entities.postings import PostingCancelReasonListItem
 
 
-class PostingFBSCancelReasonListResponse(BaseModel):
+class PostingFBOCancelReasonListResponse(BaseModel):
     """Возвращает список возможных причин отправлений.
 
     Attributes:

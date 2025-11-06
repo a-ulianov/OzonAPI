@@ -3,7 +3,6 @@ __all__ = [
     "PostingFBSAnalyticsData",
     "PostingFBSBarcodes",
     "PostingFBSCancellation",
-    "PostingFBSCancelReason",
     "PostingFBSCustomer",
     "PostingFBSCustomerAddress",
     "PostingFBSDeliveryMethod",
@@ -17,7 +16,7 @@ __all__ = [
 
 from .posting__analytics_data import PostingFBSAnalyticsData
 from .posting__barcodes import PostingFBSBarcodes
-from .posting__cancel_reason import PostingFBSCancelReason
+from ...entities.postings.cancel_reason import PostingCancelReason
 from .posting__cancellation import PostingFBSCancellation
 from .posting__customer import PostingFBSCustomer
 from .posting__customer_address import PostingFBSCustomerAddress

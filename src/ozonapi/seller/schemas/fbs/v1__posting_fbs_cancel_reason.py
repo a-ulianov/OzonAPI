@@ -3,7 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from .entities import PostingFBSCancelReason
+from ..entities.postings import PostingCancelReason
 
 
 class PostingFBSCancelReasonRequest(BaseModel):
@@ -27,7 +27,7 @@ class PostingFBSCancelReasonResultItem(BaseModel):
     posting_number: str = Field(
         ..., description="Номер отправления."
     )
-    reasons: Optional[list[PostingFBSCancelReason]] = Field(
+    reasons: Optional[list[PostingCancelReason]] = Field(
         default_factory=list, description="Информация о причинах отмены."
     )
 

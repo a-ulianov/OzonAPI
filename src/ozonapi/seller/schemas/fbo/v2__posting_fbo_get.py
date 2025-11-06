@@ -1,3 +1,4 @@
+"""https://docs.ozon.com/api/seller/?#operation/PostingAPI_GetFboPosting"""
 from typing import Optional
 
 from pydantic import BaseModel, Field
