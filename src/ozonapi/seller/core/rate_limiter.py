@@ -110,10 +110,14 @@ class RateLimiterManager:
 
         return register.data[instance_ref]
 
+    def instance_update(self) -> None:
+        """Обновляет дату последней активности инстанса в регистре."""
+        self._instance_data.update()
+
     @property
     def instance_limiter(self) -> AsyncLimiter:
         """Обеспечивает доступ к ограничителю запросов инстанса."""
-        self._instance_data.update()
+        self.instance_update()
         return self._instance_limiter
 
     @property
@@ -134,5 +138,5 @@ class RateLimiterManager:
         self.clear_register_by_ttl()
 
     def __del__(self) -> None:
-        """Очищает регистры от expired-инстансов."""
+        """Очищает регистры от expired-инстансов перед удалением инстанса."""
         self.shutdown()
