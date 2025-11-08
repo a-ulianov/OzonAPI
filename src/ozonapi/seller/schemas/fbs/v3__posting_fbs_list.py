@@ -50,6 +50,7 @@ class PostingFBSListFilter(PostingFilter):
         product_offer_id: Идентификатор товара в системе продавца
         product_sku: Идентификатор товара в системе Ozon
         last_changed_status_date: Период изменения статуса
+        is_blr_traceable: true, если товар прослеживаемый
         is_quantum: Фильтр по квантовым отправлениям
     """
     warehouse_id: Optional[list[int]] = Field(
@@ -75,6 +76,9 @@ class PostingFBSListFilter(PostingFilter):
     )
     last_changed_status_date: Optional[PostingFBSListRequestFilterLastChangedStatusDate] = Field(
         None, description="Период, в который последний раз изменялся статус у отправлений."
+    )
+    is_blr_traceable: Optional[bool] = Field(
+        None, description="true, если товар прослеживаемый."
     )
     is_quantum: Optional[bool] = Field(
         None, description="true — получить только квантовые отправления, false — все отправления."
