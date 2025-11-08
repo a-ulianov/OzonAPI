@@ -45,6 +45,7 @@ class PostingFBSPosting(Posting):
         products: Список товаров в отправлении
         prr_option: Код услуги погрузочно-разгрузочных работ
         quantum_id: Идентификатор эконом-товара
+        require_blr_traceable_attrs: true, если требует атрибуты прослеживаемости
         requirements: Требования к товарам
         shipment_date: Дата и время, до которой необходимо собрать отправление. Показываем рекомендованное время отгрузки. По истечении этого времени начнёт применяться новый тариф, информацию о нём уточняйте в поле tariffication.
         shipment_date_without_delay: Дата и время отгрузки без просрочки
@@ -104,6 +105,9 @@ class PostingFBSPosting(Posting):
     )
     quantum_id: Optional[int] = Field(
         None, description="Идентификатор эконом-товара."
+    )
+    require_blr_traceable_attrs: Optional[bool] = Field(
+        None, description="true, если требует атрибуты прослеживаемости."
     )
     requirements: PostingFBSRequirements = Field(
         ..., description="""
