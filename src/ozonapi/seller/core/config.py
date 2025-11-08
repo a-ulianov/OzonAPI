@@ -56,7 +56,7 @@ class APIConfig(BaseSettings):
         description="Базовый URL API Ozon"
     )
     max_requests_per_second: int = Field(
-        default=25,
+        default=27,
         ge=1,
         le=50,
         description="Максимальное количество запросов в секунду (50 по документации Ozon)"

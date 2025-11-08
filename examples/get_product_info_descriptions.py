@@ -26,8 +26,9 @@ from src.ozonapi.seller.schemas.products import ProductListRequest, ProductListR
 Для prod значения параметров могут быть увеличены.
 """
 
-product_list_limit = 10  # Кол-во товаров, выгружаемых за одну итерацию
-consumers_amount = 5     # Кол-во потребителей, выгружающих описания
+product_list_limit = 10     # Кол-во товаров, выгружаемых за одну итерацию
+consumers_amount = 5        # Кол-во потребителей, выгружающих описания
+consumers_rps_max_limit = 6 # Максимальное кол-во запросов в секунду для каждого потребителя
 queue_max_size = product_list_limit * consumers_amount  # Максимальный размер очереди
 
 product_descriptions = list()
@@ -39,7 +40,7 @@ async def producer(queue):
     async with SellerAPI(
             config=SellerAPIConfig(
                 # Понижаем уровень логирования (для наглядности)
-                log_level="INFO"
+                log_level="DEBUG"
             )
     ) as api:
 
@@ -81,7 +82,8 @@ async def consumer(queue):
     async with SellerAPI(
             config=SellerAPIConfig(
                 # Понижаем уровень логирования
-                log_level="INFO",
+                log_level="DEBUG",
+                max_requests_per_second=consumers_rps_max_limit
             )
     ) as api:
         while True:

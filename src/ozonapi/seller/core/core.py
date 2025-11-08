@@ -12,12 +12,11 @@ from tenacity import (
     retry_if_exception_type,
     stop_after_attempt,
     wait_exponential,
-    before_sleep_log,
 )
 
 from .config import APIConfig
 from .method_rate_limiter import MethodRateLimiterManager
-from .rate_limiter import RateLimiterConfig, RateLimiterManager
+from .rate_limiter import RateLimiterManager
 from .sessions import SessionManager
 from .exceptions import (
     APIClientError,
@@ -41,11 +40,9 @@ class APIManager:
     """
 
     # Общие менеджеры для всех экземпляров класса
-    _rate_limiter_manager: ClassVar[Optional[RateLimiterManager]] = None
     _session_manager: ClassVar[Optional[SessionManager]] = None
     _method_rate_limiter_manager: ClassVar[Optional[MethodRateLimiterManager]] = None
     _initialized: ClassVar[bool] = False
-    _instance_count: ClassVar[int] = 0
 
     _class_logger: ClassVar[Logger] = APIConfig().logger
 
@@ -66,45 +63,39 @@ class APIManager:
             config: Конфигурация клиента
         """
         self._config = self.load_config(config)
+
         self._client_id = client_id or self._config.client_id
         self._api_key = api_key or self._config.api_key
         self._token = token or self._config.token
 
-        if (self._token is None and (self._api_key is None or self._client_id is None)):
-            raise ValueError(
-                "Не предоставлены авторизационные данные. Проверьте указание token или client_id и api_key."
-            )
+        self._validate_credentials()
 
         self._instance_id = id(self)
-        self._registered = False
         self._closed = False
         self._logging_manager = None
+        self._instance_logger_number = None
         self._instance_logger: Logger = self._get_instance_logger()
-
-        self._validate_credentials()
 
         if self._token is not None and self._client_id is None:
             self._client_id = "OAuth {}".format(int(hashlib.sha256(self._token.encode()).hexdigest()[:10], 16) % 10000000)
 
+        self._rate_limiter = RateLimiterManager(
+            instance=self,
+            logger=logging.manager.get_logger(f"seller.client[{self._client_id}]-[{self._instance_logger_number}].rate_limiter")
+        )
 
-        if APIManager._rate_limiter_manager is None:
-            APIManager._rate_limiter_manager = RateLimiterManager(
-                cleanup_interval=self._config.cleanup_interval,
-                instance_logger=logging.manager.get_logger(f"seller.rate_limiter")
-            )
         if APIManager._session_manager is None:
             APIManager._session_manager = SessionManager(
                 timeout=self._config.request_timeout,
                 connector_limit=self._config.connector_limit,
-                instance_logger=logging.manager.get_logger(f"seller.session")
+                instance_logger=logging.manager.get_logger(f"seller.client[{self._client_id}].session")
             )
         if APIManager._method_rate_limiter_manager is None:
             APIManager._method_rate_limiter_manager = MethodRateLimiterManager(
                 cleanup_interval=self._config.cleanup_interval,
-                instance_logger=logging.manager.get_logger(f"seller.method_rate_limiter")
+                instance_logger=logging.manager.get_logger(f"seller.client[{self._client_id}].method_rate_limiter")
             )
 
-        APIManager._instance_count += 1
         self.logger.debug(f"API-клиент инициализирован")
 
     @classmethod
@@ -152,6 +143,7 @@ class APIManager:
             except RuntimeError:
                 log_instance_count += 1
             else:
+                self._instance_logger_number = log_instance_count
                 break
 
         return self._logging_manager.get_logger()
@@ -160,8 +152,6 @@ class APIManager:
     async def initialize(cls) -> None:
         """Инициализация ресурсов."""
         if not cls._initialized:
-            if cls._rate_limiter_manager:
-                await cls._rate_limiter_manager.start()
             if cls._method_rate_limiter_manager:
                 await cls._method_rate_limiter_manager.start()
             cls._initialized = True
@@ -171,8 +161,6 @@ class APIManager:
     async def shutdown(cls) -> None:
         """Очистка ресурсов."""
         if cls._initialized:
-            if cls._rate_limiter_manager:
-                await cls._rate_limiter_manager.shutdown()
             if cls._method_rate_limiter_manager:
                 await cls._method_rate_limiter_manager.shutdown()
             if cls._session_manager:
@@ -183,14 +171,12 @@ class APIManager:
     def _validate_credentials(self) -> None:
         """Валидация учетных данных."""
         if self._token is not None:
-            # Валидация для OAuth-токена
             if self._token.startswith("Bearer "):
                 self._token = self._token[7:]
             if not self._token or not isinstance(self._token, str):
                 raise ValueError("token должен быть непустой строкой")
 
         elif self._api_key is not None:
-            # Валидация для классической авторизации
             if not self._client_id or not isinstance(self._client_id, str):
                 raise ValueError("client_id должен быть непустой строкой")
             if not self._api_key or not isinstance(self._api_key, str):
@@ -198,24 +184,12 @@ class APIManager:
         else:
             raise ValueError("Не предоставлены авторизационные данные")
 
-    async def _ensure_registered(self) -> None:
-        """Гарантирует регистрацию экземпляра в менеджерах."""
-        if self._closed:
-            raise RuntimeError(f"Регистрация API-клиента отменена для ClientID {self._client_id}")
-
-        if not self._registered and self._rate_limiter_manager:
-            await self._rate_limiter_manager.register_instance(
-                self._client_id, self._instance_id
-            )
-            self._registered = True
-
     async def __aenter__(self) -> "APIManager":
         """Асинхронный контекстный менеджер."""
         if self._closed:
             raise RuntimeError(f"Невозможно использовать закрытый API-клиент для ClientID {self._client_id}")
 
         await self.initialize()
-        await self._ensure_registered()
         return self
 
     async def __aexit__(
@@ -233,17 +207,8 @@ class APIManager:
 
         self._closed = True
 
-        if self._registered and self._rate_limiter_manager:
-            await self._rate_limiter_manager.unregister_instance(
-                self._client_id, self._instance_id
-            )
-            self._registered = False
-
-        APIManager._instance_count -= 1
-
-        if APIManager._instance_count == 0:
-            if APIManager._session_manager:
-                await APIManager._session_manager.close_all()
+        if APIManager._session_manager:
+            await APIManager._session_manager.remove_instance(self._client_id, self._instance_id)
 
         self.logger.debug(f"Работа API-клиента завершена")
         self._logging_manager.shutdown()
@@ -272,11 +237,6 @@ class APIManager:
     def logger(self):
         """Возвращает логер экземпляра."""
         return self._instance_logger
-
-    @classmethod
-    def get_instance_count(cls) -> int:
-        """Получает количество активных экземпляров."""
-        return cls._instance_count
 
     def _create_retry_decorator(self):
         """Создает декоратор повторов на основе конфигурации."""
@@ -350,7 +310,6 @@ class APIManager:
 
         Args:
             method: HTTP метод запроса
-            api_name: Название API
             api_version: Версия API
             endpoint: Конечная точка API
             payload: Данные для отправки в формате JSON
@@ -371,9 +330,6 @@ class APIManager:
         if self._closed:
             raise RuntimeError("API-клиент остановлен")
 
-        if not self._rate_limiter_manager or not self._session_manager:
-            raise RuntimeError("API-клиент не инициализирован")
-
         url = f"{self._config.base_url}/{api_version}/{endpoint}"
 
         def get_payload_snippet(p: dict | None) -> str | None:
@@ -385,7 +341,7 @@ class APIManager:
 
             return string if len(string) < 200 else string[:200] + "..."
 
-        log_context = {
+        log_context: dict[str, Any] = {
             "method": method,
             "endpoint": f"{api_version}/{endpoint}",
             "payload": get_payload_snippet(payload),
@@ -393,14 +349,8 @@ class APIManager:
 
         self.logger.info(f"Отправка запроса к API: {log_context}")
 
-        await self._ensure_registered()
-
-        limiter_config = RateLimiterConfig(
-            max_requests=self._config.max_requests_per_second,
-        )
-        rate_limiter = await self._rate_limiter_manager.get_limiter(
-            self._client_id, limiter_config
-        )
+        instance_limiter = self._rate_limiter.instance_limiter
+        client_limiter = self._rate_limiter.client_limiter
 
         retry_decorator = self._create_retry_decorator()
 
@@ -412,7 +362,7 @@ class APIManager:
                     instance_id=self._instance_id,
                     token=self._token
             ) as session:
-                async with rate_limiter:
+                async with instance_limiter, client_limiter:
                     try:
                         async with session.request(
                                 method, url, json=payload, params=params
@@ -463,23 +413,7 @@ class APIManager:
     @classmethod
     async def get_active_client_ids(cls) -> list[str]:
         """Возвращает список client_id с активными экземплярами."""
-        if cls._rate_limiter_manager:
-            return await cls._rate_limiter_manager.get_active_client_ids()
-        return list()
-
-    @classmethod
-    async def get_rate_limiter_stats(cls) -> dict[str, int]:
-        """Возвращает статистику по ограничителям запросов."""
-        if cls._rate_limiter_manager:
-            return await cls._rate_limiter_manager.get_instance_stats()
-        return dict()
-
-    @classmethod
-    async def get_detailed_stats(cls) -> dict[str, dict[str, Any]]:
-        """Возвращает детальную статистику."""
-        if cls._rate_limiter_manager:
-            return await cls._rate_limiter_manager.get_limiter_stats()
-        return dict()
+        return RateLimiterManager.get_active_client_ids()
 
     @classmethod
     async def get_method_limiter_stats(cls) -> dict[str, dict[str, Any]]:
