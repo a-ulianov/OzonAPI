@@ -754,6 +754,10 @@ pytest --cov=ozonapi --cov-report=html
 |---|---|---|---|
 | ☐ | `/v2/analytics/stock_on_warehouses` | Отчёт по остаткам и товарам | `analytics_stock_on_warehouses()` |
 | ☐ | `/v1/analytics/turnover/stocks` | Оборачиваемость товара | `analytics_turnover_stocks()` |
+| ☐ | `/v1/analytics/average-delivery-time`         | Получить аналитику по среднему времени доставки           | `analytics_average_delivery_time()`         |
+| ☐ | `/v1/analytics/average-delivery-time/details` | Получить детальную аналитику по среднему времени доставки | `analytics_average_delivery_time_details()` |
+| ☐ | `/v1/analytics/average-delivery-time/summary` | Получить общую аналитику по среднему времени доставки     | `analytics_average_delivery_time_summary()` |
+
 </details>
 <details>
 <summary>Финансовые отчеты</summary>
@@ -780,23 +784,22 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/rating/history` | Получить информацию о рейтингах продавца за период | `rating_history()` |
 </details>
 <details>
-<summary>Прочие методы (1)</summary>
+<summary>Прочие методы (2)</summary>
 
-| ✓ | Адрес метода Ozon | Описание метода                                           | Python-метод                                |
-|---|---|-----------------------------------------------------------|---------------------------------------------|
-| ☐ | `/v1/analytics/manage/stocks` | Управление остатками                                      | `analytics_manage_stocks()`                 |
-| ✓ | `/v1/analytics/stocks` | Получить аналитику по остаткам                            | `analytics_stocks()`                        |
-| ☐ | `/v1/analytics/average-delivery-time` | Получить аналитику по среднему времени доставки           | `analytics_average_delivery_time()`         |
-| ☐ | `/v1/analytics/average-delivery-time/details` | Получить детальную аналитику по среднему времени доставки | `analytics_average_delivery_time_details()` |
-| ☐ | `/v1/analytics/average-delivery-time/summary` | Получить общую аналитику по среднему времени доставки     | `analytics_average_delivery_time_summary()` |
-| ☐ | `/v1/product/info/wrong-volume` | Список товаров с некорректными ОВХ                        | `product_info_wrong_volume()`               |
-| ☐ | `/v1/removal/from-supply/list` | Отчёт по вывозу и утилизации с поставки FBO               | `removal_from_supply_list()`                |
-| ☐ | `/v1/removal/from-stock/list` | Отчёт по вывозу и утилизации со стока FBO                 | `removal_from_stock_list()`                 |
-| ☐ | `/v1/report/marked-products-sales/create` | Отчёт по продажам товаров с маркировкой                   | `report_marked_products_sales_create()`     |
-| ☐ | `/v3/supply-order/list` | Список заявок на поставку на склад Ozon                   | `supply_order_list()`                       |
-| ☐ | `/v3/supply-order/get` | Информация о заявке на поставку                           | `supply_order_get()`                        |
-| ☐ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав                           | `supply_order_content_update_validation()`  |
-| ☐ | `/v1/product/info/warehouse/stocks` | Получить информацию по остаткам на складе FBS и rFBS      | `product_info_warehouse_stocks()`           |
+| ✓ | Адрес метода Ozon                             | Описание метода                                     | Python-метод                           |
+|---|-----------------------------------------------|-----------------------------------------------------|----------------------------------------|
+| ☐ | `/v1/analytics/manage/stocks`                 | Управление остатками                                | `analytics_manage_stocks()`            |
+| ✓ | `/v1/analytics/stocks`                        | Получить аналитику по остаткам                      | `analytics_stocks()`                   |
+| ☐ | `/v1/product/info/wrong-volume`               | Список товаров с некорректными ОВХ                  | `product_info_wrong_volume()`          |
+| ☐ | `/v1/removal/from-supply/list`                | Отчёт по вывозу и утилизации с поставки FBO         | `removal_from_supply_list()`           |
+| ☐ | `/v1/removal/from-stock/list`                 | Отчёт по вывозу и утилизации со стока FBO           | `removal_from_stock_list()`            |
+| ☐ | `/v1/report/marked-products-sales/create`     | Отчёт по продажам товаров с маркировкой             | `report_marked_products_sales_create()` |
+| ✓ | `/v1/seller/info`                             | Информация о кабинете продавца                      | `seller_info()`                        |
+| ☐ | `/v1/seller/ozon-logistics/info`              | Информация о подключении продавца к Ozon Логистике  | `seller_ozon_logistics_info()`         |
+| ☐ | `/v3/supply-order/list`                       | Список заявок на поставку на склад Ozon             | `supply_order_list()`                  |
+| ☐ | `/v3/supply-order/get`                        | Информация о заявке на поставку                     | `supply_order_get()`                   |
+| ☐ | `/v1/supply-order/content/update/validation`  | Проверить новый товарный состав                     | `supply_order_content_update_validation()` |
+| ☐ | `/v1/product/info/warehouse/stocks`           | Получить информацию по остаткам на складе FBS и rFBS | `product_info_warehouse_stocks()`      |
 </details>
 <details>
 <summary>Работа с цифровыми товарами</summary>
