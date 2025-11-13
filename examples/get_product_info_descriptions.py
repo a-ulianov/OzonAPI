@@ -19,7 +19,7 @@ import asyncio
 from pprint import pprint
 
 from src.ozonapi import SellerAPI, SellerAPIConfig
-from src.ozonapi.seller.schemas.products import ProductListRequest, ProductListResponse, ProductInfoDescriptionRequest
+from src.ozonapi.seller.schemas import ProductListRequest, ProductListResponse, ProductInfoDescriptionRequest
 
 """
 Подобраны настройки, позволяющие отслеживать выполнение логики.
