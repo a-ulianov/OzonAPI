@@ -83,6 +83,7 @@ class PostingStatus(str, Enum):
         CANCELLED: отменено
         CANCELLED_FROM_SPLIT_PENDING: отменён из-за разделения отправления
         SENT_BY_SELLER: отправлено продавцом
+        SHIP_IN_PROCESS: отправление в обработке
     """
     ACCEPTANCE_IN_PROGRESS = "acceptance_in_progress"
     AWAITING_APPROVE = "awaiting_approve"
@@ -99,6 +100,7 @@ class PostingStatus(str, Enum):
     CANCELLED = "cancelled"
     CANCELLED_FROM_SPLIT_PENDING = "cancelled_from_split_pending"
     SENT_BY_SELLER = "sent_by_seller"
+    SHIP_IN_PROCESS = "ship_in_process"
 
 
 class PostingSubstatus(str, Enum):
