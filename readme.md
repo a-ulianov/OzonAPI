@@ -64,12 +64,14 @@ from ozonapi import SellerAPI
 async def main():
     async with SellerAPI(
         client_id="your_client_id",     # Обязательно, если не указан oauth-токен
-        api_key="your_api_key"          # Обязательно, если не указан oauth-токен
-        # token = "your_oauth_token"    # Альтернативная авторизация с oauth-токеном
+        api_key="your_api_key",         # Обязательно, если не указан oauth-токен
+        # token="your_oauth_token",     # Альтернативная авторизация с oauth-токеном
     ) as api:
-        # Получение списка товаров
-        products = await api.product_list()
-        print(f"Получено товаров: {len(products.result.items)}")
+        # Получение информации о владельце личного кабинета
+        seller_info = await api.seller_info()
+        
+        print(f"Компания: {seller_info.company.name}")
+        print(f"ИНН: {seller_info.company.inn}")
 
 if __name__ == "__main__":
     asyncio.run(main())
