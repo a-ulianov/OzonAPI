@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import Field
 
-from src.ozonapi.seller.schemas.entities.postings import PostingAnalyticsData
+from ...entities.postings import PostingAnalyticsData
 
 
 class PostingFBOAnalyticsData(PostingAnalyticsData):

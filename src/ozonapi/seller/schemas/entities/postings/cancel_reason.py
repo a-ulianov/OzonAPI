@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from src.ozonapi.seller.common.enumerations.postings import CancellationReasonTypeId
+from ....common.enumerations.postings import CancellationReasonTypeId
 
 
 class PostingCancelReason(BaseModel):
