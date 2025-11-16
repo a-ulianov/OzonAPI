@@ -6,6 +6,7 @@ venv/
 build/
 dist/
 *.pid
+**.log
 **/.coverage
 **/coverage.xml
 **/htmlcov/
