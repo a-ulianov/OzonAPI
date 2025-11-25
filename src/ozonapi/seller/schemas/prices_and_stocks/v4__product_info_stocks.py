@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 from ...common.enumerations.products import Visibility, ShipmentType
 from .base import BaseRequestFilterSpec, BaseRequestCursorSpec
 from ..entities.common import ResponseCursor
+from ...common.enumerations.warehouses import WarehouseType
 
 
 class ProductInfoPricesRequestFilterWithQuant(BaseModel):
@@ -73,7 +74,7 @@ class ProductInfoStocksStock(BaseModel):
     sku: int = Field(
         ..., description="Идентификатор товара в системе Ozon — SKU."
     )
-    type: str = Field(
+    type: WarehouseType = Field(
         ..., description="Тип склада."
     )
     warehouse_ids: list[int] = Field(

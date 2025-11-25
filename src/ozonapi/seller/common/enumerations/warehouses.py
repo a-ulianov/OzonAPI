@@ -33,6 +33,21 @@ class WarehouseStatus(str, Enum):
     ERROR = "error"
 
 
+class WarehouseType(str, Enum):
+    """Тип склада.
+
+    Attributes:
+        FBS: склад продавца, доставка силами Ozon
+        RFBS: склад продавца, доставка силами продавца
+        FBO: склад Ozon
+        FBP: склад партнёра
+    """
+    FBS = "fbs"
+    RFBS = "rfbs"
+    FBO = "fbo"
+    FBP = "fbp"
+
+
 class WarehouseWorkingDays(int, Enum):
     """Рабочие дни склада.
 
