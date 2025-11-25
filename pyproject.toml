@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ozonapi-async"
-version = "0.19.3"
+version = "0.19.4"
 description = "Асинхронный pydantic-интерфейс для Ozon Seller API c ограничением запросов и docstrings"
 readme = "readme.md"
 keywords = [
