@@ -25,6 +25,7 @@ class PostingFBOPosting(Posting):
         posting_number: Номер отправления
         products: Список товаров в отправлении
         status: Статус отправления
+        substatus: Подстатус отправления
     """
     additional_data: Optional[list[AdditionalData]] = Field(
         default_factory=list, description="Дополнительная информация."

@@ -1,3 +1,4 @@
+import datetime
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -10,6 +11,10 @@ class PostingAnalyticsData(BaseModel):
 
     Attributes:
         city: Город доставки
+        client_delivery_date_begin: Дата и время начала доставки
+        client_delivery_date_end: Ожидаемая дата, до которой заказ будет доставлен
+        delivery_date_begin: Дата и время начала доставки
+        delivery_date_end: Дата и время конца доставки
         delivery_type: Способ доставки
         is_legal: Признак юридического лица
         is_premium: Наличие подписки Premium
@@ -19,6 +24,18 @@ class PostingAnalyticsData(BaseModel):
     """
     city: Optional[str] = Field(
         ..., description="Город доставки. Только для отправлений rFBS и продавцов из СНГ."
+    )
+    client_delivery_date_begin: Optional[datetime.datetime] = Field(
+        None, description="Дата и время начала доставки."
+    )
+    client_delivery_date_end: Optional[datetime.datetime] = Field(
+        None, description="Ожидаемая дата, до которой заказ будет доставлен."
+    )
+    delivery_date_begin: Optional[datetime.datetime] = Field(
+        None, description="Дата и время начала доставки."
+    )
+    delivery_date_end: Optional[datetime.datetime] = Field(
+        None, description="Дата и время конца доставки."
     )
     delivery_type: Optional[str] = Field(
         None, description="Способ доставки."

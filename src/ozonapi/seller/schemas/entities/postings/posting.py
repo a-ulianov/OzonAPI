@@ -5,7 +5,7 @@ from pydantic import Field, BaseModel
 
 from .product import PostingProduct
 from .analytics_data import PostingAnalyticsData
-from ....common.enumerations.postings import PostingStatus
+from ....common.enumerations.postings import PostingStatus, PostingSubstatus
 from ...entities.postings import PostingFinancialData, PostingLegalInfo
 
 
@@ -22,6 +22,7 @@ class Posting(BaseModel):
         posting_number: Номер отправления
         products: Список товаров в отправлении
         status: Статус отправления
+        substatus: Подстатус отправления
     """
     analytics_data: Optional[PostingAnalyticsData] = Field(
         None, description="Данные аналитики."
@@ -49,4 +50,7 @@ class Posting(BaseModel):
     )
     status: PostingStatus = Field(
         ..., description="Статус отправления."
+    )
+    substatus: Optional[PostingSubstatus] = Field(
+        None, description="Подстатус отправления."
     )

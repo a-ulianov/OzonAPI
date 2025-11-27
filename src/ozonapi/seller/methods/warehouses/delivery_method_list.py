@@ -7,7 +7,7 @@ class DeliveryMethodListMixin(APIManager):
 
     async def delivery_method_list(
         self: "DeliveryMethodListMixin",
-        request: DeliveryMethodListRequest = DeliveryMethodListRequest()
+        request: DeliveryMethodListRequest = DeliveryMethodListRequest.model_construct()
     ) -> DeliveryMethodListResponse:
         """Получает список методов доставки склада.
 

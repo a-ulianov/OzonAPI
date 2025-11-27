@@ -2,6 +2,7 @@
 https://docs.ozon.ru/api/seller/#tag/WarehouseAPI
 """
 __all__ = [
+    "WarehouseListRequest",
     "WarehouseListResponse",
     "DeliveryMethodListRequest",
     "DeliveryMethodListResponse",
@@ -20,5 +21,5 @@ from .v1__delivery_method_list import (
 from .v1__warehouse_list import (
     WarehouseListResponse,
     WarehouseListFirstMileType,
-    WarehouseListItem,
+    WarehouseListItem, WarehouseListRequest,
 )

@@ -125,9 +125,6 @@ class PostingFBSPosting(Posting):
     shipment_date_without_delay: datetime.datetime = Field(
         ..., description="Дата и время отгрузки без просрочки."
     )
-    substatus: PostingSubstatus = Field(
-        ..., description="Подстатус отправления."
-    )
     tpl_integration_type: TplIntegrationType = Field(
         ..., description="Тип интеграции со службой доставки."
     )

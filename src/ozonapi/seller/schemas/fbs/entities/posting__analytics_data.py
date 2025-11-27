@@ -1,4 +1,3 @@
-import datetime
 from typing import Optional
 
 from pydantic import Field
@@ -23,12 +22,6 @@ class PostingFBSAnalyticsData(PostingAnalyticsData):
         warehouse: Название склада отправки заказа
         warehouse_id: Идентификатор склада
     """
-    delivery_date_begin: Optional[datetime.datetime] = Field(
-        None, description="Дата и время начала доставки."
-    )
-    delivery_date_end: Optional[datetime.datetime] = Field(
-        None, description="Дата и время конца доставки."
-    )
     region: Optional[str] = Field(
         ..., description="Регион доставки. Только для отправлений rFBS."
     )

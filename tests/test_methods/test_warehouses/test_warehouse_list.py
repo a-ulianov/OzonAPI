@@ -48,6 +48,7 @@ class TestWarehouseList:
             method="post",
             api_version="v1",
             endpoint="warehouse/list",
+            payload={'limit': 200, 'offset': 0}
         )
         assert isinstance(response, WarehouseListResponse)
         assert len(response.result) == 1

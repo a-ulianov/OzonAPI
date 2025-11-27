@@ -131,6 +131,7 @@ class PostingSubstatus(str, Enum):
         POSTING_TRANSFERRED_TO_COURIER_SERVICE: передаётся в службу доставки
         POSTING_DRIVER_PICK_UP: у водителя
         POSTING_NOT_IN_SORT_CENTER: не принято на сортировочном центре
+        POSTING_PACKING: на упаковке
         SHIP_FAILED: неудачная отправка
     """
     POSTING_ACCEPTANCE_IN_PROGRESS = "posting_acceptance_in_progress"
@@ -157,6 +158,7 @@ class PostingSubstatus(str, Enum):
     POSTING_TRANSFERRED_TO_COURIER_SERVICE = "posting_transferred_to_courier_service"
     POSTING_DRIVER_PICK_UP = "posting_driver_pick_up"
     POSTING_NOT_IN_SORT_CENTER = "posting_not_in_sort_center"
+    POSTING_PACKING = "posting_packing"
     SHIP_FAILED = "ship_failed"
 
 
@@ -242,6 +244,7 @@ class PaymentTypeGroupName(str, Enum):
     OZON_INSTALLMENT: Ozon Рассрочка
     BANK_ACCOUNT: оплата на расчётный счёт
     SBERPAY: SberPay
+    EXTERNAL_PREPAYMENT: предоплата на стороне внешнего продавца
     UNSPECIFIED: не указано
     """
     CARD_ONLINE = "картой онлайн"
@@ -252,6 +255,7 @@ class PaymentTypeGroupName(str, Enum):
     OZON_INSTALLMENT = "Ozon Рассрочка"
     BANK_ACCOUNT = "оплата на расчётный счёт"
     SBERPAY = "SberPay"
+    EXTERNAL_PREPAYMENT = "предоплата на стороне внешнего продавца"
     UNSPECIFIED = ""
 
 

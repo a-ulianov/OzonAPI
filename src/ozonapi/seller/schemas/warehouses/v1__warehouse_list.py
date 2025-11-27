@@ -1,8 +1,24 @@
 """https://docs.ozon.ru/api/seller/#operation/WarehouseAPI_WarehouseList"""
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 from ...common.enumerations.warehouses import FirstMileType, WarehouseStatus, WarehouseWorkingDays
 
+class WarehouseListRequest(BaseModel):
+    """Описывает схему запроса на получение информации о складах FBS и rFBS.
+
+    Attributes:
+        limit: Количество значений в ответе (максимум 200)
+        offset: Количество элементов, которое будет пропущено в ответе
+    """
+    limit: Optional[int] = Field(
+        200, description="Количество значений в ответе (максимум 200).",
+        le=200
+    )
+    offset: Optional[int] = Field(
+        0, description="Количество элементов, которое будет пропущено в ответе."
+    )
 
 class WarehouseListFirstMileType(BaseModel):
     """Первая миля FBS.

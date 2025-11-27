@@ -1,4 +1,5 @@
 from ...core import APIManager, method_rate_limit
+from ...schemas import WarehouseListRequest
 from ...schemas.warehouses import WarehouseListResponse
 
 
@@ -7,7 +8,8 @@ class WarehouseListMixin(APIManager):
 
     @method_rate_limit(limit_requests=1, interval_seconds=60)
     async def warehouse_list(
-        self: "WarehouseListMixin"
+        self: "WarehouseListMixin",
+        request: WarehouseListRequest = WarehouseListRequest.model_construct()
     ) -> WarehouseListResponse:
         """Возвращает список складов FBS и rFBS.
 
@@ -29,5 +31,6 @@ class WarehouseListMixin(APIManager):
             method="post",
             api_version="v1",
             endpoint="warehouse/list",
+            payload=request.model_dump(),
         )
         return WarehouseListResponse(**response)

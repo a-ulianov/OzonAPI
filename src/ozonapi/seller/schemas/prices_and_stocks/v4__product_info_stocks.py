@@ -60,7 +60,7 @@ class ProductInfoStocksStock(BaseModel):
         shipment_type: Тип упаковки
         sku: Идентификатор товара в системе Ozon
         type: Тип склада
-        warehouse_ids: Идентификаторы складов
+        warehouse_ids: Идентификаторы складов (deprecated)
     """
     present: int = Field(
         ..., description="Сейчас на складе."
@@ -77,8 +77,8 @@ class ProductInfoStocksStock(BaseModel):
     type: WarehouseType = Field(
         ..., description="Тип склада."
     )
-    warehouse_ids: list[int] = Field(
-        ..., description="Идентификаторы складов, на которых хранился или хранится товар."
+    warehouse_ids: Optional[list[int]] = Field(
+        default_factory=list, description="Идентификаторы складов, на которых хранился или хранится товар."
     )
 
 
