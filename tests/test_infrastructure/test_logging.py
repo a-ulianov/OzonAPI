@@ -32,7 +32,9 @@ class TestLogging:
     def default_manager(self) -> Generator[LoggerManager, None, None]:
         """Fixture providing configured LoggerManager with default settings."""
         manager = LoggerManager("test")
-        settings = LoggingSettings(LEVEL="DEBUG", JSON=False, USE_ASYNC=False)
+        settings = LoggingSettings(
+            LEVEL="DEBUG", JSON=False, USE_ASYNC=False, MAX_QUEUE_SIZE=1000
+        )
         manager.configure(settings)
         yield manager
         manager.shutdown()
@@ -59,12 +61,16 @@ class TestLogging:
         assert logging.getLogger("test").level == logging.DEBUG
         assert len(logging.getLogger("test").handlers) > 0
 
-    def test_reconfiguration_raises_exception(self, default_manager: LoggerManager) -> None:
+    def test_reconfiguration_raises_exception(
+        self, default_manager: LoggerManager
+    ) -> None:
         """Test that reconfiguring a manager raises RuntimeError."""
         with pytest.raises(RuntimeError, match="already configured"):
             default_manager.configure(LoggingSettings())
 
-    def test_duplicate_domain_raises_exception(self, default_manager: LoggerManager) -> None:
+    def test_duplicate_domain_raises_exception(
+        self, default_manager: LoggerManager
+    ) -> None:
         """Test that creating another manager for same domain raises RuntimeError."""
         with pytest.raises(RuntimeError, match="already configured by another manager"):
             manager2 = LoggerManager("test")
@@ -114,7 +120,7 @@ class TestLogging:
         settings = LoggingSettings(
             USE_ASYNC=False,  # Disable async to test console output directly
             JSON=False,  # Ensure we're using text format
-            FORMAT='%(message)s'  # Simple format for easier testing
+            FORMAT="%(message)s",  # Simple format for easier testing
         )
         manager.configure(settings)
 
@@ -145,7 +151,7 @@ class TestLogging:
             lineno=1,
             msg="Test JSON output",
             args=None,
-            exc_info=None
+            exc_info=None,
         )
 
         formatted = handler.formatter.format(record)
@@ -161,12 +167,14 @@ class TestLogging:
             FILE="test.log",
             MAX_BYTES=1024,
             BACKUP_FILES_COUNT=3,
-            USE_ASYNC=False
+            USE_ASYNC=False,
         )
         manager.configure(settings)
 
         logger = manager.get_logger()
-        file_handlers = [h for h in logger.handlers if isinstance(h, RotatingFileHandler)]
+        file_handlers = [
+            h for h in logger.handlers if isinstance(h, RotatingFileHandler)
+        ]
         assert len(file_handlers) == 1
 
         handler = file_handlers[0]
@@ -181,7 +189,9 @@ class TestLogging:
         file_name = "output_test.log"
         log_file = os.path.join(temp_log_dir, file_name)
         manager = LoggerManager("file_output_test")
-        settings = LoggingSettings(DIR=str(temp_log_dir), FILE=file_name, USE_ASYNC=False)
+        settings = LoggingSettings(
+            DIR=str(temp_log_dir), FILE=file_name, USE_ASYNC=False
+        )
         manager.configure(settings)
 
         logger = manager.get_logger()
@@ -217,16 +227,20 @@ class TestLogging:
         assert manager._listener.queue.maxsize == 10
         manager.shutdown()
 
-    def test_custom_handler_factory(self, temp_log_dir: Path, capsys: pytest.CaptureFixture):
+    def test_custom_handler_factory(
+        self, temp_log_dir: Path, capsys: pytest.CaptureFixture
+    ):
         """Test that custom_handler_factory properly integrates custom handlers."""
         # Setup
         temp_log_dir.mkdir(parents=True, exist_ok=True)
-        test_log_file = 'test.log'
+        test_log_file = "test.log"
 
         # Track created handlers for cleanup verification
         test_handlers = []
 
-        def create_custom_handlers(settings: LoggingSettings, formatter: logging.Formatter):
+        def create_custom_handlers(
+            settings: LoggingSettings, formatter: logging.Formatter
+        ):
             """Test custom handler factory that creates multiple handler types."""
             nonlocal test_handlers
 
@@ -238,21 +252,21 @@ class TestLogging:
 
             # Create a SysLogHandler (mocked to stdout for testing)
             syslog = logging.StreamHandler()
-            syslog.setFormatter(logging.Formatter('SYSLOG: %(message)s'))
+            syslog.setFormatter(logging.Formatter("SYSLOG: %(message)s"))
             syslog.setLevel(settings.LEVEL)  # Explicitly set level from settings
             test_handlers.append(syslog)
 
             return [memory_handler, syslog]
 
         # Test configuration with custom factory
-        manager = LoggerManager('custom_test')
+        manager = LoggerManager("custom_test")
         settings = LoggingSettings(
-            LEVEL='WARNING',
+            LEVEL="WARNING",
             JSON=False,
             USE_ASYNC=False,
             DIR=str(temp_log_dir),
             FILE=test_log_file,
-            FORMAT='%(levelname)s - %(message)s'
+            FORMAT="%(levelname)s - %(message)s",
         )
         manager.configure(settings, custom_handler_factory=create_custom_handlers)
 
@@ -283,19 +297,17 @@ class TestLogging:
         # Verify shutdown cleanup
         manager.shutdown()
         for handler in test_handlers:
-            if hasattr(handler, 'closed'):  # Only MemoryHandler has closed attribute
+            if hasattr(handler, "closed"):  # Only MemoryHandler has closed attribute
                 assert handler.closed is True
             else:  # For StreamHandler, verify it's not in logger anymore
-                assert handler not in logging.getLogger('custom_test').handlers
+                assert handler not in logging.getLogger("custom_test").handlers
 
-    def test_custom_handler_factory_not_callable_raises_exception(self, temp_log_dir: Path) -> None:
+    def test_custom_handler_factory_not_callable_raises_exception(
+        self, temp_log_dir: Path
+    ) -> None:
         """Test that non-callable custom_handler_factory raises TypeError."""
         manager = LoggerManager("not_callable_test")
-        settings = LoggingSettings(
-            LEVEL="INFO",
-            DIR=None,
-            USE_ASYNC=False
-        )
+        settings = LoggingSettings(LEVEL="INFO", DIR=None, USE_ASYNC=False)
 
         # Test with non-callable factory (using a string as example)
         with pytest.raises(TypeError, match="is not callable"):
@@ -303,14 +315,12 @@ class TestLogging:
 
         manager.shutdown()
 
-    def test_custom_handler_factory_non_iterable_return_raises_exception(self, temp_log_dir: Path) -> None:
+    def test_custom_handler_factory_non_iterable_return_raises_exception(
+        self, temp_log_dir: Path
+    ) -> None:
         """Test that custom_handler_factory returning non-iterable raises TypeError."""
         manager = LoggerManager("non_iterable_test")
-        settings = LoggingSettings(
-            LEVEL="INFO",
-            DIR=None,
-            USE_ASYNC=False
-        )
+        settings = LoggingSettings(LEVEL="INFO", DIR=None, USE_ASYNC=False)
 
         # Factory that returns a non-iterable (using int as example)
         def bad_factory(*args, **kwargs):
@@ -321,14 +331,12 @@ class TestLogging:
 
         manager.shutdown()
 
-    def test_custom_handler_factory_non_handler_objects_raises_exception(self, temp_log_dir: Path) -> None:
+    def test_custom_handler_factory_non_handler_objects_raises_exception(
+        self, temp_log_dir: Path
+    ) -> None:
         """Test that custom_handler_factory returning non-handler objects raises TypeError."""
         manager = LoggerManager("non_handler_test")
-        settings = LoggingSettings(
-            LEVEL="INFO",
-            DIR=None,
-            USE_ASYNC=False
-        )
+        settings = LoggingSettings(LEVEL="INFO", DIR=None, USE_ASYNC=False)
 
         # Factory that returns a mix of valid and invalid objects
         def bad_factory(_, formatter):
@@ -350,3 +358,28 @@ class TestLogging:
         assert len(logger.handlers) == 0
         assert not default_manager._is_configured
         assert len(default_manager._managed_loggers) == 0
+
+    def test_shutdown_during_finalization(self) -> None:
+        """Test that shutdown handles interpreter finalization gracefully.
+
+        Python 3.13+ raises PythonFinalizationError when calling thread.join()
+        during interpreter shutdown. The shutdown method should handle this by
+        closing handlers directly without joining the listener thread.
+        """
+        import sys
+        from unittest.mock import patch
+
+        manager = LoggerManager("finalization_test")
+        settings = LoggingSettings(USE_ASYNC=True)
+        manager.configure(settings)
+
+        assert manager._listener is not None
+
+        # Simulate interpreter finalization — shutdown must not raise
+        with patch.object(sys, "is_finalizing", return_value=True):
+            manager.shutdown()
+
+        # Verify cleanup happened without errors
+        assert not manager._is_configured
+        assert manager._listener is None
+        assert len(manager._managed_loggers) == 0
