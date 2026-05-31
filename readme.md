@@ -865,8 +865,8 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v2/analytics/stock_on_warehouses` | Отчёт по остаткам и товарам | `analytics_stock_on_warehouses()` |
-| ☐ | `/v1/analytics/turnover/stocks` | Оборачиваемость товара | `analytics_turnover_stocks()` |
+| ✓ | `/v2/analytics/stock_on_warehouses` | Отчёт по остаткам и товарам | `analytics_stock_on_warehouses()` |
+| ✓ | `/v1/analytics/turnover/stocks` | Оборачиваемость товара | `analytics_turnover_stocks()` |
 | ✓ | `/v1/analytics/stocks` | Получить аналитику по остаткам | `analytics_stocks()` |
 </details>
 <details>

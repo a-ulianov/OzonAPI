@@ -1,5 +1,6 @@
 __all__ = [
     "SellerActionsAPI",
+    "SellerAnalyticsAPI",
     "SellerBarcodeAPI",
     "SellerBetaAPI",
     "SellerCategoryAPI",
@@ -20,6 +21,7 @@ __all__ = [
 ]
 
 from .actions import SellerActionsAPI
+from .analytics import SellerAnalyticsAPI
 from .attributes_and_characteristics import SellerCategoryAPI
 from .barcodes import SellerBarcodeAPI
 from .beta import SellerBetaAPI
