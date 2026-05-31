@@ -1,3 +1,5 @@
+import warnings
+
 from ...core import APIManager
 from ...schemas.fbs import PostingFBSProductChangeRequest, PostingFBSProductChangeResponse
 
@@ -10,6 +12,11 @@ class PostingFBSProductChangeMixin(APIManager):
             request: PostingFBSProductChangeRequest
     ) -> PostingFBSProductChangeResponse:
         """Метод для добавления веса для весовых товаров в отправлении FBS.
+
+        .. deprecated::
+            Метод `/v2/posting/fbs/product/change` удалён из актуальной документации Ozon
+            Seller API (отсутствует в swagger на 05.2026) и может быть отключён на стороне Ozon.
+            Прямой замены нет; не используйте в новых интеграциях.
 
         Notes:
             • Метод используется для указания фактического веса весовых товаров в отправлении.
@@ -39,6 +46,12 @@ class PostingFBSProductChangeMixin(APIManager):
                     )
                 )
         """
+        warnings.warn(
+            "posting_fbs_product_change (/v2/posting/fbs/product/change) удалён из актуальной "
+            "документации Ozon Seller API и может быть отключён. Прямой замены нет.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         response = await self._request(
             method="post",
             api_version="v2",

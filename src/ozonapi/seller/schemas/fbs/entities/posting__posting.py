@@ -15,7 +15,7 @@ from .posting__delivery_method import PostingFBSDeliveryMethod
 from .posting__optional import PostingFBSOptional
 from .posting__product import PostingFBSProductDetailed
 from .posting__requirements import PostingFBSRequirements
-from .posting__tariffication import PostingFBSTariffication
+from .posting__tariffication import PostingFBSTariffication, PostingFBSTarifficationStep
 
 
 class PostingFBSPosting(Posting):
@@ -54,6 +54,7 @@ class PostingFBSPosting(Posting):
         tpl_integration_type: Тип интеграции со службой доставки
         tracking_number: Трек-номер отправления
         tariffication: Информация по тарификации отгрузки
+        tariffication_steps: Шаги тарификации — пошаговая разбивка калькуляции
     """
     addressee: Optional[PostingFBSAddressee] = Field(
         None, description="Контактные данные получателя.",
@@ -133,4 +134,7 @@ class PostingFBSPosting(Posting):
     )
     tariffication: PostingFBSTariffication = Field(
         ..., description="Информация по тарификации отгрузки."
+    )
+    tariffication_steps: Optional[list[PostingFBSTarifficationStep]] = Field(
+        None, description="Шаги тарификации — пошаговая разбивка калькуляции скидок и надбавок."
     )

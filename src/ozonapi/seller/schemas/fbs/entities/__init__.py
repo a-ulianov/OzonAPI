@@ -11,6 +11,8 @@ __all__ = [
     "PostingFBSProductDetailed",
     "PostingFBSRequirements",
     "PostingFBSTariffication",
+    "PostingFBSTarifficationStep",
+    "PostingFBSTarifficationCharge",
     "PostingFBSFilterWith",
 ]
 
@@ -30,5 +32,9 @@ from .posting__posting import PostingFBSPosting
 from .posting__product import PostingFBSProductDetailed
 from ...entities.postings.product import PostingProduct, PostingProductWithCurrencyCode
 from .posting__requirements import PostingFBSRequirements
-from .posting__tariffication import PostingFBSTariffication
+from .posting__tariffication import (
+    PostingFBSTariffication,
+    PostingFBSTarifficationStep,
+    PostingFBSTarifficationCharge,
+)
 from .posting__addressee import PostingFBSAddressee

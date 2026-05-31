@@ -46,6 +46,8 @@ __all__ = [
     "PostingFBSRestrictionsRequest",
     "PostingFBSRestrictionsResponse",
     "PostingFBSTariffication",
+    "PostingFBSTarifficationStep",
+    "PostingFBSTarifficationCharge",
     "PostingFBSListRequestFilterLastChangedStatusDate",
     "PostingFBSListFilter",
     "PostingFBSListRequest",
@@ -63,7 +65,8 @@ __all__ = [
 from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBarcodes, PostingFBSCancellation, \
     PostingFBSCustomer, PostingFBSCustomerAddress, PostingFBSDeliveryMethod, PostingFBSOptional, PostingFBSPosting, \
     PostingFBSProductDetailed, \
-    PostingFBSRequirements, PostingFBSTariffication, PostingFBSFilterWith
+    PostingFBSRequirements, PostingFBSTariffication, PostingFBSTarifficationStep, \
+    PostingFBSTarifficationCharge, PostingFBSFilterWith
 from ..entities.postings.legal_info import PostingLegalInfo
 from ..entities.postings.product import PostingProduct
 from ..entities.postings.financial_data import PostingFinancialData
