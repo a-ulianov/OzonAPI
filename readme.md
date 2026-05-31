@@ -791,14 +791,14 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v2/returns/rfbs/list` | Список заявок на возврат | `returns_rfbs_list()` |
-| ☐ | `/v2/returns/rfbs/get` | Информация о заявке на возврат | `returns_rfbs_get()` |
-| ☐ | `/v2/returns/rfbs/reject` | Отклонить заявку на возврат | `returns_rfbs_reject()` |
-| ☐ | `/v2/returns/rfbs/compensate` | Вернуть часть стоимости товара | `returns_rfbs_compensate()` |
-| ☐ | `/v2/returns/rfbs/verify` | Одобрить заявку на возврат | `returns_rfbs_verify()` |
-| ☐ | `/v2/returns/rfbs/receive-return` | Подтвердить получение товара на проверку | `returns_rfbs_receive_return()` |
-| ☐ | `/v2/returns/rfbs/return-money` | Вернуть деньги покупателю | `returns_rfbs_return_money()` |
-| ☐ | `/v1/returns/rfbs/action/set` | Передать доступные действия для rFBS возвратов | `returns_rfbs_action_set()` |
+| ✓ | `/v2/returns/rfbs/list` | Список заявок на возврат | `returns_rfbs_list()` |
+| ✓ | `/v2/returns/rfbs/get` | Информация о заявке на возврат | `returns_rfbs_get()` |
+| ✓ | `/v2/returns/rfbs/reject` | Отклонить заявку на возврат | `returns_rfbs_reject()` |
+| ✓ | `/v2/returns/rfbs/compensate` | Вернуть часть стоимости товара | `returns_rfbs_compensate()` |
+| ✓ | `/v2/returns/rfbs/verify` | Одобрить заявку на возврат | `returns_rfbs_verify()` |
+| ✓ | `/v2/returns/rfbs/receive-return` | Подтвердить получение товара на проверку | `returns_rfbs_receive_return()` |
+| ✓ | `/v2/returns/rfbs/return-money` | Вернуть деньги покупателю | `returns_rfbs_return_money()` |
+| ✓ | `/v1/returns/rfbs/action/set` | Передать доступные действия для rFBS возвратов | `returns_rfbs_action_set()` |
 </details>
 <details>
 <summary>Возвратные отгрузки (8)</summary>
