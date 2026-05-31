@@ -17,6 +17,8 @@
 **✅ Актуально на 4-й квартал 2025 года.**
 **🤝 Коммиты приветствуются!**
 
+**🤖 С 01.06.2026 сопровождение проекта делегировано Claude Code.**
+
 [![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ozonapi_async)
 
 ## ⚡️ Применение
