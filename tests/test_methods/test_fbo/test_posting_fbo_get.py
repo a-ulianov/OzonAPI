@@ -91,6 +91,10 @@ class TestPostingFBOGet:
             payload=request.model_dump(by_alias=True)
         )
 
+        # The `with` field is a Python keyword; it MUST serialise under the API key "with".
+        sent_payload = mock_api_request.call_args.kwargs["payload"]
+        assert "with" in sent_payload and "with_" not in sent_payload
+
         assert isinstance(response, PostingFBOGetResponse)
         assert response.result is not None
 

@@ -24,7 +24,7 @@ class PostingFBOGetRequest(BaseModel):
         None, description="Если включена транслитерация адреса из кириллицы в латиницу — true."
     )
     with_: Optional[PostingFilterWith] = Field(
-        None, description="Дополнительные поля, которые нужно добавить в ответ."
+        None, alias="with", description="Дополнительные поля, которые нужно добавить в ответ."
     )
 
 
