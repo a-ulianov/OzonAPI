@@ -12,6 +12,7 @@ from .methods import (
     SellerWarehouseAPI,
     SellerFBSAssemblyLabelingAPI,
     SellerFBSDeliveryAPI,
+    SellerFBSContainerAPI,
 )
 
 
@@ -23,6 +24,7 @@ class SellerAPI(
     SellerFBOAPI,
     SellerFBSAPI,
     SellerFBSAssemblyLabelingAPI,
+    SellerFBSContainerAPI,
     SellerFBSDeliveryAPI,
     SellerPricesAndStocksAPI,
     SellerPricingStrategyAPI,
