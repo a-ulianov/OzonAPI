@@ -14,3 +14,16 @@ class DeliveryMethodStatus(str, Enum):
     EDITED = "EDITED"
     ACTIVE = "ACTIVE"
     DISABLED = "DISABLED"
+    WAITING = "WAITING"
+    BROKEN = "BROKEN"
+
+
+class SortDir(str, Enum):
+    """Направление сортировки.
+
+    Attributes:
+        ASC: по возрастанию
+        DESC: по убыванию
+    """
+    ASC = "ASC"
+    DESC = "DESC"

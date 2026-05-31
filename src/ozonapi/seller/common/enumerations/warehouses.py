@@ -67,3 +67,52 @@ class WarehouseWorkingDays(int, Enum):
     FRIDAY = 5
     SATURDAY = 6
     SUNDAY = 7
+
+
+class CarriageLabelType(str, Enum):
+    """Размер этикетки отгрузки (API v2).
+
+    Attributes:
+        UNSPECIFIED: Не указан
+        BIG: Большая
+        SMALL: Маленькая
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+    BIG = "BIG"
+    SMALL = "SMALL"
+
+
+class FirstMileTypeV2(str, Enum):
+    """Тип первой мили склада (API v2).
+
+    Attributes:
+        UNSPECIFIED: Не указан
+        PICK_UP: Забор
+        DROP_OFF: Выдача
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+    PICK_UP = "PICK_UP"
+    DROP_OFF = "DROP_OFF"
+
+
+class WarehouseWorkingDayV2(str, Enum):
+    """Рабочий день склада (API v2, строковое представление).
+
+    Attributes:
+        UNSPECIFIED: Не указан
+        MONDAY: Понедельник
+        TUESDAY: Вторник
+        WEDNESDAY: Среда
+        THURSDAY: Четверг
+        FRIDAY: Пятница
+        SATURDAY: Суббота
+        SUNDAY: Воскресенье
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+    MONDAY = "MONDAY"
+    TUESDAY = "TUESDAY"
+    WEDNESDAY = "WEDNESDAY"
+    THURSDAY = "THURSDAY"
+    FRIDAY = "FRIDAY"
+    SATURDAY = "SATURDAY"
+    SUNDAY = "SUNDAY"

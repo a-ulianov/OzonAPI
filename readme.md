@@ -161,7 +161,7 @@ async def main():
     async with SellerAPI() as api:
         # Ваши API вызовы
         warehouses = await api.warehouse_list()
-        print(f"Доступно складов: {len(warehouses.result)}")
+        print(f"Доступно складов: {len(warehouses.warehouses)}")
 
 asyncio.run(main())
 ```
@@ -459,7 +459,7 @@ pytest --cov=ozonapi --cov-report=html
 |---|---|---|---|
 | ✓ | `/v2/products/stocks` | Обновить количество товаров на складах | `products_stocks()` |
 | ✓ | `/v4/product/info/stocks` | Информация о количестве товаров | `product_info_stocks()` |
-| ✓ | `/v1/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
+| ✓ | `/v2/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
 | ✓ | `/v1/product/import/prices` | Обновить цену | `product_import_prices()` |
 | ☐ | `/v1/product/action/timer/update` | Обновление таймера актуальности минимальной цены | `product_action_timer_update()` |
 | ☐ | `/v1/product/action/timer/status` | Получить статус установленного таймера | `product_action_timer_status()` |
@@ -531,8 +531,8 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ✓ | `/v1/warehouse/list` | Список складов | `warehouse_list()` |
-| ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
+| ✓ | `/v2/warehouse/list` | Список складов | `warehouse_list()` |
+| ✓ | `/v2/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
 </details>
 <details>
 <summary>Обработка заказов FBS и rFBS (18)</summary>

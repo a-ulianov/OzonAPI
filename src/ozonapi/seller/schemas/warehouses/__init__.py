@@ -4,22 +4,33 @@ https://docs.ozon.ru/api/seller/#tag/WarehouseAPI
 __all__ = [
     "WarehouseListRequest",
     "WarehouseListResponse",
+    "WarehouseListItem",
+    "WarehouseListAddressInfo",
+    "WarehouseListFirstMile",
+    "WarehouseListTimetable",
+    "WarehouseListWorkingHours",
     "DeliveryMethodListRequest",
     "DeliveryMethodListResponse",
     "DeliveryMethodListFilter",
     "DeliveryMethodListItem",
-    "WarehouseListFirstMileType",
-    "WarehouseListItem",
+    "DeliveryMethodListDropOffPoint",
+    "DeliveryMethodListAddressCoordinates",
 ]
 
-from .v1__delivery_method_list import (
+from .v2__delivery_method_list import (
     DeliveryMethodListRequest,
     DeliveryMethodListResponse,
     DeliveryMethodListFilter,
     DeliveryMethodListItem,
+    DeliveryMethodListDropOffPoint,
+    DeliveryMethodListAddressCoordinates,
 )
-from .v1__warehouse_list import (
+from .v2__warehouse_list import (
+    WarehouseListRequest,
     WarehouseListResponse,
-    WarehouseListFirstMileType,
-    WarehouseListItem, WarehouseListRequest,
+    WarehouseListItem,
+    WarehouseListAddressInfo,
+    WarehouseListFirstMile,
+    WarehouseListTimetable,
+    WarehouseListWorkingHours,
 )

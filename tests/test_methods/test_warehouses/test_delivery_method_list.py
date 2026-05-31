@@ -3,106 +3,95 @@ import pytest
 from src.ozonapi.seller.schemas.warehouses import (
     DeliveryMethodListRequest,
     DeliveryMethodListResponse,
+    DeliveryMethodListFilter,
 )
-from src.ozonapi.seller.common.enumerations.delivery import DeliveryMethodStatus
-from src.ozonapi.seller.schemas.warehouses.v1__delivery_method_list import DeliveryMethodListFilter
+from src.ozonapi.seller.common.enumerations.delivery import DeliveryMethodStatus, SortDir
+
+
+def _method() -> dict:
+    return {
+        "id": 12345,
+        "name": "Курьерская доставка",
+        "warehouse_id": 15588127982000,
+        "provider_id": 424,
+        "template_id": 789,
+        "status": "ACTIVE",
+        "cutoff": "18:00",
+        "sla_cut_in": 120,
+        "is_express": False,
+        "tpl_integration_type": "ozon",
+        "tpl_dropoff_point": {
+            "address": "Москва, ул. Примерная, 1",
+            "code": "MSK-1",
+            "name": "ПВЗ Примерный",
+            "address_coordinates": {"latitude": 55.75, "longitude": 37.61},
+        },
+        "created_at": "2023-10-01T10:00:00Z",
+        "updated_at": "2023-10-01T10:00:00Z",
+    }
 
 
 class TestDeliveryMethodList:
-    """Тесты для метода delivery_method_list."""
+    """Тесты для метода delivery_method_list (API v2)."""
 
     @pytest.mark.asyncio
     async def test_delivery_method_list(self, api, mock_api_request):
         """Тестирует метод delivery_method_list."""
 
-        mock_response_data = {
-            "result": [
-                {
-                    "id": 12345,
-                    "name": "Курьерская доставка",
-                    "warehouse_id": 15588127982000,
-                    "company_id": 424,
-                    "created_at": "2023-10-01T10:00:00Z",
-                    "cutoff": "18:00",
-                    "provider_id": 424,
-                    "sla_cut_in": 120,
-                    "status": "ACTIVE",
-                    "template_id": 789,
-                    "updated_at": "2023-10-01T10:00:00Z"
-                }
-            ],
-            "has_next": False
+        mock_api_request.return_value = {
+            "delivery_methods": [_method()],
+            "cursor": "",
+            "has_next": False,
         }
-        mock_api_request.return_value = mock_response_data
 
         request = DeliveryMethodListRequest(
             filter=DeliveryMethodListFilter(
-                provider_id=424,
-                status=DeliveryMethodStatus.ACTIVE,
-                warehouse_id=15588127982000
+                warehouse_ids=["15588127982000"],
+                status=[DeliveryMethodStatus.ACTIVE],
             ),
-            limit=50,
-            offset=0
+            limit=100,
+            sort_dir=SortDir.ASC,
         )
         response = await api.delivery_method_list(request)
 
         mock_api_request.assert_called_once_with(
             method="post",
-            api_version="v1",
+            api_version="v2",
             endpoint="delivery-method/list",
             payload=request.model_dump(),
         )
         assert isinstance(response, DeliveryMethodListResponse)
-        assert len(response.result) == 1
         assert response.has_next is False
+        assert len(response.delivery_methods) == 1
 
-        delivery_method = response.result[0]
-        assert delivery_method.id == 12345
-        assert delivery_method.name == "Курьерская доставка"
-        assert delivery_method.warehouse_id == 15588127982000
-        assert delivery_method.provider_id == 424
-        assert delivery_method.status == DeliveryMethodStatus.ACTIVE
+        method = response.delivery_methods[0]
+        assert method.id == 12345
+        assert method.name == "Курьерская доставка"
+        assert method.warehouse_id == 15588127982000
+        assert method.provider_id == 424
+        assert method.status == "ACTIVE"
+        assert method.tpl_dropoff_point.code == "MSK-1"
+        assert method.tpl_dropoff_point.address_coordinates.latitude == 55.75
 
     @pytest.mark.asyncio
     async def test_delivery_method_list_with_pagination(self, api, mock_api_request):
-        """Тестирует метод delivery_method_list с пагинацией."""
+        """Тестирует курсорную пагинацию метода delivery_method_list."""
 
-        mock_response_data = {
-            "result": [
-                {
-                    "id": 12345,
-                    "name": "Курьерская доставка",
-                    "warehouse_id": 15588127982000,
-                    "company_id": 424,
-                    "created_at": "2023-10-01T10:00:00Z",
-                    "cutoff": "18:00",
-                    "provider_id": 424,
-                    "sla_cut_in": 120,
-                    "status": "ACTIVE",
-                    "template_id": 789,
-                    "updated_at": "2023-10-01T10:00:00Z"
-                }
-            ],
-            "has_next": True
+        mock_api_request.return_value = {
+            "delivery_methods": [_method()],
+            "cursor": "next_cursor",
+            "has_next": True,
         }
-        mock_api_request.return_value = mock_response_data
 
-        request = DeliveryMethodListRequest(
-            filter=DeliveryMethodListFilter(
-                warehouse_id=15588127982000
-            ),
-            limit=1,
-            offset=10
-        )
+        request = DeliveryMethodListRequest(limit=1, cursor="prev_cursor")
         response = await api.delivery_method_list(request)
 
         mock_api_request.assert_called_once_with(
             method="post",
-            api_version="v1",
+            api_version="v2",
             endpoint="delivery-method/list",
             payload=request.model_dump(),
         )
-        assert isinstance(response, DeliveryMethodListResponse)
-        assert len(response.result) == 1
         assert response.has_next is True
-        assert response.result[0].id == 12345
+        assert response.cursor == "next_cursor"
+        assert response.delivery_methods[0].id == 12345

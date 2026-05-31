@@ -40,7 +40,7 @@ from .v1__product_import_prices import (
     ProductImportPricesError,
     ProductImportPricesResultItem,
 )
-from .v1__product_info_stocks_by_warehouse_fbs import (
+from .v2__product_info_stocks_by_warehouse_fbs import (
     ProductInfoStocksByWarehouseFBSRequest,
     ProductInfoStocksByWarehouseFBSResponse,
     ProductInfoStocksByWarehouseFBSItem,
