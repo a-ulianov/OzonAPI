@@ -828,10 +828,10 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/chat/send/file` | Отправить файл | `chat_send_file()` |
-| ☐ | `/v2/chat/list` | Список чатов | `chat_list()` |
-| ☐ | `/v3/chat/list` | Список чатов | `chat_list()` |
-| ☐ | `/v3/chat/history` | История чата | `chat_history()` |
+| ✓ | `/v1/chat/send/file` | Отправить файл | `chat_send_file()` |
+| ✓ | `/v2/chat/list` | Список чатов (устарел, 404) | `chat_list_v2()` |
+| ✓ | `/v3/chat/list` | Список чатов | `chat_list()` |
+| ✓ | `/v3/chat/history` | История чата | `chat_history()` |
 </details>
 <details>
 <summary>Накладные (4)</summary>
