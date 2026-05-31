@@ -805,14 +805,14 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/returns/company/fbs/info` | Количество возвратов FBS | `returns_company_fbs_info()` |
-| ☐ | `/v1/return/giveout/is-enabled` | Проверить возможность получения возвратных отгрузок по штрихкоду | `return_giveout_is_enabled()` |
-| ☐ | `/v1/return/giveout/list` | Список возвратных отгрузки | `return_giveout_list()` |
-| ☐ | `/v1/return/giveout/info` | Информация о возвратной отгрузке | `return_giveout_info()` |
-| ☐ | `/v1/return/giveout/barcode` | Значение штрихкода для возвратных отгрузок | `return_giveout_barcode()` |
-| ☐ | `/v1/return/giveout/get-pdf` | Штрихкод для получения возвратной отгрузки в формате PDF | `return_giveout_get_pdf()` |
-| ☐ | `/v1/return/giveout/get-png` | Штрихкод для получения возвратной отгрузки в формате PNG | `return_giveout_get_png()` |
-| ☐ | `/v1/return/giveout/barcode-reset` | Сгенерировать новый штрихкод | `return_giveout_barcode_reset()` |
+| ✓ | `/v1/returns/company/fbs/info` | Количество возвратов FBS | `returns_company_fbs_info()` |
+| ✓ | `/v1/return/giveout/is-enabled` | Проверить возможность получения возвратных отгрузок по штрихкоду | `return_giveout_is_enabled()` |
+| ✓ | `/v1/return/giveout/list` | Список возвратных отгрузки | `return_giveout_list()` |
+| ✓ | `/v1/return/giveout/info` | Информация о возвратной отгрузке | `return_giveout_info()` |
+| ✓ | `/v1/return/giveout/barcode` | Значение штрихкода для возвратных отгрузок | `return_giveout_barcode()` |
+| ✓ | `/v1/return/giveout/get-pdf` | Штрихкод для получения возвратной отгрузки в формате PDF | `return_giveout_get_pdf()` |
+| ✓ | `/v1/return/giveout/get-png` | Штрихкод для получения возвратной отгрузки в формате PNG | `return_giveout_get_png()` |
+| ✓ | `/v1/return/giveout/barcode-reset` | Сгенерировать новый штрихкод | `return_giveout_barcode_reset()` |
 </details>
 <details>
 <summary>Отмены заказов (3)</summary>
