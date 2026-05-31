@@ -5,6 +5,7 @@ Implements domain-based logging architecture with flexible configuration
 and proper resource cleanup.
 """
 
+import sys
 import logging
 import weakref
 from logging.handlers import QueueHandler
@@ -178,7 +179,12 @@ class LoggerManager:
         target.setLevel(source.level)
 
     def shutdown(self) -> None:
-        """Clean up all logging resources for this domain."""
+        """Clean up all logging resources for this domain.
+
+        During interpreter finalization (Python 3.13+), QueueListener.stop()
+        calls thread.join() which raises PythonFinalizationError. In that case
+        we close handlers directly without joining the listener thread.
+        """
         if not self._is_configured:
             return
 
@@ -187,7 +193,16 @@ class LoggerManager:
         self._managed_loggers.clear()
 
         if self._listener:
-            self._listener.stop()
+            if sys.is_finalizing():
+                # During interpreter shutdown, threads cannot be joined.
+                # Close handlers directly to release resources.
+                for handler in getattr(self._listener, 'handlers', ()):
+                    try:
+                        handler.close()
+                    except Exception:
+                        pass
+            else:
+                self._listener.stop()
             self._listener = None
 
         self._is_configured = False
