@@ -60,6 +60,21 @@ __all__ = [
     "PostingFBSActGetContainerLabelsResponse",
     "PostingFBSActGetBarcodeRequest",
     "PostingFBSActGetBarcodeResponse",
+    "ProductFbsSplit",
+    "PostingFBSSplitRequest",
+    "PostingFBSSplitRequestPosting",
+    "PostingFBSSplitResponse",
+    "PostingFBSSplitResponseParent",
+    "PostingFBSSplitResponsePosting",
+    "PostingFBSTraceableSplitRequest",
+    "PostingFBSTraceableSplitResponse",
+    "PostingFBSTraceableSplitResponsePosting",
+    "PostingFBSTraceableSplitProduct",
+    "PostingFBSProductTraceableAttributeRequest",
+    "PostingFBSProductTraceableAttributeResponse",
+    "PostingFBSProductTraceableAttributeProduct",
+    "CarriageEttnStatusRequest",
+    "CarriageEttnStatusResponse",
 ]
 
 from .base import BinaryFileResponse
@@ -77,6 +92,10 @@ from .v1__carriage_delivery_list import (
     CarriageDeliveryListV1Response,
     CarriageDeliveryListV1Result,
 )
+from .v1__carriage_ettn_status import (
+    CarriageEttnStatusRequest,
+    CarriageEttnStatusResponse,
+)
 from .v1__carriage_get import (
     CarriageGetCancelAvailability,
     CarriageGetRequest,
@@ -92,6 +111,25 @@ from .v1__posting_carriage_available_list import (
     PostingCarriageAvailableListRequest,
     PostingCarriageAvailableListResponse,
     PostingCarriageAvailableListResult,
+)
+from .v1__posting_fbs_product_traceable_attribute import (
+    PostingFBSProductTraceableAttributeProduct,
+    PostingFBSProductTraceableAttributeRequest,
+    PostingFBSProductTraceableAttributeResponse,
+)
+from .v1__posting_fbs_split import (
+    PostingFBSSplitRequest,
+    PostingFBSSplitRequestPosting,
+    PostingFBSSplitResponse,
+    PostingFBSSplitResponseParent,
+    PostingFBSSplitResponsePosting,
+    ProductFbsSplit,
+)
+from .v1__posting_fbs_traceable_split import (
+    PostingFBSTraceableSplitProduct,
+    PostingFBSTraceableSplitRequest,
+    PostingFBSTraceableSplitResponse,
+    PostingFBSTraceableSplitResponsePosting,
 )
 from .v2__carriage_delivery_list import (
     CarriageDeliveryListCarriage,
