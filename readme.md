@@ -848,17 +848,17 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/report/info` | Информация об отчёте | `report_info()` |
-| ☐ | `/v1/report/list` | Список отчётов | `report_list()` |
-| ☐ | `/v1/report/products/create` | Отчёт по товарам | `report_products_create()` |
-| ☐ | `/v2/report/returns/create` | Отчёт о возвратах | `report_returns_create()` |
-| ☐ | `/v1/report/postings/create` | Отчёт об отправлениях | `report_postings_create()` |
-| ☐ | `/v1/finance/cash-flow-statement/list` | Финансовый отчёт | `finance_cash_flow_statement_list()` |
-| ☐ | `/v1/report/discounted/create` | Отчёт об уценённых товарах | `report_discounted_create()` |
-| ☐ | `/v1/report/warehouse/stock` | Отчёт об остатках на FBS-складе | `report_warehouse_stock()` |
-| ☐ | `/v1/report/placement/by-products/create` | Получить отчёт о стоимости размещения по товарам | `report_placement_by_products_create()` |
-| ☐ | `/v1/report/placement/by-supplies/create` | Получить отчёт о стоимости размещения по поставкам | `report_placement_by_supplies_create()` |
-| ☐ | `/v1/report/marked-products-sales/create` | Отчёт по продажам товаров с маркировкой | `report_marked_products_sales_create()` |
+| ✓ | `/v1/report/info` | Информация об отчёте | `report_info()` |
+| ✓ | `/v1/report/list` | Список отчётов | `report_list()` |
+| ✓ | `/v1/report/products/create` | Отчёт по товарам | `report_products_create()` |
+| ✓ | `/v2/report/returns/create` | Отчёт о возвратах | `report_returns_create()` |
+| ✓ | `/v1/report/postings/create` | Отчёт об отправлениях | `report_postings_create()` |
+| ✓ | `/v1/finance/cash-flow-statement/list` | Финансовый отчёт | `finance_cash_flow_statement_list()` |
+| ✓ | `/v1/report/discounted/create` | Отчёт об уценённых товарах | `report_discounted_create()` |
+| ✓ | `/v1/report/warehouse/stock` | Отчёт об остатках на FBS-складе | `report_warehouse_stock()` |
+| ✓ | `/v1/report/placement/by-products/create` | Получить отчёт о стоимости размещения по товарам | `report_placement_by_products_create()` |
+| ✓ | `/v1/report/placement/by-supplies/create` | Получить отчёт о стоимости размещения по поставкам | `report_placement_by_supplies_create()` |
+| ✓ | `/v1/report/marked-products-sales/create` | Отчёт по продажам товаров с маркировкой | `report_marked_products_sales_create()` |
 </details>
 <details>
 <summary>Аналитические отчёты (3)</summary>
