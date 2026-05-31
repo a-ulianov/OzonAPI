@@ -5,6 +5,7 @@
 """
 
 from ...core import APIManager
+from .carriage_act_discrepancy_pdf import CarriageActDiscrepancyPDFMixin
 from .carriage_approve import CarriageApproveMixin
 from .carriage_cancel import CarriageCancelMixin
 from .carriage_create import CarriageCreateMixin
@@ -13,9 +14,16 @@ from .carriage_delivery_list_v1 import CarriageDeliveryListV1Mixin
 from .carriage_get import CarriageGetMixin
 from .carriage_set_postings import CarriageSetPostingsMixin
 from .posting_carriage_available_list import PostingCarriageAvailableListMixin
+from .posting_fbs_act_check_status import PostingFBSActCheckStatusMixin
+from .posting_fbs_act_create import PostingFBSActCreateMixin
+from .posting_fbs_act_get_barcode_text import PostingFBSActGetBarcodeTextMixin
+from .posting_fbs_act_get_postings import PostingFBSActGetPostingsMixin
+from .posting_fbs_act_list import PostingFBSActListMixin
+from .posting_fbs_digital_act_check_status import PostingFBSDigitalActCheckStatusMixin
 
 
 class SellerFBSDeliveryAPI(
+    CarriageActDiscrepancyPDFMixin,
     CarriageApproveMixin,
     CarriageCancelMixin,
     CarriageCreateMixin,
@@ -24,6 +32,12 @@ class SellerFBSDeliveryAPI(
     CarriageGetMixin,
     CarriageSetPostingsMixin,
     PostingCarriageAvailableListMixin,
+    PostingFBSActCheckStatusMixin,
+    PostingFBSActCreateMixin,
+    PostingFBSActGetBarcodeTextMixin,
+    PostingFBSActGetPostingsMixin,
+    PostingFBSActListMixin,
+    PostingFBSDigitalActCheckStatusMixin,
     APIManager,
 ):
     """Класс-агрегатор методов раздела Доставка FBS (отгрузки и перевозки).

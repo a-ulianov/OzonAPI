@@ -29,9 +29,35 @@ __all__ = [
     "PostingCarriageAvailableListResponse",
     "PostingCarriageAvailableListResult",
     "PostingCarriageAvailableListError",
+    "PostingFBSActCreateRequest",
+    "PostingFBSActCreateResponse",
+    "PostingFBSActCreateAct",
+    "PostingFBSActListRequest",
+    "PostingFBSActListResponse",
+    "PostingFBSActListFilter",
+    "PostingFBSActListResult",
+    "PostingFBSActListRelatedDocs",
+    "PostingFBSActListRelatedDoc",
+    "PostingFBSActCheckStatusRequest",
+    "PostingFBSActCheckStatusResponse",
+    "PostingFBSActCheckStatusResult",
+    "PostingFBSActGetPostingsRequest",
+    "PostingFBSActGetPostingsResponse",
+    "PostingFBSActGetPostingsResult",
+    "PostingFBSActGetPostingsProduct",
+    "PostingFBSActGetBarcodeTextRequest",
+    "PostingFBSActGetBarcodeTextResponse",
+    "PostingFBSDigitalActCheckStatusRequest",
+    "PostingFBSDigitalActCheckStatusResponse",
+    "CarriageActDiscrepancyPDFRequest",
+    "CarriageActDiscrepancyPDFResponse",
 ]
 
 from .entities import DeliveryListError
+from .v1__carriage_act_discrepancy_pdf import (
+    CarriageActDiscrepancyPDFRequest,
+    CarriageActDiscrepancyPDFResponse,
+)
 from .v1__carriage_approve import CarriageApproveRequest, CarriageApproveResponse
 from .v1__carriage_cancel import CarriageCancelRequest, CarriageCancelResponse
 from .v1__carriage_create import CarriageCreateRequest, CarriageCreateResponse
@@ -64,4 +90,36 @@ from .v2__carriage_delivery_list import (
     CarriageDeliveryListPickupFee,
     CarriageDeliveryListRequest,
     CarriageDeliveryListResponse,
+)
+from .v2__posting_fbs_act_check_status import (
+    PostingFBSActCheckStatusRequest,
+    PostingFBSActCheckStatusResponse,
+    PostingFBSActCheckStatusResult,
+)
+from .v2__posting_fbs_act_create import (
+    PostingFBSActCreateAct,
+    PostingFBSActCreateRequest,
+    PostingFBSActCreateResponse,
+)
+from .v2__posting_fbs_act_get_barcode_text import (
+    PostingFBSActGetBarcodeTextRequest,
+    PostingFBSActGetBarcodeTextResponse,
+)
+from .v2__posting_fbs_act_get_postings import (
+    PostingFBSActGetPostingsProduct,
+    PostingFBSActGetPostingsRequest,
+    PostingFBSActGetPostingsResponse,
+    PostingFBSActGetPostingsResult,
+)
+from .v2__posting_fbs_act_list import (
+    PostingFBSActListFilter,
+    PostingFBSActListRelatedDoc,
+    PostingFBSActListRelatedDocs,
+    PostingFBSActListRequest,
+    PostingFBSActListResponse,
+    PostingFBSActListResult,
+)
+from .v2__posting_fbs_digital_act_check_status import (
+    PostingFBSDigitalActCheckStatusRequest,
+    PostingFBSDigitalActCheckStatusResponse,
 )
