@@ -1119,19 +1119,19 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/carriage/container/create` | Создать грузоместо | `carriage_container_create()` |
-| ☐ | `/v1/carriage/container/fill` | Наполнить грузоместо отправлениями | `carriage_container_fill()` |
-| ☐ | `/v1/carriage/container/approve` | Подтвердить состав грузоместа | `carriage_container_approve()` |
-| ☐ | `/v1/carriage/container/place-into` | Разместить коробки на палете | `carriage_container_place_into()` |
-| ☐ | `/v1/carriage/container/remove-postings` | Убрать отправления из грузоместа | `carriage_container_remove_postings()` |
-| ☐ | `/v1/carriage/container/remove-from` | Убрать коробки с палеты | `carriage_container_remove_from()` |
-| ☐ | `/v1/carriage/container/cancel` | Отменить грузоместо | `carriage_container_cancel()` |
-| ☐ | `/v1/carriage/container/list` | Получить список грузомест | `carriage_container_list()` |
-| ☐ | `/v1/carriage/container/get` | Получить информацию о грузоместах | `carriage_container_get()` |
-| ☐ | `/v1/carriage/container/status/get` | Получить статус грузомест FBS | `carriage_container_status_get()` |
-| ☐ | `/v1/carriage/container/task/info` | Получить статус задачи грузового места | `carriage_container_task_info()` |
-| ☐ | `/v1/carriage/container/document/get` | Получить документы по грузоместам — ТрН и лист отгрузки | `carriage_container_document_get()` |
-| ☐ | `/v1/carriage/container/label/get` | Получить этикетку по грузоместам | `carriage_container_label_get()` |
+| ✓ | `/v1/carriage/container/create` | Создать грузоместо | `carriage_container_create()` |
+| ✓ | `/v1/carriage/container/fill` | Наполнить грузоместо отправлениями | `carriage_container_fill()` |
+| ✓ | `/v1/carriage/container/approve` | Подтвердить состав грузоместа | `carriage_container_approve()` |
+| ✓ | `/v1/carriage/container/place-into` | Разместить коробки на палете | `carriage_container_place_into()` |
+| ✓ | `/v1/carriage/container/remove-postings` | Убрать отправления из грузоместа | `carriage_container_remove_postings()` |
+| ✓ | `/v1/carriage/container/remove-from` | Убрать коробки с палеты | `carriage_container_remove_from()` |
+| ✓ | `/v1/carriage/container/cancel` | Отменить грузоместо | `carriage_container_cancel()` |
+| ✓ | `/v1/carriage/container/list` | Получить список грузомест | `carriage_container_list()` |
+| ✓ | `/v1/carriage/container/get` | Получить информацию о грузоместах | `carriage_container_get()` |
+| ✓ | `/v1/carriage/container/status/get` | Получить статус грузомест FBS | `carriage_container_status_get()` |
+| ✓ | `/v1/carriage/container/task/info` | Получить статус задачи грузового места | `carriage_container_task_info()` |
+| ✓ | `/v1/carriage/container/document/get` | Получить документы по грузоместам — ТрН и лист отгрузки | `carriage_container_document_get()` |
+| ✓ | `/v1/carriage/container/label/get` | Получить этикетку по грузоместам | `carriage_container_label_get()` |
 </details>
 <details>
 <summary>Premium-методы (10)</summary>
