@@ -745,10 +745,10 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/posting/fbs/traceable/split` | Разделить отправление с прослеживаемыми товарами | `posting_fbs_traceable_split()` |
 | ✓ | `/v1/posting/fbs/product/traceable/attribute` | Получить список незаполненных атрибутов для прослеживаемых товаров | `posting_fbs_product_traceable_attribute()` |
 | ✓ | `/v1/carriage/ettn/status` | Получить статус проверки электронной ТТН на прослеживаемой перевозке FBS | `carriage_ettn_status()` |
-| ☐ | `/v1/assembly/carriage/posting/list` | Получить список отправлений в отгрузке | `assembly_carriage_posting_list()` |
-| ☐ | `/v1/assembly/carriage/product/list` | Получить список товаров в отгрузке | `assembly_carriage_product_list()` |
-| ☐ | `/v1/assembly/fbs/posting/list` | Получить список отравлений | `assembly_fbs_posting_list()` |
-| ☐ | `/v1/assembly/fbs/product/list` | Получить список товаров в отправлениях | `assembly_fbs_product_list()` |
+| ✓ | `/v1/assembly/carriage/posting/list` | Получить список отправлений в отгрузке | `assembly_carriage_posting_list()` |
+| ✓ | `/v1/assembly/carriage/product/list` | Получить список товаров в отгрузке | `assembly_carriage_product_list()` |
+| ✓ | `/v1/assembly/fbs/posting/list` | Получить список отравлений | `assembly_fbs_posting_list()` |
+| ✓ | `/v1/assembly/fbs/product/list` | Получить список товаров в отправлениях | `assembly_fbs_product_list()` |
 </details>
 <details>
 <summary>Доставка rFBS (7)</summary>

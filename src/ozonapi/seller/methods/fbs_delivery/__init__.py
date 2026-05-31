@@ -5,6 +5,10 @@
 """
 
 from ...core import APIManager
+from .assembly_carriage_posting_list import AssemblyCarriagePostingListMixin
+from .assembly_carriage_product_list import AssemblyCarriageProductListMixin
+from .assembly_fbs_posting_list import AssemblyFbsPostingListMixin
+from .assembly_fbs_product_list import AssemblyFbsProductListMixin
 from .carriage_act_discrepancy_pdf import CarriageActDiscrepancyPDFMixin
 from .carriage_approve import CarriageApproveMixin
 from .carriage_cancel import CarriageCancelMixin
@@ -31,6 +35,10 @@ from .posting_fbs_traceable_split import PostingFBSTraceableSplitMixin
 
 
 class SellerFBSDeliveryAPI(
+    AssemblyCarriagePostingListMixin,
+    AssemblyCarriageProductListMixin,
+    AssemblyFbsPostingListMixin,
+    AssemblyFbsProductListMixin,
     CarriageActDiscrepancyPDFMixin,
     CarriageApproveMixin,
     CarriageCancelMixin,
