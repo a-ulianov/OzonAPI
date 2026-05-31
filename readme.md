@@ -964,14 +964,14 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/question/answer/create` | Создать ответ на вопрос | `question_answer_create()` |
-| ☐ | `/v1/question/answer/delete` | Удалить ответ на вопрос | `question_answer_delete()` |
-| ☐ | `/v1/question/answer/list` | Список ответов на вопрос | `question_answer_list()` |
-| ☐ | `/v1/question/change-status` | Изменить статус вопросов | `question_change_status()` |
-| ☐ | `/v1/question/count` | Количество вопросов по статусам | `question_count()` |
-| ☐ | `/v1/question/info` | Информация о вопросе | `question_info()` |
-| ☐ | `/v1/question/list` | Список вопросов | `question_list()` |
-| ☐ | `/v1/question/top-sku` | Товары с наибольшим количеством вопросов | `question_top_sku()` |
+| ✓ | `/v1/question/answer/create` | Создать ответ на вопрос | `question_answer_create()` |
+| ✓ | `/v1/question/answer/delete` | Удалить ответ на вопрос | `question_answer_delete()` |
+| ✓ | `/v1/question/answer/list` | Список ответов на вопрос | `question_answer_list()` |
+| ✓ | `/v1/question/change-status` | Изменить статус вопросов | `question_change_status()` |
+| ✓ | `/v1/question/count` | Количество вопросов по статусам | `question_count()` |
+| ✓ | `/v1/question/info` | Информация о вопросе | `question_info()` |
+| ✓ | `/v1/question/list` | Список вопросов | `question_list()` |
+| ✓ | `/v1/question/top-sku` | Товары с наибольшим количеством вопросов | `question_top_sku()` |
 </details>
 <details>
 <summary>Акции продавца (18)</summary>
