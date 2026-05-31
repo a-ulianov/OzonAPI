@@ -15,3 +15,8 @@ dist/
 **/__pycache__/
 *.egg-info/
 **/logs/
+
+# --- Claude Code local dev tooling & instructions (per request: keep OUT of git) ---
+CLAUDE.md
+CLAUDE.local.md
+.claude/
