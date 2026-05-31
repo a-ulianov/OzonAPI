@@ -781,10 +781,10 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/returns/list` | Информация о возвратах FBO и FBS | `returns_list()` |
-| ☐ | `/v1/returns/settings/utilization/history` | Получить историю изменений автоутилизации | `returns_settings_utilization_history()` |
-| ☐ | `/v1/returns/settings/utilization/info` | Получить настройки автоутилизации | `returns_settings_utilization_info()` |
-| ☐ | `/v1/returns/settings/utilization/update` | Обновить настройки автоутилизации | `returns_settings_utilization_update()` |
+| ✓ | `/v1/returns/list` | Информация о возвратах FBO и FBS | `returns_list()` |
+| ✓ | `/v1/returns/settings/utilization/history` | Получить историю изменений автоутилизации | `returns_settings_utilization_history()` |
+| ✓ | `/v1/returns/settings/utilization/info` | Получить настройки автоутилизации | `returns_settings_utilization_info()` |
+| ✓ | `/v1/returns/settings/utilization/update` | Обновить настройки автоутилизации | `returns_settings_utilization_update()` |
 </details>
 <details>
 <summary>Возвраты товаров rFBS (8)</summary>
