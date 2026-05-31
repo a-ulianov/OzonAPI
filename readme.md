@@ -946,18 +946,18 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/review/comment/create` | Оставить комментарий на отзыв | `review_comment_create()` |
-| ☐ | `/v1/review/comment/delete` | Удалить комментарий на отзыв | `review_comment_delete()` |
-| ☐ | `/v2/review/comment/delete` | Удалить комментарий на отзыв | `review_comment_delete()` |
-| ☐ | `/v1/review/comment/list` | Список комментариев на отзыв | `review_comment_list()` |
-| ☐ | `/v1/review/change-status` | Изменить статус отзывов | `review_change_status()` |
-| ☐ | `/v2/review/change-status` | Изменить статус отзывов | `review_change_status()` |
-| ☐ | `/v1/review/count` | Количество отзывов по статусам | `review_count()` |
-| ☐ | `/v2/review/count` | Получить количество отзывов по статусам | `review_count()` |
-| ☐ | `/v1/review/info` | Получить информацию об отзыве | `review_info()` |
-| ☐ | `/v2/review/info` | Получить информацию по отзыву | `review_info()` |
-| ☐ | `/v1/review/list` | Получить список отзывов | `review_list()` |
-| ☐ | `/v2/review/list` | Получить список отзывов | `review_list()` |
+| ✓ | `/v1/review/comment/create` | Оставить комментарий на отзыв | `review_comment_create()` |
+| ✓ | `/v1/review/comment/delete` | Удалить комментарий на отзыв | `review_comment_delete_v1()` |
+| ✓ | `/v2/review/comment/delete` | Удалить комментарий на отзыв | `review_comment_delete()` |
+| ✓ | `/v1/review/comment/list` | Список комментариев на отзыв | `review_comment_list()` |
+| ✓ | `/v1/review/change-status` | Изменить статус отзывов | `review_change_status_v1()` |
+| ✓ | `/v2/review/change-status` | Изменить статус отзывов | `review_change_status()` |
+| ✓ | `/v1/review/count` | Количество отзывов по статусам | `review_count_v1()` |
+| ✓ | `/v2/review/count` | Получить количество отзывов по статусам | `review_count()` |
+| ✓ | `/v1/review/info` | Получить информацию об отзыве | `review_info_v1()` |
+| ✓ | `/v2/review/info` | Получить информацию по отзыву | `review_info()` |
+| ✓ | `/v1/review/list` | Получить список отзывов | `review_list_v1()` |
+| ✓ | `/v2/review/list` | Получить список отзывов | `review_list()` |
 </details>
 <details>
 <summary>Работа с вопросами и ответами (8)</summary>
