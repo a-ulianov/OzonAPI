@@ -305,6 +305,7 @@ class APIManager:
             payload: Optional[dict[str, Any]] = None,
             params: Optional[dict[str, Any]] = None,
             response_format: Literal["json", "binary"] = "json",
+            form_data: Optional[Any] = None,
     ) -> dict[str, Any]:
         """
         Выполняет HTTP-запрос к API Ozon с учетом ограничения запросов.
@@ -319,6 +320,9 @@ class APIManager:
                 эндпоинтов, возвращающих файл (PDF, PNG). При `binary` тело ответа
                 читается как байты и возвращается в виде `{"content": <bytes>}`;
                 ответы об ошибках при этом по-прежнему разбираются как JSON.
+            form_data: Тело запроса в формате `multipart/form-data` (например,
+                `aiohttp.FormData` для загрузки файлов). Если задано, отправляется
+                вместо JSON-тела `payload`.
 
         Returns:
             Ответ от API в формате JSON (или `{"content": <bytes>}` при `response_format="binary"`)
@@ -369,8 +373,12 @@ class APIManager:
             ) as session:
                 async with instance_limiter, client_limiter:
                     try:
+                        if form_data is not None:
+                            request_kwargs: dict[str, Any] = {"data": form_data, "params": params}
+                        else:
+                            request_kwargs = {"json": payload, "params": params}
                         async with session.request(
-                                method, url, json=payload, params=params
+                                method, url, **request_kwargs
                         ) as response:
                             log_context_remove_keys = [
                                 'method', 'has_payload', 'payload'

@@ -16,6 +16,7 @@ from .methods import (
     SellerReturnsAPI,
     SellerReviewAPI,
     SellerQuestionAPI,
+    SellerCertificateAPI,
 )
 
 
@@ -24,6 +25,7 @@ class SellerAPI(
     SellerBetaAPI,
     SellerBarcodeAPI,
     SellerCategoryAPI,
+    SellerCertificateAPI,
     SellerFBOAPI,
     SellerFBSAPI,
     SellerFBSAssemblyLabelingAPI,
