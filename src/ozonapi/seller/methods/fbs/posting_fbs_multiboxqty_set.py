@@ -29,7 +29,7 @@ class PostingFBSMultiBoxQtySetMixin(APIManager):
         Examples:
             Пример с проверкой результата:
                 async with SellerAPI(client_id, api_key) as api:
-                    result = await api.posting_multiboxqty_set(
+                    result = await api.posting_fbs_multiboxqty_set(
                         PostingFBSMultiBoxQtySetRequest(
                             posting_number="57195475-0050-3",
                             multi_box_qty=3
@@ -44,7 +44,7 @@ class PostingFBSMultiBoxQtySetMixin(APIManager):
         response = await self._request(
             method="post",
             api_version="v3",
-            endpoint="posting/multi-box-qty/set",
+            endpoint="posting/multiboxqty/set",
             payload=request.model_dump()
         )
         return PostingFBSMultiBoxQtySetResponse(**response)

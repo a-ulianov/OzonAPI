@@ -31,7 +31,7 @@ class TestPostingFBSMultiBoxQty(object):
         mock_api_request.assert_called_once_with(
             method="post",
             api_version="v3",
-            endpoint="posting/multi-box-qty/set",
+            endpoint="posting/multiboxqty/set",
             payload=request.model_dump()
         )
 
