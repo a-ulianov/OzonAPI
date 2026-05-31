@@ -1,5 +1,6 @@
 from .core import APIConfig as SellerAPIConfig
 from .methods import (
+    SellerActionsAPI,
     SellerBetaAPI,
     SellerBarcodeAPI,
     SellerCategoryAPI,
@@ -14,6 +15,7 @@ from .methods import (
 
 
 class SellerAPI(
+    SellerActionsAPI,
     SellerBetaAPI,
     SellerBarcodeAPI,
     SellerCategoryAPI,

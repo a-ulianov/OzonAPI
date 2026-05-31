@@ -491,9 +491,9 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/actions` | Список акций | `actions()` |
-| ☐ | `/v1/actions/candidates` | Список доступных для акции товаров | `actions_candidates()` |
-| ☐ | `/v1/actions/products` | Список участвующих в акции товаров | `actions_products()` |
+| ✓ | `/v1/actions` | Список акций | `actions()` |
+| ✓ | `/v1/actions/candidates` | Список доступных для акции товаров | `actions_candidates()` |
+| ✓ | `/v1/actions/products` | Список участвующих в акции товаров | `actions_products()` |
 | ☐ | `/v1/actions/products/activate` | Добавить товар в акцию | `actions_products_activate()` |
 | ☐ | `/v1/actions/products/deactivate` | Удалить товары из акции | `actions_products_deactivate()` |
 | ☐ | `/v1/actions/discounts-task/list` | Список заявок на скидку | `actions_discounts_task_list()` |
