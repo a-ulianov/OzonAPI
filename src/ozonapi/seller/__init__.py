@@ -19,6 +19,7 @@ from .methods import (
     SellerQuestionAPI,
     SellerCertificateAPI,
     SellerChatAPI,
+    SellerRatingAPI,
     SellerReportAPI,
     SellerFinanceAPI,
 )
@@ -42,6 +43,7 @@ class SellerAPI(
     SellerPricingStrategyAPI,
     SellerProductAPI,
     SellerQuestionAPI,
+    SellerRatingAPI,
     SellerReportAPI,
     SellerReturnsAPI,
     SellerReviewAPI,

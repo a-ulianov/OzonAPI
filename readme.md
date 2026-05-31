@@ -899,10 +899,10 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/rating/summary` | Получить информацию о текущих рейтингах продавца | `rating_summary()` |
-| ☐ | `/v1/rating/history` | Получить информацию о рейтингах продавца за период | `rating_history()` |
-| ☐ | `/v1/rating/index/fbs/info` | Получить индекс ошибок FBS и rFBS | `rating_index_fbs_info()` |
-| ☐ | `/v1/rating/index/fbs/posting/list` | Список отправлений, которые повлияли на индекс ошибок FBS и rFBS | `rating_index_fbs_posting_list()` |
+| ✓ | `/v1/rating/summary` | Получить информацию о текущих рейтингах продавца | `rating_summary()` |
+| ✓ | `/v1/rating/history` | Получить информацию о рейтингах продавца за период | `rating_history()` |
+| ✓ | `/v1/rating/index/fbs/info` | Получить индекс ошибок FBS и rFBS | `rating_index_fbs_info()` |
+| ✓ | `/v1/rating/index/fbs/posting/list` | Список отправлений, которые повлияли на индекс ошибок FBS и rFBS | `rating_index_fbs_posting_list()` |
 </details>
 <details>
 <summary>Работа с цифровыми товарами (3)</summary>
