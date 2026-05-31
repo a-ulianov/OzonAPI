@@ -874,16 +874,16 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v2/finance/realization` | Отчёт о реализации товаров (версия 2) | `finance_realization()` |
-| ☐ | `/v1/finance/realization/posting` | Позаказный отчёт о реализации товаров | `finance_realization_posting()` |
-| ☐ | `/v3/finance/transaction/list` | Список транзакций | `finance_transaction_list()` |
-| ☐ | `/v3/finance/transaction/totals` | Суммы транзакций | `finance_transaction_totals()` |
-| ☐ | `/v1/finance/document-b2b-sales` | Реестр продаж юридическим лицам | `finance_document_b2b_sales()` |
-| ☐ | `/v1/finance/document-b2b-sales/json` | Реестр продаж юридическим лицам в JSON-формате | `finance_document_b2b_sales_json()` |
-| ☐ | `/v1/finance/mutual-settlement` | Отчёт о взаиморасчётах | `finance_mutual_settlement()` |
-| ☐ | `/v1/finance/products/buyout` | Отчёт о выкупленных товарах | `finance_products_buyout()` |
-| ☐ | `/v1/finance/compensation` | Отчёт о компенсациях | `finance_compensation()` |
-| ☐ | `/v1/finance/decompensation` | Отчёт о декомпенсациях | `finance_decompensation()` |
+| ✓ | `/v2/finance/realization` | Отчёт о реализации товаров (версия 2) | `finance_realization()` |
+| ✓ | `/v1/finance/realization/posting` | Позаказный отчёт о реализации товаров | `finance_realization_posting()` |
+| ✓ | `/v3/finance/transaction/list` | Список транзакций | `finance_transaction_list()` |
+| ✓ | `/v3/finance/transaction/totals` | Суммы транзакций | `finance_transaction_totals()` |
+| ✓ | `/v1/finance/document-b2b-sales` | Реестр продаж юридическим лицам | `finance_document_b2b_sales()` |
+| ✓ | `/v1/finance/document-b2b-sales/json` | Реестр продаж юридическим лицам в JSON-формате | `finance_document_b2b_sales_json()` |
+| ✓ | `/v1/finance/mutual-settlement` | Отчёт о взаиморасчётах | `finance_mutual_settlement()` |
+| ✓ | `/v1/finance/products/buyout` | Отчёт о выкупленных товарах | `finance_products_buyout()` |
+| ✓ | `/v1/finance/compensation` | Отчёт о компенсациях | `finance_compensation()` |
+| ✓ | `/v1/finance/decompensation` | Отчёт о декомпенсациях | `finance_decompensation()` |
 </details>
 <details>
 <summary>Чеки (3)</summary>
