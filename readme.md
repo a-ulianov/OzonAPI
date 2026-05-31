@@ -731,7 +731,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/act/create` | Подтвердить отгрузку и создать документы | `posting_fbs_act_create()` |
 | ✓ | `/v1/posting/carriage-available/list` | Список доступных перевозок | `posting_carriage_available_list()` |
 | ✓ | `/v1/carriage/get` | Информация о перевозке | `carriage_get()` |
-| ☐ | `/v1/posting/fbs/split` | Разделить заказ на отправления без сборки | `posting_fbs_split()` |
+| ✓ | `/v1/posting/fbs/split` | Разделить заказ на отправления без сборки | `posting_fbs_split()` |
 | ✓ | `/v2/posting/fbs/act/get-postings` | Список отправлений в акте | `posting_fbs_act_get_postings()` |
 | ✓ | `/v2/posting/fbs/act/get-container-labels` | Этикетки для грузового места | `posting_fbs_act_get_container_labels()` |
 | ✓ | `/v2/posting/fbs/act/get-barcode` | Штрихкод для отгрузки отправления | `posting_fbs_act_get_barcode()` |
@@ -742,9 +742,9 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/act/list` | Список актов по отгрузкам | `posting_fbs_act_list()` |
 | ✓ | `/v2/posting/fbs/digital/act/get-pdf` | Получить лист отгрузки по перевозке | `posting_fbs_digital_act_get_pdf()` |
 | ✓ | `/v2/posting/fbs/act/check-status` | Статус отгрузки и документов | `posting_fbs_act_check_status()` |
-| ☐ | `/v1/posting/fbs/traceable/split` | Разделить отправление с прослеживаемыми товарами | `posting_fbs_traceable_split()` |
-| ☐ | `/v1/posting/fbs/product/traceable/attribute` | Получить список незаполненных атрибутов для прослеживаемых товаров | `posting_fbs_product_traceable_attribute()` |
-| ☐ | `/v1/carriage/ettn/status` | Получить статус проверки электронной ТТН на прослеживаемой перевозке FBS | `carriage_ettn_status()` |
+| ✓ | `/v1/posting/fbs/traceable/split` | Разделить отправление с прослеживаемыми товарами | `posting_fbs_traceable_split()` |
+| ✓ | `/v1/posting/fbs/product/traceable/attribute` | Получить список незаполненных атрибутов для прослеживаемых товаров | `posting_fbs_product_traceable_attribute()` |
+| ✓ | `/v1/carriage/ettn/status` | Получить статус проверки электронной ТТН на прослеживаемой перевозке FBS | `carriage_ettn_status()` |
 | ☐ | `/v1/assembly/carriage/posting/list` | Получить список отправлений в отгрузке | `assembly_carriage_posting_list()` |
 | ☐ | `/v1/assembly/carriage/product/list` | Получить список товаров в отгрузке | `assembly_carriage_product_list()` |
 | ☐ | `/v1/assembly/fbs/posting/list` | Получить список отравлений | `assembly_fbs_posting_list()` |
