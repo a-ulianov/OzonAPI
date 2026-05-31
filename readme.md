@@ -494,11 +494,11 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/actions` | Список акций | `actions()` |
 | ✓ | `/v1/actions/candidates` | Список доступных для акции товаров | `actions_candidates()` |
 | ✓ | `/v1/actions/products` | Список участвующих в акции товаров | `actions_products()` |
-| ☐ | `/v1/actions/products/activate` | Добавить товар в акцию | `actions_products_activate()` |
-| ☐ | `/v1/actions/products/deactivate` | Удалить товары из акции | `actions_products_deactivate()` |
-| ☐ | `/v1/actions/discounts-task/list` | Список заявок на скидку | `actions_discounts_task_list()` |
-| ☐ | `/v1/actions/discounts-task/approve` | Согласовать заявку на скидку | `actions_discounts_task_approve()` |
-| ☐ | `/v1/actions/discounts-task/decline` | Отклонить заявку на скидку | `actions_discounts_task_decline()` |
+| ✓ | `/v1/actions/products/activate` | Добавить товар в акцию | `actions_products_activate()` |
+| ✓ | `/v1/actions/products/deactivate` | Удалить товары из акции | `actions_products_deactivate()` |
+| ✓ | `/v1/actions/discounts-task/list` | Список заявок на скидку | `actions_discounts_task_list()` |
+| ✓ | `/v1/actions/discounts-task/approve` | Согласовать заявку на скидку | `actions_discounts_task_approve()` |
+| ✓ | `/v1/actions/discounts-task/decline` | Отклонить заявку на скидку | `actions_discounts_task_decline()` |
 </details>
 <details>
 <summary>Стратегии ценообразования (12)</summary>

@@ -27,10 +27,9 @@ class TestActions:
         response = await api.actions()
 
         mock_api_request.assert_called_once_with(
-            method="post",
+            method="get",
             api_version="v1",
             endpoint="actions",
-            payload={},
         )
         assert isinstance(response, ActionsResponse)
         assert response.result[0].id == 123456

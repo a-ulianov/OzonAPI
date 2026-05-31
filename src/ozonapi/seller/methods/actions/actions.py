@@ -12,6 +12,7 @@ class ActionsMixin(APIManager):
 
         Notes:
             • Метод возвращает все акции, в которых продавец может участвовать.
+            • Эндпоинт использует HTTP-метод GET (без тела запроса).
             • Для каждой акции доступны тип, даты проведения, размер скидки и счётчики товаров.
             • Идентификатор акции (`id`) используется в методах работы с товарами акции.
 
@@ -26,9 +27,8 @@ class ActionsMixin(APIManager):
                 result = await api.actions()
         """
         response = await self._request(
-            method="post",
+            method="get",
             api_version="v1",
             endpoint="actions",
-            payload={},
         )
         return ActionsResponse(**response)
