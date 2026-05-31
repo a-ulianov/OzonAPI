@@ -31,6 +31,16 @@ __all__ = [
     "ProductsStocksItem",
     "ProductsStocksError",
     "ProductsStocksResultItem",
+    "ProductActionTimerUpdateRequest",
+    "ProductActionTimerUpdateResponse",
+    "ProductActionTimerStatusRequest",
+    "ProductActionTimerStatusResponse",
+    "ProductActionTimerStatus",
+    "ProductInfoDiscountedRequest",
+    "ProductInfoDiscountedResponse",
+    "ProductInfoDiscountedItem",
+    "ProductUpdateDiscountRequest",
+    "ProductUpdateDiscountResponse",
 ]
 
 from .v1__product_import_prices import (
@@ -59,6 +69,24 @@ from .v4__product_info_stocks import (
     ProductInfoStocksFilter,
     ProductInfoStocksStock,
     ProductInfoStocksItem,
+)
+from .v1__product_action_timer_update import (
+    ProductActionTimerUpdateRequest,
+    ProductActionTimerUpdateResponse,
+)
+from .v1__product_action_timer_status import (
+    ProductActionTimerStatusRequest,
+    ProductActionTimerStatusResponse,
+    ProductActionTimerStatus,
+)
+from .v1__product_info_discounted import (
+    ProductInfoDiscountedRequest,
+    ProductInfoDiscountedResponse,
+    ProductInfoDiscountedItem,
+)
+from .v1__product_update_discount import (
+    ProductUpdateDiscountRequest,
+    ProductUpdateDiscountResponse,
 )
 from .v5__product_info_prices import (
     ProductInfoPricesRequest,

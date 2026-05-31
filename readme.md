@@ -480,11 +480,11 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
 | ✓ | `/v2/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
 | ✓ | `/v1/product/import/prices` | Обновить цену | `product_import_prices()` |
-| ☐ | `/v1/product/action/timer/update` | Обновление таймера актуальности минимальной цены | `product_action_timer_update()` |
-| ☐ | `/v1/product/action/timer/status` | Получить статус установленного таймера | `product_action_timer_status()` |
+| ✓ | `/v1/product/action/timer/update` | Обновление таймера актуальности минимальной цены | `product_action_timer_update()` |
+| ✓ | `/v1/product/action/timer/status` | Получить статус установленного таймера | `product_action_timer_status()` |
 | ✓ | `/v5/product/info/prices` | Получить информацию о цене товара | `product_info_prices()` |
-| ☐ | `/v1/product/info/discounted` | Узнать информацию об уценке и основном товаре по SKU уценённого товара | `product_info_discounted()` |
-| ☐ | `/v1/product/update/discount` | Установить скидку на уценённый товар | `product_update_discount()` |
+| ✓ | `/v1/product/info/discounted` | Узнать информацию об уценке и основном товаре по SKU уценённого товара | `product_info_discounted()` |
+| ✓ | `/v1/product/update/discount` | Установить скидку на уценённый товар | `product_update_discount()` |
 </details>
 <details>
 <summary>Акции Ozon (8)</summary>
