@@ -505,18 +505,18 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/pricing-strategy/competitors/list` | Список конкурентов | `pricing_strategy_competitors_list()` |
-| ☐ | `/v1/pricing-strategy/list` | Список стратегий | `pricing_strategy_list()` |
-| ☐ | `/v1/pricing-strategy/create` | Создать стратегию | `pricing_strategy_create()` |
-| ☐ | `/v1/pricing-strategy/info` | Информация о стратегии | `pricing_strategy_info()` |
-| ☐ | `/v1/pricing-strategy/update` | Обновить стратегию | `pricing_strategy_update()` |
-| ☐ | `/v1/pricing-strategy/products/add` | Добавить товары в стратегию | `pricing_strategy_products_add()` |
-| ☐ | `/v1/pricing-strategy/strategy-ids-by-product-ids` | Список идентификаторов стратегий | `pricing_strategy_strategy_ids_by_product_ids()` |
-| ☐ | `/v1/pricing-strategy/products/list` | Список товаров в стратегии | `pricing_strategy_products_list()` |
-| ☐ | `/v1/pricing-strategy/product/info` | Цена товара у конкурента | `pricing_strategy_product_info()` |
-| ☐ | `/v1/pricing-strategy/products/delete` | Удалить товары из стратегии | `pricing_strategy_products_delete()` |
-| ☐ | `/v1/pricing-strategy/status` | Изменить статус стратегии | `pricing_strategy_status()` |
-| ☐ | `/v1/pricing-strategy/delete` | Удалить стратегию | `pricing_strategy_delete()` |
+| ✓ | `/v1/pricing-strategy/competitors/list` | Список конкурентов | `strategy_competitors_list()` |
+| ✓ | `/v1/pricing-strategy/list` | Список стратегий | `strategy_list()` |
+| ✓ | `/v1/pricing-strategy/create` | Создать стратегию | `strategy_create()` |
+| ✓ | `/v1/pricing-strategy/info` | Информация о стратегии | `strategy_info()` |
+| ✓ | `/v1/pricing-strategy/update` | Обновить стратегию | `strategy_update()` |
+| ✓ | `/v1/pricing-strategy/products/add` | Добавить товары в стратегию | `strategy_products_add()` |
+| ✓ | `/v1/pricing-strategy/strategy-ids-by-product-ids` | Список идентификаторов стратегий | `strategy_ids_by_product_ids()` |
+| ✓ | `/v1/pricing-strategy/products/list` | Список товаров в стратегии | `strategy_products_list()` |
+| ✓ | `/v1/pricing-strategy/product/info` | Цена товара у конкурента | `strategy_product_info()` |
+| ✓ | `/v1/pricing-strategy/products/delete` | Удалить товары из стратегии | `strategy_products_delete()` |
+| ✓ | `/v1/pricing-strategy/status` | Изменить статус стратегии | `strategy_status()` |
+| ✓ | `/v1/pricing-strategy/delete` | Удалить стратегию | `strategy_delete()` |
 </details>
 <details>
 <summary>Сертификаты брендов (1)</summary>

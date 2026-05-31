@@ -17,6 +17,7 @@ from .fbo import SellerFBOAPI
 from .fbs import SellerFBSAPI
 from .fbs_assembly_and_labeling import SellerFBSAssemblyLabelingAPI
 from .prices_and_stocks import SellerPricesAndStocksAPI
+from .pricing_strategies import SellerPricingStrategyAPI
 from .products import SellerProductAPI
 from .warehouses import SellerWarehouseAPI
 
