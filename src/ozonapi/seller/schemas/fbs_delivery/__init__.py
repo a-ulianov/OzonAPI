@@ -75,10 +75,53 @@ __all__ = [
     "PostingFBSProductTraceableAttributeProduct",
     "CarriageEttnStatusRequest",
     "CarriageEttnStatusResponse",
+    "AssemblyProduct",
+    "AssemblyCarriagePostingListRequest",
+    "AssemblyCarriagePostingListResponse",
+    "AssemblyCarriagePostingListFilter",
+    "AssemblyCarriagePostingListPosting",
+    "AssemblyCarriageProductListRequest",
+    "AssemblyCarriageProductListResponse",
+    "AssemblyCarriageProductListFilter",
+    "AssemblyCarriageProductListProduct",
+    "AssemblyFbsPostingListRequest",
+    "AssemblyFbsPostingListResponse",
+    "AssemblyFbsPostingListFilter",
+    "AssemblyFbsPostingListPosting",
+    "AssemblyFbsProductListRequest",
+    "AssemblyFbsProductListResponse",
+    "AssemblyFbsProductListFilter",
+    "AssemblyFbsProductListProduct",
+    "AssemblyFbsProductListPosting",
 ]
 
 from .base import BinaryFileResponse
-from .entities import DeliveryListError
+from .entities import AssemblyProduct, DeliveryListError
+from .v1__assembly_carriage_posting_list import (
+    AssemblyCarriagePostingListFilter,
+    AssemblyCarriagePostingListPosting,
+    AssemblyCarriagePostingListRequest,
+    AssemblyCarriagePostingListResponse,
+)
+from .v1__assembly_carriage_product_list import (
+    AssemblyCarriageProductListFilter,
+    AssemblyCarriageProductListProduct,
+    AssemblyCarriageProductListRequest,
+    AssemblyCarriageProductListResponse,
+)
+from .v1__assembly_fbs_posting_list import (
+    AssemblyFbsPostingListFilter,
+    AssemblyFbsPostingListPosting,
+    AssemblyFbsPostingListRequest,
+    AssemblyFbsPostingListResponse,
+)
+from .v1__assembly_fbs_product_list import (
+    AssemblyFbsProductListFilter,
+    AssemblyFbsProductListPosting,
+    AssemblyFbsProductListProduct,
+    AssemblyFbsProductListRequest,
+    AssemblyFbsProductListResponse,
+)
 from .v1__carriage_act_discrepancy_pdf import (
     CarriageActDiscrepancyPDFRequest,
     CarriageActDiscrepancyPDFResponse,
