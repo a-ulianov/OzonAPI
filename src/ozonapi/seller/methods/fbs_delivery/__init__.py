@@ -16,10 +16,14 @@ from .carriage_set_postings import CarriageSetPostingsMixin
 from .posting_carriage_available_list import PostingCarriageAvailableListMixin
 from .posting_fbs_act_check_status import PostingFBSActCheckStatusMixin
 from .posting_fbs_act_create import PostingFBSActCreateMixin
+from .posting_fbs_act_get_barcode import PostingFBSActGetBarcodeMixin
 from .posting_fbs_act_get_barcode_text import PostingFBSActGetBarcodeTextMixin
+from .posting_fbs_act_get_container_labels import PostingFBSActGetContainerLabelsMixin
+from .posting_fbs_act_get_pdf import PostingFBSActGetPDFMixin
 from .posting_fbs_act_get_postings import PostingFBSActGetPostingsMixin
 from .posting_fbs_act_list import PostingFBSActListMixin
 from .posting_fbs_digital_act_check_status import PostingFBSDigitalActCheckStatusMixin
+from .posting_fbs_digital_act_get_pdf import PostingFBSDigitalActGetPDFMixin
 
 
 class SellerFBSDeliveryAPI(
@@ -34,10 +38,14 @@ class SellerFBSDeliveryAPI(
     PostingCarriageAvailableListMixin,
     PostingFBSActCheckStatusMixin,
     PostingFBSActCreateMixin,
+    PostingFBSActGetBarcodeMixin,
     PostingFBSActGetBarcodeTextMixin,
+    PostingFBSActGetContainerLabelsMixin,
+    PostingFBSActGetPDFMixin,
     PostingFBSActGetPostingsMixin,
     PostingFBSActListMixin,
     PostingFBSDigitalActCheckStatusMixin,
+    PostingFBSDigitalActGetPDFMixin,
     APIManager,
 ):
     """Класс-агрегатор методов раздела Доставка FBS (отгрузки и перевозки).

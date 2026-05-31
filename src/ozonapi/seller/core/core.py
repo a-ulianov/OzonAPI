@@ -304,6 +304,7 @@ class APIManager:
             endpoint: str = "",
             payload: Optional[dict[str, Any]] = None,
             params: Optional[dict[str, Any]] = None,
+            response_format: Literal["json", "binary"] = "json",
     ) -> dict[str, Any]:
         """
         Выполняет HTTP-запрос к API Ozon с учетом ограничения запросов.
@@ -314,9 +315,13 @@ class APIManager:
             endpoint: Конечная точка API
             payload: Данные для отправки в формате JSON
             params: Query parameters
+            response_format: Формат ответа: `json` (по умолчанию) или `binary` для
+                эндпоинтов, возвращающих файл (PDF, PNG). При `binary` тело ответа
+                читается как байты и возвращается в виде `{"content": <bytes>}`;
+                ответы об ошибках при этом по-прежнему разбираются как JSON.
 
         Returns:
-            Ответ от API в формате JSON
+            Ответ от API в формате JSON (или `{"content": <bytes>}` при `response_format="binary"`)
 
         Raises:
             APIClientError: При ошибках клиента (400)
@@ -367,16 +372,43 @@ class APIManager:
                         async with session.request(
                                 method, url, json=payload, params=params
                         ) as response:
+                            log_context_remove_keys = [
+                                'method', 'has_payload', 'payload'
+                            ]
+
+                            if response_format == "binary":
+                                if response.status >= 400:
+                                    # Ошибки бинарных эндпоинтов приходят в JSON.
+                                    try:
+                                        data = await response.json(content_type=None)
+                                    except (aiohttp.ContentTypeError, ValueError):
+                                        data = {}
+
+                                    log_context.update({"status_code": response.status})
+                                    for key in log_context_remove_keys:
+                                        log_context.pop(key, None)
+
+                                    error = self._handle_error_response(response, data, log_context)
+                                    if error:
+                                        raise error
+
+                                content = await response.read()
+                                log_context.update({
+                                    "status_code": response.status,
+                                    "response_size": len(content)
+                                })
+                                for key in log_context_remove_keys:
+                                    log_context.pop(key, None)
+
+                                self.logger.info(f"Получен ответ от API: {log_context}")
+                                return {"content": content}
+
                             data = await response.json()
 
                             log_context.update({
                                 "status_code": response.status,
                                 "response_size": len(str(data))
                             })
-
-                            log_context_remove_keys = [
-                                'method', 'has_payload', 'payload'
-                            ]
 
                             for key in log_context_remove_keys:
                                 if key in log_context:

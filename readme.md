@@ -733,14 +733,14 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/carriage/get` | Информация о перевозке | `carriage_get()` |
 | ☐ | `/v1/posting/fbs/split` | Разделить заказ на отправления без сборки | `posting_fbs_split()` |
 | ✓ | `/v2/posting/fbs/act/get-postings` | Список отправлений в акте | `posting_fbs_act_get_postings()` |
-| ☐ | `/v2/posting/fbs/act/get-container-labels` | Этикетки для грузового места | `posting_fbs_act_get_container_labels()` |
-| ☐ | `/v2/posting/fbs/act/get-barcode` | Штрихкод для отгрузки отправления | `posting_fbs_act_get_barcode()` |
+| ✓ | `/v2/posting/fbs/act/get-container-labels` | Этикетки для грузового места | `posting_fbs_act_get_container_labels()` |
+| ✓ | `/v2/posting/fbs/act/get-barcode` | Штрихкод для отгрузки отправления | `posting_fbs_act_get_barcode()` |
 | ✓ | `/v2/posting/fbs/act/get-barcode/text` | Значение штрихкода для отгрузки отправления | `posting_fbs_act_get_barcode_text()` |
 | ✓ | `/v2/posting/fbs/digital/act/check-status` | Статус формирования накладной | `posting_fbs_digital_act_check_status()` |
-| ☐ | `/v2/posting/fbs/act/get-pdf` | Получить PDF c документами | `posting_fbs_act_get_pdf()` |
+| ✓ | `/v2/posting/fbs/act/get-pdf` | Получить PDF c документами | `posting_fbs_act_get_pdf()` |
 | ✓ | `/v1/carriage/act-discrepancy/pdf` | Получить акт о расхождениях по отгрузке FBS | `carriage_act_discrepancy_pdf()` |
 | ✓ | `/v2/posting/fbs/act/list` | Список актов по отгрузкам | `posting_fbs_act_list()` |
-| ☐ | `/v2/posting/fbs/digital/act/get-pdf` | Получить лист отгрузки по перевозке | `posting_fbs_digital_act_get_pdf()` |
+| ✓ | `/v2/posting/fbs/digital/act/get-pdf` | Получить лист отгрузки по перевозке | `posting_fbs_digital_act_get_pdf()` |
 | ✓ | `/v2/posting/fbs/act/check-status` | Статус отгрузки и документов | `posting_fbs_act_check_status()` |
 | ☐ | `/v1/posting/fbs/traceable/split` | Разделить отправление с прослеживаемыми товарами | `posting_fbs_traceable_split()` |
 | ☐ | `/v1/posting/fbs/product/traceable/attribute` | Получить список незаполненных атрибутов для прослеживаемых товаров | `posting_fbs_product_traceable_attribute()` |
