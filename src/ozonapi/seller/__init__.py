@@ -15,6 +15,7 @@ from .methods import (
     SellerFBSContainerAPI,
     SellerReturnsAPI,
     SellerReviewAPI,
+    SellerQuestionAPI,
 )
 
 
@@ -31,6 +32,7 @@ class SellerAPI(
     SellerPricesAndStocksAPI,
     SellerPricingStrategyAPI,
     SellerProductAPI,
+    SellerQuestionAPI,
     SellerReturnsAPI,
     SellerReviewAPI,
     SellerWarehouseAPI,
