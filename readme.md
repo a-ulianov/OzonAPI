@@ -530,21 +530,21 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/product/certificate/accordance-types` | Список типов соответствия требований (версия 1) | `product_certificate_accordance_types()` |
-| ☐ | `/v2/product/certificate/accordance-types/list` | Список типов соответствия требований (версия 2) | `product_certificate_accordance_types_list()` |
-| ☐ | `/v1/product/certificate/types` | Справочник типов документов | `product_certificate_types()` |
-| ☐ | `/v2/product/certification/list` | Список сертифицируемых категорий | `product_certification_list()` |
-| ☐ | `/v1/product/certification/list` | Список сертифицируемых категорий | `product_certification_list()` |
-| ☐ | `/v1/product/certificate/create` | Добавить сертификаты для товаров | `product_certificate_create()` |
-| ☐ | `/v1/product/certificate/bind` | Привязать сертификат к товару | `product_certificate_bind()` |
-| ☐ | `/v1/product/certificate/delete` | Удалить сертификат | `product_certificate_delete()` |
-| ☐ | `/v1/product/certificate/info` | Информация о сертификате | `product_certificate_info()` |
-| ☐ | `/v1/product/certificate/list` | Список сертификатов | `product_certificate_list()` |
-| ☐ | `/v1/product/certificate/product_status/list` | Список возможных статусов товаров | `product_certificate_product_status_list()` |
-| ☐ | `/v1/product/certificate/products/list` | Список товаров, привязанных к сертификату | `product_certificate_products_list()` |
-| ☐ | `/v1/product/certificate/unbind` | Отвязать товар от сертификата | `product_certificate_unbind()` |
-| ☐ | `/v1/product/certificate/rejection_reasons/list` | Возможные причины отклонения сертификата | `product_certificate_rejection_reasons_list()` |
-| ☐ | `/v1/product/certificate/status/list` | Возможные статусы сертификатов | `product_certificate_status_list()` |
+| ✓ | `/v1/product/certificate/accordance-types` | Список типов соответствия требований (версия 1) | `product_certificate_accordance_types()` |
+| ✓ | `/v2/product/certificate/accordance-types/list` | Список типов соответствия требований (версия 2) | `product_certificate_accordance_types_list()` |
+| ✓ | `/v1/product/certificate/types` | Справочник типов документов | `product_certificate_types()` |
+| ✓ | `/v2/product/certification/list` | Список сертифицируемых категорий | `product_certification_list()` |
+| ✓ | `/v1/product/certification/list` | Список сертифицируемых категорий | `product_certification_list_v1()` |
+| ✓ | `/v1/product/certificate/create` | Добавить сертификаты для товаров | `product_certificate_create()` |
+| ✓ | `/v1/product/certificate/bind` | Привязать сертификат к товару | `product_certificate_bind()` |
+| ✓ | `/v1/product/certificate/delete` | Удалить сертификат | `product_certificate_delete()` |
+| ✓ | `/v1/product/certificate/info` | Информация о сертификате | `product_certificate_info()` |
+| ✓ | `/v1/product/certificate/list` | Список сертификатов | `product_certificate_list()` |
+| ✓ | `/v1/product/certificate/product_status/list` | Список возможных статусов товаров | `product_certificate_product_status_list()` |
+| ✓ | `/v1/product/certificate/products/list` | Список товаров, привязанных к сертификату | `product_certificate_products_list()` |
+| ✓ | `/v1/product/certificate/unbind` | Отвязать товар от сертификата | `product_certificate_unbind()` |
+| ✓ | `/v1/product/certificate/rejection_reasons/list` | Возможные причины отклонения сертификата | `product_certificate_rejection_reasons_list()` |
+| ✓ | `/v1/product/certificate/status/list` | Возможные статусы сертификатов | `product_certificate_status_list()` |
 </details>
 <details>
 <summary>Работа со складами FBS и rFBS (10)</summary>

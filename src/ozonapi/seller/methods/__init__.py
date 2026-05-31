@@ -3,6 +3,7 @@ __all__ = [
     "SellerBarcodeAPI",
     "SellerBetaAPI",
     "SellerCategoryAPI",
+    "SellerCertificateAPI",
     "SellerFBOAPI",
     "SellerFBSAPI",
     "SellerFBSAssemblyLabelingAPI",
@@ -20,6 +21,7 @@ from .actions import SellerActionsAPI
 from .attributes_and_characteristics import SellerCategoryAPI
 from .barcodes import SellerBarcodeAPI
 from .beta import SellerBetaAPI
+from .certificates import SellerCertificateAPI
 from .fbo import SellerFBOAPI
 from .fbs import SellerFBSAPI
 from .fbs_assembly_and_labeling import SellerFBSAssemblyLabelingAPI
