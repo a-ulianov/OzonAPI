@@ -52,6 +52,23 @@ __all__ = [
     "ReturnsRfbsReturnMoneyResponse",
     "ReturnsRfbsActionSetRequest",
     "ReturnsRfbsActionSetResponse",
+    "ReturnsCompanyFbsInfoRequest",
+    "ReturnsCompanyFbsInfoResponse",
+    "ReturnsCompanyFbsInfoFilter",
+    "ReturnsCompanyFbsInfoPagination",
+    "ReturnsCompanyFbsInfoDropOffPoint",
+    "ReturnsCompanyFbsInfoPassInfo",
+    "ReturnGiveoutIsEnabledResponse",
+    "ReturnGiveoutListRequest",
+    "ReturnGiveoutListResponse",
+    "ReturnGiveoutListItem",
+    "ReturnGiveoutInfoRequest",
+    "ReturnGiveoutInfoResponse",
+    "ReturnGiveoutInfoArticle",
+    "ReturnGiveoutBarcodeResponse",
+    "ReturnGiveoutGetPDFResponse",
+    "ReturnGiveoutGetPNGResponse",
+    "ReturnGiveoutBarcodeResetResponse",
 ]
 
 from .entities import (
@@ -60,6 +77,29 @@ from .entities import (
     ReturnsRfbsProduct,
     ReturnsStatus,
     ReturnsTimeRange,
+)
+from .v1__return_giveout_barcode import ReturnGiveoutBarcodeResponse
+from .v1__return_giveout_barcode_reset import ReturnGiveoutBarcodeResetResponse
+from .v1__return_giveout_get_pdf import ReturnGiveoutGetPDFResponse
+from .v1__return_giveout_get_png import ReturnGiveoutGetPNGResponse
+from .v1__return_giveout_info import (
+    ReturnGiveoutInfoArticle,
+    ReturnGiveoutInfoRequest,
+    ReturnGiveoutInfoResponse,
+)
+from .v1__return_giveout_is_enabled import ReturnGiveoutIsEnabledResponse
+from .v1__return_giveout_list import (
+    ReturnGiveoutListItem,
+    ReturnGiveoutListRequest,
+    ReturnGiveoutListResponse,
+)
+from .v1__returns_company_fbs_info import (
+    ReturnsCompanyFbsInfoDropOffPoint,
+    ReturnsCompanyFbsInfoFilter,
+    ReturnsCompanyFbsInfoPagination,
+    ReturnsCompanyFbsInfoPassInfo,
+    ReturnsCompanyFbsInfoRequest,
+    ReturnsCompanyFbsInfoResponse,
 )
 from .v1__returns_list import (
     ReturnsListAdditionalInfo,
