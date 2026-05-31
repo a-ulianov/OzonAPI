@@ -650,17 +650,17 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v3/posting/fbo/list` | Получить список отправлений | `posting_fbo_list()` |
 | ✓ | `/v2/posting/fbo/get` | Информация об отправлении | `posting_fbo_get()` |
 | ✓ | `/v1/posting/fbo/cancel-reason/list` | Причины отмены отправлений по схеме FBO | `posting_fbo_cancel_reason_list()` |
-| ☐ | `/v1/supply-order/status/counter` | Количество заявок по статусам | `supply_order_status_counter()` |
-| ☐ | `/v1/supply-order/bundle` | Состав поставки или заявки на поставку | `supply_order_bundle()` |
-| ☐ | `/v3/supply-order/list` | Список заявок на поставку на склад Ozon | `supply_order_list()` |
-| ☐ | `/v3/supply-order/get` | Информация о заявке на поставку | `supply_order_get()` |
-| ☐ | `/v1/supply-order/timeslot/get` | Интервалы поставки | `supply_order_timeslot_get()` |
-| ☐ | `/v1/supply-order/timeslot/update` | Обновить интервал поставки | `supply_order_timeslot_update()` |
-| ☐ | `/v1/supply-order/timeslot/status` | Статус интервала поставки | `supply_order_timeslot_status()` |
-| ☐ | `/v1/supply-order/pass/create` | Указать данные о водителе и автомобиле | `supply_order_pass_create()` |
-| ☐ | `/v1/supply-order/pass/status` | Статус ввода данных о водителе и автомобиле | `supply_order_pass_status()` |
-| ☐ | `/v1/supply-order/details` | Получить подробную информацию о заявке на поставку | `supply_order_details()` |
-| ☐ | `/v1/supplier/available_warehouses` | Загруженность складов Ozon | `supplier_available_warehouses()` |
+| ✓ | `/v1/supply-order/status/counter` | Количество заявок по статусам | `supply_order_status_counter()` |
+| ✓ | `/v1/supply-order/bundle` | Состав поставки или заявки на поставку | `supply_order_bundle()` |
+| ✓ | `/v3/supply-order/list` | Список заявок на поставку на склад Ozon | `supply_order_list()` |
+| ✓ | `/v3/supply-order/get` | Информация о заявке на поставку | `supply_order_get()` |
+| ✓ | `/v1/supply-order/timeslot/get` | Интервалы поставки | `supply_order_timeslot_get()` |
+| ✓ | `/v1/supply-order/timeslot/update` | Обновить интервал поставки | `supply_order_timeslot_update()` |
+| ✓ | `/v1/supply-order/timeslot/status` | Статус интервала поставки | `supply_order_timeslot_status()` |
+| ✓ | `/v1/supply-order/pass/create` | Указать данные о водителе и автомобиле | `supply_order_pass_create()` |
+| ✓ | `/v1/supply-order/pass/status` | Статус ввода данных о водителе и автомобиле | `supply_order_pass_status()` |
+| ✓ | `/v1/supply-order/details` | Получить подробную информацию о заявке на поставку | `supply_order_details()` |
+| ✓ | `/v1/supplier/available_warehouses` | Загруженность складов Ozon | `supplier_available_warehouses()` |
 </details>
 <details>
 <summary>Создание и управление заявками на поставку FBO (29)</summary>
