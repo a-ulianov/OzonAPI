@@ -51,8 +51,18 @@ __all__ = [
     "PostingFBSDigitalActCheckStatusResponse",
     "CarriageActDiscrepancyPDFRequest",
     "CarriageActDiscrepancyPDFResponse",
+    "BinaryFileResponse",
+    "PostingFBSActGetPDFRequest",
+    "PostingFBSActGetPDFResponse",
+    "PostingFBSDigitalActGetPDFRequest",
+    "PostingFBSDigitalActGetPDFResponse",
+    "PostingFBSActGetContainerLabelsRequest",
+    "PostingFBSActGetContainerLabelsResponse",
+    "PostingFBSActGetBarcodeRequest",
+    "PostingFBSActGetBarcodeResponse",
 ]
 
+from .base import BinaryFileResponse
 from .entities import DeliveryListError
 from .v1__carriage_act_discrepancy_pdf import (
     CarriageActDiscrepancyPDFRequest,
@@ -101,9 +111,21 @@ from .v2__posting_fbs_act_create import (
     PostingFBSActCreateRequest,
     PostingFBSActCreateResponse,
 )
+from .v2__posting_fbs_act_get_barcode import (
+    PostingFBSActGetBarcodeRequest,
+    PostingFBSActGetBarcodeResponse,
+)
 from .v2__posting_fbs_act_get_barcode_text import (
     PostingFBSActGetBarcodeTextRequest,
     PostingFBSActGetBarcodeTextResponse,
+)
+from .v2__posting_fbs_act_get_container_labels import (
+    PostingFBSActGetContainerLabelsRequest,
+    PostingFBSActGetContainerLabelsResponse,
+)
+from .v2__posting_fbs_act_get_pdf import (
+    PostingFBSActGetPDFRequest,
+    PostingFBSActGetPDFResponse,
 )
 from .v2__posting_fbs_act_get_postings import (
     PostingFBSActGetPostingsProduct,
@@ -122,4 +144,8 @@ from .v2__posting_fbs_act_list import (
 from .v2__posting_fbs_digital_act_check_status import (
     PostingFBSDigitalActCheckStatusRequest,
     PostingFBSDigitalActCheckStatusResponse,
+)
+from .v2__posting_fbs_digital_act_get_pdf import (
+    PostingFBSDigitalActGetPDFRequest,
+    PostingFBSDigitalActGetPDFResponse,
 )
