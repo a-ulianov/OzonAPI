@@ -10,6 +10,7 @@ class AnalyticsStocksRequest(BaseModel):
 
     Attributes:
         cluster_ids: Фильтр по идентификаторам кластеров
+        macrolocal_cluster_ids: Фильтр по идентификаторам макролокальных кластеров
         item_tags: Фильтр по тегам товара
         skus: Фильтр по идентификаторам товаров в системе Ozon — SKU
         turnover_grades: Фильтр по статусу ликвидности товаров
@@ -17,6 +18,9 @@ class AnalyticsStocksRequest(BaseModel):
     """
     cluster_ids: Optional[list[int]] = Field(
         None, description="Фильтр по идентификаторам кластеров. Получить идентификаторы можно через метод cluster_list()."
+    )
+    macrolocal_cluster_ids: Optional[list[int]] = Field(
+        None, description="Фильтр по идентификаторам макролокальных кластеров."
     )
     item_tags: Optional[list[ItemTag]] = Field(
         None, description="Фильтр по тегам товара."

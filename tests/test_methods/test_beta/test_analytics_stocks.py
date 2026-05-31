@@ -54,6 +54,7 @@ class TestSellerBetaAPI:
         request = AnalyticsStocksRequest(
             skus=[123456789, 987654321],
             cluster_ids=[1, 2, 3],
+            macrolocal_cluster_ids=[10, 20],
             warehouse_ids=[101, 102],
             item_tags=[ItemTag.ITEM_ATTRIBUTE_NONE],
             turnover_grades=[TurnoverGrade.DEFICIT, TurnoverGrade.POPULAR],
@@ -66,6 +67,7 @@ class TestSellerBetaAPI:
             endpoint="analytics/stocks",
             payload=request.model_dump()
         )
+        assert request.model_dump()["macrolocal_cluster_ids"] == [10, 20]
         assert isinstance(response, AnalyticsStocksResponse)
         assert len(response.items) == 1
         assert response.items[0].sku == 123456789
