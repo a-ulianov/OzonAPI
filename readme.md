@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 246 / 447**
+**Реализовано методов: 251 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -665,7 +665,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/supplier/available_warehouses` | Загруженность складов Ozon | `supplier_available_warehouses()` |
 </details>
 <details>
-<summary>Создание и управление заявками на поставку FBO (24/29)</summary>
+<summary>Создание и управление заявками на поставку FBO (29/29)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -690,11 +690,11 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/cargoes-label/create` | Сгенерировать этикетки для грузомест | `cargoes_label_create()` |
 | ✓ | `/v1/cargoes-label/get` | Получить идентификатор этикетки для грузомест | `cargoes_label_get()` |
 | ✓ | `/v1/cargoes-label/file/{file_guid}` | Получить PDF с этикетками грузовых мест | `cargoes_label_file()` |
-| ☐ | `/v1/supply-order/cancel` | Отменить заявку на поставку | `supply_order_cancel()` |
-| ☐ | `/v1/supply-order/cancel/status` | Получить статус отмены заявки на поставку | `supply_order_cancel_status()` |
-| ☐ | `/v1/supply-order/content/update` | Редактирование товарного состава | `supply_order_content_update()` |
-| ☐ | `/v1/supply-order/content/update/status` | Информация о статусе редактирования товарного состава | `supply_order_content_update_status()` |
-| ☐ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав | `supply_order_content_update_validation()` |
+| ✓ | `/v1/supply-order/cancel` | Отменить заявку на поставку | `supply_order_cancel()` |
+| ✓ | `/v1/supply-order/cancel/status` | Получить статус отмены заявки на поставку | `supply_order_cancel_status()` |
+| ✓ | `/v1/supply-order/content/update` | Редактирование товарного состава | `supply_order_content_update()` |
+| ✓ | `/v1/supply-order/content/update/status` | Информация о статусе редактирования товарного состава | `supply_order_content_update_status()` |
+| ✓ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав | `supply_order_content_update_validation()` |
 | ✓ | `/v2/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create()` |
 | ✓ | `/v2/draft/supply/create/status` | Получить информацию о создании заявки на поставку | `draft_supply_create_status()` |
 | ✓ | `/v1/warehouse/fbo/seller/list` | Получить список складов продавца | `warehouse_fbo_seller_list()` |
