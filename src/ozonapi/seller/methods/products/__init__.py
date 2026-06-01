@@ -11,9 +11,11 @@ from .product_info_description import ProductInfoDescriptionMixin
 from .product_info_limit import ProductInfoLimitMixin
 from .product_info_list import ProductInfoListMixin
 from .product_info_subscription import ProductInfoSubscriptionMixin
+from .product_info_wrong_volume import ProductInfoWrongVolumeMixin
 from .product_list import ProductListMixin
 from .product_pictures_import import ProductPicturesImportMixin
 from .product_pictures_info import ProductPicturesInfoMixin
+from .product_placement_zone_info import ProductPlacementZoneInfoMixin
 from .product_rating_by_sku import ProductRatingBySkuMixin
 from .product_prices_details import ProductPricesDetailsMixin
 from .product_related_sku_get import ProductRelatedSkuGetMixin
@@ -33,9 +35,11 @@ class SellerProductAPI(
     ProductInfoLimitMixin,
     ProductInfoListMixin,
     ProductInfoSubscriptionMixin,
+    ProductInfoWrongVolumeMixin,
     ProductListMixin,
     ProductPicturesImportMixin,
     ProductPicturesInfoMixin,
+    ProductPlacementZoneInfoMixin,
     ProductPricesDetailsMixin,
     ProductRatingBySkuMixin,
     ProductRelatedSkuGetMixin,

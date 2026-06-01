@@ -88,6 +88,12 @@ __all__ = [
     "ProductUpdateOfferIdResponse",
     "ProductUpdateOfferIdRequestItem",
     "ProductUpdateOfferIdError",
+    "ProductInfoWrongVolumeRequest",
+    "ProductInfoWrongVolumeProduct",
+    "ProductInfoWrongVolumeResponse",
+    "ProductPlacementZoneInfoRequest",
+    "ProductPlacementZoneInfoProductPlacement",
+    "ProductPlacementZoneInfoResponse",
 ]
 
 from .v1__product_archive import ProductArchiveRequest, ProductArchiveResponse
@@ -199,4 +205,14 @@ from .v1__product_prices_details import (
     ProductPricesDetailsPriceIndex,
     ProductPricesDetailsRequest,
     ProductPricesDetailsResponse,
+)
+from .v1__product_info_wrong_volume import (
+    ProductInfoWrongVolumeProduct,
+    ProductInfoWrongVolumeRequest,
+    ProductInfoWrongVolumeResponse,
+)
+from .v1__product_placement_zone_info import (
+    ProductPlacementZoneInfoProductPlacement,
+    ProductPlacementZoneInfoRequest,
+    ProductPlacementZoneInfoResponse,
 )
