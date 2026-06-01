@@ -9,6 +9,11 @@ __all__ = [
     "PostingFBOGetResponse",
     "PostingFBOListRequest",
     "PostingFBOListResponse",
+    "PostingFBOListFilter",
+    "PostingFBOListWith",
+    "PostingFBOListPosting",
+    "PostingFBOListV2Request",
+    "PostingFBOListV2Response",
     "SupplyOrderTimeslot",
     "SupplyOrderTimezoneInfo",
     "SupplyOrderStatusCounterResponse",
@@ -39,7 +44,14 @@ __all__ = [
 
 from .v1__posting_fbo_cancel_reason_list import PostingFBOCancelReasonListResponse
 from .v2__posting_fbo_get import PostingFBOGetRequest, PostingFBOGetResponse
-from .v2__posting_fbo_list import PostingFBOListRequest, PostingFBOListResponse
+from .v2__posting_fbo_list import PostingFBOListV2Request, PostingFBOListV2Response
+from .v3__posting_fbo_list import (
+    PostingFBOListFilter,
+    PostingFBOListPosting,
+    PostingFBOListRequest,
+    PostingFBOListResponse,
+    PostingFBOListWith,
+)
 from ..entities.postings import PostingFilter, PostingFilterWith
 from .entities import SupplyOrderTimeslot, SupplyOrderTimezoneInfo
 from .v1__supply_order_status_counter import SupplyOrderStatusCounterResponse

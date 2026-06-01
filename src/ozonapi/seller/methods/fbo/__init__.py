@@ -7,6 +7,7 @@ from ...core import APIManager
 from .posting_fbo_cancel_reason_list import PostingFBOCancelReasonListMixin
 from .posting_fbo_get import PostingFBOGetMixin
 from .posting_fbo_list import PostingFBOListMixin
+from .posting_fbo_list_v2 import PostingFBOListV2Mixin
 from .supplier_available_warehouses import SupplierAvailableWarehousesMixin
 from .supply_order_bundle import SupplyOrderBundleMixin
 from .supply_order_details import SupplyOrderDetailsMixin
@@ -24,6 +25,7 @@ class SellerFBOAPI(
     PostingFBOCancelReasonListMixin,
     PostingFBOGetMixin,
     PostingFBOListMixin,
+    PostingFBOListV2Mixin,
     SupplierAvailableWarehousesMixin,
     SupplyOrderBundleMixin,
     SupplyOrderDetailsMixin,

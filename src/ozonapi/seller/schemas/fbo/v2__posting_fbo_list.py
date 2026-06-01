@@ -7,8 +7,8 @@ from .entities.posting__posting import PostingFBOPosting
 from ..entities.postings import PostingRequest
 
 
-class PostingFBOListRequest(PostingRequest):
-    """Описывает схему запроса на получение информации об отправлениях FBO.
+class PostingFBOListV2Request(PostingRequest):
+    """Описывает схему запроса на получение информации об отправлениях FBO (API v2).
 
     Attributes:
         dir: Направление сортировки
@@ -23,8 +23,8 @@ class PostingFBOListRequest(PostingRequest):
     )
 
 
-class PostingFBOListResponse(BaseModel):
-    """Описывает схему ответа на запрос на получение информации об отправлениях FBO.
+class PostingFBOListV2Response(BaseModel):
+    """Описывает схему ответа на запрос на получение информации об отправлениях FBO (API v2).
 
     Attributes:
         result: Массив отправлений
