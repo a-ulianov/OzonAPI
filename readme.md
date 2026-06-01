@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 268 / 447**
+**Реализовано методов: 276 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -549,20 +549,20 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/certificate/status/list` | Возможные статусы сертификатов | `product_certificate_status_list()` |
 </details>
 <details>
-<summary>Работа со складами FBS и rFBS (2/10)</summary>
+<summary>Работа со складами FBS и rFBS (10/10)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/warehouse/list` | Список складов | `warehouse_list()` |
-| ☐ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
+| ✓ | `/v1/warehouse/list` | Список складов | `warehouse_list_v1()` |
+| ✓ | `/v1/delivery-method/list` | Список методов доставки склада | `delivery_method_list_v1()` |
 | ✓ | `/v2/delivery-method/list` | Список методов доставки склада | `delivery_method_list()` |
-| ☐ | `/v1/delivery-method/return/settings/get` | Получить информацию по возвратным настройкам rFBS и rFBS Express | `delivery_method_return_settings_get()` |
+| ✓ | `/v1/delivery-method/return/settings/get` | Получить информацию по возвратным настройкам rFBS и rFBS Express | `delivery_method_return_settings_get()` |
 | ✓ | `/v2/warehouse/list` | Список складов | `warehouse_list()` |
-| ☐ | `/v1/warehouse/operation/status` | Получить статус операции | `warehouse_operation_status()` |
-| ☐ | `/v1/warehouse/archive` | Перенести склад в архив | `warehouse_archive()` |
-| ☐ | `/v1/warehouse/unarchive` | Перенести склад из архива | `warehouse_unarchive()` |
-| ☐ | `/v1/warehouse/invalid-products/get` | Получить список товаров с ограничениями по доставке | `warehouse_invalid_products_get()` |
-| ☐ | `/v1/warehouse/warehouses-with-invalid-products` | Получить список складов с ограниченными для доставки товарами | `warehouse_warehouses_with_invalid_products()` |
+| ✓ | `/v1/warehouse/operation/status` | Получить статус операции | `warehouse_operation_status()` |
+| ✓ | `/v1/warehouse/archive` | Перенести склад в архив | `warehouse_archive()` |
+| ✓ | `/v1/warehouse/unarchive` | Перенести склад из архива | `warehouse_unarchive()` |
+| ✓ | `/v1/warehouse/invalid-products/get` | Получить список товаров с ограничениями по доставке | `warehouse_invalid_products_get()` |
+| ✓ | `/v1/warehouse/warehouses-with-invalid-products` | Получить список складов с ограниченными для доставки товарами | `warehouse_warehouses_with_invalid_products()` |
 </details>
 <details>
 <summary>Создание FBS-складов и управление ими (0/17)</summary>
