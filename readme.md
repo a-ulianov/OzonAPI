@@ -667,8 +667,8 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list()` |
-| ☐ | `/v1/warehouse/fbo/list` | Поиск точек для отгрузки поставки | `warehouse_fbo_list()` |
+| ✓ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list()` |
+| ✓ | `/v1/warehouse/fbo/list` | Поиск точек для отгрузки поставки | `warehouse_fbo_list()` |
 | ☐ | `/v1/draft/create` | Создать черновик заявки на поставку | `draft_create()` |
 | ☐ | `/v1/draft/crossdock/create` | Создать черновик заявки на поставку кросс-докингом | `draft_crossdock_create()` |
 | ☐ | `/v1/draft/direct/create` | Создать черновик заявки на прямую поставку | `draft_direct_create()` |
@@ -695,7 +695,7 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав | `supply_order_content_update_validation()` |
 | ☐ | `/v2/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create()` |
 | ☐ | `/v2/draft/supply/create/status` | Получить информацию о создании заявки на поставку | `draft_supply_create_status()` |
-| ☐ | `/v1/warehouse/fbo/seller/list` | Получить список складов продавца | `warehouse_fbo_seller_list()` |
+| ✓ | `/v1/warehouse/fbo/seller/list` | Получить список складов продавца | `warehouse_fbo_seller_list()` |
 </details>
 <details>
 <summary>Склады FBO (1)</summary>
