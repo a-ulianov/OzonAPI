@@ -70,6 +70,14 @@ __all__ = [
     "DraftSupplyCreateStatusV1Request",
     "DraftSupplyCreateStatusV1Result",
     "DraftSupplyCreateStatusV1Response",
+    "CargoesLabelErrors",
+    "CargoesLabelCreateCargo",
+    "CargoesLabelCreateRequest",
+    "CargoesLabelCreateResponse",
+    "CargoesLabelGetRequest",
+    "CargoesLabelGetResult",
+    "CargoesLabelGetResponse",
+    "CargoesLabelFileResponse",
 ]
 
 from .entities import (
@@ -97,6 +105,18 @@ from .v1__draft_create import (
 from .v1__draft_crossdock_create import DraftCrossdockCreateRequest
 from .v1__draft_direct_create import DraftDirectCreateRequest
 from .v1__draft_multi_cluster_create import DraftMultiClusterCreateRequest
+from .v1__cargoes_label_create import (
+    CargoesLabelCreateCargo,
+    CargoesLabelCreateRequest,
+    CargoesLabelCreateResponse,
+    CargoesLabelErrors,
+)
+from .v1__cargoes_label_file import CargoesLabelFileResponse
+from .v1__cargoes_label_get import (
+    CargoesLabelGetRequest,
+    CargoesLabelGetResponse,
+    CargoesLabelGetResult,
+)
 from .v1__draft_supply_create import (
     DraftSupplyCreateV1Request,
     DraftSupplyCreateV1Response,

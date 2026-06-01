@@ -685,9 +685,9 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/cargoes/delete` | Удалить грузоместо в заявке на поставку | `cargoes_delete()` |
 | ☐ | `/v1/cargoes/delete/status` | Информация о статусе удаления грузоместа | `cargoes_delete_status()` |
 | ☐ | `/v1/cargoes/rules/get` | Чек-лист по установке грузомест FBO | `cargoes_rules_get()` |
-| ☐ | `/v1/cargoes-label/create` | Сгенерировать этикетки для грузомест | `cargoes_label_create()` |
-| ☐ | `/v1/cargoes-label/get` | Получить идентификатор этикетки для грузомест | `cargoes_label_get()` |
-| ☐ | `/v1/cargoes-label/file/{file_guid}` | Получить PDF с этикетками грузовых мест | `cargoes_label_file()` |
+| ✓ | `/v1/cargoes-label/create` | Сгенерировать этикетки для грузомест | `cargoes_label_create()` |
+| ✓ | `/v1/cargoes-label/get` | Получить идентификатор этикетки для грузомест | `cargoes_label_get()` |
+| ✓ | `/v1/cargoes-label/file/{file_guid}` | Получить PDF с этикетками грузовых мест | `cargoes_label_file()` |
 | ☐ | `/v1/supply-order/cancel` | Отменить заявку на поставку | `supply_order_cancel()` |
 | ☐ | `/v1/supply-order/cancel/status` | Получить статус отмены заявки на поставку | `supply_order_cancel_status()` |
 | ☐ | `/v1/supply-order/content/update` | Редактирование товарного состава | `supply_order_content_update()` |
