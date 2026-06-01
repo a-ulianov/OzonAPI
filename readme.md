@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 276 / 447**
+**Реализовано методов: 293 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -565,27 +565,27 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/warehouse/warehouses-with-invalid-products` | Получить список складов с ограниченными для доставки товарами | `warehouse_warehouses_with_invalid_products()` |
 </details>
 <details>
-<summary>Создание FBS-складов и управление ими (0/17)</summary>
+<summary>Создание FBS-складов и управление ими (17/17)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/warehouse/fbs/create/drop-off/list` | Получить список drop-off пунктов для создания склада | `warehouse_fbs_create_drop_off_list()` |
-| ☐ | `/v1/warehouse/fbs/update/drop-off/list` | Получить список drop-off пунктов для изменения информации склада | `warehouse_fbs_update_drop_off_list()` |
-| ☐ | `/v1/warehouse/fbs/create/drop-off/timeslot/list` | Получить список таймслотов для создания склада с отгрузкой drop-off | `warehouse_fbs_create_drop_off_timeslot_list()` |
-| ☐ | `/v1/warehouse/fbs/update/drop-off/timeslot/list` | Получить список таймслотов для обновления склада с отгрузкой drop-off | `warehouse_fbs_update_drop_off_timeslot_list()` |
-| ☐ | `/v1/warehouse/fbs/create/pick-up/timeslot/list` | Получить список таймслотов для создания склада с отгрузкой pick-up | `warehouse_fbs_create_pick_up_timeslot_list()` |
-| ☐ | `/v1/warehouse/fbs/update/pick-up/timeslot/list` | Получить список таймслотов для обновления склада с отгрузкой pick-up | `warehouse_fbs_update_pick_up_timeslot_list()` |
-| ☐ | `/v1/warehouse/fbs/create` | Создать склад | `warehouse_fbs_create()` |
-| ☐ | `/v1/warehouse/fbs/update` | Обновить склад | `warehouse_fbs_update()` |
-| ☐ | `/v1/warehouse/fbs/first-mile/update` | Обновить первую милю | `warehouse_fbs_first_mile_update()` |
-| ☐ | `/v1/warehouse/fbs/create/return-point/list` | Получить список пунктов возврата для создания склада | `warehouse_fbs_create_return_point_list()` |
-| ☐ | `/v1/warehouse/fbs/update/return-point/list` | Получить список пунктов возврата для обновления склада | `warehouse_fbs_update_return_point_list()` |
-| ☐ | `/v1/warehouse/fbs/return-mile/info` | Получить информацию о возвратной миле | `warehouse_fbs_return_mile_info()` |
-| ☐ | `/v1/warehouse/fbs/return-mile/check` | Проверить необходимость установки возвратной мили на склад | `warehouse_fbs_return_mile_check()` |
-| ☐ | `/v1/warehouse/fbs/pickup/courier/create` | Создать вызов курьера на забор отгрузки pick-up | `warehouse_fbs_pickup_courier_create()` |
-| ☐ | `/v1/warehouse/fbs/pickup/courier/cancel` | Отменить вызов курьера на забор отгрузки pick-up | `warehouse_fbs_pickup_courier_cancel()` |
-| ☐ | `/v1/warehouse/fbs/pickup/history/list` | Получить историю отгрузок курьерам | `warehouse_fbs_pickup_history_list()` |
-| ☐ | `/v1/warehouse/fbs/pickup/planning/list` | Получить список складов для планирования отгрузок курьеру | `warehouse_fbs_pickup_planning_list()` |
+| ✓ | `/v1/warehouse/fbs/create/drop-off/list` | Получить список drop-off пунктов для создания склада | `warehouse_fbs_create_drop_off_list()` |
+| ✓ | `/v1/warehouse/fbs/update/drop-off/list` | Получить список drop-off пунктов для изменения информации склада | `warehouse_fbs_update_drop_off_list()` |
+| ✓ | `/v1/warehouse/fbs/create/drop-off/timeslot/list` | Получить список таймслотов для создания склада с отгрузкой drop-off | `warehouse_fbs_create_drop_off_timeslot_list()` |
+| ✓ | `/v1/warehouse/fbs/update/drop-off/timeslot/list` | Получить список таймслотов для обновления склада с отгрузкой drop-off | `warehouse_fbs_update_drop_off_timeslot_list()` |
+| ✓ | `/v1/warehouse/fbs/create/pick-up/timeslot/list` | Получить список таймслотов для создания склада с отгрузкой pick-up | `warehouse_fbs_create_pick_up_timeslot_list()` |
+| ✓ | `/v1/warehouse/fbs/update/pick-up/timeslot/list` | Получить список таймслотов для обновления склада с отгрузкой pick-up | `warehouse_fbs_update_pick_up_timeslot_list()` |
+| ✓ | `/v1/warehouse/fbs/create` | Создать склад | `warehouse_fbs_create()` |
+| ✓ | `/v1/warehouse/fbs/update` | Обновить склад | `warehouse_fbs_update()` |
+| ✓ | `/v1/warehouse/fbs/first-mile/update` | Обновить первую милю | `warehouse_fbs_first_mile_update()` |
+| ✓ | `/v1/warehouse/fbs/create/return-point/list` | Получить список пунктов возврата для создания склада | `warehouse_fbs_create_return_point_list()` |
+| ✓ | `/v1/warehouse/fbs/update/return-point/list` | Получить список пунктов возврата для обновления склада | `warehouse_fbs_update_return_point_list()` |
+| ✓ | `/v1/warehouse/fbs/return-mile/info` | Получить информацию о возвратной миле | `warehouse_fbs_return_mile_info()` |
+| ✓ | `/v1/warehouse/fbs/return-mile/check` | Проверить необходимость установки возвратной мили на склад | `warehouse_fbs_return_mile_check()` |
+| ✓ | `/v1/warehouse/fbs/pickup/courier/create` | Создать вызов курьера на забор отгрузки pick-up | `warehouse_fbs_pickup_courier_create()` |
+| ✓ | `/v1/warehouse/fbs/pickup/courier/cancel` | Отменить вызов курьера на забор отгрузки pick-up | `warehouse_fbs_pickup_courier_cancel()` |
+| ✓ | `/v1/warehouse/fbs/pickup/history/list` | Получить историю отгрузок курьерам | `warehouse_fbs_pickup_history_list()` |
+| ✓ | `/v1/warehouse/fbs/pickup/planning/list` | Получить список складов для планирования отгрузок курьеру | `warehouse_fbs_pickup_planning_list()` |
 </details>
 <details>
 <summary>Создание складов rFBS Express и управление ими (0/7)</summary>

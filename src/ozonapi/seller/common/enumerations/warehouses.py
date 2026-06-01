@@ -95,6 +95,19 @@ class FirstMileTypeV2(str, Enum):
     DROP_OFF = "DROP_OFF"
 
 
+class WarehouseFBSPointType(str, Enum):
+    """Тип пункта drop-off или возврата при создании склада FBS.
+
+    Attributes:
+        PVZ: Пункт выдачи заказов
+        PPZ: Пункт приёма заказов
+        SC: Сортировочный центр
+    """
+    PVZ = "PVZ"
+    PPZ = "PPZ"
+    SC = "SC"
+
+
 class WarehouseWorkingDayV2(str, Enum):
     """Рабочий день склада (API v2, строковое представление).
 
