@@ -670,9 +670,9 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list()` |
 | ✓ | `/v1/warehouse/fbo/list` | Поиск точек для отгрузки поставки | `warehouse_fbo_list()` |
 | ✓ | `/v1/draft/create` | Создать черновик заявки на поставку | `draft_create()` |
-| ☐ | `/v1/draft/crossdock/create` | Создать черновик заявки на поставку кросс-докингом | `draft_crossdock_create()` |
-| ☐ | `/v1/draft/direct/create` | Создать черновик заявки на прямую поставку | `draft_direct_create()` |
-| ☐ | `/v1/draft/multi-cluster/create` | Создать черновик заявки на поставку для нескольких кластеров | `draft_multi_cluster_create()` |
+| ✓ | `/v1/draft/crossdock/create` | Создать черновик заявки на поставку кросс-докингом | `draft_crossdock_create()` |
+| ✓ | `/v1/draft/direct/create` | Создать черновик заявки на прямую поставку | `draft_direct_create()` |
+| ✓ | `/v1/draft/multi-cluster/create` | Создать черновик заявки на поставку для нескольких кластеров | `draft_multi_cluster_create()` |
 | ✓ | `/v1/draft/create/info` | Информация о черновике заявки на поставку | `draft_create_info_v1()` |
 | ✓ | `/v1/draft/timeslot/info` | Доступные таймслоты | `draft_timeslot_info_v1()` |
 | ✓ | `/v2/draft/create/info` | Получить информацию о черновике заявки на поставку | `draft_create_info()` |

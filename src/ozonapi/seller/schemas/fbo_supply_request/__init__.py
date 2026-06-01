@@ -48,8 +48,29 @@ __all__ = [
     "DraftTimeslotWarehouseTimeslots",
     "DraftTimeslotInfoResult",
     "DraftTimeslotInfoResponse",
+    "DraftTypedItem",
+    "DraftTypedClusterInfo",
+    "DraftTypedDropOffWarehouse",
+    "DraftTypedDeliveryInfo",
+    "DraftTypedRejectedItem",
+    "DraftTypedItemsValidation",
+    "DraftTypedError",
+    "DraftTypedCreateResponse",
+    "DraftCrossdockCreateRequest",
+    "DraftDirectCreateRequest",
+    "DraftMultiClusterCreateRequest",
 ]
 
+from .entities import (
+    DraftTypedClusterInfo,
+    DraftTypedCreateResponse,
+    DraftTypedDeliveryInfo,
+    DraftTypedDropOffWarehouse,
+    DraftTypedError,
+    DraftTypedItem,
+    DraftTypedItemsValidation,
+    DraftTypedRejectedItem,
+)
 from .v1__cluster_list import (
     Cluster,
     ClusterListRequest,
@@ -62,6 +83,9 @@ from .v1__draft_create import (
     DraftCreateRequest,
     DraftCreateResponse,
 )
+from .v1__draft_crossdock_create import DraftCrossdockCreateRequest
+from .v1__draft_direct_create import DraftDirectCreateRequest
+from .v1__draft_multi_cluster_create import DraftMultiClusterCreateRequest
 from .v1__draft_create_info import (
     DraftCreateInfoV1BundleId,
     DraftCreateInfoV1Cluster,
