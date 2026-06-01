@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 414 / 447**
+**Реализовано методов: 422 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1047,18 +1047,18 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/draft/direct/tpl-dlv/edit` | Редактировать черновик поставки со способом доставки сторонней транспортной компанией | `fbp_draft_direct_tpl_dlv_edit()` |
 </details>
 <details>
-<summary>Работа с FBP-черновиками c доставкой drop-off (0/8)</summary>
+<summary>Работа с FBP-черновиками c доставкой drop-off (8/8)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/draft/drop-off/create` | Создать черновик для доставки в drop-off пункт | `fbp_draft_drop_off_create()` |
-| ☐ | `/v1/fbp/draft/drop-off/delete` | Удалить черновик для доставки в drop-off пункт | `fbp_draft_drop_off_delete()` |
-| ☐ | `/v1/fbp/draft/drop-off/dlv/edit` | Отредактировать детали доставки для drop-off черновика | `fbp_draft_drop_off_dlv_edit()` |
-| ☐ | `/v1/fbp/draft/drop-off/registrate` | Перевести черновик в действующую поставку | `fbp_draft_drop_off_registrate()` |
-| ☐ | `/v1/fbp/draft/drop-off/province/list` | Получить список провинций | `fbp_draft_drop_off_province_list()` |
-| ☐ | `/v1/fbp/draft/drop-off/point/list` | Получить список drop-off пунктов в провинции | `fbp_draft_drop_off_point_list()` |
-| ☐ | `/v1/fbp/draft/drop-off/point/timetable` | Получить расписание работы drop-off пункта | `fbp_draft_drop_off_point_timetable()` |
-| ☐ | `/v1/fbp/draft/drop-off/product/validate` | Проверить список товаров, которые склад партнёра может принять | `fbp_draft_drop_off_product_validate()` |
+| ✓ | `/v1/fbp/draft/drop-off/create` | Создать черновик для доставки в drop-off пункт | `fbp_draft_drop_off_create()` |
+| ✓ | `/v1/fbp/draft/drop-off/delete` | Удалить черновик для доставки в drop-off пункт | `fbp_draft_drop_off_delete()` |
+| ✓ | `/v1/fbp/draft/drop-off/dlv/edit` | Отредактировать детали доставки для drop-off черновика | `fbp_draft_drop_off_dlv_edit()` |
+| ✓ | `/v1/fbp/draft/drop-off/registrate` | Перевести черновик в действующую поставку | `fbp_draft_drop_off_registrate()` |
+| ✓ | `/v1/fbp/draft/drop-off/province/list` | Получить список провинций | `fbp_draft_drop_off_province_list()` |
+| ✓ | `/v1/fbp/draft/drop-off/point/list` | Получить список drop-off пунктов в провинции | `fbp_draft_drop_off_point_list()` |
+| ✓ | `/v1/fbp/draft/drop-off/point/timetable` | Получить расписание работы drop-off пункта | `fbp_draft_drop_off_point_timetable()` |
+| ✓ | `/v1/fbp/draft/drop-off/product/validate` | Проверить список товаров, которые склад партнёра может принять | `fbp_draft_drop_off_product_validate()` |
 </details>
 <details>
 <summary>Работа с FBP-черновиками с доставкой pick-up (0/5)</summary>

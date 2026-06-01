@@ -51,6 +51,29 @@ __all__ = [
     "FbpDraftDirectTimeslotGetResponse",
     "FbpDraftDirectTimeslotEditRequest",
     "FbpDraftDirectTimeslotEditResponse",
+    "FbpDraftDropOffCreateDeliveryDetails",
+    "FbpDraftDropOffCreateRequest",
+    "FbpDraftDropOffCreateResponse",
+    "FbpDraftDropOffDeleteRequest",
+    "FbpDraftDropOffDeleteResponse",
+    "FbpDraftDropOffDlvEditRequest",
+    "FbpDraftDropOffDlvEditResponse",
+    "FbpDraftDropOffRegistrateRequest",
+    "FbpDraftDropOffRegistrateError",
+    "FbpDraftDropOffRegistrateResponse",
+    "FbpDropOffProvince",
+    "FbpDraftDropOffProvinceListRequest",
+    "FbpDraftDropOffProvinceListResponse",
+    "FbpDropOffPoint",
+    "FbpDraftDropOffPointListRequest",
+    "FbpDraftDropOffPointListResponse",
+    "FbpTimetableInterval",
+    "FbpTimetableCalendarItem",
+    "FbpTimetableCalendar",
+    "FbpDraftDropOffPointTimetableRequest",
+    "FbpDraftDropOffPointTimetableResponse",
+    "FbpDraftDropOffProductValidateRequest",
+    "FbpDraftDropOffProductValidateResponse",
 ]
 
 from .base import FbpDraftCreateResult
@@ -127,4 +150,43 @@ from .v1__fbp_draft_direct_timeslot_get import (
 from .v1__fbp_draft_direct_timeslot_edit import (
     FbpDraftDirectTimeslotEditRequest,
     FbpDraftDirectTimeslotEditResponse,
+)
+from .v1__fbp_draft_drop_off_create import (
+    FbpDraftDropOffCreateDeliveryDetails,
+    FbpDraftDropOffCreateRequest,
+    FbpDraftDropOffCreateResponse,
+)
+from .v1__fbp_draft_drop_off_delete import (
+    FbpDraftDropOffDeleteRequest,
+    FbpDraftDropOffDeleteResponse,
+)
+from .v1__fbp_draft_drop_off_dlv_edit import (
+    FbpDraftDropOffDlvEditRequest,
+    FbpDraftDropOffDlvEditResponse,
+)
+from .v1__fbp_draft_drop_off_registrate import (
+    FbpDraftDropOffRegistrateError,
+    FbpDraftDropOffRegistrateRequest,
+    FbpDraftDropOffRegistrateResponse,
+)
+from .v1__fbp_draft_drop_off_province_list import (
+    FbpDraftDropOffProvinceListRequest,
+    FbpDraftDropOffProvinceListResponse,
+    FbpDropOffProvince,
+)
+from .v1__fbp_draft_drop_off_point_list import (
+    FbpDraftDropOffPointListRequest,
+    FbpDraftDropOffPointListResponse,
+    FbpDropOffPoint,
+)
+from .v1__fbp_draft_drop_off_point_timetable import (
+    FbpDraftDropOffPointTimetableRequest,
+    FbpDraftDropOffPointTimetableResponse,
+    FbpTimetableCalendar,
+    FbpTimetableCalendarItem,
+    FbpTimetableInterval,
+)
+from .v1__fbp_draft_drop_off_product_validate import (
+    FbpDraftDropOffProductValidateRequest,
+    FbpDraftDropOffProductValidateResponse,
 )
