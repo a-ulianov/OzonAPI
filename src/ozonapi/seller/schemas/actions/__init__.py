@@ -28,15 +28,47 @@ __all__ = [
     "ActionsDiscountsTaskApproveRequest",
     "ActionsDiscountsTaskDeclineTask",
     "ActionsDiscountsTaskDeclineRequest",
+    "ActionsAutoAddProduct",
+    "ActionsAutoAddPriceEntry",
+    "ActionsAutoAddRejected",
+    "ActionsAutoAddProductsCandidatesRequest",
+    "ActionsAutoAddProductsCandidatesResponse",
+    "ActionsAutoAddProductsListRequest",
+    "ActionsAutoAddProductsListResponse",
+    "ActionsAutoAddProductsDeleteRequest",
+    "ActionsAutoAddProductsDeleteResponse",
+    "ActionsAutoAddProductsUpdateProduct",
+    "ActionsAutoAddProductsUpdateRequest",
+    "ActionsAutoAddProductsUpdateResponse",
 ]
 
 from .base import (
     ActionProduct,
+    ActionsAutoAddPriceEntry,
+    ActionsAutoAddProduct,
+    ActionsAutoAddRejected,
     ActionsProductsChangeRejected,
     ActionsProductsChangeResult,
     DiscountTaskFailDetail,
     DiscountTaskResult,
     DiscountTaskResponse,
+)
+from .v1__actions_auto_add_products_candidates import (
+    ActionsAutoAddProductsCandidatesRequest,
+    ActionsAutoAddProductsCandidatesResponse,
+)
+from .v1__actions_auto_add_products_list import (
+    ActionsAutoAddProductsListRequest,
+    ActionsAutoAddProductsListResponse,
+)
+from .v1__actions_auto_add_products_delete import (
+    ActionsAutoAddProductsDeleteRequest,
+    ActionsAutoAddProductsDeleteResponse,
+)
+from .v1__actions_auto_add_products_update import (
+    ActionsAutoAddProductsUpdateProduct,
+    ActionsAutoAddProductsUpdateRequest,
+    ActionsAutoAddProductsUpdateResponse,
 )
 from .v1__actions import (
     ActionItem,
