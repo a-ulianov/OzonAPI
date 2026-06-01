@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 304 / 447**
+**Реализовано методов: 305 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -700,11 +700,11 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/warehouse/fbo/seller/list` | Получить список складов продавца | `warehouse_fbo_seller_list()` |
 </details>
 <details>
-<summary>Склады FBO (0/1)</summary>
+<summary>Склады FBO (1/1)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/warehouse/ozon/list` | Получить список складов Ozon | `warehouse_ozon_list()` |
+| ✓ | `/v1/warehouse/ozon/list` | Получить список складов Ozon | `warehouse_ozon_list()` |
 </details>
 <details>
 <summary>Управление кодами маркировки и сборкой заказов для FBS/rFBS (7/7)</summary>

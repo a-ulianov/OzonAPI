@@ -129,3 +129,34 @@ class WarehouseWorkingDayV2(str, Enum):
     FRIDAY = "FRIDAY"
     SATURDAY = "SATURDAY"
     SUNDAY = "SUNDAY"
+
+
+class WarehouseOZONType(str, Enum):
+    """Тип склада Ozon (фильтр запроса списка складов Ozon).
+
+    Attributes:
+        FULL_FILLMENT: Склад фулфилмента
+        FULL_FILLMENT_RETURNS: Склад возвратов фулфилмента
+        FULL_FILLMENT_DEFECT: Склад брака фулфилмента
+        EXPRESS_DARK_STORE: Дарксфор Express
+        CROSS_DOCK: Кросс-докинг
+        SORTING_CENTER: Сортировочный центр
+        PHARMACY: Аптечный склад
+        DISTRIBUTION_CENTER: Распределительный центр
+        ORDERS_RECEIVING_POINT: Пункт приёма заказов
+        OUTSOURCE_FF: Внешний фулфилмент
+        B2B: Склад B2B
+        EXTERNAL_FF: Внешний фулфилмент-партнёр
+    """
+    FULL_FILLMENT = "FULL_FILLMENT"
+    FULL_FILLMENT_RETURNS = "FULL_FILLMENT_RETURNS"
+    FULL_FILLMENT_DEFECT = "FULL_FILLMENT_DEFECT"
+    EXPRESS_DARK_STORE = "EXPRESS_DARK_STORE"
+    CROSS_DOCK = "CROSS_DOCK"
+    SORTING_CENTER = "SORTING_CENTER"
+    PHARMACY = "PHARMACY"
+    DISTRIBUTION_CENTER = "DISTRIBUTION_CENTER"
+    ORDERS_RECEIVING_POINT = "ORDERS_RECEIVING_POINT"
+    OUTSOURCE_FF = "OUTSOURCE_FF"
+    B2B = "B2B"
+    EXTERNAL_FF = "EXTERNAL_FF"
