@@ -4,6 +4,11 @@ __all__ = [
     "FinanceRealizationRow",
     "FinanceRealizationResult",
     "FinanceRealizationResponse",
+    "FinanceRealizationByDayRequest",
+    "FinanceRealizationByDayItem",
+    "FinanceRealizationByDayCommission",
+    "FinanceRealizationByDayRow",
+    "FinanceRealizationByDayResponse",
     "FinanceRealizationPostingRequest",
     "FinanceRealizationPostingOrder",
     "FinanceRealizationPostingDocument",
@@ -109,4 +114,11 @@ from .v3__finance_transaction_totals import (
     FinanceTransactionTotalsRequest,
     FinanceTransactionTotalsResponse,
     FinanceTransactionTotalsResult,
+)
+from .v1__finance_realization_by_day import (
+    FinanceRealizationByDayCommission,
+    FinanceRealizationByDayItem,
+    FinanceRealizationByDayRequest,
+    FinanceRealizationByDayResponse,
+    FinanceRealizationByDayRow,
 )

@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 376 / 447**
+**Реализовано методов: 386 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -1135,20 +1135,20 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/carriage/container/label/get` | Получить этикетку по грузоместам | `carriage_container_label_get()` |
 </details>
 <details>
-<summary>Premium-методы (0/10)</summary>
+<summary>Premium-методы (10/10)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/chat/send/message` | Отправить сообщение | `chat_send_message()` |
-| ☐ | `/v1/chat/start` | Создать новый чат | `chat_start()` |
-| ☐ | `/v2/chat/read` | Отметить сообщения как прочитанные | `chat_read()` |
-| ☐ | `/v1/analytics/data` | Данные аналитики | `analytics_data()` |
-| ☐ | `/v1/analytics/product-queries` | Получить информацию о запросах моих товаров | `analytics_product_queries()` |
-| ☐ | `/v1/analytics/product-queries/details` | Получить детализацию запросов по товару | `analytics_product_queries_details()` |
-| ☐ | `/v1/finance/realization/by-day` | Отчёт о реализации товаров за день | `finance_realization_by_day()` |
-| ☐ | `/v1/search-queries/text` | Получить список поисковых запросов по тексту | `search_queries_text()` |
-| ☐ | `/v1/search-queries/top` | Получить список популярных поисковых запросов | `search_queries_top()` |
-| ☐ | `/v1/product/prices/details` | Получить подробную информацию о ценах товаров | `product_prices_details()` |
+| ✓ | `/v1/chat/send/message` | Отправить сообщение | `chat_send_message()` |
+| ✓ | `/v1/chat/start` | Создать новый чат | `chat_start()` |
+| ✓ | `/v2/chat/read` | Отметить сообщения как прочитанные | `chat_read()` |
+| ✓ | `/v1/analytics/data` | Данные аналитики | `analytics_data()` |
+| ✓ | `/v1/analytics/product-queries` | Получить информацию о запросах моих товаров | `analytics_product_queries()` |
+| ✓ | `/v1/analytics/product-queries/details` | Получить детализацию запросов по товару | `analytics_product_queries_details()` |
+| ✓ | `/v1/finance/realization/by-day` | Отчёт о реализации товаров за день | `finance_realization_by_day()` |
+| ✓ | `/v1/search-queries/text` | Получить список поисковых запросов по тексту | `search_queries_text()` |
+| ✓ | `/v1/search-queries/top` | Получить список популярных поисковых запросов | `search_queries_top()` |
+| ✓ | `/v1/product/prices/details` | Получить подробную информацию о ценах товаров | `product_prices_details()` |
 </details>
 <details>
 <summary>Причины отмены (0/3)</summary>

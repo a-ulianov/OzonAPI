@@ -11,6 +11,7 @@ from .finance_document_b2b_sales_json import FinanceDocumentB2BSalesJSONMixin
 from .finance_mutual_settlement import FinanceMutualSettlementMixin
 from .finance_products_buyout import FinanceProductsBuyoutMixin
 from .finance_realization import FinanceRealizationMixin
+from .finance_realization_by_day import FinanceRealizationByDayMixin
 from .finance_realization_posting import FinanceRealizationPostingMixin
 from .finance_transaction_list import FinanceTransactionListMixin
 from .finance_transaction_totals import FinanceTransactionTotalsMixin
@@ -24,6 +25,7 @@ class SellerFinanceAPI(
     FinanceMutualSettlementMixin,
     FinanceProductsBuyoutMixin,
     FinanceRealizationMixin,
+    FinanceRealizationByDayMixin,
     FinanceRealizationPostingMixin,
     FinanceTransactionListMixin,
     FinanceTransactionTotalsMixin,
