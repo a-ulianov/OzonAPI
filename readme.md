@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 422 / 447**
+**Реализовано методов: 427 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1061,15 +1061,15 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/draft/drop-off/product/validate` | Проверить список товаров, которые склад партнёра может принять | `fbp_draft_drop_off_product_validate()` |
 </details>
 <details>
-<summary>Работа с FBP-черновиками с доставкой pick-up (0/5)</summary>
+<summary>Работа с FBP-черновиками с доставкой pick-up (5/5)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/draft/pick-up/create` | Создать черновик заявки на pick-up поставку | `fbp_draft_pick_up_create()` |
-| ☐ | `/v1/fbp/draft/pick-up/delete` | Отменить черновик заявки на pick-up поставку | `fbp_draft_pick_up_delete()` |
-| ☐ | `/v1/fbp/draft/pick-up/dlv/edit` | Изменить черновик заявки на pick-up поставку | `fbp_draft_pick_up_dlv_edit()` |
-| ☐ | `/v1/fbp/draft/pick-up/product/validate` | Провалидировать список товаров для pick-up поставки | `fbp_draft_pick_up_product_validate()` |
-| ☐ | `/v1/fbp/draft/pick-up/registrate` | Перевести черновик в действующую поставку | `fbp_draft_pick_up_registrate()` |
+| ✓ | `/v1/fbp/draft/pick-up/create` | Создать черновик заявки на pick-up поставку | `fbp_draft_pick_up_create()` |
+| ✓ | `/v1/fbp/draft/pick-up/delete` | Отменить черновик заявки на pick-up поставку | `fbp_draft_pick_up_delete()` |
+| ✓ | `/v1/fbp/draft/pick-up/dlv/edit` | Изменить черновик заявки на pick-up поставку | `fbp_draft_pick_up_dlv_edit()` |
+| ✓ | `/v1/fbp/draft/pick-up/product/validate` | Провалидировать список товаров для pick-up поставки | `fbp_draft_pick_up_product_validate()` |
+| ✓ | `/v1/fbp/draft/pick-up/registrate` | Перевести черновик в действующую поставку | `fbp_draft_pick_up_registrate()` |
 </details>
 <details>
 <summary>Работа с FBP-поставками с доставкой direct (0/4)</summary>

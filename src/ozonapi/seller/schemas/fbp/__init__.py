@@ -74,6 +74,18 @@ __all__ = [
     "FbpDraftDropOffPointTimetableResponse",
     "FbpDraftDropOffProductValidateRequest",
     "FbpDraftDropOffProductValidateResponse",
+    "FbpPickUpDeliveryDetails",
+    "FbpDraftPickUpCreateRequest",
+    "FbpDraftPickUpCreateResponse",
+    "FbpDraftPickUpDeleteRequest",
+    "FbpDraftPickUpDeleteResponse",
+    "FbpDraftPickUpDlvEditRequest",
+    "FbpDraftPickUpDlvEditResponse",
+    "FbpDraftPickUpRegistrateRequest",
+    "FbpDraftPickUpRegistrateError",
+    "FbpDraftPickUpRegistrateResponse",
+    "FbpDraftPickUpProductValidateRequest",
+    "FbpDraftPickUpProductValidateResponse",
 ]
 
 from .base import FbpDraftCreateResult
@@ -189,4 +201,26 @@ from .v1__fbp_draft_drop_off_point_timetable import (
 from .v1__fbp_draft_drop_off_product_validate import (
     FbpDraftDropOffProductValidateRequest,
     FbpDraftDropOffProductValidateResponse,
+)
+from .v1__fbp_draft_pick_up_create import (
+    FbpDraftPickUpCreateRequest,
+    FbpDraftPickUpCreateResponse,
+    FbpPickUpDeliveryDetails,
+)
+from .v1__fbp_draft_pick_up_delete import (
+    FbpDraftPickUpDeleteRequest,
+    FbpDraftPickUpDeleteResponse,
+)
+from .v1__fbp_draft_pick_up_dlv_edit import (
+    FbpDraftPickUpDlvEditRequest,
+    FbpDraftPickUpDlvEditResponse,
+)
+from .v1__fbp_draft_pick_up_registrate import (
+    FbpDraftPickUpRegistrateError,
+    FbpDraftPickUpRegistrateRequest,
+    FbpDraftPickUpRegistrateResponse,
+)
+from .v1__fbp_draft_pick_up_product_validate import (
+    FbpDraftPickUpProductValidateRequest,
+    FbpDraftPickUpProductValidateResponse,
 )
