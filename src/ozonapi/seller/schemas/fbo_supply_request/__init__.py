@@ -113,6 +113,23 @@ __all__ = [
     "CargoesLabelGetResult",
     "CargoesLabelGetResponse",
     "CargoesLabelFileResponse",
+    "SupplyOrderCancelRequest",
+    "SupplyOrderCancelResponse",
+    "SupplyOrderCancelStatusRequest",
+    "SupplyOrderCancelStatusSupply",
+    "SupplyOrderCancelStatusResult",
+    "SupplyOrderCancelStatusResponse",
+    "SupplyOrderContentUpdateItem",
+    "SupplyOrderContentUpdateRequest",
+    "SupplyOrderContentUpdateResponse",
+    "SupplyOrderContentUpdateStatusRequest",
+    "SupplyOrderContentUpdateStatusResponse",
+    "SupplyOrderContentUpdateValidationRequest",
+    "SupplyOrderContentUpdateValidationApprovedItem",
+    "SupplyOrderContentUpdateValidationRestrictions",
+    "SupplyOrderContentUpdateValidationRejectedItem",
+    "SupplyOrderContentUpdateValidationAssortment",
+    "SupplyOrderContentUpdateValidationResponse",
 ]
 
 from .entities import (
@@ -194,6 +211,33 @@ from .v1__cargoes_label_create import (
     CargoesLabelErrors,
 )
 from .v1__cargoes_label_file import CargoesLabelFileResponse
+from .v1__supply_order_cancel import (
+    SupplyOrderCancelRequest,
+    SupplyOrderCancelResponse,
+)
+from .v1__supply_order_cancel_status import (
+    SupplyOrderCancelStatusRequest,
+    SupplyOrderCancelStatusResponse,
+    SupplyOrderCancelStatusResult,
+    SupplyOrderCancelStatusSupply,
+)
+from .v1__supply_order_content_update import (
+    SupplyOrderContentUpdateItem,
+    SupplyOrderContentUpdateRequest,
+    SupplyOrderContentUpdateResponse,
+)
+from .v1__supply_order_content_update_status import (
+    SupplyOrderContentUpdateStatusRequest,
+    SupplyOrderContentUpdateStatusResponse,
+)
+from .v1__supply_order_content_update_validation import (
+    SupplyOrderContentUpdateValidationApprovedItem,
+    SupplyOrderContentUpdateValidationAssortment,
+    SupplyOrderContentUpdateValidationRejectedItem,
+    SupplyOrderContentUpdateValidationRequest,
+    SupplyOrderContentUpdateValidationResponse,
+    SupplyOrderContentUpdateValidationRestrictions,
+)
 from .v1__cargoes_label_get import (
     CargoesLabelGetRequest,
     CargoesLabelGetResponse,

@@ -27,6 +27,15 @@ from .draft_supply_create_status_v1 import DraftSupplyCreateStatusV1Mixin
 from .draft_supply_create_v1 import DraftSupplyCreateV1Mixin
 from .draft_timeslot_info import DraftTimeslotInfoMixin
 from .draft_timeslot_info_v1 import DraftTimeslotInfoV1Mixin
+from .supply_order_cancel import SupplyOrderCancelMixin
+from .supply_order_cancel_status import SupplyOrderCancelStatusMixin
+from .supply_order_content_update import SupplyOrderContentUpdateMixin
+from .supply_order_content_update_status import (
+    SupplyOrderContentUpdateStatusMixin,
+)
+from .supply_order_content_update_validation import (
+    SupplyOrderContentUpdateValidationMixin,
+)
 from .warehouse_fbo_list import WarehouseFboListMixin
 from .warehouse_fbo_seller_list import WarehouseFboSellerListMixin
 
@@ -54,6 +63,11 @@ class SellerFboSupplyRequestAPI(
     DraftSupplyCreateV1Mixin,
     DraftTimeslotInfoMixin,
     DraftTimeslotInfoV1Mixin,
+    SupplyOrderCancelMixin,
+    SupplyOrderCancelStatusMixin,
+    SupplyOrderContentUpdateMixin,
+    SupplyOrderContentUpdateStatusMixin,
+    SupplyOrderContentUpdateValidationMixin,
     WarehouseFboListMixin,
     WarehouseFboSellerListMixin,
     APIManager,
