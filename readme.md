@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 390 / 447**
+**Реализовано методов: 391 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -420,12 +420,12 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/roles` | Получить список ролей и методов по API-ключу | `roles()` |
 </details>
 <details>
-<summary>Информация по кабинету продавца (1/2)</summary>
+<summary>Информация по кабинету продавца (2/2)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v1/seller/info` | Информация о кабинете продавца | `seller_info()` |
-| ☐ | `/v1/seller/ozon-logistics/info` | Информация о подключении продавца к Ozon Логистике | `seller_ozon_logistics_info()` |
+| ✓ | `/v1/seller/ozon-logistics/info` | Информация о подключении продавца к Ozon Логистике | `seller_ozon_logistics_info()` |
 </details>
 <details>
 <summary>Атрибуты и характеристики Ozon (4/4)</summary>
