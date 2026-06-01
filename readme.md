@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 394 / 447**
+**Реализовано методов: 401 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -631,17 +631,17 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/product/change` | Изменить вес весовых товаров (устарел, удалён из API Ozon) | `posting_fbs_product_change()` |
 </details>
 <details>
-<summary>Полигоны (0/7)</summary>
+<summary>Полигоны (7/7)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/polygon/create` | Создайте полигон доставки | `polygon_create()` |
-| ☐ | `/v1/polygon/bind` | Свяжите метод доставки с полигоном доставки | `polygon_bind()` |
-| ☐ | `/v2/polygon/bind` | Связать метод доставки с полигоном | `polygon_bind()` |
-| ☐ | `/v1/polygon/delete` | Удалить полигон из области доставки | `polygon_delete()` |
-| ☐ | `/v1/polygon/list` | Получить список установленных полигонов на метод доставки | `polygon_list()` |
-| ☐ | `/v1/polygon/time/coordinates/update` | Обновить координаты полигона доставки | `polygon_time_coordinates_update()` |
-| ☐ | `/v1/polygon/time/set` | Установить новое время доставки в полигоне | `polygon_time_set()` |
+| ✓ | `/v1/polygon/create` | Создайте полигон доставки | `polygon_create()` |
+| ✓ | `/v1/polygon/bind` | Свяжите метод доставки с полигоном доставки | `polygon_bind_v1()` |
+| ✓ | `/v2/polygon/bind` | Связать метод доставки с полигоном | `polygon_bind()` |
+| ✓ | `/v1/polygon/delete` | Удалить полигон из области доставки | `polygon_delete()` |
+| ✓ | `/v1/polygon/list` | Получить список установленных полигонов на метод доставки | `polygon_list()` |
+| ✓ | `/v1/polygon/time/coordinates/update` | Обновить координаты полигона доставки | `polygon_time_coordinates_update()` |
+| ✓ | `/v1/polygon/time/set` | Установить новое время доставки в полигоне | `polygon_time_set()` |
 </details>
 <details>
 <summary>Доставка FBO (15/15)</summary>

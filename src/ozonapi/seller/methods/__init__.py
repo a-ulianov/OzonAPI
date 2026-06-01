@@ -22,6 +22,7 @@ __all__ = [
     "SellerNotificationAPI",
     "SellerOrderAPI",
     "SellerPassAPI",
+    "SellerPolygonAPI",
     "SellerPostingAPI",
     "SellerPricesAndStocksAPI",
     "SellerProductAPI",
@@ -61,6 +62,7 @@ from .invoices import SellerInvoiceAPI
 from .notifications import SellerNotificationAPI
 from .orders import SellerOrderAPI
 from .passes import SellerPassAPI
+from .polygons import SellerPolygonAPI
 from .postings import SellerPostingAPI
 from .prices_and_stocks import SellerPricesAndStocksAPI
 from .pricing_strategies import SellerPricingStrategyAPI
