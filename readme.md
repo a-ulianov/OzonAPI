@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 386 / 447**
+**Реализовано методов: 389 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -1151,13 +1151,13 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/prices/details` | Получить подробную информацию о ценах товаров | `product_prices_details()` |
 </details>
 <details>
-<summary>Причины отмены (0/3)</summary>
+<summary>Причины отмены (3/3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/cancel-reason/list` | Список причин отмен для заказа | `cancel_reason_list()` |
-| ☐ | `/v1/cancel-reason/list-by-order` | Динамический список отмен для заказа | `cancel_reason_list_by_order()` |
-| ☐ | `/v1/cancel-reason/list-by-posting` | Динамический список отмен для постинга из заказа | `cancel_reason_list_by_posting()` |
+| ✓ | `/v1/cancel-reason/list` | Список причин отмен для заказа | `cancel_reason_list()` |
+| ✓ | `/v1/cancel-reason/list-by-order` | Динамический список отмен для заказа | `cancel_reason_list_by_order()` |
+| ✓ | `/v1/cancel-reason/list-by-posting` | Динамический список отмен для постинга из заказа | `cancel_reason_list_by_posting()` |
 </details>
 <details>
 <summary>Доставка (5/5)</summary>
