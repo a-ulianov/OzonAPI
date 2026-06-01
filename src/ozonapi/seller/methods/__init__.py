@@ -11,6 +11,7 @@ __all__ = [
     "SellerFBSAssemblyLabelingAPI",
     "SellerFBSContainerAPI",
     "SellerFBSDeliveryAPI",
+    "SellerFboSupplyRequestAPI",
     "SellerFinanceAPI",
     "SellerPricesAndStocksAPI",
     "SellerProductAPI",
@@ -30,6 +31,7 @@ from .beta import SellerBetaAPI
 from .certificates import SellerCertificateAPI
 from .chats import SellerChatAPI
 from .fbo import SellerFBOAPI
+from .fbo_supply_request import SellerFboSupplyRequestAPI
 from .fbs import SellerFBSAPI
 from .fbs_assembly_and_labeling import SellerFBSAssemblyLabelingAPI
 from .fbs_containers import SellerFBSContainerAPI
