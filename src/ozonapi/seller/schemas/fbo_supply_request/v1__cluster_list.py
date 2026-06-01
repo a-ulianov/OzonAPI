@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from ...common.enumerations.fbo_supply_request import SupplyClusterType
 
 
-class ClusterListRequest(BaseModel):
+class ClusterListV1Request(BaseModel):
     """Параметры запроса информации о кластерах.
 
     Attributes:
@@ -78,7 +78,7 @@ class Cluster(BaseModel):
     )
 
 
-class ClusterListResponse(BaseModel):
+class ClusterListV1Response(BaseModel):
     """Ответ с информацией о кластерах и их складах.
 
     Attributes:

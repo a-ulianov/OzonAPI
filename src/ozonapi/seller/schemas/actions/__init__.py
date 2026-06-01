@@ -22,8 +22,8 @@ __all__ = [
     "ActionsProductsDeactivateRequest",
     "ActionsProductsDeactivateResponse",
     "DiscountTask",
-    "ActionsDiscountsTaskListRequest",
-    "ActionsDiscountsTaskListResponse",
+    "ActionsDiscountsTaskListV1Request",
+    "ActionsDiscountsTaskListV1Response",
     "ActionsDiscountsTaskApproveTask",
     "ActionsDiscountsTaskApproveRequest",
     "ActionsDiscountsTaskDeclineTask",
@@ -63,8 +63,8 @@ from .v1__actions_products_deactivate import (
 )
 from .v1__actions_discounts_task_list import (
     DiscountTask,
-    ActionsDiscountsTaskListRequest,
-    ActionsDiscountsTaskListResponse,
+    ActionsDiscountsTaskListV1Request,
+    ActionsDiscountsTaskListV1Response,
 )
 from .v1__actions_discounts_task_approve import (
     ActionsDiscountsTaskApproveTask,

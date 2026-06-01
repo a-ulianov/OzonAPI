@@ -76,8 +76,8 @@ class DiscountTask(BaseModel):
     last_approved_price: Optional[float] = Field(None, description="Последняя согласованная цена.")
 
 
-class ActionsDiscountsTaskListRequest(BaseModel):
-    """Схема запроса на получение списка заявок на скидку.
+class ActionsDiscountsTaskListV1Request(BaseModel):
+    """Схема запроса на получение списка заявок на скидку (API v1).
 
     Attributes:
         status: Статус заявок (NEW, SEEN, APPROVED, DECLINED, AUTODECLINED)
@@ -98,8 +98,8 @@ class ActionsDiscountsTaskListRequest(BaseModel):
     )
 
 
-class ActionsDiscountsTaskListResponse(BaseModel):
-    """Схема ответа со списком заявок на скидку.
+class ActionsDiscountsTaskListV1Response(BaseModel):
+    """Схема ответа со списком заявок на скидку (API v1).
 
     Attributes:
         result: Список заявок на скидку
