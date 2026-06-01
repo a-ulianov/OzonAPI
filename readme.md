@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 312 / 447**
+**Реализовано методов: 326 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -498,7 +498,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/actions/products` | Список участвующих в акции товаров | `actions_products()` |
 | ✓ | `/v1/actions/products/activate` | Добавить товар в акцию | `actions_products_activate()` |
 | ✓ | `/v1/actions/products/deactivate` | Удалить товары из акции | `actions_products_deactivate()` |
-| ✓ | `/v1/actions/discounts-task/list` | Список заявок на скидку | `actions_discounts_task_list()` |
+| ✓ | `/v1/actions/discounts-task/list` | Список заявок на скидку | `actions_discounts_task_list_v1()` |
 | ✓ | `/v1/actions/discounts-task/approve` | Согласовать заявку на скидку | `actions_discounts_task_approve()` |
 | ✓ | `/v1/actions/discounts-task/decline` | Отклонить заявку на скидку | `actions_discounts_task_decline()` |
 </details>
@@ -669,7 +669,7 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ✓ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list()` |
+| ✓ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list_v1()` |
 | ✓ | `/v1/warehouse/fbo/list` | Поиск точек для отгрузки поставки | `warehouse_fbo_list()` |
 | ✓ | `/v1/draft/create` | Создать черновик заявки на поставку | `draft_create()` |
 | ✓ | `/v1/draft/crossdock/create` | Создать черновик заявки на поставку кросс-докингом | `draft_crossdock_create()` |
@@ -915,24 +915,24 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/product/digital/stocks/import` | Обновить количество цифровых товаров | `product_digital_stocks_import()` |
 </details>
 <details>
-<summary>Прочие методы (0/14)</summary>
+<summary>Прочие методы (14/14)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/analytics/manage/stocks` | Управление остатками | `analytics_manage_stocks()` |
-| ☐ | `/v1/removal/from-supply/list` | Отчёт по вывозу и утилизации с поставки FBO | `removal_from_supply_list()` |
-| ☐ | `/v1/removal/from-stock/list` | Отчёт по вывозу и утилизации со стока FBO | `removal_from_stock_list()` |
-| ☐ | `/v1/product/stairway-discount/by-quantity/set` | Управлять скидкой от количества | `product_stairway_discount_by_quantity_set()` |
-| ☐ | `/v1/product/stairway-discount/by-quantity/get` | Получить информацию о скидке от количества | `product_stairway_discount_by_quantity_get()` |
-| ☐ | `/v1/finance/balance` | Получить отчёт о балансе | `finance_balance()` |
-| ☐ | `/v2/actions/discounts-task/list` | Получить список заявок на скидку | `actions_discounts_task_list()` |
-| ☐ | `/v2/cluster/list` | Получить информацию о макролокальных кластерах | `cluster_list()` |
-| ☐ | `/v1/product/visibility/set` | Настроить видимость товара на витрине Ozon и Ozon Селект | `product_visibility_set()` |
-| ☐ | `/v2/posting/digital/list` | Получить список отправлений | `posting_digital_list()` |
-| ☐ | `/v1/finance/accrual/postings` | Получить начисления по отправлениям | `finance_accrual_postings()` |
-| ☐ | `/v1/finance/accrual/types` | Получить справочник начислений | `finance_accrual_types()` |
-| ☐ | `/v1/finance/accrual/by-day` | Получить начисления за день | `finance_accrual_by_day()` |
-| ☐ | `/v1/product/visibility/info` | Получить информацию о видимости товара | `product_visibility_info()` |
+| ✓ | `/v1/analytics/manage/stocks` | Управление остатками | `analytics_manage_stocks()` |
+| ✓ | `/v1/removal/from-supply/list` | Отчёт по вывозу и утилизации с поставки FBO | `removal_from_supply_list()` |
+| ✓ | `/v1/removal/from-stock/list` | Отчёт по вывозу и утилизации со стока FBO | `removal_from_stock_list()` |
+| ✓ | `/v1/product/stairway-discount/by-quantity/set` | Управлять скидкой от количества | `product_stairway_discount_by_quantity_set()` |
+| ✓ | `/v1/product/stairway-discount/by-quantity/get` | Получить информацию о скидке от количества | `product_stairway_discount_by_quantity_get()` |
+| ✓ | `/v1/finance/balance` | Получить отчёт о балансе | `finance_balance()` |
+| ✓ | `/v2/actions/discounts-task/list` | Получить список заявок на скидку | `actions_discounts_task_list()` |
+| ✓ | `/v2/cluster/list` | Получить информацию о макролокальных кластерах | `cluster_list()` |
+| ✓ | `/v1/product/visibility/set` | Настроить видимость товара на витрине Ozon и Ozon Селект | `product_visibility_set()` |
+| ✓ | `/v2/posting/digital/list` | Получить список отправлений | `posting_digital_list()` |
+| ✓ | `/v1/finance/accrual/postings` | Получить начисления по отправлениям | `finance_accrual_postings()` |
+| ✓ | `/v1/finance/accrual/types` | Получить справочник начислений | `finance_accrual_types()` |
+| ✓ | `/v1/finance/accrual/by-day` | Получить начисления за день | `finance_accrual_by_day()` |
+| ✓ | `/v1/product/visibility/info` | Получить информацию о видимости товара | `product_visibility_info()` |
 </details>
 <details>
 <summary>Работа с квантами (0/2)</summary>

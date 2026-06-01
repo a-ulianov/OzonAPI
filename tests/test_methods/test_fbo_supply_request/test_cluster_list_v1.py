@@ -2,17 +2,17 @@ import pytest
 
 from src.ozonapi.seller.common.enumerations.fbo_supply_request import SupplyClusterType
 from src.ozonapi.seller.schemas.fbo_supply_request import (
-    ClusterListRequest,
-    ClusterListResponse,
+    ClusterListV1Request,
+    ClusterListV1Response,
 )
 
 
-class TestClusterList:
-    """Тесты для метода cluster_list."""
+class TestClusterListV1:
+    """Тесты для метода cluster_list_v1 (устаревший v1)."""
 
     @pytest.mark.asyncio
-    async def test_cluster_list(self, api, mock_api_request):
-        """Тестирует метод cluster_list."""
+    async def test_cluster_list_v1(self, api, mock_api_request):
+        """Тестирует метод cluster_list_v1."""
 
         mock_api_request.return_value = {
             "clusters": [
@@ -36,9 +36,9 @@ class TestClusterList:
             ]
         }
 
-        request = ClusterListRequest(cluster_type=SupplyClusterType.OZON)
+        request = ClusterListV1Request(cluster_type=SupplyClusterType.OZON)
 
-        response = await api.cluster_list(request)
+        response = await api.cluster_list_v1(request)
 
         mock_api_request.assert_called_once_with(
             method="post",
@@ -47,6 +47,6 @@ class TestClusterList:
             payload=request.model_dump(by_alias=True)
         )
 
-        assert isinstance(response, ClusterListResponse)
+        assert isinstance(response, ClusterListV1Response)
         assert response.clusters[0].id == 1
         assert response.clusters[0].logistic_clusters[0].warehouses[0].warehouse_id == 100

@@ -4,7 +4,7 @@ from .actions import ActionsMixin
 from .actions_candidates import ActionsCandidatesMixin
 from .actions_discounts_task_approve import ActionsDiscountsTaskApproveMixin
 from .actions_discounts_task_decline import ActionsDiscountsTaskDeclineMixin
-from .actions_discounts_task_list import ActionsDiscountsTaskListMixin
+from .actions_discounts_task_list_v1 import ActionsDiscountsTaskListV1Mixin
 from .actions_products import ActionsProductsMixin
 from .actions_products_activate import ActionsProductsActivateMixin
 from .actions_products_deactivate import ActionsProductsDeactivateMixin
@@ -15,7 +15,7 @@ class SellerActionsAPI(
     ActionsCandidatesMixin,
     ActionsDiscountsTaskApproveMixin,
     ActionsDiscountsTaskDeclineMixin,
-    ActionsDiscountsTaskListMixin,
+    ActionsDiscountsTaskListV1Mixin,
     ActionsProductsMixin,
     ActionsProductsActivateMixin,
     ActionsProductsDeactivateMixin,

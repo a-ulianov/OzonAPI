@@ -1,10 +1,10 @@
 """Схемы раздела Создание и управление заявками на поставку FBO."""
 __all__ = [
-    "ClusterListRequest",
+    "ClusterListV1Request",
     "ClusterWarehouse",
     "ClusterLogisticCluster",
     "Cluster",
-    "ClusterListResponse",
+    "ClusterListV1Response",
     "WarehouseFboListRequest",
     "WarehouseFboListCoordinate",
     "WarehouseFboListItem",
@@ -144,8 +144,8 @@ from .entities import (
 )
 from .v1__cluster_list import (
     Cluster,
-    ClusterListRequest,
-    ClusterListResponse,
+    ClusterListV1Request,
+    ClusterListV1Response,
     ClusterLogisticCluster,
     ClusterWarehouse,
 )

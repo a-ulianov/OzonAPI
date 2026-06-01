@@ -14,7 +14,7 @@ from .cargoes_label_create import CargoesLabelCreateMixin
 from .cargoes_label_file import CargoesLabelFileMixin
 from .cargoes_label_get import CargoesLabelGetMixin
 from .cargoes_rules_get import CargoesRulesGetMixin
-from .cluster_list import ClusterListMixin
+from .cluster_list_v1 import ClusterListV1Mixin
 from .draft_create import DraftCreateMixin
 from .draft_create_info import DraftCreateInfoMixin
 from .draft_create_info_v1 import DraftCreateInfoV1Mixin
@@ -50,7 +50,7 @@ class SellerFboSupplyRequestAPI(
     CargoesLabelFileMixin,
     CargoesLabelGetMixin,
     CargoesRulesGetMixin,
-    ClusterListMixin,
+    ClusterListV1Mixin,
     DraftCreateMixin,
     DraftCreateInfoMixin,
     DraftCreateInfoV1Mixin,
