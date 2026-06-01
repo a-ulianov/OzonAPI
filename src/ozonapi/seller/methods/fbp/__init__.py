@@ -21,6 +21,11 @@ from .fbp_draft_drop_off_province_list import FbpDraftDropOffProvinceListMixin
 from .fbp_draft_drop_off_point_list import FbpDraftDropOffPointListMixin
 from .fbp_draft_drop_off_point_timetable import FbpDraftDropOffPointTimetableMixin
 from .fbp_draft_drop_off_product_validate import FbpDraftDropOffProductValidateMixin
+from .fbp_draft_pick_up_create import FbpDraftPickUpCreateMixin
+from .fbp_draft_pick_up_delete import FbpDraftPickUpDeleteMixin
+from .fbp_draft_pick_up_dlv_edit import FbpDraftPickUpDlvEditMixin
+from .fbp_draft_pick_up_registrate import FbpDraftPickUpRegistrateMixin
+from .fbp_draft_pick_up_product_validate import FbpDraftPickUpProductValidateMixin
 
 
 class SellerFbpAPI(
@@ -45,6 +50,11 @@ class SellerFbpAPI(
     FbpDraftDropOffPointListMixin,
     FbpDraftDropOffPointTimetableMixin,
     FbpDraftDropOffProductValidateMixin,
+    FbpDraftPickUpCreateMixin,
+    FbpDraftPickUpDeleteMixin,
+    FbpDraftPickUpDlvEditMixin,
+    FbpDraftPickUpRegistrateMixin,
+    FbpDraftPickUpProductValidateMixin,
 ):
     """Реализует методы раздела FBP (черновики и поставки).
 
