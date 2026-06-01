@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 401 / 447**
+**Реализовано методов: 404 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1022,13 +1022,13 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/notification/push-type/list` | Получить типы пуш-уведомлений | `notification_push_type_list()` |
 </details>
 <details>
-<summary>Работа с FBP-черновиками (0/3)</summary>
+<summary>Работа с FBP-черновиками (3/3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/warehouse/list` | Получить список партнёрских складов | `fbp_warehouse_list()` |
-| ☐ | `/v1/fbp/draft/get` | Получить информацию о черновике поставки | `fbp_draft_get()` |
-| ☐ | `/v1/fbp/draft/list` | Список черновиков поставки | `fbp_draft_list()` |
+| ✓ | `/v1/fbp/warehouse/list` | Получить список партнёрских складов | `fbp_warehouse_list()` |
+| ✓ | `/v1/fbp/draft/get` | Получить информацию о черновике поставки | `fbp_draft_get()` |
+| ✓ | `/v1/fbp/draft/list` | Список черновиков поставки | `fbp_draft_list()` |
 </details>
 <details>
 <summary>Работа с FBP-черновиками с доставкой direct (0/10)</summary>
