@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 436 / 447**
+**Реализовано методов: 447 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1099,21 +1099,21 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/order/pick-up/dlv/edit` | Изменить данные о точке забора | `fbp_order_pick_up_dlv_edit()` |
 </details>
 <details>
-<summary>Работа с созданной поставкой FBP (0/11)</summary>
+<summary>Работа с созданной поставкой FBP (11/11)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/act-from/create` | Сгенерировать акт приёмки | `fbp_act_from_create()` |
-| ☐ | `/v1/fbp/act-from/get` | Получить статус генерации акта приёмки | `fbp_act_from_get()` |
-| ☐ | `/v1/fbp/act-to/create` | Сгенерировать транспортную накладную | `fbp_act_to_create()` |
-| ☐ | `/v1/fbp/act-to/get` | Получить статус генерации транспортной накладной | `fbp_act_to_get()` |
-| ☐ | `/v1/fbp/archive/get` | Получить информацию о завершённой поставке | `fbp_archive_get()` |
-| ☐ | `/v1/fbp/archive/list` | Получить список завершённых поставок | `fbp_archive_list()` |
-| ☐ | `/v1/fbp/label/create` | Cоздать задание на генерацию этикеток | `fbp_label_create()` |
-| ☐ | `/v1/fbp/label/get` | Получить статус задания на генерацию этикеток | `fbp_label_get()` |
-| ☐ | `/v1/fbp/order/get` | Получить информацию о конкретной поставке | `fbp_order_get()` |
-| ☐ | `/v1/fbp/order/list` | Получить список поставок | `fbp_order_list()` |
-| ☐ | `/v1/posting/fbp/list` | Получить список отправлений | `posting_fbp_list()` |
+| ✓ | `/v1/fbp/act-from/create` | Сгенерировать акт приёмки | `fbp_act_from_create()` |
+| ✓ | `/v1/fbp/act-from/get` | Получить статус генерации акта приёмки | `fbp_act_from_get()` |
+| ✓ | `/v1/fbp/act-to/create` | Сгенерировать транспортную накладную | `fbp_act_to_create()` |
+| ✓ | `/v1/fbp/act-to/get` | Получить статус генерации транспортной накладной | `fbp_act_to_get()` |
+| ✓ | `/v1/fbp/archive/get` | Получить информацию о завершённой поставке | `fbp_archive_get()` |
+| ✓ | `/v1/fbp/archive/list` | Получить список завершённых поставок | `fbp_archive_list()` |
+| ✓ | `/v1/fbp/label/create` | Cоздать задание на генерацию этикеток | `fbp_label_create()` |
+| ✓ | `/v1/fbp/label/get` | Получить статус задания на генерацию этикеток | `fbp_label_get()` |
+| ✓ | `/v1/fbp/order/get` | Получить информацию о конкретной поставке | `fbp_order_get()` |
+| ✓ | `/v1/fbp/order/list` | Получить список поставок | `fbp_order_list()` |
+| ✓ | `/v1/posting/fbp/list` | Получить список отправлений | `posting_fbp_list()` |
 </details>
 <details>
 <summary>Работа с грузоместами FBS (13/13)</summary>
