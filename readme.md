@@ -676,8 +676,8 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/draft/create/info` | Информация о черновике заявки на поставку | `draft_create_info_v1()` |
 | ✓ | `/v1/draft/timeslot/info` | Доступные таймслоты | `draft_timeslot_info_v1()` |
 | ✓ | `/v2/draft/create/info` | Получить информацию о черновике заявки на поставку | `draft_create_info()` |
-| ☐ | `/v1/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create()` |
-| ☐ | `/v1/draft/supply/create/status` | Информация о создании заявки на поставку | `draft_supply_create_status()` |
+| ✓ | `/v1/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create_v1()` |
+| ✓ | `/v1/draft/supply/create/status` | Информация о создании заявки на поставку | `draft_supply_create_status_v1()` |
 | ✓ | `/v2/draft/timeslot/info` | Получить список доступных таймслотов | `draft_timeslot_info()` |
 | ☐ | `/v1/cargoes/create` | Установка грузомест | `cargoes_create()` |
 | ☐ | `/v2/cargoes/create/info` | Получить информацию по установке грузомест | `cargoes_create_info()` |
@@ -693,8 +693,8 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/supply-order/content/update` | Редактирование товарного состава | `supply_order_content_update()` |
 | ☐ | `/v1/supply-order/content/update/status` | Информация о статусе редактирования товарного состава | `supply_order_content_update_status()` |
 | ☐ | `/v1/supply-order/content/update/validation` | Проверить новый товарный состав | `supply_order_content_update_validation()` |
-| ☐ | `/v2/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create()` |
-| ☐ | `/v2/draft/supply/create/status` | Получить информацию о создании заявки на поставку | `draft_supply_create_status()` |
+| ✓ | `/v2/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create()` |
+| ✓ | `/v2/draft/supply/create/status` | Получить информацию о создании заявки на поставку | `draft_supply_create_status()` |
 | ✓ | `/v1/warehouse/fbo/seller/list` | Получить список складов продавца | `warehouse_fbo_seller_list()` |
 </details>
 <details>
