@@ -37,3 +37,18 @@ class FbpBundleItemError(BaseModel):
         default_factory=list,
         description="Коды ошибок товара в наборе (набор открытый — тип `str`)."
     )
+
+
+class FbpOrderValidationError(BaseModel):
+    """Ошибка валидации действующей поставки FBP.
+
+    Attributes:
+        order_errors: Коды ошибок поставки (`ORDER_LOCKED`, `INVALID_TIMESLOT`,
+            `DELIVERY_*`, `DROP_OFF_*`, `PICK_UP_*`, `SUPPLY_TYPE_NOT_SUPPORTED`,
+            `INVALID_STATE` и др.)
+    """
+
+    order_errors: list[str] = Field(
+        default_factory=list,
+        description="Коды ошибок поставки (набор открытый — тип `str`)."
+    )

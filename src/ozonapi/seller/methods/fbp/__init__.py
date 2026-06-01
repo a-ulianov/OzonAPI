@@ -26,6 +26,15 @@ from .fbp_draft_pick_up_delete import FbpDraftPickUpDeleteMixin
 from .fbp_draft_pick_up_dlv_edit import FbpDraftPickUpDlvEditMixin
 from .fbp_draft_pick_up_registrate import FbpDraftPickUpRegistrateMixin
 from .fbp_draft_pick_up_product_validate import FbpDraftPickUpProductValidateMixin
+from .fbp_order_direct_cancel import FbpOrderDirectCancelMixin
+from .fbp_order_direct_seller_dlv_edit import FbpOrderDirectSellerDlvEditMixin
+from .fbp_order_direct_timeslot_edit import FbpOrderDirectTimeslotEditMixin
+from .fbp_order_direct_timeslot_list import FbpOrderDirectTimeslotListMixin
+from .fbp_order_drop_off_cancel import FbpOrderDropOffCancelMixin
+from .fbp_order_drop_off_dlv_edit import FbpOrderDropOffDlvEditMixin
+from .fbp_order_drop_off_timetable import FbpOrderDropOffTimetableMixin
+from .fbp_order_pick_up_cancel import FbpOrderPickUpCancelMixin
+from .fbp_order_pick_up_dlv_edit import FbpOrderPickUpDlvEditMixin
 
 
 class SellerFbpAPI(
@@ -55,6 +64,15 @@ class SellerFbpAPI(
     FbpDraftPickUpDlvEditMixin,
     FbpDraftPickUpRegistrateMixin,
     FbpDraftPickUpProductValidateMixin,
+    FbpOrderDirectCancelMixin,
+    FbpOrderDirectSellerDlvEditMixin,
+    FbpOrderDirectTimeslotEditMixin,
+    FbpOrderDirectTimeslotListMixin,
+    FbpOrderDropOffCancelMixin,
+    FbpOrderDropOffDlvEditMixin,
+    FbpOrderDropOffTimetableMixin,
+    FbpOrderPickUpCancelMixin,
+    FbpOrderPickUpDlvEditMixin,
 ):
     """Реализует методы раздела FBP (черновики и поставки).
 
