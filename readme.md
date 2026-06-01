@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 326 / 447**
+**Реализовано методов: 329 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -1181,13 +1181,13 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/order/create` | Создать заказ | `order_create()` |
 </details>
 <details>
-<summary>Отправления (0/3)</summary>
+<summary>Отправления (3/3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/posting/cancel` | Метод отмены постинга из заказа | `posting_cancel()` |
-| ☐ | `/v1/posting/cancel/status` | Статус отмены постинга из заказа | `posting_cancel_status()` |
-| ☐ | `/v1/posting/marks` | Получить список кодов маркировок товаров | `posting_marks()` |
+| ✓ | `/v1/posting/cancel` | Метод отмены постинга из заказа | `posting_cancel()` |
+| ✓ | `/v1/posting/cancel/status` | Статус отмены постинга из заказа | `posting_cancel_status()` |
+| ✓ | `/v1/posting/marks` | Получить список кодов маркировок товаров | `posting_marks()` |
 </details>
 
 ---
