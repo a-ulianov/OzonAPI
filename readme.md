@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 345 / 447**
+**Реализовано методов: 347 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -935,12 +935,12 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/visibility/info` | Получить информацию о видимости товара | `product_visibility_info()` |
 </details>
 <details>
-<summary>Работа с квантами (0/2)</summary>
+<summary>Работа с квантами (2/2)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/product/quant/list` | Список эконом-товаров | `product_quant_list()` |
-| ☐ | `/v1/product/quant/info` | Информация об эконом-товаре | `product_quant_info()` |
+| ✓ | `/v1/product/quant/list` | Список эконом-товаров | `product_quant_list()` |
+| ✓ | `/v1/product/quant/info` | Информация об эконом-товаре | `product_quant_info()` |
 </details>
 <details>
 <summary>Работа с отзывами (12/12)</summary>
