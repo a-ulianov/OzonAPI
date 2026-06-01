@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 295 / 447**
+**Реализовано методов: 298 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -817,13 +817,13 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/return/giveout/barcode-reset` | Сгенерировать новый штрихкод | `return_giveout_barcode_reset()` |
 </details>
 <details>
-<summary>Отмены заказов (0/3)</summary>
+<summary>Отмены заказов (3/3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v2/conditional-cancellation/list` | Получить список заявок на отмену rFBS | `conditional_cancellation_list()` |
-| ☐ | `/v2/conditional-cancellation/approve` | Подтвердить заявку на отмену rFBS | `conditional_cancellation_approve()` |
-| ☐ | `/v2/conditional-cancellation/reject` | Отклонить заявку на отмену rFBS | `conditional_cancellation_reject()` |
+| ✓ | `/v2/conditional-cancellation/list` | Получить список заявок на отмену rFBS | `conditional_cancellation_list()` |
+| ✓ | `/v2/conditional-cancellation/approve` | Подтвердить заявку на отмену rFBS | `conditional_cancellation_approve()` |
+| ✓ | `/v2/conditional-cancellation/reject` | Отклонить заявку на отмену rFBS | `conditional_cancellation_reject()` |
 </details>
 <details>
 <summary>Чаты с покупателями (4/4)</summary>
