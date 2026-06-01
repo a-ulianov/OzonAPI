@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 240 / 447**
+**Реализовано методов: 246 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -665,7 +665,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/supplier/available_warehouses` | Загруженность складов Ozon | `supplier_available_warehouses()` |
 </details>
 <details>
-<summary>Создание и управление заявками на поставку FBO (18/29)</summary>
+<summary>Создание и управление заявками на поставку FBO (24/29)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -681,12 +681,12 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create_v1()` |
 | ✓ | `/v1/draft/supply/create/status` | Информация о создании заявки на поставку | `draft_supply_create_status_v1()` |
 | ✓ | `/v2/draft/timeslot/info` | Получить список доступных таймслотов | `draft_timeslot_info()` |
-| ☐ | `/v1/cargoes/create` | Установка грузомест | `cargoes_create()` |
-| ☐ | `/v2/cargoes/create/info` | Получить информацию по установке грузомест | `cargoes_create_info()` |
-| ☐ | `/v1/cargoes/get` | Получить информацию о грузоместах | `cargoes_get()` |
-| ☐ | `/v1/cargoes/delete` | Удалить грузоместо в заявке на поставку | `cargoes_delete()` |
-| ☐ | `/v1/cargoes/delete/status` | Информация о статусе удаления грузоместа | `cargoes_delete_status()` |
-| ☐ | `/v1/cargoes/rules/get` | Чек-лист по установке грузомест FBO | `cargoes_rules_get()` |
+| ✓ | `/v1/cargoes/create` | Установка грузомест | `cargoes_create()` |
+| ✓ | `/v2/cargoes/create/info` | Получить информацию по установке грузомест | `cargoes_create_info()` |
+| ✓ | `/v1/cargoes/get` | Получить информацию о грузоместах | `cargoes_get()` |
+| ✓ | `/v1/cargoes/delete` | Удалить грузоместо в заявке на поставку | `cargoes_delete()` |
+| ✓ | `/v1/cargoes/delete/status` | Информация о статусе удаления грузоместа | `cargoes_delete_status()` |
+| ✓ | `/v1/cargoes/rules/get` | Чек-лист по установке грузомест FBO | `cargoes_rules_get()` |
 | ✓ | `/v1/cargoes-label/create` | Сгенерировать этикетки для грузомест | `cargoes_label_create()` |
 | ✓ | `/v1/cargoes-label/get` | Получить идентификатор этикетки для грузомест | `cargoes_label_get()` |
 | ✓ | `/v1/cargoes-label/file/{file_guid}` | Получить PDF с этикетками грузовых мест | `cargoes_label_file()` |

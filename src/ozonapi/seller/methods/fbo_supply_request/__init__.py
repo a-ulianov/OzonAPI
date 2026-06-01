@@ -5,9 +5,15 @@
 """
 
 from ...core import APIManager
+from .cargoes_create import CargoesCreateMixin
+from .cargoes_create_info import CargoesCreateInfoMixin
+from .cargoes_delete import CargoesDeleteMixin
+from .cargoes_delete_status import CargoesDeleteStatusMixin
+from .cargoes_get import CargoesGetMixin
 from .cargoes_label_create import CargoesLabelCreateMixin
 from .cargoes_label_file import CargoesLabelFileMixin
 from .cargoes_label_get import CargoesLabelGetMixin
+from .cargoes_rules_get import CargoesRulesGetMixin
 from .cluster_list import ClusterListMixin
 from .draft_create import DraftCreateMixin
 from .draft_create_info import DraftCreateInfoMixin
@@ -26,9 +32,15 @@ from .warehouse_fbo_seller_list import WarehouseFboSellerListMixin
 
 
 class SellerFboSupplyRequestAPI(
+    CargoesCreateMixin,
+    CargoesCreateInfoMixin,
+    CargoesDeleteMixin,
+    CargoesDeleteStatusMixin,
+    CargoesGetMixin,
     CargoesLabelCreateMixin,
     CargoesLabelFileMixin,
     CargoesLabelGetMixin,
+    CargoesRulesGetMixin,
     ClusterListMixin,
     DraftCreateMixin,
     DraftCreateInfoMixin,

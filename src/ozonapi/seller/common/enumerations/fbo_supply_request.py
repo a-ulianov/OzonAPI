@@ -58,6 +58,17 @@ class SupplyDeliveryType(str, Enum):
     PICKUP = "PICKUP"
 
 
+class CargoType(str, Enum):
+    """Тип грузоместа при установке грузомест в заявке на поставку FBO.
+
+    Attributes:
+        BOX: Коробка
+        PALLET: Палета
+    """
+    BOX = "BOX"
+    PALLET = "PALLET"
+
+
 class SupplyDropOffWarehouseType(str, Enum):
     """Тип точки отгрузки в заявке на поставку.
 
