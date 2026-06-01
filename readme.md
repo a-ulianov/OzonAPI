@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 329 / 447**
+**Реализовано методов: 333 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -836,14 +836,14 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v3/chat/history` | История чата | `chat_history()` |
 </details>
 <details>
-<summary>Накладные (0/4)</summary>
+<summary>Накладные (4/4)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v2/invoice/create-or-update` | Создать или изменить счёт-фактуру | `invoice_create_or_update()` |
-| ☐ | `/v1/invoice/file/upload` | Загрузка счёта-фактуры | `invoice_file_upload()` |
-| ☐ | `/v2/invoice/get` | Получить информацию о счёте-фактуре | `invoice_get()` |
-| ☐ | `/v1/invoice/delete` | Удалить ссылку на счёт-фактуру | `invoice_delete()` |
+| ✓ | `/v2/invoice/create-or-update` | Создать или изменить счёт-фактуру | `invoice_create_or_update()` |
+| ✓ | `/v1/invoice/file/upload` | Загрузка счёта-фактуры | `invoice_file_upload()` |
+| ✓ | `/v2/invoice/get` | Получить информацию о счёте-фактуре | `invoice_get()` |
+| ✓ | `/v1/invoice/delete` | Удалить ссылку на счёт-фактуру | `invoice_delete()` |
 </details>
 <details>
 <summary>Отчёты (11/11)</summary>
