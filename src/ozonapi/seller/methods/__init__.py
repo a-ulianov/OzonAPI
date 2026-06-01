@@ -22,6 +22,7 @@ __all__ = [
     "SellerPostingAPI",
     "SellerPricesAndStocksAPI",
     "SellerProductAPI",
+    "SellerQuantAPI",
     "SellerQuestionAPI",
     "SellerRFBSDeliveryAPI",
     "SellerRatingAPI",
@@ -56,6 +57,7 @@ from .postings import SellerPostingAPI
 from .prices_and_stocks import SellerPricesAndStocksAPI
 from .pricing_strategies import SellerPricingStrategyAPI
 from .products import SellerProductAPI
+from .quants import SellerQuantAPI
 from .questions import SellerQuestionAPI
 from .rfbs_delivery import SellerRFBSDeliveryAPI
 from .rating import SellerRatingAPI
