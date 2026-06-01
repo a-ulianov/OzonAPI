@@ -15,6 +15,14 @@ __all__ = [
     "PostingUnpaidLegalProductListRequest",
     "PostingUnpaidLegalProduct",
     "PostingUnpaidLegalProductListResponse",
+    "PostingFBSListLastChangedStatusDate",
+    "PostingFBSListFilter",
+    "PostingFBSListWith",
+    "PostingFBSListRequest",
+    "PostingFBSListResponse",
+    "PostingFBSUnfulfilledListFilter",
+    "PostingFBSUnfulfilledListRequest",
+    "PostingFBSUnfulfilledListResponse",
     "PostingFBSAddressee",
     "PostingFBSAnalyticsData",
     "PostingFBSArbitrationRequest",
@@ -61,18 +69,18 @@ __all__ = [
     "PostingFBSTariffication",
     "PostingFBSTarifficationStep",
     "PostingFBSTarifficationCharge",
-    "PostingFBSListRequestFilterLastChangedStatusDate",
-    "PostingFBSListFilter",
-    "PostingFBSListRequest",
-    "PostingFBSListResult",
-    "PostingFBSListResponse",
+    "PostingFBSListV3RequestFilterLastChangedStatusDate",
+    "PostingFBSListV3Filter",
+    "PostingFBSListV3Request",
+    "PostingFBSListV3Result",
+    "PostingFBSListV3Response",
     "PostingFBSMultiBoxQtySetRequest",
     "PostingFBSMultiBoxQtySetResponse",
-    "PostingFBSUnfulfilledListRequest",
-    "PostingFBSUnfulfilledListResponse",
-    "PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate",
-    "PostingFBSUnfulfilledListFilter",
-    "PostingFBSUnfulfilledListResult",
+    "PostingFBSUnfulfilledListV3Request",
+    "PostingFBSUnfulfilledListV3Response",
+    "PostingFBSUnfulfilledListV3RequestFilterLastChangedStatusDate",
+    "PostingFBSUnfulfilledListV3Filter",
+    "PostingFBSUnfulfilledListV3Result",
 ]
 
 from .entities import PostingFBSAddressee, PostingFBSAnalyticsData, PostingFBSBarcodes, PostingFBSCancellation, \
@@ -103,15 +111,15 @@ from .v2__posting_fbs_product_country_list import PostingFBSProductCountryListRe
     PostingFBSProductCountryListRequest
 from .v2__posting_fbs_product_country_set import PostingFBSProductCountrySetResponse, PostingFBSProductCountrySetRequest
 from .v3__posting_fbs_get import PostingFBSGetRequest, PostingFBSGetResponse
-from .v3__posting_fbs_list import PostingFBSListRequestFilterLastChangedStatusDate, \
-    PostingFBSListFilter, PostingFBSListRequest, PostingFBSListResult, PostingFBSListResponse
+from .v3__posting_fbs_list import PostingFBSListV3RequestFilterLastChangedStatusDate, \
+    PostingFBSListV3Filter, PostingFBSListV3Request, PostingFBSListV3Result, PostingFBSListV3Response
 from .v3__posting_multiboxqty_set import PostingFBSMultiBoxQtySetResponse, PostingFBSMultiBoxQtySetRequest
 from .v3__posting_fbs_unfulfilled_list import (
-    PostingFBSUnfulfilledListRequest,
-    PostingFBSUnfulfilledListResponse,
-    PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate,
-    PostingFBSUnfulfilledListFilter,
-    PostingFBSUnfulfilledListResult,
+    PostingFBSUnfulfilledListV3Request,
+    PostingFBSUnfulfilledListV3Response,
+    PostingFBSUnfulfilledListV3RequestFilterLastChangedStatusDate,
+    PostingFBSUnfulfilledListV3Filter,
+    PostingFBSUnfulfilledListV3Result,
 )
 from .v1__posting_fbs_package_label_create import (
     PostingFBSPackageLabelCreateV1Request,
@@ -133,4 +141,16 @@ from .v1__posting_unpaid_legal_product_list import (
     PostingUnpaidLegalProduct,
     PostingUnpaidLegalProductListRequest,
     PostingUnpaidLegalProductListResponse,
+)
+from .v4__posting_fbs_list import (
+    PostingFBSListFilter,
+    PostingFBSListLastChangedStatusDate,
+    PostingFBSListRequest,
+    PostingFBSListResponse,
+    PostingFBSListWith,
+)
+from .v4__posting_fbs_unfulfilled_list import (
+    PostingFBSUnfulfilledListFilter,
+    PostingFBSUnfulfilledListRequest,
+    PostingFBSUnfulfilledListResponse,
 )

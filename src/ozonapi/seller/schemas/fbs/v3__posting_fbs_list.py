@@ -10,7 +10,7 @@ from ..entities.postings import PostingFilter, PostingRequest
 from ..mixins import DateTimeSerializationMixin
 
 
-class PostingFBSListRequestFilterLastChangedStatusDate(DateTimeSerializationMixin, BaseModel):
+class PostingFBSListV3RequestFilterLastChangedStatusDate(DateTimeSerializationMixin, BaseModel):
     """Период, в который последний раз изменялся статус у отправлений.
 
     Attributes:
@@ -35,7 +35,7 @@ class PostingFBSListRequestFilterLastChangedStatusDate(DateTimeSerializationMixi
     ])
 
 
-class PostingFBSListFilter(PostingFilter):
+class PostingFBSListV3Filter(PostingFilter):
     """Фильтр запроса на получение информации об отправлениях FBS.
 
     Attributes:
@@ -74,7 +74,7 @@ class PostingFBSListFilter(PostingFilter):
     product_sku: Optional[int] = Field(
         None, description="Идентификатор товара в системе Ozon."
     )
-    last_changed_status_date: Optional[PostingFBSListRequestFilterLastChangedStatusDate] = Field(
+    last_changed_status_date: Optional[PostingFBSListV3RequestFilterLastChangedStatusDate] = Field(
         None, description="Период, в который последний раз изменялся статус у отправлений."
     )
     is_blr_traceable: Optional[bool] = Field(
@@ -85,7 +85,7 @@ class PostingFBSListFilter(PostingFilter):
     )
 
 
-class PostingFBSListRequest(PostingRequest):
+class PostingFBSListV3Request(PostingRequest):
     """Описывает схему запроса на получение информации об отправлениях FBS.
 
     Attributes:
@@ -95,7 +95,7 @@ class PostingFBSListRequest(PostingRequest):
         offset: Количество элементов, которое будет пропущено в ответе
         with_: Дополнительные поля, которые нужно добавить в ответ
     """
-    filter: PostingFBSListFilter = Field(
+    filter: PostingFBSListV3Filter = Field(
         ..., description="Фильтр запроса."
     )
     with_: Optional[PostingFBSFilterWith] = Field(
@@ -104,7 +104,7 @@ class PostingFBSListRequest(PostingRequest):
     )
 
 
-class PostingFBSListResult(BaseModel):
+class PostingFBSListV3Result(BaseModel):
     """Информация об отправлениях и их количестве.
 
     Attributes:
@@ -119,12 +119,12 @@ class PostingFBSListResult(BaseModel):
     )
 
 
-class PostingFBSListResponse(BaseModel):
+class PostingFBSListV3Response(BaseModel):
     """Описывает схему ответа на запрос информации об отправлениях FBS.
 
     Attributes:
         result: Содержимое ответа
     """
-    result: PostingFBSListResult = Field(
+    result: PostingFBSListV3Result = Field(
         ..., description="Содержимое ответа."
     )

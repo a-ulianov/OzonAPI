@@ -8,6 +8,7 @@ from .posting_fbs_cancel_reason_list import PostingFBSCancelReasonListMixin
 from .posting_fbs_get import PostingFBSGetMixin
 from .posting_fbs_get_by_barcode import PostingFBSGetByBarcodeMixin
 from .posting_fbs_list import PostingFBSListMixin
+from .posting_fbs_list_v3 import PostingFBSListV3Mixin
 from .posting_fbs_multiboxqty_set import PostingFBSMultiBoxQtySetMixin
 from .posting_fbs_package_label import PostingFBSPackageLabelMixin
 from .posting_fbs_package_label_create import PostingFBSPackageLabelCreateMixin
@@ -20,6 +21,7 @@ from .posting_fbs_product_country_list import PostingFBSProductCountryListMixin
 from .posting_fbs_product_country_set import PostingFBSProductCountrySetMixin
 from .posting_fbs_restrictions import PostingFBSRestrictionsMixin
 from .posting_fbs_unfulfilled_list import PostingFBSUnfulfilledListMixin
+from .posting_fbs_unfulfilled_list_v3 import PostingFBSUnfulfilledListV3Mixin
 from .posting_global_etgb import PostingGlobalEtgbMixin
 from .posting_unpaid_legal_product_list import PostingUnpaidLegalProductListMixin
 
@@ -33,6 +35,7 @@ class SellerFBSAPI(
     PostingFBSGetByBarcodeMixin,
     PostingFBSGetMixin,
     PostingFBSListMixin,
+    PostingFBSListV3Mixin,
     PostingFBSMultiBoxQtySetMixin,
     PostingFBSPackageLabelCreateMixin,
     PostingFBSPackageLabelCreateV1Mixin,
@@ -45,6 +48,7 @@ class SellerFBSAPI(
     PostingFBSProductCountrySetMixin,
     PostingFBSRestrictionsMixin,
     PostingFBSUnfulfilledListMixin,
+    PostingFBSUnfulfilledListV3Mixin,
     PostingGlobalEtgbMixin,
     PostingUnpaidLegalProductListMixin,
 ):
