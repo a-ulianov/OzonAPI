@@ -27,6 +27,7 @@ from .methods import (
     SellerPostingAPI,
     SellerRFBSDeliveryAPI,
     SellerRatingAPI,
+    SellerReceiptAPI,
     SellerReportAPI,
     SellerFinanceAPI,
 )
@@ -58,6 +59,7 @@ class SellerAPI(
     SellerQuestionAPI,
     SellerRFBSDeliveryAPI,
     SellerRatingAPI,
+    SellerReceiptAPI,
     SellerReportAPI,
     SellerReturnsAPI,
     SellerReviewAPI,
