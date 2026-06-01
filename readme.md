@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 404 / 447**
+**Реализовано методов: 414 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1031,20 +1031,20 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/draft/list` | Список черновиков поставки | `fbp_draft_list()` |
 </details>
 <details>
-<summary>Работа с FBP-черновиками с доставкой direct (0/10)</summary>
+<summary>Работа с FBP-черновиками с доставкой direct (10/10)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/draft/direct/seller-dlv/create` | Создать черновик с доставкой силами продавца | `fbp_draft_direct_seller_dlv_create()` |
-| ☐ | `/v1/fbp/draft/direct/seller-dlv/edit` | Обновить информацию о доставке силами продавца в черновике | `fbp_draft_direct_seller_dlv_edit()` |
-| ☐ | `/v1/fbp/draft/direct/timeslot/edit` | Отредактировать таймслот в черновике | `fbp_draft_direct_timeslot_edit()` |
-| ☐ | `/v1/fbp/draft/direct/timeslot/get` | Получить список таймслотов для прямой поставки | `fbp_draft_direct_timeslot_get()` |
-| ☐ | `/v1/fbp/draft/direct/create` | Создать черновик заявки на поставку без указания способа доставки | `fbp_draft_direct_create()` |
-| ☐ | `/v1/fbp/draft/direct/delete` | Удалить черновик заявки на поставку | `fbp_draft_direct_delete()` |
-| ☐ | `/v1/fbp/draft/direct/product/validate` | Проверить список товаров для склада партнёра | `fbp_draft_direct_product_validate()` |
-| ☐ | `/v1/fbp/draft/direct/registrate` | Перевести черновик в действующую поставку | `fbp_draft_direct_registrate()` |
-| ☐ | `/v1/fbp/draft/direct/tpl-dlv/create` | Создать черновик заявки на доставку сторонней транспортной компанией | `fbp_draft_direct_tpl_dlv_create()` |
-| ☐ | `/v1/fbp/draft/direct/tpl-dlv/edit` | Редактировать черновик поставки со способом доставки сторонней транспортной компанией | `fbp_draft_direct_tpl_dlv_edit()` |
+| ✓ | `/v1/fbp/draft/direct/seller-dlv/create` | Создать черновик с доставкой силами продавца | `fbp_draft_direct_seller_dlv_create()` |
+| ✓ | `/v1/fbp/draft/direct/seller-dlv/edit` | Обновить информацию о доставке силами продавца в черновике | `fbp_draft_direct_seller_dlv_edit()` |
+| ✓ | `/v1/fbp/draft/direct/timeslot/edit` | Отредактировать таймслот в черновике | `fbp_draft_direct_timeslot_edit()` |
+| ✓ | `/v1/fbp/draft/direct/timeslot/get` | Получить список таймслотов для прямой поставки | `fbp_draft_direct_timeslot_get()` |
+| ✓ | `/v1/fbp/draft/direct/create` | Создать черновик заявки на поставку без указания способа доставки | `fbp_draft_direct_create()` |
+| ✓ | `/v1/fbp/draft/direct/delete` | Удалить черновик заявки на поставку | `fbp_draft_direct_delete()` |
+| ✓ | `/v1/fbp/draft/direct/product/validate` | Проверить список товаров для склада партнёра | `fbp_draft_direct_product_validate()` |
+| ✓ | `/v1/fbp/draft/direct/registrate` | Перевести черновик в действующую поставку | `fbp_draft_direct_registrate()` |
+| ✓ | `/v1/fbp/draft/direct/tpl-dlv/create` | Создать черновик заявки на доставку сторонней транспортной компанией | `fbp_draft_direct_tpl_dlv_create()` |
+| ✓ | `/v1/fbp/draft/direct/tpl-dlv/edit` | Редактировать черновик поставки со способом доставки сторонней транспортной компанией | `fbp_draft_direct_tpl_dlv_edit()` |
 </details>
 <details>
 <summary>Работа с FBP-черновиками c доставкой drop-off (0/8)</summary>
