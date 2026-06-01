@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 393 / 447**
+**Реализовано методов: 394 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -521,11 +521,11 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/pricing-strategy/delete` | Удалить стратегию | `strategy_delete()` |
 </details>
 <details>
-<summary>Сертификаты брендов (0/1)</summary>
+<summary>Сертификаты брендов (1/1)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/brand/company-certification/list` | Список сертифицируемых брендов | `brand_company_certification_list()` |
+| ✓ | `/v1/brand/company-certification/list` | Список сертифицируемых брендов | `brand_company_certification_list()` |
 </details>
 <details>
 <summary>Сертификаты качества (15/15)</summary>

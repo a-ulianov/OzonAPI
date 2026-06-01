@@ -4,6 +4,7 @@ __all__ = [
     "SellerApiKeyAPI",
     "SellerBarcodeAPI",
     "SellerBetaAPI",
+    "SellerBrandAPI",
     "SellerCancellationAPI",
     "SellerCategoryAPI",
     "SellerCertificateAPI",
@@ -43,6 +44,7 @@ from .api_key import SellerApiKeyAPI
 from .attributes_and_characteristics import SellerCategoryAPI
 from .barcodes import SellerBarcodeAPI
 from .beta import SellerBetaAPI
+from .brands import SellerBrandAPI
 from .cancellations import SellerCancellationAPI
 from .certificates import SellerCertificateAPI
 from .chats import SellerChatAPI
