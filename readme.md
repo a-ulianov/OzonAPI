@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 391 / 447**
+**Реализовано методов: 393 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -438,7 +438,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/description-category/attribute/values/search` | Поиск по справочным значениям характеристики | `description_category_attribute_values_search()` |
 </details>
 <details>
-<summary>Загрузка и обновление товаров (18/20)</summary>
+<summary>Загрузка и обновление товаров (20/20)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -460,8 +460,8 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/info/subscription` | Количество подписавшихся на товар пользователей | `product_info_subscription()` |
 | ✓ | `/v1/product/related-sku/get` | Получить связанные SKU | `product_related_sku_get()` |
 | ✓ | `/v2/product/pictures/info` | Получить изображения товаров | `product_pictures_info()` |
-| ☐ | `/v1/product/info/wrong-volume` | Список товаров с некорректными ОВХ | `product_info_wrong_volume()` |
-| ☐ | `/v1/product/placement-zone/info` | Получить зоны размещения товаров по SKU перед поставкой | `product_placement_zone_info()` |
+| ✓ | `/v1/product/info/wrong-volume` | Список товаров с некорректными ОВХ | `product_info_wrong_volume()` |
+| ✓ | `/v1/product/placement-zone/info` | Получить зоны размещения товаров по SKU перед поставкой | `product_placement_zone_info()` |
 </details>
 <details>
 <summary>Штрихкоды товаров (2/2)</summary>
