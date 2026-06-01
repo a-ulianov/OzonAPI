@@ -12,7 +12,7 @@ from ...common.enumerations.requests import SortingDirection
 from ..entities.common import RequestOffset
 
 
-class PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate(BaseModel):
+class PostingFBSUnfulfilledListV3RequestFilterLastChangedStatusDate(BaseModel):
     """Период, в который последний раз изменялся статус у отправлений.
 
     Attributes:
@@ -33,7 +33,7 @@ class PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate(BaseModel):
     )
 
 
-class PostingFBSUnfulfilledListFilter(DateTimeSerializationMixin, BaseModel):
+class PostingFBSUnfulfilledListV3Filter(DateTimeSerializationMixin, BaseModel):
     """Фильтр запроса на получение информации о необработанных отправлениях FBS и rFBS
     за указанный период времени (максимум 1 год).
 
@@ -84,7 +84,7 @@ class PostingFBSUnfulfilledListFilter(DateTimeSerializationMixin, BaseModel):
     warehouse_id: Optional[list[int]] = Field(
         default_factory=list, description="Идентификатор склада. Можно получить с помощью метода warehouse_list()."
     )
-    last_changed_status_date: Optional[PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate] = Field(
+    last_changed_status_date: Optional[PostingFBSUnfulfilledListV3RequestFilterLastChangedStatusDate] = Field(
         None, description="Период, в который последний раз изменялся статус у отправлений."
     )
 
@@ -93,7 +93,7 @@ class PostingFBSUnfulfilledListFilter(DateTimeSerializationMixin, BaseModel):
     ])
 
     @model_validator(mode='after')
-    def validate_exclusive_filters(self) -> 'PostingFBSUnfulfilledListFilter':
+    def validate_exclusive_filters(self) -> 'PostingFBSUnfulfilledListV3Filter':
         cutoff_filled = self.cutoff_from is not None or self.cutoff_to is not None
 
         delivering_date_filled = self.delivering_date_from is not None or self.delivering_date_to is not None
@@ -111,7 +111,7 @@ class PostingFBSUnfulfilledListFilter(DateTimeSerializationMixin, BaseModel):
         return self
 
 
-class PostingFBSUnfulfilledListRequest(RequestOffset):
+class PostingFBSUnfulfilledListV3Request(RequestOffset):
     """Описывает схему запроса на получение информации о необработанных отправлениях FBS и rFBS
     за указанный период времени (максимум 1 год).
 
@@ -127,7 +127,7 @@ class PostingFBSUnfulfilledListRequest(RequestOffset):
     dir: Optional[SortingDirection] = Field(
         SortingDirection.ASC, description="Направление сортировки."
     )
-    filter: PostingFBSUnfulfilledListFilter = Field(
+    filter: PostingFBSUnfulfilledListV3Filter = Field(
         ..., description="Фильтр запроса. Используйте фильтр либо cutoff, либо delivering_date. Иначе будет ошибка."
     )
     limit: Optional[int] = Field(
@@ -140,7 +140,7 @@ class PostingFBSUnfulfilledListRequest(RequestOffset):
     )
 
 
-class PostingFBSUnfulfilledListResult(BaseModel):
+class PostingFBSUnfulfilledListV3Result(BaseModel):
     """Информация о необработанных отправлениях и их количестве.
 
     Attributes:
@@ -155,12 +155,12 @@ class PostingFBSUnfulfilledListResult(BaseModel):
     )
 
 
-class PostingFBSUnfulfilledListResponse(BaseModel):
+class PostingFBSUnfulfilledListV3Response(BaseModel):
     """Описывает схему ответа на запрос информации о необработанных отправлениях FBS и rFBS.
 
     Attributes:
         result: Содержимое ответа
     """
-    result: PostingFBSUnfulfilledListResult = Field(
+    result: PostingFBSUnfulfilledListV3Result = Field(
         ..., description="Содержимое ответа."
     )

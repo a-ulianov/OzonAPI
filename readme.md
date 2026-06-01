@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 266 / 447**
+**Реализовано методов: 268 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -601,14 +601,14 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/warehouse/rfbs/unpause` | Снять rFBS-склад с паузы | `warehouse_rfbs_unpause()` |
 </details>
 <details>
-<summary>Обработка заказов FBS и rFBS (22/24)</summary>
+<summary>Обработка заказов FBS и rFBS (24/24)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ✓ | `/v3/posting/fbs/unfulfilled/list` | Список необработанных отправлений | `posting_fbs_unfulfilled_list()` |
-| ☐ | `/v4/posting/fbs/unfulfilled/list` | Получить список необработанных отправлений | `posting_fbs_unfulfilled_list()` |
-| ✓ | `/v3/posting/fbs/list` | Список отправлений | `posting_fbs_list()` |
-| ☐ | `/v4/posting/fbs/list` | Получить список отправлений | `posting_fbs_list()` |
+| ✓ | `/v3/posting/fbs/unfulfilled/list` | Список необработанных отправлений | `posting_fbs_unfulfilled_list_v3()` |
+| ✓ | `/v4/posting/fbs/unfulfilled/list` | Получить список необработанных отправлений | `posting_fbs_unfulfilled_list()` |
+| ✓ | `/v3/posting/fbs/list` | Список отправлений | `posting_fbs_list_v3()` |
+| ✓ | `/v4/posting/fbs/list` | Получить список отправлений | `posting_fbs_list()` |
 | ✓ | `/v3/posting/fbs/get` | Получить информацию об отправлении по идентификатору | `posting_fbs_get()` |
 | ✓ | `/v2/posting/fbs/get-by-barcode` | Получить информацию об отправлении по штрихкоду | `posting_fbs_get_by_barcode()` |
 | ✓ | `/v3/posting/multiboxqty/set` | Указать количество коробок для многокоробочных отправлений | `posting_fbs_multiboxqty_set()` |
