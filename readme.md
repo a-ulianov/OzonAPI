@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 262 / 447**
+**Реализовано методов: 266 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -601,7 +601,7 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/warehouse/rfbs/unpause` | Снять rFBS-склад с паузы | `warehouse_rfbs_unpause()` |
 </details>
 <details>
-<summary>Обработка заказов FBS и rFBS (18/24)</summary>
+<summary>Обработка заказов FBS и rFBS (22/24)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -616,7 +616,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/product/country/set` | Добавить информацию о стране-изготовителе товара | `posting_fbs_product_country_set()` |
 | ✓ | `/v1/posting/fbs/restrictions` | Получить ограничения пункта приёма | `posting_fbs_restrictions()` |
 | ✓ | `/v2/posting/fbs/package-label` | Напечатать этикетку | `posting_fbs_package_label()` |
-| ☐ | `/v1/posting/fbs/package-label/create` | Создать задание на выгрузку этикеток | `posting_fbs_package_label_create()` |
+| ✓ | `/v1/posting/fbs/package-label/create` | Создать задание на выгрузку этикеток | `posting_fbs_package_label_create_v1()` |
 | ✓ | `/v2/posting/fbs/package-label/create` | Создать задание на формирование этикеток | `posting_fbs_package_label_create()` |
 | ✓ | `/v1/posting/fbs/package-label/get` | Получить файл с этикетками | `posting_fbs_package_label_get()` |
 | ✓ | `/v1/posting/fbs/cancel-reason` | Причины отмены отправления | `posting_fbs_cancel_reason()` |
@@ -625,9 +625,9 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/posting/fbs/cancel` | Отменить отправление | `posting_fbs_cancel()` |
 | ✓ | `/v2/posting/fbs/arbitration` | Открыть спор по отправлению | `posting_fbs_arbitration()` |
 | ✓ | `/v2/posting/fbs/awaiting-delivery` | Передать отправление к отгрузке | `posting_fbs_awaiting_delivery()` |
-| ☐ | `/v1/posting/fbs/pick-up-code/verify` | Проверить код курьера | `posting_fbs_pick_up_code_verify()` |
-| ☐ | `/v1/posting/global/etgb` | Таможенные декларации ETGB | `posting_global_etgb()` |
-| ☐ | `/v1/posting/unpaid-legal/product/list` | Список неоплаченных товаров, заказанных юридическими лицами | `posting_unpaid_legal_product_list()` |
+| ✓ | `/v1/posting/fbs/pick-up-code/verify` | Проверить код курьера | `posting_fbs_pick_up_code_verify()` |
+| ✓ | `/v1/posting/global/etgb` | Таможенные декларации ETGB | `posting_global_etgb()` |
+| ✓ | `/v1/posting/unpaid-legal/product/list` | Список неоплаченных товаров, заказанных юридическими лицами | `posting_unpaid_legal_product_list()` |
 | ✓ | `/v2/posting/fbs/product/change` | Изменить вес весовых товаров (устарел, удалён из API Ozon) | `posting_fbs_product_change()` |
 </details>
 <details>

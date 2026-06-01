@@ -2,6 +2,19 @@
 https://docs.ozon.ru/api/seller/?__rr=1#tag/FBS
 """
 __all__ = [
+    "PostingFBSPackageLabelCreateV1Request",
+    "PostingFBSPackageLabelCreateV1Result",
+    "PostingFBSPackageLabelCreateV1Response",
+    "PostingFBSPickUpCodeVerifyRequest",
+    "PostingFBSPickUpCodeVerifyResponse",
+    "PostingGlobalEtgbDate",
+    "PostingGlobalEtgbRequest",
+    "PostingGlobalEtgbDeclaration",
+    "PostingGlobalEtgbResult",
+    "PostingGlobalEtgbResponse",
+    "PostingUnpaidLegalProductListRequest",
+    "PostingUnpaidLegalProduct",
+    "PostingUnpaidLegalProductListResponse",
     "PostingFBSAddressee",
     "PostingFBSAnalyticsData",
     "PostingFBSArbitrationRequest",
@@ -99,4 +112,25 @@ from .v3__posting_fbs_unfulfilled_list import (
     PostingFBSUnfulfilledListRequestFilterLastChangedStatusDate,
     PostingFBSUnfulfilledListFilter,
     PostingFBSUnfulfilledListResult,
+)
+from .v1__posting_fbs_package_label_create import (
+    PostingFBSPackageLabelCreateV1Request,
+    PostingFBSPackageLabelCreateV1Response,
+    PostingFBSPackageLabelCreateV1Result,
+)
+from .v1__posting_fbs_pick_up_code_verify import (
+    PostingFBSPickUpCodeVerifyRequest,
+    PostingFBSPickUpCodeVerifyResponse,
+)
+from .v1__posting_global_etgb import (
+    PostingGlobalEtgbDate,
+    PostingGlobalEtgbDeclaration,
+    PostingGlobalEtgbRequest,
+    PostingGlobalEtgbResponse,
+    PostingGlobalEtgbResult,
+)
+from .v1__posting_unpaid_legal_product_list import (
+    PostingUnpaidLegalProduct,
+    PostingUnpaidLegalProductListRequest,
+    PostingUnpaidLegalProductListResponse,
 )
