@@ -41,6 +41,12 @@ __all__ = [
     "ProductInfoDiscountedItem",
     "ProductUpdateDiscountRequest",
     "ProductUpdateDiscountResponse",
+    "ProductInfoWarehouseStocksRequest",
+    "ProductInfoWarehouseStocksItem",
+    "ProductInfoWarehouseStocksResponse",
+    "ProductInfoStocksByWarehouseFBSV1Request",
+    "ProductInfoStocksByWarehouseFBSV1Item",
+    "ProductInfoStocksByWarehouseFBSV1Response",
 ]
 
 from .v1__product_import_prices import (
@@ -99,4 +105,14 @@ from .v5__product_info_prices import (
     ProductInfoPricesIndexData,
     ProductInfoPricesPriceIndexes,
     ProductInfoPricesItem,
+)
+from .v1__product_info_warehouse_stocks import (
+    ProductInfoWarehouseStocksItem,
+    ProductInfoWarehouseStocksRequest,
+    ProductInfoWarehouseStocksResponse,
+)
+from .v1__product_info_stocks_by_warehouse_fbs import (
+    ProductInfoStocksByWarehouseFBSV1Item,
+    ProductInfoStocksByWarehouseFBSV1Request,
+    ProductInfoStocksByWarehouseFBSV1Response,
 )
