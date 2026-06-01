@@ -15,6 +15,7 @@ from .product_list import ProductListMixin
 from .product_pictures_import import ProductPicturesImportMixin
 from .product_pictures_info import ProductPicturesInfoMixin
 from .product_rating_by_sku import ProductRatingBySkuMixin
+from .product_prices_details import ProductPricesDetailsMixin
 from .product_related_sku_get import ProductRelatedSkuGetMixin
 from .product_unarchive import ProductUnarchiveMixin
 from .product_update_offer_id import ProductUpdateOfferIdMixin
@@ -35,6 +36,7 @@ class SellerProductAPI(
     ProductListMixin,
     ProductPicturesImportMixin,
     ProductPicturesInfoMixin,
+    ProductPricesDetailsMixin,
     ProductRatingBySkuMixin,
     ProductRelatedSkuGetMixin,
     ProductUnarchiveMixin,

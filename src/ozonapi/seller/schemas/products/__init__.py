@@ -2,6 +2,12 @@
 https://docs.ozon.ru/api/seller/?__rr=1#tag/ProductAPI
 """
 __all__ = [
+    "ProductPricesDetailsRequest",
+    "ProductPricesDetailsMoney",
+    "ProductPricesDetailsIndexData",
+    "ProductPricesDetailsPriceIndex",
+    "ProductPricesDetailsPrice",
+    "ProductPricesDetailsResponse",
     "ProductArchiveRequest",
     "ProductArchiveResponse",
     "ProductAttributesUpdateRequest",
@@ -179,10 +185,18 @@ from .v3__product_list import (
 )
 from .v4__product_info_limit import ProductInfoLimitResponse
 from .v4__product_info_attributes import (
-    ProductInfoAttributesResponse, 
+    ProductInfoAttributesResponse,
     ProductInfoAttributesRequest,
     ProductInfoAttributesItem,
     ProductInfoAttributesFilter,
     ProductInfoAttributesPdfFile,
     ProductInfoAttributesModelInfo,
+)
+from .v1__product_prices_details import (
+    ProductPricesDetailsIndexData,
+    ProductPricesDetailsMoney,
+    ProductPricesDetailsPrice,
+    ProductPricesDetailsPriceIndex,
+    ProductPricesDetailsRequest,
+    ProductPricesDetailsResponse,
 )

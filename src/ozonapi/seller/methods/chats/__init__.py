@@ -7,14 +7,20 @@ from ...core import APIManager
 from .chat_history import ChatHistoryMixin
 from .chat_list import ChatListMixin
 from .chat_list_v2 import ChatListV2Mixin
+from .chat_read import ChatReadMixin
 from .chat_send_file import ChatSendFileMixin
+from .chat_send_message import ChatSendMessageMixin
+from .chat_start import ChatStartMixin
 
 
 class SellerChatAPI(
     ChatHistoryMixin,
     ChatListMixin,
     ChatListV2Mixin,
+    ChatReadMixin,
     ChatSendFileMixin,
+    ChatSendMessageMixin,
+    ChatStartMixin,
     APIManager,
 ):
     """Класс-агрегатор методов раздела Чаты с покупателями.

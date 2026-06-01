@@ -16,12 +16,32 @@ __all__ = [
     "ChatSendFileRequest",
     "ChatSendFileResponse",
     "ChatListFilter",
+    "ChatSendMessageRequest",
+    "ChatSendMessageResponse",
+    "ChatStartRequest",
+    "ChatStartResult",
+    "ChatStartResponse",
+    "ChatReadRequest",
+    "ChatReadResponse",
 ]
 
 from .entities import ChatListFilter
 from .v1__chat_send_file import (
     ChatSendFileRequest,
     ChatSendFileResponse,
+)
+from .v1__chat_send_message import (
+    ChatSendMessageRequest,
+    ChatSendMessageResponse,
+)
+from .v1__chat_start import (
+    ChatStartRequest,
+    ChatStartResponse,
+    ChatStartResult,
+)
+from .v2__chat_read import (
+    ChatReadRequest,
+    ChatReadResponse,
 )
 from .v2__chat_list import (
     ChatListV2Item,
