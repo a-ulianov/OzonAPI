@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 333 / 447**
+**Реализовано методов: 336 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -888,13 +888,13 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/finance/decompensation` | Отчёт о декомпенсациях | `finance_decompensation()` |
 </details>
 <details>
-<summary>Чеки (0/3)</summary>
+<summary>Чеки (3/3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/receipts/get` | Получить чек в формате PDF | `receipts_get()` |
-| ☐ | `/v1/receipts/seller/list` | Получить список чеков продавца | `receipts_seller_list()` |
-| ☐ | `/v1/receipts/upload` | Загрузить чек | `receipts_upload()` |
+| ✓ | `/v1/receipts/get` | Получить чек в формате PDF | `receipts_get()` |
+| ✓ | `/v1/receipts/seller/list` | Получить список чеков продавца | `receipts_seller_list()` |
+| ✓ | `/v1/receipts/upload` | Загрузить чек | `receipts_upload()` |
 </details>
 <details>
 <summary>Рейтинг продавца (4/4)</summary>
