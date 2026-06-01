@@ -126,3 +126,109 @@ class DiscountTaskResponse(BaseModel):
     result: Optional[DiscountTaskResult] = Field(
         None, description="Результат обработки заявок на скидку."
     )
+
+
+class ActionsAutoAddProduct(BaseModel):
+    """Товар автодобавления в акцию.
+
+    Notes:
+        • Поле `add_mode` присутствует только в ответе метода
+          `actions_auto_add_products_list()`.
+
+    Attributes:
+        product_id: Идентификатор товара
+        sku: SKU товара
+        offer_id: Идентификатор товара в системе продавца — артикул
+        name: Название товара
+        currency: Валюта цен
+        price: Текущая цена товара
+        base_price: Базовая цена товара
+        marketplace_seller_price: Цена товара у продавца на маркетплейсе
+        max_discount_price: Максимально возможная цена товара по акции
+        min_seller_price: Минимальная цена продавца
+        action_price_to_auto_add: Цена по акции для автодобавления
+        min_action_quantity: Минимальное количество товара для участия в акции
+        quantity_to_auto_add: Количество товара для автодобавления
+        add_mode: Режим добавления товара в акцию
+    """
+
+    product_id: Optional[int] = Field(
+        None, description="Идентификатор товара."
+    )
+    sku: Optional[int] = Field(
+        None, description="SKU товара."
+    )
+    offer_id: Optional[str] = Field(
+        None, description="Идентификатор товара в системе продавца — артикул."
+    )
+    name: Optional[str] = Field(
+        None, description="Название товара."
+    )
+    currency: Optional[str] = Field(
+        None, description="Валюта цен."
+    )
+    price: Optional[float] = Field(
+        None, description="Текущая цена товара."
+    )
+    base_price: Optional[float] = Field(
+        None, description="Базовая цена товара."
+    )
+    marketplace_seller_price: Optional[float] = Field(
+        None, description="Цена товара у продавца на маркетплейсе."
+    )
+    max_discount_price: Optional[float] = Field(
+        None, description="Максимально возможная цена товара по акции."
+    )
+    min_seller_price: Optional[float] = Field(
+        None, description="Минимальная цена продавца."
+    )
+    action_price_to_auto_add: Optional[float] = Field(
+        None, description="Цена по акции для автодобавления."
+    )
+    min_action_quantity: Optional[int] = Field(
+        None, description="Минимальное количество товара для участия в акции."
+    )
+    quantity_to_auto_add: Optional[int] = Field(
+        None, description="Количество товара для автодобавления."
+    )
+    add_mode: Optional[str] = Field(
+        None, description="Режим добавления товара в акцию (только в ответе `list`)."
+    )
+
+
+class ActionsAutoAddPriceEntry(BaseModel):
+    """Пара «идентификатор товара — цена» в ответе обновления автодобавления.
+
+    Attributes:
+        key: Идентификатор товара
+        value: Цена товара
+    """
+
+    key: Optional[int] = Field(
+        None, description="Идентификатор товара."
+    )
+    value: Optional[float] = Field(
+        None, description="Цена товара."
+    )
+
+
+class ActionsAutoAddRejected(BaseModel):
+    """Товар, который не удалось добавить или обновить в автодобавлении.
+
+    Attributes:
+        product_id: Идентификатор товара
+        code: Код ошибки
+        reason: Текст причины отклонения
+    """
+
+    product_id: Optional[int] = Field(
+        None, description="Идентификатор товара."
+    )
+    code: Optional[str] = Field(
+        None, description="Код ошибки: `NOT_FOUND`, `NO_CHANGES`, `STOCK_REQUIRED`, "
+                          "`INVALID_ACTION_PRICE`, `MAX_ACTION_PRICE`, "
+                          "`REJECTED_LOW_PRICE` или `INVALID_CURRENCY`."
+    )
+    reason: Optional[str] = Field(
+        None, description="Текст причины отклонения."
+    )

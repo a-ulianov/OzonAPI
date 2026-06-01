@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 372 / 447**
+**Реализовано методов: 376 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -999,14 +999,14 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/seller-actions/voucher/get` | Получить файл с промокодами в формате CSV | `seller_actions_voucher_get()` |
 </details>
 <details>
-<summary>Акции Ozon (0/4)</summary>
+<summary>Акции Ozon (4/4)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/actions/auto-add/products/list` | Получить список товаров из автодобавления в акцию | `actions_auto_add_products_list()` |
-| ☐ | `/v1/actions/auto-add/products/candidates` | Получить список доступных товаров для автодобавления в акцию | `actions_auto_add_products_candidates()` |
-| ☐ | `/v1/actions/auto-add/products/delete` | Удалить товары из автодобавления в акцию | `actions_auto_add_products_delete()` |
-| ☐ | `/v1/actions/auto-add/products/update` | Добавить или обновить товары в автодобавлении в акцию | `actions_auto_add_products_update()` |
+| ✓ | `/v1/actions/auto-add/products/list` | Получить список товаров из автодобавления в акцию | `actions_auto_add_products_list()` |
+| ✓ | `/v1/actions/auto-add/products/candidates` | Получить список доступных товаров для автодобавления в акцию | `actions_auto_add_products_candidates()` |
+| ✓ | `/v1/actions/auto-add/products/delete` | Удалить товары из автодобавления в акцию | `actions_auto_add_products_delete()` |
+| ✓ | `/v1/actions/auto-add/products/update` | Добавить или обновить товары в автодобавлении в акцию | `actions_auto_add_products_update()` |
 </details>
 <details>
 <summary>Работа с пуш-уведомлениями (7/7)</summary>
