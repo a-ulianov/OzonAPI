@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 343 / 447**
+**Реализовано методов: 345 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -907,12 +907,12 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/rating/index/fbs/posting/list` | Список отправлений, которые повлияли на индекс ошибок FBS и rFBS | `rating_index_fbs_posting_list()` |
 </details>
 <details>
-<summary>Работа с цифровыми товарами (0/2)</summary>
+<summary>Работа с цифровыми товарами (2/2)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/posting/digital/codes/upload` | Загрузить коды цифровых товаров для отправления | `posting_digital_codes_upload()` |
-| ☐ | `/v1/product/digital/stocks/import` | Обновить количество цифровых товаров | `product_digital_stocks_import()` |
+| ✓ | `/v1/posting/digital/codes/upload` | Загрузить коды цифровых товаров для отправления | `posting_digital_codes_upload()` |
+| ✓ | `/v1/product/digital/stocks/import` | Обновить количество цифровых товаров | `product_digital_stocks_import()` |
 </details>
 <details>
 <summary>Прочие методы (14/14)</summary>
