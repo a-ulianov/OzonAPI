@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 303 / 447**
+**Реализовано методов: 304 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -644,12 +644,12 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/polygon/time/set` | Установить новое время доставки в полигоне | `polygon_time_set()` |
 </details>
 <details>
-<summary>Доставка FBO (14/15)</summary>
+<summary>Доставка FBO (15/15)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ✓ | `/v2/posting/fbo/list` | Список отправлений | `posting_fbo_list()` |
-| ☐ | `/v3/posting/fbo/list` | Получить список отправлений | `posting_fbo_list()` |
+| ✓ | `/v2/posting/fbo/list` | Список отправлений | `posting_fbo_list_v2()` |
+| ✓ | `/v3/posting/fbo/list` | Получить список отправлений | `posting_fbo_list()` |
 | ✓ | `/v2/posting/fbo/get` | Информация об отправлении | `posting_fbo_get()` |
 | ✓ | `/v1/posting/fbo/cancel-reason/list` | Причины отмены отправлений по схеме FBO | `posting_fbo_cancel_reason_list()` |
 | ✓ | `/v1/supply-order/status/counter` | Количество заявок по статусам | `supply_order_status_counter()` |
