@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 251 / 447**
+**Реализовано методов: 255 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -1171,14 +1171,14 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/delivery/point/list` | Получить список всех точек самовывоза | `delivery_point_list()` |
 </details>
 <details>
-<summary>Заказы (0/4)</summary>
+<summary>Заказы (4/4)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/order/cancel` | Метод отмены заказа | `order_cancel()` |
-| ☐ | `/v1/order/cancel/check` | Проверка доступности отмены | `order_cancel_check()` |
-| ☐ | `/v1/order/cancel/status` | Статус отмены заказа | `order_cancel_status()` |
-| ☐ | `/v2/order/create` | Создать заказ | `order_create()` |
+| ✓ | `/v1/order/cancel` | Метод отмены заказа | `order_cancel()` |
+| ✓ | `/v1/order/cancel/check` | Проверка доступности отмены | `order_cancel_check()` |
+| ✓ | `/v1/order/cancel/status` | Статус отмены заказа | `order_cancel_status()` |
+| ✓ | `/v2/order/create` | Создать заказ | `order_create()` |
 </details>
 <details>
 <summary>Отправления (0/3)</summary>
