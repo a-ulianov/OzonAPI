@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 255 / 447**
+**Реализовано методов: 262 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -753,17 +753,17 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/assembly/fbs/product/list` | Получить список товаров в отправлениях | `assembly_fbs_product_list()` |
 </details>
 <details>
-<summary>Доставка rFBS (0/7)</summary>
+<summary>Доставка rFBS (7/7)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v2/fbs/posting/tracking-number/set` | Добавить трек-номера | `fbs_posting_tracking_number_set()` |
-| ☐ | `/v2/fbs/posting/delivering` | Изменить статус на «Доставляется» | `fbs_posting_delivering()` |
-| ☐ | `/v2/fbs/posting/last-mile` | Изменить статус на «Последняя миля» | `fbs_posting_last_mile()` |
-| ☐ | `/v2/fbs/posting/delivered` | Изменить статус на «Доставлено» | `fbs_posting_delivered()` |
-| ☐ | `/v1/posting/fbs/timeslot/change-restrictions` | Доступные даты для переноса доставки | `posting_fbs_timeslot_change_restrictions()` |
-| ☐ | `/v1/posting/fbs/timeslot/set` | Перенести дату доставки | `posting_fbs_timeslot_set()` |
-| ☐ | `/v1/posting/cutoff/set` | Уточнить дату отгрузки отправления | `posting_cutoff_set()` |
+| ✓ | `/v2/fbs/posting/tracking-number/set` | Добавить трек-номера | `fbs_posting_tracking_number_set()` |
+| ✓ | `/v2/fbs/posting/delivering` | Изменить статус на «Доставляется» | `fbs_posting_delivering()` |
+| ✓ | `/v2/fbs/posting/last-mile` | Изменить статус на «Последняя миля» | `fbs_posting_last_mile()` |
+| ✓ | `/v2/fbs/posting/delivered` | Изменить статус на «Доставлено» | `fbs_posting_delivered()` |
+| ✓ | `/v1/posting/fbs/timeslot/change-restrictions` | Доступные даты для переноса доставки | `posting_fbs_timeslot_change_restrictions()` |
+| ✓ | `/v1/posting/fbs/timeslot/set` | Перенести дату доставки | `posting_fbs_timeslot_set()` |
+| ✓ | `/v1/posting/cutoff/set` | Уточнить дату отгрузки отправления | `posting_cutoff_set()` |
 </details>
 <details>
 <summary>Пропуски (0/7)</summary>
