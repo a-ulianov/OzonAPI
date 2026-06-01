@@ -21,3 +21,16 @@ class SupplyCreateType(str, Enum):
     """
     CROSSDOCK = "CREATE_TYPE_CROSSDOCK"
     DIRECT = "CREATE_TYPE_DIRECT"
+
+
+class SupplyType(str, Enum):
+    """Тип поставки заявки на поставку FBO.
+
+    Attributes:
+        CROSSDOCK: Поставка кросс-докингом
+        DIRECT: Прямая поставка
+        MULTI_CLUSTER: Поставка для нескольких кластеров
+    """
+    CROSSDOCK = "CROSSDOCK"
+    DIRECT = "DIRECT"
+    MULTI_CLUSTER = "MULTI_CLUSTER"

@@ -669,16 +669,16 @@ pytest --cov=ozonapi --cov-report=html
 |---|---|---|---|
 | ✓ | `/v1/cluster/list` | Информация о кластерах и их складах | `cluster_list()` |
 | ✓ | `/v1/warehouse/fbo/list` | Поиск точек для отгрузки поставки | `warehouse_fbo_list()` |
-| ☐ | `/v1/draft/create` | Создать черновик заявки на поставку | `draft_create()` |
+| ✓ | `/v1/draft/create` | Создать черновик заявки на поставку | `draft_create()` |
 | ☐ | `/v1/draft/crossdock/create` | Создать черновик заявки на поставку кросс-докингом | `draft_crossdock_create()` |
 | ☐ | `/v1/draft/direct/create` | Создать черновик заявки на прямую поставку | `draft_direct_create()` |
 | ☐ | `/v1/draft/multi-cluster/create` | Создать черновик заявки на поставку для нескольких кластеров | `draft_multi_cluster_create()` |
-| ☐ | `/v1/draft/create/info` | Информация о черновике заявки на поставку | `draft_create_info()` |
-| ☐ | `/v1/draft/timeslot/info` | Доступные таймслоты | `draft_timeslot_info()` |
-| ☐ | `/v2/draft/create/info` | Получить информацию о черновике заявки на поставку | `draft_create_info()` |
+| ✓ | `/v1/draft/create/info` | Информация о черновике заявки на поставку | `draft_create_info_v1()` |
+| ✓ | `/v1/draft/timeslot/info` | Доступные таймслоты | `draft_timeslot_info_v1()` |
+| ✓ | `/v2/draft/create/info` | Получить информацию о черновике заявки на поставку | `draft_create_info()` |
 | ☐ | `/v1/draft/supply/create` | Создать заявку на поставку по черновику | `draft_supply_create()` |
 | ☐ | `/v1/draft/supply/create/status` | Информация о создании заявки на поставку | `draft_supply_create_status()` |
-| ☐ | `/v2/draft/timeslot/info` | Получить список доступных таймслотов | `draft_timeslot_info()` |
+| ✓ | `/v2/draft/timeslot/info` | Получить список доступных таймслотов | `draft_timeslot_info()` |
 | ☐ | `/v1/cargoes/create` | Установка грузомест | `cargoes_create()` |
 | ☐ | `/v2/cargoes/create/info` | Получить информацию по установке грузомест | `cargoes_create_info()` |
 | ☐ | `/v1/cargoes/get` | Получить информацию о грузоместах | `cargoes_get()` |

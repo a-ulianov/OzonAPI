@@ -6,12 +6,22 @@
 
 from ...core import APIManager
 from .cluster_list import ClusterListMixin
+from .draft_create import DraftCreateMixin
+from .draft_create_info import DraftCreateInfoMixin
+from .draft_create_info_v1 import DraftCreateInfoV1Mixin
+from .draft_timeslot_info import DraftTimeslotInfoMixin
+from .draft_timeslot_info_v1 import DraftTimeslotInfoV1Mixin
 from .warehouse_fbo_list import WarehouseFboListMixin
 from .warehouse_fbo_seller_list import WarehouseFboSellerListMixin
 
 
 class SellerFboSupplyRequestAPI(
     ClusterListMixin,
+    DraftCreateMixin,
+    DraftCreateInfoMixin,
+    DraftCreateInfoV1Mixin,
+    DraftTimeslotInfoMixin,
+    DraftTimeslotInfoV1Mixin,
     WarehouseFboListMixin,
     WarehouseFboSellerListMixin,
     APIManager,
@@ -19,8 +29,8 @@ class SellerFboSupplyRequestAPI(
     """Класс-агрегатор методов раздела заявок на поставку FBO.
 
     Notes:
-        • Справочные методы для подбора кластеров и складов отгрузки при создании
-          черновика заявки на поставку FBO.
+        • Справочные методы (кластеры, склады отгрузки), создание черновика заявки
+          на поставку, получение информации о черновике и доступных таймслотов.
 
     References:
         • https://docs.ozon.ru/api/seller/#tag/FboSupplyRequestAPI
