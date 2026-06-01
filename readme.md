@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 427 / 447**
+**Реализовано методов: 436 / 447**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1072,31 +1072,31 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/draft/pick-up/registrate` | Перевести черновик в действующую поставку | `fbp_draft_pick_up_registrate()` |
 </details>
 <details>
-<summary>Работа с FBP-поставками с доставкой direct (0/4)</summary>
+<summary>Работа с FBP-поставками с доставкой direct (4/4)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/order/direct/cancel` | Отменить поставку | `fbp_order_direct_cancel()` |
-| ☐ | `/v1/fbp/order/direct/seller-dlv/edit` | Обновить информацию о доставке силами продавца | `fbp_order_direct_seller_dlv_edit()` |
-| ☐ | `/v1/fbp/order/direct/timeslot/edit` | Отредактировать таймслот в заявке на поставку | `fbp_order_direct_timeslot_edit()` |
-| ☐ | `/v1/fbp/order/direct/timeslot/list` | Получить список таймслотов для поставки | `fbp_order_direct_timeslot_list()` |
+| ✓ | `/v1/fbp/order/direct/cancel` | Отменить поставку | `fbp_order_direct_cancel()` |
+| ✓ | `/v1/fbp/order/direct/seller-dlv/edit` | Обновить информацию о доставке силами продавца | `fbp_order_direct_seller_dlv_edit()` |
+| ✓ | `/v1/fbp/order/direct/timeslot/edit` | Отредактировать таймслот в заявке на поставку | `fbp_order_direct_timeslot_edit()` |
+| ✓ | `/v1/fbp/order/direct/timeslot/list` | Получить список таймслотов для поставки | `fbp_order_direct_timeslot_list()` |
 </details>
 <details>
-<summary>Работа с FBP-поставками с доставкой drop-off (0/3)</summary>
+<summary>Работа с FBP-поставками с доставкой drop-off (3/3)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/order/drop-off/cancel` | Отменить поставку drop-off | `fbp_order_drop_off_cancel()` |
-| ☐ | `/v1/fbp/order/drop-off/dlv/edit` | Отредактировать информацию о поставке на drop-off пункт | `fbp_order_drop_off_dlv_edit()` |
-| ☐ | `/v1/fbp/order/drop-off/timetable` | Получить график работы drop-off пункта | `fbp_order_drop_off_timetable()` |
+| ✓ | `/v1/fbp/order/drop-off/cancel` | Отменить поставку drop-off | `fbp_order_drop_off_cancel()` |
+| ✓ | `/v1/fbp/order/drop-off/dlv/edit` | Отредактировать информацию о поставке на drop-off пункт | `fbp_order_drop_off_dlv_edit()` |
+| ✓ | `/v1/fbp/order/drop-off/timetable` | Получить график работы drop-off пункта | `fbp_order_drop_off_timetable()` |
 </details>
 <details>
-<summary>Работа с FBP-поставками с доставкой pick-up (0/2)</summary>
+<summary>Работа с FBP-поставками с доставкой pick-up (2/2)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/fbp/order/pick-up/cancel` | Отменить pick-up поставку | `fbp_order_pick_up_cancel()` |
-| ☐ | `/v1/fbp/order/pick-up/dlv/edit` | Изменить данные о точке забора | `fbp_order_pick_up_dlv_edit()` |
+| ✓ | `/v1/fbp/order/pick-up/cancel` | Отменить pick-up поставку | `fbp_order_pick_up_cancel()` |
+| ✓ | `/v1/fbp/order/pick-up/dlv/edit` | Изменить данные о точке забора | `fbp_order_pick_up_dlv_edit()` |
 </details>
 <details>
 <summary>Работа с созданной поставкой FBP (0/11)</summary>

@@ -16,6 +16,7 @@ __all__ = [
     "FbpDraftItem",
     "FbpOrderDraftValidationError",
     "FbpBundleItemError",
+    "FbpOrderValidationError",
 ]
 
 from .cancellation import FbpCancellationError, FbpCancellationState
@@ -30,5 +31,9 @@ from .delivery import (
     FbpTimeslot,
 )
 from .draft import FbpDeclineReason, FbpDraftItem
-from .validation import FbpBundleItemError, FbpOrderDraftValidationError
+from .validation import (
+    FbpBundleItemError,
+    FbpOrderDraftValidationError,
+    FbpOrderValidationError,
+)
 from .warehouse import FbpAddressDetailing, FbpWarehouse
