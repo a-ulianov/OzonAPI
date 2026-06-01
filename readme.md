@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 336 / 447**
+**Реализовано методов: 343 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -766,17 +766,17 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/posting/cutoff/set` | Уточнить дату отгрузки отправления | `posting_cutoff_set()` |
 </details>
 <details>
-<summary>Пропуски (0/7)</summary>
+<summary>Пропуски (7/7)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/pass/list` | Список пропусков | `pass_list()` |
-| ☐ | `/v1/carriage/pass/create` | Создать пропуск | `carriage_pass_create()` |
-| ☐ | `/v1/carriage/pass/update` | Обновить пропуск | `carriage_pass_update()` |
-| ☐ | `/v1/carriage/pass/delete` | Удалить пропуск | `carriage_pass_delete()` |
-| ☐ | `/v1/return/pass/create` | Создать пропуск для возврата | `return_pass_create()` |
-| ☐ | `/v1/return/pass/update` | Обновить пропуск для возврата | `return_pass_update()` |
-| ☐ | `/v1/return/pass/delete` | Удалить пропуск для возврата | `return_pass_delete()` |
+| ✓ | `/v1/pass/list` | Список пропусков | `pass_list()` |
+| ✓ | `/v1/carriage/pass/create` | Создать пропуск | `carriage_pass_create()` |
+| ✓ | `/v1/carriage/pass/update` | Обновить пропуск | `carriage_pass_update()` |
+| ✓ | `/v1/carriage/pass/delete` | Удалить пропуск | `carriage_pass_delete()` |
+| ✓ | `/v1/return/pass/create` | Создать пропуск для возврата | `return_pass_create()` |
+| ✓ | `/v1/return/pass/update` | Обновить пропуск для возврата | `return_pass_update()` |
+| ✓ | `/v1/return/pass/delete` | Удалить пропуск для возврата | `return_pass_delete()` |
 </details>
 <details>
 <summary>Возвраты товаров FBO и FBS (4/4)</summary>
