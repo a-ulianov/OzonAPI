@@ -33,6 +33,7 @@ from .methods import (
     SellerRatingAPI,
     SellerReceiptAPI,
     SellerReportAPI,
+    SellerSellerActionsAPI,
     SellerFinanceAPI,
 )
 
@@ -71,6 +72,7 @@ class SellerAPI(
     SellerReportAPI,
     SellerReturnsAPI,
     SellerReviewAPI,
+    SellerSellerActionsAPI,
     SellerWarehouseAPI,
 ):
     """

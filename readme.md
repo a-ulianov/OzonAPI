@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 354 / 447**
+**Реализовано методов: 372 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -975,28 +975,28 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/question/top-sku` | Товары с наибольшим количеством вопросов | `question_top_sku()` |
 </details>
 <details>
-<summary>Акции продавца (0/18)</summary>
+<summary>Акции продавца (18/18)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/seller-actions/create/discount` | Создать акцию с механикой «Скидка» | `seller_actions_create_discount()` |
-| ☐ | `/v1/seller-actions/create/discount-with-condition` | Создать акцию с механикой «Скидка от суммы заказа» | `seller_actions_create_discount_with_condition()` |
-| ☐ | `/v1/seller-actions/create/installment` | Создать акцию с механикой «Беспроцентная рассрочка» | `seller_actions_create_installment()` |
-| ☐ | `/v1/seller-actions/create/multi-level-discount` | Создать акцию с механикой «Многоуровневая скидка от суммы» | `seller_actions_create_multi_level_discount()` |
-| ☐ | `/v1/seller-actions/create/voucher` | Создать акцию с механикой «Скидка по промокоду» | `seller_actions_create_voucher()` |
-| ☐ | `/v1/seller-actions/update/discount` | Обновить акцию с механикой «Скидка» | `seller_actions_update_discount()` |
-| ☐ | `/v1/seller-actions/update/discount-with-condition` | Обновить акцию с механикой «Скидка от суммы заказа» | `seller_actions_update_discount_with_condition()` |
-| ☐ | `/v1/seller-actions/update/installment` | Обновить акцию с механикой «Беспроцентная рассрочка» | `seller_actions_update_installment()` |
-| ☐ | `/v1/seller-actions/update/multi-level-discount` | Обновить акцию с механикой «Многоуровневая скидка от суммы» | `seller_actions_update_multi_level_discount()` |
-| ☐ | `/v1/seller-actions/update/voucher` | Обновить акцию с механикой «Скидка по промокоду» | `seller_actions_update_voucher()` |
-| ☐ | `/v1/seller-actions/products/add` | Добавить товары в акцию | `seller_actions_products_add()` |
-| ☐ | `/v1/seller-actions/products/candidates` | Получить список доступных для акции товаров | `seller_actions_products_candidates()` |
-| ☐ | `/v1/seller-actions/products/delete` | Удалить товары из акции | `seller_actions_products_delete()` |
-| ☐ | `/v1/seller-actions/products/list` | Получить список участвующих в акции товаров | `seller_actions_products_list()` |
-| ☐ | `/v1/seller-actions/archive` | Перенести акцию в архив | `seller_actions_archive()` |
-| ☐ | `/v1/seller-actions/change-activity` | Включить или выключить акцию | `seller_actions_change_activity()` |
-| ☐ | `/v1/seller-actions/list` | Получить список акций | `seller_actions_list()` |
-| ☐ | `/v1/seller-actions/voucher/get` | Получить файл с промокодами в формате CSV | `seller_actions_voucher_get()` |
+| ✓ | `/v1/seller-actions/create/discount` | Создать акцию с механикой «Скидка» | `seller_actions_create_discount()` |
+| ✓ | `/v1/seller-actions/create/discount-with-condition` | Создать акцию с механикой «Скидка от суммы заказа» | `seller_actions_create_discount_with_condition()` |
+| ✓ | `/v1/seller-actions/create/installment` | Создать акцию с механикой «Беспроцентная рассрочка» | `seller_actions_create_installment()` |
+| ✓ | `/v1/seller-actions/create/multi-level-discount` | Создать акцию с механикой «Многоуровневая скидка от суммы» | `seller_actions_create_multi_level_discount()` |
+| ✓ | `/v1/seller-actions/create/voucher` | Создать акцию с механикой «Скидка по промокоду» | `seller_actions_create_voucher()` |
+| ✓ | `/v1/seller-actions/update/discount` | Обновить акцию с механикой «Скидка» | `seller_actions_update_discount()` |
+| ✓ | `/v1/seller-actions/update/discount-with-condition` | Обновить акцию с механикой «Скидка от суммы заказа» | `seller_actions_update_discount_with_condition()` |
+| ✓ | `/v1/seller-actions/update/installment` | Обновить акцию с механикой «Беспроцентная рассрочка» | `seller_actions_update_installment()` |
+| ✓ | `/v1/seller-actions/update/multi-level-discount` | Обновить акцию с механикой «Многоуровневая скидка от суммы» | `seller_actions_update_multi_level_discount()` |
+| ✓ | `/v1/seller-actions/update/voucher` | Обновить акцию с механикой «Скидка по промокоду» | `seller_actions_update_voucher()` |
+| ✓ | `/v1/seller-actions/products/add` | Добавить товары в акцию | `seller_actions_products_add()` |
+| ✓ | `/v1/seller-actions/products/candidates` | Получить список доступных для акции товаров | `seller_actions_products_candidates()` |
+| ✓ | `/v1/seller-actions/products/delete` | Удалить товары из акции | `seller_actions_products_delete()` |
+| ✓ | `/v1/seller-actions/products/list` | Получить список участвующих в акции товаров | `seller_actions_products_list()` |
+| ✓ | `/v1/seller-actions/archive` | Перенести акцию в архив | `seller_actions_archive()` |
+| ✓ | `/v1/seller-actions/change-activity` | Включить или выключить акцию | `seller_actions_change_activity()` |
+| ✓ | `/v1/seller-actions/list` | Получить список акций | `seller_actions_list()` |
+| ✓ | `/v1/seller-actions/voucher/get` | Получить файл с промокодами в формате CSV | `seller_actions_voucher_get()` |
 </details>
 <details>
 <summary>Акции Ozon (0/4)</summary>
