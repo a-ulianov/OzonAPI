@@ -35,6 +35,17 @@ from .fbp_order_drop_off_dlv_edit import FbpOrderDropOffDlvEditMixin
 from .fbp_order_drop_off_timetable import FbpOrderDropOffTimetableMixin
 from .fbp_order_pick_up_cancel import FbpOrderPickUpCancelMixin
 from .fbp_order_pick_up_dlv_edit import FbpOrderPickUpDlvEditMixin
+from .fbp_order_get import FbpOrderGetMixin
+from .fbp_order_list import FbpOrderListMixin
+from .fbp_archive_get import FbpArchiveGetMixin
+from .fbp_archive_list import FbpArchiveListMixin
+from .fbp_act_from_create import FbpActFromCreateMixin
+from .fbp_act_from_get import FbpActFromGetMixin
+from .fbp_act_to_create import FbpActToCreateMixin
+from .fbp_act_to_get import FbpActToGetMixin
+from .fbp_label_create import FbpLabelCreateMixin
+from .fbp_label_get import FbpLabelGetMixin
+from .posting_fbp_list import PostingFbpListMixin
 
 
 class SellerFbpAPI(
@@ -73,6 +84,17 @@ class SellerFbpAPI(
     FbpOrderDropOffTimetableMixin,
     FbpOrderPickUpCancelMixin,
     FbpOrderPickUpDlvEditMixin,
+    FbpOrderGetMixin,
+    FbpOrderListMixin,
+    FbpArchiveGetMixin,
+    FbpArchiveListMixin,
+    FbpActFromCreateMixin,
+    FbpActFromGetMixin,
+    FbpActToCreateMixin,
+    FbpActToGetMixin,
+    FbpLabelCreateMixin,
+    FbpLabelGetMixin,
+    PostingFbpListMixin,
 ):
     """Реализует методы раздела FBP (черновики и поставки).
 
