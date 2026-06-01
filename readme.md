@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 293 / 447**
+**Реализовано методов: 295 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -472,14 +472,14 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/barcode/generate` | Создать штрихкод для товара | `barcode_generate()` |
 </details>
 <details>
-<summary>Цены и остатки товаров (9/11)</summary>
+<summary>Цены и остатки товаров (11/11)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
 | ✓ | `/v2/products/stocks` | Обновить количество товаров на складах | `products_stocks()` |
 | ✓ | `/v4/product/info/stocks` | Информация о количестве товаров | `product_info_stocks()` |
-| ☐ | `/v1/product/info/warehouse/stocks` | Получить информацию по остаткам на складе FBS и rFBS | `product_info_warehouse_stocks()` |
-| ☐ | `/v1/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
+| ✓ | `/v1/product/info/warehouse/stocks` | Получить информацию по остаткам на складе FBS и rFBS | `product_info_warehouse_stocks()` |
+| ✓ | `/v1/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs_v1()` |
 | ✓ | `/v2/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
 | ✓ | `/v1/product/import/prices` | Обновить цену | `product_import_prices()` |
 | ✓ | `/v1/product/action/timer/update` | Обновление таймера актуальности минимальной цены | `product_action_timer_update()` |
