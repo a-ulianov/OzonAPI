@@ -5,6 +5,9 @@
 """
 
 from ...core import APIManager
+from .cargoes_label_create import CargoesLabelCreateMixin
+from .cargoes_label_file import CargoesLabelFileMixin
+from .cargoes_label_get import CargoesLabelGetMixin
 from .cluster_list import ClusterListMixin
 from .draft_create import DraftCreateMixin
 from .draft_create_info import DraftCreateInfoMixin
@@ -23,6 +26,9 @@ from .warehouse_fbo_seller_list import WarehouseFboSellerListMixin
 
 
 class SellerFboSupplyRequestAPI(
+    CargoesLabelCreateMixin,
+    CargoesLabelFileMixin,
+    CargoesLabelGetMixin,
     ClusterListMixin,
     DraftCreateMixin,
     DraftCreateInfoMixin,
