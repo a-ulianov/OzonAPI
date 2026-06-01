@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 347 / 447**
+**Реализовано методов: 354 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -1009,17 +1009,17 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/actions/auto-add/products/update` | Добавить или обновить товары в автодобавлении в акцию | `actions_auto_add_products_update()` |
 </details>
 <details>
-<summary>Работа с пуш-уведомлениями (0/7)</summary>
+<summary>Работа с пуш-уведомлениями (7/7)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/notification/set` | Подключить URL-адрес для уведомлений | `notification_set()` |
-| ☐ | `/v1/notification/update` | Изменить URL-адрес для уведомлений | `notification_update()` |
-| ☐ | `/v1/notification/delete` | Удалить URL-адрес для уведомлений | `notification_delete()` |
-| ☐ | `/v1/notification/check` | Проверить URL-адрес для уведомлений | `notification_check()` |
-| ☐ | `/v1/notification/enable` | Включить или выключить уведомления на URL-адрес | `notification_enable()` |
-| ☐ | `/v1/notification/list` | Получить информацию по подключённым URL-адресам | `notification_list()` |
-| ☐ | `/v1/notification/push-type/list` | Получить типы пуш-уведомлений | `notification_push_type_list()` |
+| ✓ | `/v1/notification/set` | Подключить URL-адрес для уведомлений | `notification_set()` |
+| ✓ | `/v1/notification/update` | Изменить URL-адрес для уведомлений | `notification_update()` |
+| ✓ | `/v1/notification/delete` | Удалить URL-адрес для уведомлений | `notification_delete()` |
+| ✓ | `/v1/notification/check` | Проверить URL-адрес для уведомлений | `notification_check()` |
+| ✓ | `/v1/notification/enable` | Включить или выключить уведомления на URL-адрес | `notification_enable()` |
+| ✓ | `/v1/notification/list` | Получить информацию по подключённым URL-адресам | `notification_list()` |
+| ✓ | `/v1/notification/push-type/list` | Получить типы пуш-уведомлений | `notification_push_type_list()` |
 </details>
 <details>
 <summary>Работа с FBP-черновиками (0/3)</summary>
