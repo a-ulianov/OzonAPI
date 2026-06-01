@@ -11,13 +11,17 @@ from .posting_fbs_list import PostingFBSListMixin
 from .posting_fbs_multiboxqty_set import PostingFBSMultiBoxQtySetMixin
 from .posting_fbs_package_label import PostingFBSPackageLabelMixin
 from .posting_fbs_package_label_create import PostingFBSPackageLabelCreateMixin
+from .posting_fbs_package_label_create_v1 import PostingFBSPackageLabelCreateV1Mixin
 from .posting_fbs_package_label_get import PostingFBSPackageLabelGetMixin
+from .posting_fbs_pick_up_code_verify import PostingFBSPickUpCodeVerifyMixin
 from .posting_fbs_product_cancel import PostingFBSProductCancelMixin
 from .posting_fbs_product_change import PostingFBSProductChangeMixin
 from .posting_fbs_product_country_list import PostingFBSProductCountryListMixin
 from .posting_fbs_product_country_set import PostingFBSProductCountrySetMixin
 from .posting_fbs_restrictions import PostingFBSRestrictionsMixin
 from .posting_fbs_unfulfilled_list import PostingFBSUnfulfilledListMixin
+from .posting_global_etgb import PostingGlobalEtgbMixin
+from .posting_unpaid_legal_product_list import PostingUnpaidLegalProductListMixin
 
 
 class SellerFBSAPI(
@@ -31,14 +35,18 @@ class SellerFBSAPI(
     PostingFBSListMixin,
     PostingFBSMultiBoxQtySetMixin,
     PostingFBSPackageLabelCreateMixin,
+    PostingFBSPackageLabelCreateV1Mixin,
     PostingFBSPackageLabelGetMixin,
     PostingFBSPackageLabelMixin,
+    PostingFBSPickUpCodeVerifyMixin,
     PostingFBSProductCancelMixin,
     PostingFBSProductChangeMixin,
     PostingFBSProductCountryListMixin,
     PostingFBSProductCountrySetMixin,
     PostingFBSRestrictionsMixin,
     PostingFBSUnfulfilledListMixin,
+    PostingGlobalEtgbMixin,
+    PostingUnpaidLegalProductListMixin,
 ):
     """Реализует методы раздела Обработка заказов FBS и rFBS.
 
