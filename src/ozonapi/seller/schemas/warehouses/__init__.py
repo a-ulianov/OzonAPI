@@ -93,6 +93,9 @@ __all__ = [
     "WarehouseFBSPickUpPlanningWarehouse",
     "WarehouseFBSPickUpPlanningListResult",
     "WarehouseFBSPickUpPlanningListResponse",
+    "WarehouseOzonListRequest",
+    "WarehouseOzonListItem",
+    "WarehouseOzonListResponse",
 ]
 
 from .v2__delivery_method_list import (
@@ -241,4 +244,9 @@ from .v1__warehouse_fbs_pickup_planning_list import (
     WarehouseFBSPickUpPlanningListResponse,
     WarehouseFBSPickUpPlanningListResult,
     WarehouseFBSPickUpPlanningWarehouse,
+)
+from .v1__warehouse_ozon_list import (
+    WarehouseOzonListItem,
+    WarehouseOzonListRequest,
+    WarehouseOzonListResponse,
 )

@@ -45,6 +45,7 @@ from .warehouse_invalid_products_get import WarehouseInvalidProductsGetMixin
 from .warehouse_list import WarehouseListMixin
 from .warehouse_list_v1 import WarehouseListV1Mixin
 from .warehouse_operation_status import WarehouseOperationStatusMixin
+from .warehouse_ozon_list import WarehouseOzonListMixin
 from .warehouse_unarchive import WarehouseUnarchiveMixin
 from .warehouse_warehouses_with_invalid_products import (
     WarehouseWarehousesWithInvalidProductsMixin,
@@ -77,6 +78,7 @@ class SellerWarehouseAPI(
     WarehouseListMixin,
     WarehouseListV1Mixin,
     WarehouseOperationStatusMixin,
+    WarehouseOzonListMixin,
     WarehouseUnarchiveMixin,
     WarehouseWarehousesWithInvalidProductsMixin,
 ):
