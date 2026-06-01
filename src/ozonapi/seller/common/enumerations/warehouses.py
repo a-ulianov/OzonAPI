@@ -160,3 +160,16 @@ class WarehouseOZONType(str, Enum):
     OUTSOURCE_FF = "OUTSOURCE_FF"
     B2B = "B2B"
     EXTERNAL_FF = "EXTERNAL_FF"
+
+
+class WarehouseERFBSReturnMethod(str, Enum):
+    """Способ возврата для склада rFBS Express.
+
+    Attributes:
+        UNSPECIFIED: Не указан
+        COURIER: Курьером
+        TRANSPORT_COMPANY: Транспортной компанией
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+    COURIER = "COURIER"
+    TRANSPORT_COMPANY = "TRANSPORT_COMPANY"

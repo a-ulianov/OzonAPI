@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 305 / 447**
+**Реализовано методов: 312 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -588,17 +588,17 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/warehouse/fbs/pickup/planning/list` | Получить список складов для планирования отгрузок курьеру | `warehouse_fbs_pickup_planning_list()` |
 </details>
 <details>
-<summary>Создание складов rFBS Express и управление ими (0/7)</summary>
+<summary>Создание складов rFBS Express и управление ими (7/7)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/warehouse/erfbs/aggregator/create` | Создать склад с методом доставки «Партнёры Ozon» | `warehouse_erfbs_aggregator_create()` |
-| ☐ | `/v1/warehouse/erfbs/update` | Обновить склад | `warehouse_erfbs_update()` |
-| ☐ | `/v1/warehouse/erfbs/aggregator/delivery-method/update` | Обновить метод доставки «Партнёры Ozon» | `warehouse_erfbs_aggregator_delivery_method_update()` |
-| ☐ | `/v1/warehouse/erfbs/non-integrated/create` | Создать склад с методом доставки «Вы или сторонняя служба» | `warehouse_erfbs_non_integrated_create()` |
-| ☐ | `/v1/warehouse/erfbs/non-integrated/delivery-method/update` | Обновить метод доставки «Вы или сторонняя служба» | `warehouse_erfbs_non_integrated_delivery_method_update()` |
-| ☐ | `/v1/warehouse/rfbs/pause` | Поставить rFBS-склад на паузу | `warehouse_rfbs_pause()` |
-| ☐ | `/v1/warehouse/rfbs/unpause` | Снять rFBS-склад с паузы | `warehouse_rfbs_unpause()` |
+| ✓ | `/v1/warehouse/erfbs/aggregator/create` | Создать склад с методом доставки «Партнёры Ozon» | `warehouse_erfbs_aggregator_create()` |
+| ✓ | `/v1/warehouse/erfbs/update` | Обновить склад | `warehouse_erfbs_update()` |
+| ✓ | `/v1/warehouse/erfbs/aggregator/delivery-method/update` | Обновить метод доставки «Партнёры Ozon» | `warehouse_erfbs_aggregator_delivery_method_update()` |
+| ✓ | `/v1/warehouse/erfbs/non-integrated/create` | Создать склад с методом доставки «Вы или сторонняя служба» | `warehouse_erfbs_non_integrated_create()` |
+| ✓ | `/v1/warehouse/erfbs/non-integrated/delivery-method/update` | Обновить метод доставки «Вы или сторонняя служба» | `warehouse_erfbs_non_integrated_delivery_method_update()` |
+| ✓ | `/v1/warehouse/rfbs/pause` | Поставить rFBS-склад на паузу | `warehouse_rfbs_pause()` |
+| ✓ | `/v1/warehouse/rfbs/unpause` | Снять rFBS-склад с паузы | `warehouse_rfbs_unpause()` |
 </details>
 <details>
 <summary>Обработка заказов FBS и rFBS (24/24)</summary>
