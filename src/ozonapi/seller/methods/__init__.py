@@ -13,6 +13,7 @@ __all__ = [
     "SellerFBSDeliveryAPI",
     "SellerFboSupplyRequestAPI",
     "SellerFinanceAPI",
+    "SellerOrderAPI",
     "SellerPricesAndStocksAPI",
     "SellerProductAPI",
     "SellerQuestionAPI",
@@ -37,6 +38,7 @@ from .fbs_assembly_and_labeling import SellerFBSAssemblyLabelingAPI
 from .fbs_containers import SellerFBSContainerAPI
 from .fbs_delivery import SellerFBSDeliveryAPI
 from .finance import SellerFinanceAPI
+from .orders import SellerOrderAPI
 from .prices_and_stocks import SellerPricesAndStocksAPI
 from .pricing_strategies import SellerPricingStrategyAPI
 from .products import SellerProductAPI
