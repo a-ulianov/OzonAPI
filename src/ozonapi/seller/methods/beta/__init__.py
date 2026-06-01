@@ -20,6 +20,7 @@ from .product_visibility_set import ProductVisibilitySetMixin
 from .removal_from_stock_list import RemovalFromStockListMixin
 from .removal_from_supply_list import RemovalFromSupplyListMixin
 from .seller_info import SellerInfoMixin
+from .seller_ozon_logistics_info import SellerOzonLogisticsInfoMixin
 
 
 class SellerBetaAPI(
@@ -39,6 +40,7 @@ class SellerBetaAPI(
     RemovalFromStockListMixin,
     RemovalFromSupplyListMixin,
     SellerInfoMixin,
+    SellerOzonLogisticsInfoMixin,
 ):
     """Реализует методы раздела Прочие методы.
 

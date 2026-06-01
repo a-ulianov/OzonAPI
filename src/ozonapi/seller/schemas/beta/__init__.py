@@ -7,6 +7,7 @@ __all__ = [
     "AnalyticsStocksResponse",
     "AnalyticsStocksItem",
     "SellerInfoResponse",
+    "SellerOzonLogisticsInfoResponse",
     "BetaMoneyAmount",
     "Stairway",
     "StairwayStep",
@@ -78,6 +79,7 @@ from .entities import (
     StairwayStep,
 )
 from .v1__seller_info import SellerInfoResponse
+from .v1__seller_ozon_logistics_info import SellerOzonLogisticsInfoResponse
 from .v1__analytics_stocks import AnalyticsStocksResponse, AnalyticsStocksRequest, AnalyticsStocksItem
 from .v1__analytics_manage_stocks import (
     AnalyticsManageStocksFilter,
