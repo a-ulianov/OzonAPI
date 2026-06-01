@@ -12,6 +12,10 @@ from .draft_create_info_v1 import DraftCreateInfoV1Mixin
 from .draft_crossdock_create import DraftCrossdockCreateMixin
 from .draft_direct_create import DraftDirectCreateMixin
 from .draft_multi_cluster_create import DraftMultiClusterCreateMixin
+from .draft_supply_create import DraftSupplyCreateMixin
+from .draft_supply_create_status import DraftSupplyCreateStatusMixin
+from .draft_supply_create_status_v1 import DraftSupplyCreateStatusV1Mixin
+from .draft_supply_create_v1 import DraftSupplyCreateV1Mixin
 from .draft_timeslot_info import DraftTimeslotInfoMixin
 from .draft_timeslot_info_v1 import DraftTimeslotInfoV1Mixin
 from .warehouse_fbo_list import WarehouseFboListMixin
@@ -26,6 +30,10 @@ class SellerFboSupplyRequestAPI(
     DraftCrossdockCreateMixin,
     DraftDirectCreateMixin,
     DraftMultiClusterCreateMixin,
+    DraftSupplyCreateMixin,
+    DraftSupplyCreateStatusMixin,
+    DraftSupplyCreateStatusV1Mixin,
+    DraftSupplyCreateV1Mixin,
     DraftTimeslotInfoMixin,
     DraftTimeslotInfoV1Mixin,
     WarehouseFboListMixin,
