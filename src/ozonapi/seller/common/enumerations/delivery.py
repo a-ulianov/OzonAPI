@@ -27,3 +27,16 @@ class SortDir(str, Enum):
     """
     ASC = "ASC"
     DESC = "DESC"
+
+
+class DeliverySchema(str, Enum):
+    """Схема доставки для расчёта вариантов.
+
+    Attributes:
+        MIX: Смешанная схема
+        FBO: Доставка со склада Ozon
+        FBS: Доставка со склада продавца
+    """
+    MIX = "MIX"
+    FBO = "FBO"
+    FBS = "FBS"

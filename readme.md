@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 298 / 447**
+**Реализовано методов: 303 / 447**
 
 <details>
 <summary>Информация по API-ключу (0/1)</summary>
@@ -1160,15 +1160,15 @@ pytest --cov=ozonapi --cov-report=html
 | ☐ | `/v1/cancel-reason/list-by-posting` | Динамический список отмен для постинга из заказа | `cancel_reason_list_by_posting()` |
 </details>
 <details>
-<summary>Доставка (0/5)</summary>
+<summary>Доставка (5/5)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ☐ | `/v1/delivery/check` | Проверка доступности доставки Ozon для покупателя | `delivery_check()` |
-| ☐ | `/v2/delivery/checkout` | Получить доступные варианты доставки | `delivery_checkout()` |
-| ☐ | `/v1/delivery/map` | Получить список точек самовывоза на карте | `delivery_map()` |
-| ☐ | `/v1/delivery/point/info` | Получить информацию о выбранной точке самовывоза | `delivery_point_info()` |
-| ☐ | `/v1/delivery/point/list` | Получить список всех точек самовывоза | `delivery_point_list()` |
+| ✓ | `/v1/delivery/check` | Проверка доступности доставки Ozon для покупателя | `delivery_check()` |
+| ✓ | `/v2/delivery/checkout` | Получить доступные варианты доставки | `delivery_checkout()` |
+| ✓ | `/v1/delivery/map` | Получить список точек самовывоза на карте | `delivery_map()` |
+| ✓ | `/v1/delivery/point/info` | Получить информацию о выбранной точке самовывоза | `delivery_point_info()` |
+| ✓ | `/v1/delivery/point/list` | Получить список всех точек самовывоза | `delivery_point_list()` |
 </details>
 <details>
 <summary>Заказы (4/4)</summary>
