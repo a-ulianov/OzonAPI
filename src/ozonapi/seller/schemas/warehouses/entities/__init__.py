@@ -9,8 +9,24 @@ __all__ = [
     "WarehouseFBSReturnPointWorkingDay",
     "WarehouseFBSReturnPoint",
     "WarehouseFBSOptions",
+    "WarehouseERFBSOperationResponse",
+    "WarehouseERFBSHoliday",
+    "WarehouseERFBSWorkingDay",
+    "WarehouseERFBSTimetable",
+    "WarehouseERFBSReturnSettings",
+    "WarehouseERFBSDeliveryCosts",
+    "WarehouseERFBSDeliveryPolygon",
 ]
 
+from .warehouse_erfbs import (
+    WarehouseERFBSDeliveryCosts,
+    WarehouseERFBSDeliveryPolygon,
+    WarehouseERFBSHoliday,
+    WarehouseERFBSOperationResponse,
+    WarehouseERFBSReturnSettings,
+    WarehouseERFBSTimetable,
+    WarehouseERFBSWorkingDay,
+)
 from .warehouse_fbs import (
     WarehouseFBSCoordinates,
     WarehouseFBSDropOffPoint,

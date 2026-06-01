@@ -96,6 +96,20 @@ __all__ = [
     "WarehouseOzonListRequest",
     "WarehouseOzonListItem",
     "WarehouseOzonListResponse",
+    "WarehouseERFBSOperationResponse",
+    "WarehouseERFBSTimetable",
+    "WarehouseERFBSReturnSettings",
+    "WarehouseERFBSDeliveryCosts",
+    "WarehouseERFBSDeliveryPolygon",
+    "WarehouseERFBSAggregatorCreateRequest",
+    "WarehouseERFBSAggregatorCreateDeliveryMethod",
+    "WarehouseERFBSUpdateRequest",
+    "WarehouseERFBSAggregatorDeliveryMethodUpdateRequest",
+    "WarehouseERFBSNonIntegratedCreateRequest",
+    "WarehouseERFBSNonIntegratedCreateDeliveryMethod",
+    "WarehouseERFBSNonIntegratedDeliveryMethodUpdateRequest",
+    "WarehouseRfbsPauseRequest",
+    "WarehouseRfbsUnpauseRequest",
 ]
 
 from .v2__delivery_method_list import (
@@ -250,3 +264,27 @@ from .v1__warehouse_ozon_list import (
     WarehouseOzonListRequest,
     WarehouseOzonListResponse,
 )
+from .entities import (
+    WarehouseERFBSDeliveryCosts,
+    WarehouseERFBSDeliveryPolygon,
+    WarehouseERFBSOperationResponse,
+    WarehouseERFBSReturnSettings,
+    WarehouseERFBSTimetable,
+)
+from .v1__warehouse_erfbs_aggregator_create import (
+    WarehouseERFBSAggregatorCreateDeliveryMethod,
+    WarehouseERFBSAggregatorCreateRequest,
+)
+from .v1__warehouse_erfbs_update import WarehouseERFBSUpdateRequest
+from .v1__warehouse_erfbs_aggregator_delivery_method_update import (
+    WarehouseERFBSAggregatorDeliveryMethodUpdateRequest,
+)
+from .v1__warehouse_erfbs_non_integrated_create import (
+    WarehouseERFBSNonIntegratedCreateDeliveryMethod,
+    WarehouseERFBSNonIntegratedCreateRequest,
+)
+from .v1__warehouse_erfbs_non_integrated_delivery_method_update import (
+    WarehouseERFBSNonIntegratedDeliveryMethodUpdateRequest,
+)
+from .v1__warehouse_rfbs_pause import WarehouseRfbsPauseRequest
+from .v1__warehouse_rfbs_unpause import WarehouseRfbsUnpauseRequest
