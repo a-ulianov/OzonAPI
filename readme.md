@@ -605,9 +605,9 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ✓ | `/v3/posting/fbs/unfulfilled/list` | Список необработанных отправлений | `posting_fbs_unfulfilled_list_v3()` |
+| ✓ | `/v3/posting/fbs/unfulfilled/list` | Список необработанных отправлений ⚠️ устар., отключение 01.08.2026 → `posting_fbs_unfulfilled_list()` | `posting_fbs_unfulfilled_list_v3()` |
 | ✓ | `/v4/posting/fbs/unfulfilled/list` | Получить список необработанных отправлений | `posting_fbs_unfulfilled_list()` |
-| ✓ | `/v3/posting/fbs/list` | Список отправлений | `posting_fbs_list_v3()` |
+| ✓ | `/v3/posting/fbs/list` | Список отправлений ⚠️ устар., отключение 01.08.2026 → `posting_fbs_list()` | `posting_fbs_list_v3()` |
 | ✓ | `/v4/posting/fbs/list` | Получить список отправлений | `posting_fbs_list()` |
 | ✓ | `/v3/posting/fbs/get` | Получить информацию об отправлении по идентификатору | `posting_fbs_get()` |
 | ✓ | `/v2/posting/fbs/get-by-barcode` | Получить информацию об отправлении по штрихкоду | `posting_fbs_get_by_barcode()` |
@@ -648,7 +648,7 @@ pytest --cov=ozonapi --cov-report=html
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
-| ✓ | `/v2/posting/fbo/list` | Список отправлений | `posting_fbo_list_v2()` |
+| ✓ | `/v2/posting/fbo/list` | Список отправлений ⚠️ устар., отключение 01.08.2026 → `posting_fbo_list()` | `posting_fbo_list_v2()` |
 | ✓ | `/v3/posting/fbo/list` | Получить список отправлений | `posting_fbo_list()` |
 | ✓ | `/v2/posting/fbo/get` | Информация об отправлении | `posting_fbo_get()` |
 | ✓ | `/v1/posting/fbo/cancel-reason/list` | Причины отмены отправлений по схеме FBO | `posting_fbo_cancel_reason_list()` |
