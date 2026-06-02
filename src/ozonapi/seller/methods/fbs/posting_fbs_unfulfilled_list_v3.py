@@ -12,6 +12,9 @@ class PostingFBSUnfulfilledListV3Mixin(APIManager):
         """Метод для получения списка необработанных отправлений за указанный период времени.
 
         Notes:
+            • ⚠️ Устаревший метод: Ozon отключит `/v3/posting/fbs/unfulfilled/list` **1 августа 2026 года**.
+              Перейдите на каноническую `posting_fbs_unfulfilled_list()` (v4).
+              Анонс: https://dev.ozon.ru/news/734-Otkliuchenie-starykh-metodov-Seller-API-dlia-raboty-s-postingami/
             • Период должен быть не больше одного года.
             • Обязательно используйте фильтр либо по времени сборки — `cutoff`, либо по дате передачи отправления в доставку — `delivering_date`.
             • Если использовать фильтры `cutoff` и `delivering_date` вместе, в ответе вернётся ошибка.
