@@ -42,6 +42,7 @@ __all__ = [
     "ProductInfoDescriptionRequest",
     "ProductInfoDescriptionResponse",
     "ProductInfoLimitResponse",
+    "ProductInfoLimitOperationLimits",
     "ProductInfoListRequest",
     "ProductInfoListResponse",
     "ProductInfoListItem",
@@ -189,7 +190,10 @@ from .v3__product_list import (
     ProductListResponseResult,
     ProductListQuants,
 )
-from .v4__product_info_limit import ProductInfoLimitResponse
+from .v4__product_info_limit import (
+    ProductInfoLimitOperationLimits,
+    ProductInfoLimitResponse,
+)
 from .v4__product_info_attributes import (
     ProductInfoAttributesResponse,
     ProductInfoAttributesRequest,
