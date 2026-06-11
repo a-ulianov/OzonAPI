@@ -17,8 +17,11 @@ class ChatListV2Mixin(APIManager):
         Notes:
             • Постраничная выдача через `limit`/`offset`. Элементы чатов плоские
               (без вложенного объекта `chat`).
-            • Устарел: на стороне Ozon endpoint возвращает 404 — используйте
-              `chat_list()` (v3). Метод сохранён для совместимости.
+            • УСТАРЕЛ И УДАЛЁН ИЗ СПЕЦИФИКАЦИИ: с 2026-06-10 операция
+              `/v2/chat/list` исключена из OpenAPI-спецификации Ozon Seller API;
+              на стороне Ozon endpoint возвращает 404. Используйте `chat_list()`
+              (v3). Метод сохранён в библиотеке для обратной совместимости и будет
+              удалён в одном из будущих мажорных релизов.
 
         References:
             https://docs.ozon.ru/api/seller/#operation/ChatAPI_ChatListV2
