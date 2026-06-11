@@ -1,5 +1,6 @@
 """https://docs.ozon.ru/api/seller/?__rr=1#operation/ProductAPI_GetUploadQuota"""
 import datetime
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -57,12 +58,29 @@ class ProductInfoLimitTotal(BaseModel):
     )
 
 
+class ProductInfoLimitOperationLimits(BaseModel):
+    """Доступный лимит на работу с товарами (поминутный).
+
+    Attributes:
+        limit: Количество товаров, которое можно создать за минуту
+        limit_type: Тип текущего лимита (UNSPECIFIED — не указан, RATE_LIMIT_PER_MINUTE — поминутный лимит)
+    """
+    limit: Optional[int] = Field(
+        None, description="Количество товаров, которое можно создать за минуту."
+    )
+    limit_type: Optional[str] = Field(
+        None,
+        description="Тип текущего лимита: UNSPECIFIED — не указан; RATE_LIMIT_PER_MINUTE — поминутный лимит."
+    )
+
+
 class ProductInfoLimitResponse(BaseModel):
     """Описывает схему ответа на запрос об установленных и доступных лимитах на ассортимент, создание и обновление товаров.
 
     Attributes:
         daily_create: Суточный лимит на создание товаров
         daily_update: Суточный лимит на обновление товаров
+        operation_limits: Доступный лимит на работу с товарами (поминутный)
         total: Лимит на ассортимент
     """
     daily_create: ProductInfoLimitDailyCreate = Field(
@@ -70,6 +88,9 @@ class ProductInfoLimitResponse(BaseModel):
     )
     daily_update: ProductInfoLimitDailyUpdate = Field(
         ..., description="Суточный лимит на обновление товаров."
+    )
+    operation_limits: Optional[ProductInfoLimitOperationLimits] = Field(
+        None, description="Доступный лимит на работу с товарами (поминутный)."
     )
     total: ProductInfoLimitTotal = Field(
         ..., description="Лимит на ассортимент."
