@@ -20,6 +20,10 @@ class TestProductInfoLimit:
                 "reset_at": "2024-01-01T00:00:00Z",
                 "usage": 300
             },
+            "operation_limits": {
+                "limit": 100,
+                "limit_type": "RATE_LIMIT_PER_MINUTE"
+            },
             "total": {
                 "limit": 10000,
                 "usage": 2500
@@ -40,5 +44,8 @@ class TestProductInfoLimit:
         assert response.daily_create.usage == 150
         assert response.daily_update.limit == 2000
         assert response.daily_update.usage == 300
+        assert response.operation_limits is not None
+        assert response.operation_limits.limit == 100
+        assert response.operation_limits.limit_type == "RATE_LIMIT_PER_MINUTE"
         assert response.total.limit == 10000
         assert response.total.usage == 2500

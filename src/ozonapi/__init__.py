@@ -35,8 +35,6 @@ Examples:
 from .infrastructure import logging
 from .infrastructure.logging import ozonapi_logger as logger
 from .seller import SellerAPI, SellerAPIConfig
-
-
 __version__ = "0.85.1"
 __author__ = "Alexander Ulianov"
 __email__ = "a.v.ulianov@mail.ru"
