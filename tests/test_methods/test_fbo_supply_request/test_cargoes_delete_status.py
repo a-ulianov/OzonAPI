@@ -7,7 +7,7 @@ from src.ozonapi.seller.schemas.fbo_supply_request import (
 
 
 class TestCargoesDeleteStatus:
-    """Тесты для метода cargoes_delete_status."""
+    """Тесты для метода cargoes_delete_status (v2)."""
 
     @pytest.mark.asyncio
     async def test_cargoes_delete_status(self, api, mock_api_request):
@@ -17,6 +17,7 @@ class TestCargoesDeleteStatus:
             "errors": {
                 "cargo_error_reasons": [],
                 "supply_error_reasons": [],
+                "transport_cargo_error_reasons": [],
             },
             "status": "SUCCESS",
         }
@@ -27,7 +28,7 @@ class TestCargoesDeleteStatus:
 
         mock_api_request.assert_called_once_with(
             method="post",
-            api_version="v1",
+            api_version="v2",
             endpoint="cargoes/delete/status",
             payload=request.model_dump(by_alias=True)
         )

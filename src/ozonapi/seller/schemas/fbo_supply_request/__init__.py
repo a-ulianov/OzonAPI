@@ -84,17 +84,67 @@ __all__ = [
     "CargoesCreateInfoCargo",
     "CargoesCreateInfoResult",
     "CargoesCreateInfoResponse",
+    "CargoesGetV1Request",
+    "CargoesGetV1TrackingInfo",
+    "CargoesGetV1Cargo",
+    "CargoesGetV1Supply",
+    "CargoesGetV1Response",
+    "CargoesDeleteV1Request",
+    "CargoesDeleteV1CargoErrorReason",
+    "CargoesDeleteV1Errors",
+    "CargoesDeleteV1Response",
+    "CargoesDeleteStatusV1Request",
+    "CargoesDeleteStatusV1Response",
+    "CargoesGetSupplyRequest",
     "CargoesGetRequest",
+    "CargoesGetTimezone",
+    "CargoesGetArrivalAt",
     "CargoesGetTrackingInfo",
     "CargoesGetCargo",
+    "CargoesGetLimits",
+    "CargoesGetTransportArrivalAt",
+    "CargoesGetTransportTrackingInfo",
+    "CargoesGetTransportCargo",
     "CargoesGetSupply",
     "CargoesGetResponse",
     "CargoesDeleteRequest",
     "CargoesDeleteCargoErrorReason",
+    "CargoesDeleteTransportCargoErrorReason",
     "CargoesDeleteErrors",
     "CargoesDeleteResponse",
     "CargoesDeleteStatusRequest",
     "CargoesDeleteStatusResponse",
+    "CargoesTransportCreateItem",
+    "CargoesTransportCreateRequest",
+    "CargoesTransportCreateResponse",
+    "CargoesTransportCreateStatusRequest",
+    "CargoesTransportCreateStatusTransportCargo",
+    "CargoesTransportCreateStatusResult",
+    "CargoesTransportCreateStatusResponse",
+    "CargoesTransportActivateRequest",
+    "CargoesTransportActivateResponse",
+    "CargoesTransportActivateStatusRequest",
+    "CargoesTransportActivateStatusResponse",
+    "CargoesTransportBindItem",
+    "CargoesTransportBindRequest",
+    "CargoesTransportBindResponse",
+    "CargoesTransportBindStatusRequest",
+    "CargoesTransportBindStatusResponse",
+    "CargoesSuppliesGetRequest",
+    "CargoesSuppliesGetCargo",
+    "CargoesSuppliesGetTransportCargo",
+    "CargoesSuppliesGetSupply",
+    "CargoesSuppliesGetResponse",
+    "CargoesLabelTransportCreateRequest",
+    "CargoesLabelTransportCreateResponse",
+    "CargoesLabelTransportStatusRequest",
+    "CargoesLabelTransportStatusResult",
+    "CargoesLabelTransportStatusResponse",
+    "CargoesLabelTransportByOrderCreateRequest",
+    "CargoesLabelTransportByOrderCreateResponse",
+    "CargoesLabelTransportByOrderStatusRequest",
+    "CargoesLabelTransportByOrderStatusResult",
+    "CargoesLabelTransportByOrderStatusResponse",
     "CargoesRulesGetRequest",
     "CargoesRulesCargoCountPerType",
     "CargoesRulesPresentsRule",
@@ -176,21 +226,99 @@ from .v2__cargoes_create_info import (
     CargoesCreateInfoResult,
 )
 from .v1__cargoes_get import (
+    CargoesGetV1Cargo,
+    CargoesGetV1Request,
+    CargoesGetV1Response,
+    CargoesGetV1Supply,
+    CargoesGetV1TrackingInfo,
+)
+from .v1__cargoes_delete import (
+    CargoesDeleteV1CargoErrorReason,
+    CargoesDeleteV1Errors,
+    CargoesDeleteV1Request,
+    CargoesDeleteV1Response,
+)
+from .v1__cargoes_delete_status import (
+    CargoesDeleteStatusV1Request,
+    CargoesDeleteStatusV1Response,
+)
+from .v2__cargoes_get import (
+    CargoesGetArrivalAt,
     CargoesGetCargo,
+    CargoesGetLimits,
     CargoesGetRequest,
     CargoesGetResponse,
     CargoesGetSupply,
+    CargoesGetSupplyRequest,
+    CargoesGetTimezone,
     CargoesGetTrackingInfo,
+    CargoesGetTransportArrivalAt,
+    CargoesGetTransportCargo,
+    CargoesGetTransportTrackingInfo,
 )
-from .v1__cargoes_delete import (
+from .v2__cargoes_delete import (
     CargoesDeleteCargoErrorReason,
     CargoesDeleteErrors,
     CargoesDeleteRequest,
     CargoesDeleteResponse,
+    CargoesDeleteTransportCargoErrorReason,
 )
-from .v1__cargoes_delete_status import (
+from .v2__cargoes_delete_status import (
     CargoesDeleteStatusRequest,
     CargoesDeleteStatusResponse,
+)
+from .v1__cargoes_transport_create import (
+    CargoesTransportCreateItem,
+    CargoesTransportCreateRequest,
+    CargoesTransportCreateResponse,
+)
+from .v1__cargoes_transport_create_status import (
+    CargoesTransportCreateStatusRequest,
+    CargoesTransportCreateStatusResponse,
+    CargoesTransportCreateStatusResult,
+    CargoesTransportCreateStatusTransportCargo,
+)
+from .v1__cargoes_transport_activate import (
+    CargoesTransportActivateRequest,
+    CargoesTransportActivateResponse,
+)
+from .v1__cargoes_transport_activate_status import (
+    CargoesTransportActivateStatusRequest,
+    CargoesTransportActivateStatusResponse,
+)
+from .v1__cargoes_transport_bind import (
+    CargoesTransportBindItem,
+    CargoesTransportBindRequest,
+    CargoesTransportBindResponse,
+)
+from .v1__cargoes_transport_bind_status import (
+    CargoesTransportBindStatusRequest,
+    CargoesTransportBindStatusResponse,
+)
+from .v1__cargoes_supplies_get import (
+    CargoesSuppliesGetCargo,
+    CargoesSuppliesGetRequest,
+    CargoesSuppliesGetResponse,
+    CargoesSuppliesGetSupply,
+    CargoesSuppliesGetTransportCargo,
+)
+from .v1__cargoes_label_transport_create import (
+    CargoesLabelTransportCreateRequest,
+    CargoesLabelTransportCreateResponse,
+)
+from .v1__cargoes_label_transport_status import (
+    CargoesLabelTransportStatusRequest,
+    CargoesLabelTransportStatusResponse,
+    CargoesLabelTransportStatusResult,
+)
+from .v1__cargoes_label_transport_by_order_create import (
+    CargoesLabelTransportByOrderCreateRequest,
+    CargoesLabelTransportByOrderCreateResponse,
+)
+from .v1__cargoes_label_transport_by_order_status import (
+    CargoesLabelTransportByOrderStatusRequest,
+    CargoesLabelTransportByOrderStatusResponse,
+    CargoesLabelTransportByOrderStatusResult,
 )
 from .v1__cargoes_rules_get import (
     CargoesRulesCargoCountPerType,

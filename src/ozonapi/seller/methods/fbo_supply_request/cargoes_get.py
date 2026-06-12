@@ -6,7 +6,7 @@ from ...schemas.fbo_supply_request import (
 
 
 class CargoesGetMixin(APIManager):
-    """Реализует метод /v1/cargoes/get"""
+    """Реализует метод /v2/cargoes/get"""
 
     async def cargoes_get(
             self: "CargoesGetMixin",
@@ -15,11 +15,12 @@ class CargoesGetMixin(APIManager):
         """Возвращает информацию о грузоместах в заявках на поставку FBO.
 
         Notes:
-            • Возвращает грузоместа по каждой запрошенной поставке вместе с данными
-              отслеживания и типом зоны размещения.
+            • Канонический метод (v2): дополнительно возвращает транспортные
+              грузоместа, лимиты поставки и данные отслеживания. Устаревшая
+              v1-версия доступна как `cargoes_get_v1()`.
 
         References:
-            https://docs.ozon.ru/api/seller/#operation/CargoesGet
+            https://docs.ozon.ru/api/seller/#tag/FBOTransport
 
         Args:
             request: Запрос информации о грузоместах по схеме `CargoesGetRequest`
@@ -30,12 +31,18 @@ class CargoesGetMixin(APIManager):
         Examples:
             async with SellerAPI(client_id, api_key) as api:
                 result = await api.cargoes_get(
-                    CargoesGetRequest(supply_ids=["123"])
+                    CargoesGetRequest(
+                        supplies=[
+                            CargoesGetSupplyRequest(
+                                supply_id=123, cargo_ids=["1"]
+                            )
+                        ]
+                    )
                 )
         """
         response = await self._request(
             method="post",
-            api_version="v1",
+            api_version="v2",
             endpoint="cargoes/get",
             payload=request.model_dump(by_alias=True)
         )
