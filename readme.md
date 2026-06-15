@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 447 / 447**
+**Реализовано методов: 461 / 461**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -665,7 +665,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/supplier/available_warehouses` | Загруженность складов Ozon | `supplier_available_warehouses()` |
 </details>
 <details>
-<summary>Создание и управление заявками на поставку FBO (29/29)</summary>
+<summary>Создание и управление заявками на поставку FBO (43/43)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -683,13 +683,27 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v2/draft/timeslot/info` | Получить список доступных таймслотов | `draft_timeslot_info()` |
 | ✓ | `/v1/cargoes/create` | Установка грузомест | `cargoes_create()` |
 | ✓ | `/v2/cargoes/create/info` | Получить информацию по установке грузомест | `cargoes_create_info()` |
-| ✓ | `/v1/cargoes/get` | Получить информацию о грузоместах | `cargoes_get()` |
-| ✓ | `/v1/cargoes/delete` | Удалить грузоместо в заявке на поставку | `cargoes_delete()` |
-| ✓ | `/v1/cargoes/delete/status` | Информация о статусе удаления грузоместа | `cargoes_delete_status()` |
+| ✓ | `/v1/cargoes/get` | Получить информацию о грузоместах ⚠️ устар. → `cargoes_get()` | `cargoes_get_v1()` |
+| ✓ | `/v2/cargoes/get` | Получить информацию о грузоместах | `cargoes_get()` |
+| ✓ | `/v1/cargoes/delete` | Удалить грузоместо в заявке на поставку ⚠️ устар. → `cargoes_delete()` | `cargoes_delete_v1()` |
+| ✓ | `/v1/cargoes/delete/status` | Информация о статусе удаления грузоместа ⚠️ устар. → `cargoes_delete_status()` | `cargoes_delete_status_v1()` |
+| ✓ | `/v2/cargoes/delete` | Удалить грузоместа и транспортные грузоместа в заявке на поставку | `cargoes_delete()` |
+| ✓ | `/v2/cargoes/delete/status` | Получить информацию о статусе удаления грузомест и транспортных грузомест | `cargoes_delete_status()` |
 | ✓ | `/v1/cargoes/rules/get` | Чек-лист по установке грузомест FBO | `cargoes_rules_get()` |
+| ✓ | `/v1/cargoes/supplies/get` | Получить информацию о грузоместах в поставках | `cargoes_supplies_get()` |
+| ✓ | `/v1/cargoes/transport/create` | Создать транспортное грузоместо | `cargoes_transport_create()` |
+| ✓ | `/v1/cargoes/transport/create/status` | Получить статус создания транспортного грузоместа | `cargoes_transport_create_status()` |
+| ✓ | `/v1/cargoes/transport/activate` | Включить или отключить транспортные грузоместа в поставке | `cargoes_transport_activate()` |
+| ✓ | `/v1/cargoes/transport/activate/status` | Получить статус включения или отключения транспортных грузомест | `cargoes_transport_activate_status()` |
+| ✓ | `/v1/cargoes/transport/bind` | Связать или отвязать грузоместа и транспортные грузоместа | `cargoes_transport_bind()` |
+| ✓ | `/v1/cargoes/transport/bind/status` | Получить статус связывания или отвязывания грузомест и транспортных грузомест | `cargoes_transport_bind_status()` |
 | ✓ | `/v1/cargoes-label/create` | Сгенерировать этикетки для грузомест | `cargoes_label_create()` |
 | ✓ | `/v1/cargoes-label/get` | Получить идентификатор этикетки для грузомест | `cargoes_label_get()` |
 | ✓ | `/v1/cargoes-label/file/{file_guid}` | Получить PDF с этикетками грузовых мест | `cargoes_label_file()` |
+| ✓ | `/v1/cargoes/label/transport/create` | Сгенерировать этикетки транспортных грузомест по идентификатору грузоместа | `cargoes_label_transport_create()` |
+| ✓ | `/v1/cargoes/label/transport/status` | Получить статус генерации этикеток транспортных грузомест по идентификатору грузоместа | `cargoes_label_transport_status()` |
+| ✓ | `/v1/cargoes/label/transport-by-order/create` | Сгенерировать этикетки для транспортных грузомест по идентификатору поставки | `cargoes_label_transport_by_order_create()` |
+| ✓ | `/v1/cargoes/label/transport-by-order/status` | Получить статус генерации этикеток для транспортных грузомест по идентификатору поставки | `cargoes_label_transport_by_order_status()` |
 | ✓ | `/v1/supply-order/cancel` | Отменить заявку на поставку | `supply_order_cancel()` |
 | ✓ | `/v1/supply-order/cancel/status` | Получить статус отмены заявки на поставку | `supply_order_cancel_status()` |
 | ✓ | `/v1/supply-order/content/update` | Редактирование товарного состава | `supply_order_content_update()` |

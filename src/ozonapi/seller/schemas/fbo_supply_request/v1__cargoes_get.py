@@ -1,10 +1,16 @@
-"""Схемы метода cargoes_get (информация о грузоместах, v1)."""
+"""Схемы метода cargoes_get_v1 (информация о грузоместах, v1).
+
+Notes:
+    • Устаревшая версия. Ozon выпустил v2 `/v2/cargoes/get`, возвращающую данные
+      о транспортных грузоместах и лимитах; канонический метод — `cargoes_get()`.
+      Данная v1-версия доступна как `cargoes_get_v1()`.
+"""
 from typing import Optional
 
 from pydantic import BaseModel, Field
 
 
-class CargoesGetRequest(BaseModel):
+class CargoesGetV1Request(BaseModel):
     """Параметры запроса информации о грузоместах.
 
     Attributes:
@@ -15,7 +21,7 @@ class CargoesGetRequest(BaseModel):
     )
 
 
-class CargoesGetTrackingInfo(BaseModel):
+class CargoesGetV1TrackingInfo(BaseModel):
     """Информация об отслеживании грузоместа.
 
     Attributes:
@@ -28,7 +34,7 @@ class CargoesGetTrackingInfo(BaseModel):
     type: Optional[str] = Field(None, description="Тип события отслеживания.")
 
 
-class CargoesGetCargo(BaseModel):
+class CargoesGetV1Cargo(BaseModel):
     """Грузоместо поставки.
 
     Attributes:
@@ -49,13 +55,13 @@ class CargoesGetCargo(BaseModel):
     placement_zone_type: Optional[str] = Field(
         None, description="Тип зоны размещения."
     )
-    tracking_info: Optional[CargoesGetTrackingInfo] = Field(
+    tracking_info: Optional[CargoesGetV1TrackingInfo] = Field(
         None, description="Информация об отслеживании."
     )
     type: Optional[str] = Field(None, description="Тип грузоместа.")
 
 
-class CargoesGetSupply(BaseModel):
+class CargoesGetV1Supply(BaseModel):
     """Грузоместа поставки.
 
     Attributes:
@@ -66,18 +72,18 @@ class CargoesGetSupply(BaseModel):
     bundle_id: Optional[str] = Field(
         None, description="Идентификатор товарного состава."
     )
-    cargoes: Optional[list[CargoesGetCargo]] = Field(
+    cargoes: Optional[list[CargoesGetV1Cargo]] = Field(
         None, description="Грузоместа поставки."
     )
     supply_id: Optional[int] = Field(None, description="Идентификатор поставки.")
 
 
-class CargoesGetResponse(BaseModel):
+class CargoesGetV1Response(BaseModel):
     """Ответ с информацией о грузоместах.
 
     Attributes:
         supply: Поставки с грузоместами
     """
-    supply: Optional[list[CargoesGetSupply]] = Field(
+    supply: Optional[list[CargoesGetV1Supply]] = Field(
         None, description="Поставки с грузоместами."
     )

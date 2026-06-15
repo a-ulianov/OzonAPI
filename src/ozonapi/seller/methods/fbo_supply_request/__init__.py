@@ -9,11 +9,31 @@ from .cargoes_create import CargoesCreateMixin
 from .cargoes_create_info import CargoesCreateInfoMixin
 from .cargoes_delete import CargoesDeleteMixin
 from .cargoes_delete_status import CargoesDeleteStatusMixin
+from .cargoes_delete_status_v1 import CargoesDeleteStatusV1Mixin
+from .cargoes_delete_v1 import CargoesDeleteV1Mixin
 from .cargoes_get import CargoesGetMixin
+from .cargoes_get_v1 import CargoesGetV1Mixin
 from .cargoes_label_create import CargoesLabelCreateMixin
 from .cargoes_label_file import CargoesLabelFileMixin
 from .cargoes_label_get import CargoesLabelGetMixin
+from .cargoes_label_transport_by_order_create import (
+    CargoesLabelTransportByOrderCreateMixin,
+)
+from .cargoes_label_transport_by_order_status import (
+    CargoesLabelTransportByOrderStatusMixin,
+)
+from .cargoes_label_transport_create import CargoesLabelTransportCreateMixin
+from .cargoes_label_transport_status import CargoesLabelTransportStatusMixin
 from .cargoes_rules_get import CargoesRulesGetMixin
+from .cargoes_supplies_get import CargoesSuppliesGetMixin
+from .cargoes_transport_activate import CargoesTransportActivateMixin
+from .cargoes_transport_activate_status import (
+    CargoesTransportActivateStatusMixin,
+)
+from .cargoes_transport_bind import CargoesTransportBindMixin
+from .cargoes_transport_bind_status import CargoesTransportBindStatusMixin
+from .cargoes_transport_create import CargoesTransportCreateMixin
+from .cargoes_transport_create_status import CargoesTransportCreateStatusMixin
 from .cluster_list_v1 import ClusterListV1Mixin
 from .draft_create import DraftCreateMixin
 from .draft_create_info import DraftCreateInfoMixin
@@ -45,11 +65,25 @@ class SellerFboSupplyRequestAPI(
     CargoesCreateInfoMixin,
     CargoesDeleteMixin,
     CargoesDeleteStatusMixin,
+    CargoesDeleteStatusV1Mixin,
+    CargoesDeleteV1Mixin,
     CargoesGetMixin,
+    CargoesGetV1Mixin,
     CargoesLabelCreateMixin,
     CargoesLabelFileMixin,
     CargoesLabelGetMixin,
+    CargoesLabelTransportByOrderCreateMixin,
+    CargoesLabelTransportByOrderStatusMixin,
+    CargoesLabelTransportCreateMixin,
+    CargoesLabelTransportStatusMixin,
     CargoesRulesGetMixin,
+    CargoesSuppliesGetMixin,
+    CargoesTransportActivateMixin,
+    CargoesTransportActivateStatusMixin,
+    CargoesTransportBindMixin,
+    CargoesTransportBindStatusMixin,
+    CargoesTransportCreateMixin,
+    CargoesTransportCreateStatusMixin,
     ClusterListV1Mixin,
     DraftCreateMixin,
     DraftCreateInfoMixin,
