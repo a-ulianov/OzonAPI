@@ -15,6 +15,9 @@ class DraftCreateInfoV1Mixin(APIManager):
         """Возвращает информацию о черновике заявки на поставку по `operation_id` (версия 1).
 
         Notes:
+            • ⚠️ Устаревший метод: Ozon удалил `/v1/draft/create/info` из спецификации
+              Seller API (зафиксировано 2026-06-19). Метод оставлен для обратной
+              совместимости. Перейдите на каноническую `draft_create_info()` (v2, по `draft_id`).
             • Принимает `operation_id` из `draft_create()`. Предпочтительна версия
               `draft_create_info()` (v2, по `draft_id`).
 

@@ -15,6 +15,10 @@ class DraftSupplyCreateStatusV1Mixin(APIManager):
         """Возвращает статус создания заявки на поставку по `operation_id` (версия 1).
 
         Notes:
+            • ⚠️ Устаревший метод: Ozon удалил `/v1/draft/supply/create/status` из
+              спецификации Seller API (зафиксировано 2026-06-19). Метод оставлен для
+              обратной совместимости. Перейдите на каноническую
+              `draft_supply_create_status()` (v2).
             • При успехе возвращает `order_ids` созданных заявок; при ошибке —
               `error_messages`. Предпочтительна версия `draft_supply_create_status()` (v2).
 
