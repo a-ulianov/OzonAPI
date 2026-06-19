@@ -15,6 +15,9 @@ class DraftSupplyCreateV1Mixin(APIManager):
         """Создаёт заявку на поставку по черновику (версия 1).
 
         Notes:
+            • ⚠️ Устаревший метод: Ozon удалил `/v1/draft/supply/create` из спецификации
+              Seller API (зафиксировано 2026-06-19). Метод оставлен для обратной
+              совместимости. Перейдите на каноническую `draft_supply_create()` (v2).
             • Принимает `draft_id` и `warehouse_id`. Результат — через
               `draft_supply_create_status_v1()` по `operation_id`. Предпочтительна
               версия `draft_supply_create()` (v2).

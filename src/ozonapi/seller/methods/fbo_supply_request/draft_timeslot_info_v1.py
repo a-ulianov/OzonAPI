@@ -15,6 +15,9 @@ class DraftTimeslotInfoV1Mixin(APIManager):
         """Возвращает доступные таймслоты отгрузки для черновика заявки (версия 1).
 
         Notes:
+            • ⚠️ Устаревший метод: Ozon удалил `/v1/draft/timeslot/info` из спецификации
+              Seller API (зафиксировано 2026-06-19). Метод оставлен для обратной
+              совместимости. Перейдите на каноническую `draft_timeslot_info()` (v2).
             • Принимает `draft_id` и список складов (`warehouse_ids`). Предпочтительна
               версия `draft_timeslot_info()` (v2).
             • `date_from`/`date_to` — в формате `YYYY-MM-DD` (требование сервера).
