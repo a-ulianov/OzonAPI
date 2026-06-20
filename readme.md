@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 461 / 461**
+**Реализовано методов: 462 / 462**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -644,7 +644,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/polygon/time/set` | Установить новое время доставки в полигоне | `polygon_time_set()` |
 </details>
 <details>
-<summary>Доставка FBO (15/15)</summary>
+<summary>Доставка FBO (16/16)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -657,6 +657,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v3/supply-order/list` | Список заявок на поставку на склад Ozon | `supply_order_list()` |
 | ✓ | `/v3/supply-order/get` | Информация о заявке на поставку | `supply_order_get()` |
 | ✓ | `/v1/supply-order/timeslot/get` | Интервалы поставки | `supply_order_timeslot_get()` |
+| ✓ | `/v2/supply-order/timeslot/list` | Список доступных интервалов поставки | `supply_order_timeslot_list()` |
 | ✓ | `/v1/supply-order/timeslot/update` | Обновить интервал поставки | `supply_order_timeslot_update()` |
 | ✓ | `/v1/supply-order/timeslot/status` | Статус интервала поставки | `supply_order_timeslot_status()` |
 | ✓ | `/v1/supply-order/pass/create` | Указать данные о водителе и автомобиле | `supply_order_pass_create()` |

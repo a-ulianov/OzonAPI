@@ -17,6 +17,7 @@ from .supply_order_pass_create import SupplyOrderPassCreateMixin
 from .supply_order_pass_status import SupplyOrderPassStatusMixin
 from .supply_order_status_counter import SupplyOrderStatusCounterMixin
 from .supply_order_timeslot_get import SupplyOrderTimeslotGetMixin
+from .supply_order_timeslot_list import SupplyOrderTimeslotListMixin
 from .supply_order_timeslot_status import SupplyOrderTimeslotStatusMixin
 from .supply_order_timeslot_update import SupplyOrderTimeslotUpdateMixin
 
@@ -35,6 +36,7 @@ class SellerFBOAPI(
     SupplyOrderPassStatusMixin,
     SupplyOrderStatusCounterMixin,
     SupplyOrderTimeslotGetMixin,
+    SupplyOrderTimeslotListMixin,
     SupplyOrderTimeslotStatusMixin,
     SupplyOrderTimeslotUpdateMixin,
     APIManager,
