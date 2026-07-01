@@ -16,6 +16,7 @@ class WarehouseERFBSAggregatorDeliveryMethodUpdateRequest(BaseModel):
         deliver_to_pvz: Доставлять в пункт выдачи
         delivery_costs: Стоимость доставки
         delivery_method_id: Идентификатор метода доставки
+        is_courier_phone_same_as_warehouse: Совпадает ли телефон курьера с телефоном склада
         name: Название метода доставки
         return_settings: Настройки возврата
         warehouse_id: Идентификатор склада
@@ -36,6 +37,9 @@ class WarehouseERFBSAggregatorDeliveryMethodUpdateRequest(BaseModel):
     )
     delivery_method_id: Optional[int] = Field(
         None, description="Идентификатор метода доставки."
+    )
+    is_courier_phone_same_as_warehouse: Optional[bool] = Field(
+        None, description="Совпадает ли телефон курьера с телефоном склада."
     )
     name: Optional[str] = Field(None, description="Название метода доставки.")
     return_settings: Optional[WarehouseERFBSReturnSettings] = Field(

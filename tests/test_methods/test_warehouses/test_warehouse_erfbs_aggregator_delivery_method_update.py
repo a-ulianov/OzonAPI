@@ -21,6 +21,7 @@ class TestWarehouseERFBSAggregatorDeliveryMethodUpdate:
             name="Партнёры Ozon",
             cut_in=120,
             deliver_to_pvz=False,
+            is_courier_phone_same_as_warehouse=True,
             return_settings={"return_method": "TRANSPORT_COMPANY", "transport_company_name": "СДЭК"},
         )
 
