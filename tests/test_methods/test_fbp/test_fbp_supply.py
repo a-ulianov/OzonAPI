@@ -21,6 +21,8 @@ from src.ozonapi.seller.schemas.fbp import (
     FbpOrderGetResponse,
     FbpOrderListRequest,
     FbpOrderListResponse,
+    PostingFbpGetRequest,
+    PostingFbpGetResponse,
     PostingFbpListFilter,
     PostingFbpListRequest,
     PostingFbpListResponse,
@@ -312,3 +314,62 @@ class TestPostingFbpList:
         assert response.postings[0].posting_number == "P-1"
         assert response.postings[0].products[0].price.amount == "100.00"
         assert response.postings[0].financial_data.products[0].actions[0].action_id == "a1"
+
+
+class TestPostingFbpGet:
+    """Тесты для метода posting_fbp_get."""
+
+    @pytest.mark.asyncio
+    async def test_posting_fbp_get(self, api, mock_api_request):
+        """Тестирует метод posting_fbp_get."""
+        mock_api_request.return_value = {
+            "posting": {
+                "posting_number": "P-1",
+                "order_id": 12345,
+                "order_number": "O-1",
+                "status": 3,
+                "substatus": "posting_transferred_to_delivery",
+                "tpl_provider_id": 24,
+                "analytics_data": {"city": "Москва", "warehouse_id": 42},
+                "cancellation": {"cancel_reason_id": 0, "cancel_reason": ""},
+                "products": [
+                    {
+                        "sku": 123,
+                        "name": "Товар",
+                        "offer_id": "art-1",
+                        "quantity": 2,
+                        "has_imei": False,
+                        "marketplace_seller_price": {"amount": "100.00", "currency": "RUB"},
+                    }
+                ],
+                "financial_data": {
+                    "delivery_amount": 50.0,
+                    "products": [
+                        {
+                            "sku": 123,
+                            "quantity": 2,
+                            "old_price": 120.0,
+                            "commissions_price": {"amount": "10.00", "currency": "RUB"},
+                            "posting_commission": {"amount": 10.0, "payout": 90.0, "percent": 10.0},
+                            "actions": [{"action_id": 1, "discount_value": 20.0}],
+                        }
+                    ],
+                },
+            }
+        }
+
+        request = PostingFbpGetRequest(posting_number="P-1")
+        response = await api.posting_fbp_get(request)
+
+        mock_api_request.assert_called_once_with(
+            method="post",
+            api_version="v1",
+            endpoint="posting/fbp/get",
+            payload=request.model_dump(),
+        )
+        assert isinstance(response, PostingFbpGetResponse)
+        assert response.posting.posting_number == "P-1"
+        assert response.posting.status == 3
+        assert response.posting.products[0].marketplace_seller_price.amount == "100.00"
+        assert response.posting.financial_data.products[0].posting_commission.payout == 90.0
+        assert response.posting.financial_data.products[0].actions[0].action_id == 1

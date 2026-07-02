@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 462 / 462**
+**Реализовано методов: 463 / 463**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -1114,7 +1114,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/order/pick-up/dlv/edit` | Изменить данные о точке забора | `fbp_order_pick_up_dlv_edit()` |
 </details>
 <details>
-<summary>Работа с созданной поставкой FBP (11/11)</summary>
+<summary>Работа с созданной поставкой FBP (12/12)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -1128,6 +1128,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/fbp/label/get` | Получить статус задания на генерацию этикеток | `fbp_label_get()` |
 | ✓ | `/v1/fbp/order/get` | Получить информацию о конкретной поставке | `fbp_order_get()` |
 | ✓ | `/v1/fbp/order/list` | Получить список поставок | `fbp_order_list()` |
+| ✓ | `/v1/posting/fbp/get` | Получить информацию об отправлении | `posting_fbp_get()` |
 | ✓ | `/v1/posting/fbp/list` | Получить список отправлений | `posting_fbp_list()` |
 </details>
 <details>
