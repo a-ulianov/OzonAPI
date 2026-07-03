@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 462 / 462**
+**Реализовано методов: 463 / 463**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -472,7 +472,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/barcode/generate` | Создать штрихкод для товара | `barcode_generate()` |
 </details>
 <details>
-<summary>Цены и остатки товаров (11/11)</summary>
+<summary>Цены и остатки товаров (12/12)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -481,6 +481,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/product/info/warehouse/stocks` | Получить информацию по остаткам на складе FBS и rFBS | `product_info_warehouse_stocks()` |
 | ✓ | `/v1/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs_v1()` |
 | ✓ | `/v2/product/info/stocks-by-warehouse/fbs` | Информация об остатках на складах продавца (FBS и rFBS) | `product_info_stocks_by_warehouse_fbs()` |
+| ✓ | `/v1/product/info/stocks-by-warehouse/fbo` | Информация об остатках на складах FBO | `product_info_stocks_by_warehouse_fbo()` |
 | ✓ | `/v1/product/import/prices` | Обновить цену | `product_import_prices()` |
 | ✓ | `/v1/product/action/timer/update` | Обновление таймера актуальности минимальной цены | `product_action_timer_update()` |
 | ✓ | `/v1/product/action/timer/status` | Получить статус установленного таймера | `product_action_timer_status()` |

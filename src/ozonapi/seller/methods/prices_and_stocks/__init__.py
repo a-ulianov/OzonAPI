@@ -6,6 +6,7 @@ from .product_import_prices import ProductImportPricesMixin
 from .product_info_discounted import ProductInfoDiscountedMixin
 from .product_info_prices import ProductInfoPricesMixin
 from .product_info_stocks import ProductInfoStocksMixin
+from .product_info_stocks_by_warehouse_fbo import ProductInfoStocksByWarehouseFBOMixin
 from .product_info_stocks_by_warehouse_fbs import ProductInfoStocksByWarehouseFBSMixin
 from .product_info_stocks_by_warehouse_fbs_v1 import (
     ProductInfoStocksByWarehouseFBSV1Mixin,
@@ -21,6 +22,7 @@ class SellerPricesAndStocksAPI(
     ProductImportPricesMixin,
     ProductInfoDiscountedMixin,
     ProductInfoPricesMixin,
+    ProductInfoStocksByWarehouseFBOMixin,
     ProductInfoStocksByWarehouseFBSMixin,
     ProductInfoStocksByWarehouseFBSV1Mixin,
     ProductInfoStocksMixin,
