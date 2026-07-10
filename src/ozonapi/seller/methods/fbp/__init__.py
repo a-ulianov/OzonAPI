@@ -45,6 +45,7 @@ from .fbp_act_to_create import FbpActToCreateMixin
 from .fbp_act_to_get import FbpActToGetMixin
 from .fbp_label_create import FbpLabelCreateMixin
 from .fbp_label_get import FbpLabelGetMixin
+from .posting_fbp_get import PostingFbpGetMixin
 from .posting_fbp_list import PostingFbpListMixin
 
 
@@ -94,6 +95,7 @@ class SellerFbpAPI(
     FbpActToGetMixin,
     FbpLabelCreateMixin,
     FbpLabelGetMixin,
+    PostingFbpGetMixin,
     PostingFbpListMixin,
 ):
     """Реализует методы раздела FBP (черновики и поставки).

@@ -141,6 +141,17 @@ __all__ = [
     "PostingFbpFinancialData",
     "PostingFbp",
     "PostingFbpListResponse",
+    "PostingFbpGetRequest",
+    "PostingFbpGetMoney",
+    "PostingFbpGetAnalyticsData",
+    "PostingFbpGetCancellation",
+    "PostingFbpGetFinancialAction",
+    "PostingFbpGetCommission",
+    "PostingFbpGetFinancialProduct",
+    "PostingFbpGetFinancialData",
+    "PostingFbpGetProduct",
+    "PostingFbpGetPosting",
+    "PostingFbpGetResponse",
 ]
 
 from .base import FbpDraftCreateResult, FbpOrderValidationResult
@@ -372,4 +383,17 @@ from .v1__posting_fbp_list import (
     PostingFbpListResponse,
     PostingFbpMoney,
     PostingFbpProduct,
+)
+from .v1__posting_fbp_get import (
+    PostingFbpGetAnalyticsData,
+    PostingFbpGetCancellation,
+    PostingFbpGetCommission,
+    PostingFbpGetFinancialAction,
+    PostingFbpGetFinancialData,
+    PostingFbpGetFinancialProduct,
+    PostingFbpGetMoney,
+    PostingFbpGetPosting,
+    PostingFbpGetProduct,
+    PostingFbpGetRequest,
+    PostingFbpGetResponse,
 )
