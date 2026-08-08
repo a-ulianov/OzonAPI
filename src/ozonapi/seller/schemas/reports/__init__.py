@@ -19,6 +19,8 @@ __all__ = [
     "ReportPostingsCreateFilter",
     "ReportPostingsCreateWith",
     "ReportDiscountedCreateResponse",
+    "ReportRealizationPostingCreateRequest",
+    "ReportRealizationPostingCreateResponse",
     "ReportWarehouseStockRequest",
     "ReportWarehouseStockResponse",
     "ReportPlacementByProductsCreateRequest",
@@ -74,6 +76,10 @@ from .v1__report_postings_create import (
 from .v1__report_products_create import (
     ReportProductsCreateRequest,
     ReportProductsCreateResponse,
+)
+from .v1__report_realization_posting_create import (
+    ReportRealizationPostingCreateRequest,
+    ReportRealizationPostingCreateResponse,
 )
 from .v1__report_warehouse_stock import (
     ReportWarehouseStockRequest,

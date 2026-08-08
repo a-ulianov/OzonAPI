@@ -13,6 +13,7 @@ from .report_placement_by_products_create import ReportPlacementByProductsCreate
 from .report_placement_by_supplies_create import ReportPlacementBySuppliesCreateMixin
 from .report_postings_create import ReportPostingsCreateMixin
 from .report_products_create import ReportProductsCreateMixin
+from .report_realization_posting_create import ReportRealizationPostingCreateMixin
 from .report_returns_create import ReportReturnsCreateMixin
 from .report_warehouse_stock import ReportWarehouseStockMixin
 
@@ -27,6 +28,7 @@ class SellerReportAPI(
     ReportPlacementBySuppliesCreateMixin,
     ReportPostingsCreateMixin,
     ReportProductsCreateMixin,
+    ReportRealizationPostingCreateMixin,
     ReportReturnsCreateMixin,
     ReportWarehouseStockMixin,
     APIManager,

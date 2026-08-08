@@ -410,7 +410,7 @@ pytest --cov=ozonapi --cov-report=html
 
 ## ✔️ Реализованные методы Ozon Seller API
 
-**Реализовано методов: 463 / 463**
+**Реализовано методов: 464 / 464**
 
 <details>
 <summary>Информация по API-ключу (1/1)</summary>
@@ -861,7 +861,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/invoice/delete` | Удалить ссылку на счёт-фактуру | `invoice_delete()` |
 </details>
 <details>
-<summary>Отчёты (11/11)</summary>
+<summary>Отчёты (12/12)</summary>
 
 | ✓ | Адрес метода Ozon | Описание метода | Python-метод |
 |---|---|---|---|
@@ -876,6 +876,7 @@ pytest --cov=ozonapi --cov-report=html
 | ✓ | `/v1/report/placement/by-products/create` | Получить отчёт о стоимости размещения по товарам | `report_placement_by_products_create()` |
 | ✓ | `/v1/report/placement/by-supplies/create` | Получить отчёт о стоимости размещения по поставкам | `report_placement_by_supplies_create()` |
 | ✓ | `/v1/report/marked-products-sales/create` | Отчёт по продажам товаров с маркировкой | `report_marked_products_sales_create()` |
+| ✓ | `/v1/report/realization/posting/create` | Позаказный отчёт о реализации товаров | `report_realization_posting_create()` |
 </details>
 <details>
 <summary>Аналитические отчёты (3/3)</summary>
